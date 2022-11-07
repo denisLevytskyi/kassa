@@ -1,0 +1,20 @@
+body {
+	background: grey;
+}
+
+.editAuthForm {
+	display: flex;
+	flex-direction: column;
+	max-width: 400px;
+	margin: auto;
+	background: white;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+
+.editAuthFormA {
+	margin: 10px 0 auto auto;
+	color: blue;
+	cursor: pointer;
+}

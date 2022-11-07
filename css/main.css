@@ -1,0 +1,82 @@
+/** {
+	border: 1px solid red;
+}*/
+
+div, p, input, button, form, span, a, ul, li, xmp, pre {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body, button {
+	font-family: 'Roboto', sans-serif;
+	padding: 0;
+	margin: 0;
+	font-size: 20px;
+	background: url('bg.jpg') no-repeat top fixed;
+	background-size: cover;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-weight: bold;
+}
+
+ul, li {
+	list-style: none;
+}
+
+a { 
+	text-decoration: none;
+	color: inherit;
+	font-size: 18px;
+}
+
+button {
+	display: block;
+	background: yellow;
+	font-weight: bold;
+	text-align: center;
+	padding: 10px 0;
+	border: 2px solid black;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+button:hover {
+	background: blue;
+}
+
+input {
+	display: block;
+	font-weight: bold;
+	padding: 10px 10px;
+	border: 2px solid black;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+.container {
+	max-width: 90%;
+	margin: 0 auto;
+}
+
+.headerWrap {
+	padding: 0 5px;
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: space-between;
+	background: black;
+	color: white;
+}
+
+.headerWrapImg {
+	height: 50px;
+	background: white;
+}
+
+section {
+	margin: 50px auto;
+}

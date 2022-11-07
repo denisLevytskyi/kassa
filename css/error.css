@@ -1,0 +1,17 @@
+body {
+	background: grey;
+}
+
+.error .container {
+	background: white;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.error .container * {
+	margin-bottom: 10px;
+}
+
+.errorA {
+	color: blue;
+}

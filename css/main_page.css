@@ -1,0 +1,17 @@
+body {
+	background: grey;
+}
+
+.auth .container {
+	background: white;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.auth .container * {
+	margin-bottom: 10px;
+}
+
+.authA {
+	color: blue;
+}

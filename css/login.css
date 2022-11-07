@@ -1,0 +1,28 @@
+body {
+	background: grey;
+}
+
+.loginForm {
+	display: flex;
+	flex-direction: column;
+	max-width: 400px;
+	margin: auto;
+	background: white;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.loginFormRem {
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+.loginFormRem * {
+	display: inline;
+}
+
+.loginFormA {
+	margin: 10px 0 auto auto;
+	color: blue;
+	cursor: pointer;
+}
