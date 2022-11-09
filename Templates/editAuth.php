@@ -27,6 +27,7 @@
 				<input type="text" style="display: none;" name="edit_auth_1" value="1" required>
 				<button type="confirm" class="editAuthFormBtn">Edit!</button>
 				<a class="editAuthFormA" href="/editAuth.php/?delete=1">Delete profile!</a>
+				<a class="editAuthFormA" href="/">Go Home!</a>
 			</form>
 		</div>
 	</section>

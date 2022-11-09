@@ -31,6 +31,20 @@
 			</a>
 		</div>
 	</section>
-	
+	<section class="list">
+		<div class="container">
+			<div class="listWrap">
+				<?php foreach ($_SESSION['product_list'] as $k => $v) { ?>
+					<div class="listWrapItem">
+						<img src="<?php echo ($v['foto']); ?>" alt="" class="listWrapItemImg">
+						<a href="/product/?product_id=<?php echo ($v['id']); ?>" class="listWrapItemA">
+							<?php echo ($v['article'] . ' ' . $v['name']); ?>
+						</a>
+					</div>					
+				<?php } ?>
+			</div>
+			<a class="listA" href="/">Go Home!</a>
+		</div>
+	</section>
 </body>
 </html>

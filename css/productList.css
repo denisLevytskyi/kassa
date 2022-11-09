@@ -1,0 +1,27 @@
+.list .container {
+	background: white;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.listWrapItem {
+	display: flex;
+	align-items: center;
+	margin: 5px;
+}
+
+.listWrapItemImg {
+	width: 75px;
+	height: 75px;
+	object-fit: cover;
+}
+
+.listWrapItemA {
+	margin-left: 15px;
+}
+
+.listA {
+	display: block;
+	margin-top: 15px;
+	color: blue;
+}
