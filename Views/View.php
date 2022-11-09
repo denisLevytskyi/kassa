@@ -25,4 +25,8 @@ class View {
 	public function view_edit_auth () {
 		require_once "Templates/editAuth.php";
 	}
+
+	public function view_add_product () {
+		require_once "Templates/addProduct.php";
+	}
 }

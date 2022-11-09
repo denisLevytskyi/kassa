@@ -36,7 +36,7 @@
 				Available actions:
 			</h1>
 			<div class="linksWrapper">
-				<a href="" class="linksWrapperA">
+				<a href="/addProduct.php" class="linksWrapperA">
 					Add product
 				</a>
 				<a href="" class="linksWrapperA">
