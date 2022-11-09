@@ -31,16 +31,18 @@
 		</div>
 	</section>
 	<section class="links">
-		<h1 class="linksH1">
-			Available actions:
-		</h1>
-		<div class="linksWrapper">
-			<a href="" class="linksWrapperA">
-				Add product
-			</a>
-			<a href="" class="linksWrapperA">
-				Get product List
-			</a>
+		<div class="container">
+			<h1 class="linksH1">
+				Available actions:
+			</h1>
+			<div class="linksWrapper">
+				<a href="" class="linksWrapperA">
+					Add product
+				</a>
+				<a href="" class="linksWrapperA">
+					Get product List
+				</a>
+			</div>
 		</div>
 	</section>
 </body>

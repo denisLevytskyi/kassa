@@ -2,7 +2,7 @@ body {
 	background: grey;
 }
 
-.auth .container {
+.auth .container, .links .container {
 	background: white;
 	padding: 10px;
 	border-radius: 10px;
@@ -14,4 +14,21 @@ body {
 
 .authA {
 	color: blue;
+}
+
+.linksWrapper {
+	margin-top: 30px;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.linksWrapperA {
+	background: red;
+	color: white;
+	padding: 15px 0px;	
+	width: 250px;
+	max-width: 100%;
+	text-align: center;
+	margin: 10px 0;
 }
