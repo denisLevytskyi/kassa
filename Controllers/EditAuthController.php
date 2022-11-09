@@ -4,34 +4,6 @@ use Views;
 use Models;
 
 class EditAuthController {
-	protected function view_error7() {
-		session_start();
-		$_SESSION['error'] = 7;
-		$_SESSION['error_desc'] = 'No login for this id!';
-		header('Location: /error.php');
-	}
-
-	protected function view_error8() {
-		session_start();
-		$_SESSION['error'] = 8;
-		$_SESSION['error_desc'] = "New passwords didn't match!";
-		header('Location: /error.php');
-	}
-
-	protected function view_error9() {
-		session_start();
-		$_SESSION['error'] = 9;
-		$_SESSION['error_desc'] = "Problems with data entry! (CHANGES)";
-		header('Location: /error.php');
-	}
-
-	protected function view_error10() {
-		session_start();
-		$_SESSION['error'] = 10;
-		$_SESSION['error_desc'] = "Problems with data entry! (DELETE)";
-		header('Location: /error.php');
-	}
-
 	protected function view_edit_auth () {
 		$view = new Views\View();
 		$view->view_edit_auth();
@@ -46,7 +18,7 @@ class EditAuthController {
 		if ( ($model->get_chenges($id, $login, $password, $name)) ) {
 			header('Location: /');
 		} else {
-			$this->view_error9();
+			ErrorController::view_error9();
 		}
 	}
 
@@ -56,7 +28,7 @@ class EditAuthController {
 		if ( ($login = $model->get_login_by_id($id)) ) {
 			$_SESSION['auth_login'] = $login;
 		} else {
-			$this->view_error7();
+			ErrorController::view_error7();
 		}
 	}
 
@@ -66,7 +38,7 @@ class EditAuthController {
 		if ( ($model->get_delete($id)) ) {
 			header('Location: /?disconnect=1');
 		} else {
-			$this->view_error10();
+			ErrorController::view_error10();
 		}
 	}
 
@@ -78,7 +50,7 @@ class EditAuthController {
 			if ($_POST['edit_auth_password_1'] == $_POST['edit_auth_password_2']) {
 				$this->set_changes();
 			} else {
-				$this->view_error8();
+				ErrorController::view_error8();
 			}
 		}
 		if (isset($_GET['delete'])) {

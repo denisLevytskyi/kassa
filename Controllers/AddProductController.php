@@ -4,13 +4,6 @@ use Views;
 use Models;
 
 class AddProductController {
-	protected function view_error11() {
-		session_start();
-		$_SESSION['error'] = 11;
-		$_SESSION['error_desc'] = "Problems with data entry! (Add product)";
-		header('Location: /error.php');
-	}
-
 	protected function view_add_product () {
 		$view = new Views\View();
 		$view->view_add_product();
@@ -37,7 +30,7 @@ class AddProductController {
 		if ( ($model->get_product_registration($art, $code, $name, $desk, $foto)) ) {
 			header('Location: /');
 		} else {
-			$this->view_error11();
+			ErrorController::view_error11();
 		}
 	}
 

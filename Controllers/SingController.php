@@ -4,34 +4,6 @@ use Views;
 use Models;
 
 class SingController {
-	protected function view_error2() {
-		session_start();
-		$_SESSION['error'] = 2;
-		$_SESSION['error_desc'] = "Passwords didn't match!";
-		header('Location: /error.php');
-	}
-
-	protected function view_error3() {
-		session_start();
-		$_SESSION['error'] = 3;
-		$_SESSION['error_desc'] = "PIN from email does not match!";
-		header('Location: /error.php');
-	}
-
-	protected function view_error4() {
-		session_start();
-		$_SESSION['error'] = 4;
-		$_SESSION['error_desc'] = "PIN of Administrator does not match!";
-		header('Location: /error.php');
-	}
-
-	protected function view_error5() {
-		session_start();
-		$_SESSION['error'] = 5;
-		$_SESSION['error_desc'] = "Problems with data entry!";
-		header('Location: /error.php');
-	}
-
 	protected function view_sing1 () {
 		$view = new Views\View();
 		$view->view_sing1();
@@ -63,7 +35,7 @@ class SingController {
 			$_SESSION['auth_id'] = $id;
 			header('Location: /');
 		} else {
-			$this->view_error5();
+			ErrorController::view_error5();
 		}
 	}
 
@@ -72,7 +44,7 @@ class SingController {
 			$this->get_check_pin2();
 			unset($_SESSION['sing_pin_1']);
 		} else {
-			$this->view_error3();
+			ErrorController::view_error3();
 		}
 	}
 
@@ -80,7 +52,7 @@ class SingController {
 		if ($_POST['sing_pin_2'] == '1') {
 			$this->set_sing();
 		} else {
-			$this->view_error4();
+			ErrorController::view_error4();
 		}
 	}
 
@@ -95,7 +67,7 @@ class SingController {
 				$this->send_pin();
 				$this->view_sing2();
 			} else {
-				$this->view_error2();
+				ErrorController::view_error2();
 			}
 		}
 	}

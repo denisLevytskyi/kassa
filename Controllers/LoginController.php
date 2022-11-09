@@ -14,20 +14,6 @@ class LoginController {
 		$view->view_main();
 	}
 
-	protected function view_error1() {
-		session_start();
-		$_SESSION['error'] = 1;
-		$_SESSION['error_desc'] = 'Login or password is incorrect!';
-		header('Location: /error.php');
-	}
-
-	protected function view_error6() {
-		session_start();
-		$_SESSION['error'] = 6;
-		$_SESSION['error_desc'] = 'No name for this id!';
-		header('Location: /error.php');
-	}
-
 	protected function set_id ($remember = false) {
 		$model = new Models\AuthModel();
 		$login = $_POST['login_login'];
@@ -38,7 +24,7 @@ class LoginController {
 			}
 			$_SESSION['auth_id'] = $id;
 		} else {
-			$this->view_error1();
+			ErrorController::view_error1();
 		}
 	}
 
@@ -49,7 +35,7 @@ class LoginController {
 			$_SESSION['auth_name'] = $name;
 		} else {
 			$this->set_disconnect();
-			$this->view_error6();
+			ErrorController::view_error6();
 		}
 	}
 
