@@ -29,4 +29,8 @@ class View {
 	public function view_add_product () {
 		require_once "Templates/addProduct.php";
 	}
+
+	public function view_product_list () {
+		require_once "Templates/productList.php";
+	}
 }
