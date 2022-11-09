@@ -30,7 +30,7 @@ class AddProductController {
 		if ( ($model->get_product_registration($art, $code, $name, $desk, $foto)) ) {
 			header('Location: /');
 		} else {
-			ErrorController::view_error11();
+			ErrorController::get_view_error(11);
 		}
 	}
 

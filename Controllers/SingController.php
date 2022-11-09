@@ -35,7 +35,7 @@ class SingController {
 			$_SESSION['auth_id'] = $id;
 			header('Location: /');
 		} else {
-			ErrorController::view_error5();
+			ErrorController::get_view_error(5);
 		}
 	}
 
@@ -44,7 +44,7 @@ class SingController {
 			$this->get_check_pin2();
 			unset($_SESSION['sing_pin_1']);
 		} else {
-			ErrorController::view_error3();
+			ErrorController::get_view_error(3);
 		}
 	}
 
@@ -52,7 +52,7 @@ class SingController {
 		if ($_POST['sing_pin_2'] == '1') {
 			$this->set_sing();
 		} else {
-			ErrorController::view_error4();
+			ErrorController::get_view_error(4);
 		}
 	}
 
@@ -67,7 +67,7 @@ class SingController {
 				$this->send_pin();
 				$this->view_sing2();
 			} else {
-				ErrorController::view_error2();
+				ErrorController::get_view_error(2);
 			}
 		}
 	}

@@ -18,7 +18,7 @@ class EditAuthController {
 		if ( ($model->get_chenges($id, $login, $password, $name)) ) {
 			header('Location: /');
 		} else {
-			ErrorController::view_error9();
+			ErrorController::get_view_error(9);
 		}
 	}
 
@@ -28,7 +28,7 @@ class EditAuthController {
 		if ( ($login = $model->get_login_by_id($id)) ) {
 			$_SESSION['auth_login'] = $login;
 		} else {
-			ErrorController::view_error7();
+			ErrorController::get_view_error(7);
 		}
 	}
 
@@ -38,7 +38,7 @@ class EditAuthController {
 		if ( ($model->get_delete($id)) ) {
 			header('Location: /?disconnect=1');
 		} else {
-			ErrorController::view_error10();
+			ErrorController::get_view_error(10);
 		}
 	}
 
@@ -50,7 +50,7 @@ class EditAuthController {
 			if ($_POST['edit_auth_password_1'] == $_POST['edit_auth_password_2']) {
 				$this->set_changes();
 			} else {
-				ErrorController::view_error8();
+				ErrorController::get_view_error(8);
 			}
 		}
 		if (isset($_GET['delete'])) {

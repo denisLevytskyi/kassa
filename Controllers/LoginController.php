@@ -24,7 +24,7 @@ class LoginController {
 			}
 			$_SESSION['auth_id'] = $id;
 		} else {
-			ErrorController::view_error1();
+			ErrorController::get_view_error(1);
 		}
 	}
 
@@ -35,7 +35,7 @@ class LoginController {
 			$_SESSION['auth_name'] = $name;
 		} else {
 			$this->set_disconnect();
-			ErrorController::view_error6();
+			ErrorController::get_view_error(6);
 		}
 	}
 
