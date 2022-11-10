@@ -1,3 +1,3 @@
 <?php
-$sing = new Controllers\ResetController();
-$sing->get_reset_check(); 
+$reset = new Controllers\ResetController();
+$reset->get_reset_check(); 

@@ -19,7 +19,7 @@ class ErrorController {
 
 	public static function get_view_error ($n = 0) {
 		$error_desc = array(
-			0 => 'Unknown error',
+			0 => 'Unknown error!',
 			1 => 'Login or password is incorrect!',
 			2 => "Passwords didn't match!",
 			3 => "PIN from email does not match!",
@@ -36,7 +36,8 @@ class ErrorController {
 			14 => "Product not selected!",
 			15 => "Problems with data entry! (PRODUCT)",
 			16 => "Problems with data entry! (CHANG PRODUCT)",
-			17 => "Problems with data entry! (DELETE PRODUCT)"
+			17 => "Problems with data entry! (DELETE PRODUCT)",
+			18 => "Product not found!"
 		);
 		session_start();
 		$_SESSION['error'] = $n;

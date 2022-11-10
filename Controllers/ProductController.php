@@ -30,7 +30,7 @@ class ProductController {
 			session_start();
 			$_SESSION['product'] = $product;
 		} else {
-			ErrorController::get_view_error(12);
+			ErrorController::get_view_error(18);
 		}
 	}
 
@@ -41,7 +41,7 @@ class ProductController {
 			session_start();
 			$_SESSION['product'] = $product;
 		} else {
-			ErrorController::get_view_error(12);
+			ErrorController::get_view_error(18);
 		}
 	}
 

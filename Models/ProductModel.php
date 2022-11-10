@@ -6,7 +6,7 @@ class ProductModel {
 	public function get_all_products () {
 		$products = array();
 		$connection = Logic\Connection::get_connection();
-		$request = "SELECT id, article, name, foto FROM products";
+		$request = "SELECT id, article, name, foto FROM products ORDER BY article ASC";
 		if ( ($rezult = mysqli_query($connection, $request)) ) {
 			while ( ($record = mysqli_fetch_assoc($rezult)) ) {
 				array_push($products, $record);
