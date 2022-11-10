@@ -31,6 +31,14 @@
 			</a>
 		</div>
 	</section>
+	<section class="search">
+		<div class="container">
+			<form action="/product.php" class="searchForm" method="GET">
+				<input type="text" class="serachFormInp" name="product_id" placeholder="Article" required>
+				<button type="confirm" class="searchFormBtn">Serch!</button>
+			</form>
+		</div>
+	</section>
 	<section class="list">
 		<div class="container">
 			<div class="listWrap">

@@ -25,6 +25,7 @@ body {
 
 .linksWrapperA {
 	background: red;
+	border-radius: 25px;
 	color: white;
 	padding: 15px 0px;	
 	width: 250px;

@@ -22,12 +22,13 @@ class AddProductController {
 		$name = $_POST['add_product_name'];
 		$desk = $_POST['add_product_description'];
 		$foto = '/Materials/no_foto.png';
+		$id = $_SESSION['auth_id'];
 		$model = new Models\ProductModel();
 		if ( (is_uploaded_file($_FILES['add_product_foto']['tmp_name'])) ) {
 			$file = $_FILES['add_product_foto'];
 			$foto = $this->set_move_foto($file);
 		}
-		if ( ($model->get_product_registration($art, $code, $name, $desk, $foto)) ) {
+		if ( ($model->get_product_registration($art, $code, $name, $desk, $foto, $id)) ) {
 			header('Location: /');
 		} else {
 			ErrorController::get_view_error(11);
