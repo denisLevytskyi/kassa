@@ -10,7 +10,7 @@ class EditAuthController {
 	}
 
 	protected function set_changes () {
-		$id = $_POST['edit_auth_id'];;
+		$id = $_POST['edit_auth_id'];
 		$login = $_POST['edit_auth_login'];
 		$password = $_POST['edit_auth_password_1'];
 		$name = $_POST['edit_auth_name'];

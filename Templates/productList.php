@@ -34,7 +34,7 @@
 	<section class="search">
 		<div class="container">
 			<form action="/product.php" class="searchForm" method="GET">
-				<input type="text" class="serachFormInp" name="product_id" placeholder="Article" required>
+				<input type="text" class="serachFormInp" name="product_art" placeholder="Article" required>
 				<button type="confirm" class="searchFormBtn">Serch!</button>
 			</form>
 		</div>
@@ -45,7 +45,7 @@
 				<?php foreach ($_SESSION['product_list'] as $k => $v) { ?>
 					<div class="listWrapItem">
 						<img src="<?php echo ($v['foto']); ?>" alt="" class="listWrapItemImg">
-						<a href="/product/?product_id=<?php echo ($v['id']); ?>" class="listWrapItemA">
+						<a href="/product.php/?product_id=<?php echo ($v['id']); ?>" class="listWrapItemA">
 							<?php echo ($v['article'] . ' ' . $v['name']); ?>
 						</a>
 					</div>					

@@ -34,6 +34,10 @@ class View {
 		require_once "Templates/productList.php";
 	}
 
+	public function view_product () {
+		require_once "Templates/product.php";
+	}
+
 	public function view_reset () {
 		require_once "Templates/reset.php";
 	}

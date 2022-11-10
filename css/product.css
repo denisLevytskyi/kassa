@@ -1,0 +1,30 @@
+body {
+	background: grey;
+}
+
+.productForm {
+	display: flex;
+	flex-direction: column;
+	max-width: 400px;
+	margin: auto;
+	background: white;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.productFormImg {
+	max-width: 125px;
+	max-height: 125px;
+	margin: 0 auto 10px auto;
+
+}
+
+.productFormA {
+	margin: 10px 0 auto auto;
+	color: blue;
+	cursor: pointer;
+}
+
+.productFormP {
+	font-size: 15px;
+}
