@@ -56,7 +56,7 @@ class ProductController {
 	}
 
 	public function get_product () {
-		if (isset($_POST['product_1'])) {
+		if (isset($_POST['edit_product_1'])) {
 			$this->set_changes_product();
 		} elseif (isset($_GET['product_id'])) {
 			$this->set_product_by_id();
