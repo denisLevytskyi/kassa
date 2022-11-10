@@ -27,6 +27,7 @@
 				</div>
 				<button type="confirm" class="loginFormBtn">Login In!</button>
 				<a class="loginFormA" href="/sing.php">Sing In</a>
+				<a class="loginFormA" href="/reset.php">Reset Password</a>
 			</form>
 		</div>
 	</section>

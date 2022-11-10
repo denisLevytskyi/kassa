@@ -31,7 +31,8 @@ class ErrorController {
 			9 => "Problems with data entry! (CHANGES)",
 			10 => "Problems with data entry! (DELETE)",
 			11 => "Problems with data entry! (ADD PRODUCT)",
-			12 => "Data retrieval problem (SHOW PRODUCT LIST)"
+			12 => "Data retrieval problem (SHOW PRODUCT LIST)",
+			13 => "Problems with data entry! (RESET)"
 		);
 		session_start();
 		$_SESSION['error'] = $n;

@@ -75,7 +75,15 @@ class AuthModel {
 		$connection = Logic\Connection::get_connection();
 		$request = "DELETE FROM users WHERE id = '$id'";
 		$rezult = mysqli_query($connection, $request);
-		echo $rezult;
+		if ( $rezult == 1 ) {
+			return true;
+		}
+	}
+
+	public function get_reset ($login, $password) {
+		$connection = Logic\Connection::get_connection();
+		$request = "UPDATE users SET password = '$password' WHERE login = '$login'";
+		$rezult = mysqli_query($connection, $request);
 		if ( $rezult == 1 ) {
 			return true;
 		}

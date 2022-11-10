@@ -17,9 +17,9 @@ class SingController {
 	protected function send_pin () {
 		// $pin = rand(1000, 9999);
 		$pin = 1;
-		$text = 'Dear ' . $_POST['sing_name'] .', this is your PIN for registration ' . $pin;
+		$text = 'Dear ' . $_POST['sing_name'] .', this is your PIN for registration: ' . $pin;
 		$mail1_to = $_POST['sing_login'];
-	    $headers="From: BVS <mail@akkzavodbvs.ru>\nReply-to:mail@akkzavodbvs.ru\nContent-Type: text/html; charset=\"utf-8\"\n";
+	    $headers="From: LVZ <lvz@lvz.ua>\nReply-to:lvz@lvz.ua\nContent-Type: text/html; charset=\"utf-8\"\n";
 	    mail($mail1_to, 'Registration on the portal LVZ', $text, $headers);
 	    session_start();
 	    $_SESSION['sing_pin_1'] = $pin;

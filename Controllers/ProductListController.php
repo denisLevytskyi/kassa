@@ -9,7 +9,7 @@ class ProductListController {
 		$view->view_product_list();
 	}
 
-	protected function get_products () {
+	protected function set_products () {
 		$model = new Models\ProductModel();
 		if ( ($products = $model->get_all_products()) ) {
 			session_start();
@@ -20,7 +20,7 @@ class ProductListController {
 	}
 
 	public function get_product_list () {
-		$this->get_products();
+		$this->set_products();
 		$this->view_product_list();
 	}
 }
