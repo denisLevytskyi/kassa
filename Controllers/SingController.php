@@ -19,10 +19,10 @@ class SingController {
 		$pin = 1;
 		$text = 'Dear ' . $_POST['sing_name'] .', this is your PIN for registration: ' . $pin;
 		$mail1_to = $_POST['sing_login'];
-	    $headers="From: LVZ <lvz@lvz.ua>\nReply-to:lvz@lvz.ua\nContent-Type: text/html; charset=\"utf-8\"\n";
-	    mail($mail1_to, 'Registration on the portal LVZ', $text, $headers);
-	    session_start();
-	    $_SESSION['sing_pin_1'] = $pin;
+		$headers="From: LVZ <lvz@lvz.ua>\nReply-to:lvz@lvz.ua\nContent-Type: text/html; charset=\"utf-8\"\n";
+		mail($mail1_to, 'Registration on the portal LVZ', $text, $headers);
+		session_start();
+		$_SESSION['sing_pin_1'] = $pin;
 	}
 
 	protected function set_sing () {
