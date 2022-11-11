@@ -36,3 +36,29 @@ var_dump($rezult1);
 echo "<br><br>===== PRODUCTS TABLE ==========================<br>";
 var_dump($rezult2);
 
+$i1 = 0;
+$i2 = 0;
+while ($i1 < 100) {
+	$rand = rand(1, 1000000);
+	$login = 'faker' . $rand . '@user.test';
+	$password = rand(1000000, 9999999);
+	$name = 'FAKER_' . $rand;
+	$role = 1;
+	$request = "INSERT INTO users (login, password, name, role) VALUES ('$login', '$password', '$name', '$role')";
+	mysqli_query($connection, $request);
+	echo ('<br><br>' . $login . ', ' . $password . ', ' . $name . ', ' . $role . '<br>');
+	$i1++;
+}
+while ($i2 < 300) {
+	$rand = rand(1, 10000000);
+	$art = $rand;
+	$code = '43000' . $rand;
+	$name = "FAKER PROD [$rand]";
+	$desk = "FAKER DESCRIPTION FOR FAKER PRODUCT $rand";
+	$foto = '/Materials/no_foto.png';
+	$id = 0;
+	$request = "INSERT INTO products (article, code, name, description, foto, auth_id) VALUES ('$art', '$code', '$name', '$desk', '$foto', '$id')";
+	mysqli_query($connection, $request);
+	echo ('<br><br>' . $art . ', ' . $code . ', ' . $name . ', ' . $desk . '<br>');
+	$i2++;
+}
