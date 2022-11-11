@@ -1,1 +1,1 @@
-This project was made thanks to the support and love of my beloved and the best sun. I love you Vika, thank you for believing in me <3
+This project was made thanks to the support and love of my beloved and the best Sun. I love you Vika, thank you for believing in me <3
