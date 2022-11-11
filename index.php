@@ -1,4 +1,4 @@
 <?php
 session_start();
-include 'Logic/Autoload.php';
-include 'Logic/MainLogic.php';
+include 'Logics/Autoload.php';
+include 'Logics/MainLogic.php';

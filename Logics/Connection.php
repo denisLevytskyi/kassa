@@ -1,5 +1,5 @@
 <?php
-namespace Logic;
+namespace Logics;
 
 class Connection {
 	const host = 'localhost';

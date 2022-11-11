@@ -1,12 +1,12 @@
 <?php 
-include 'Logic/Autoload.php';
+include 'Logics/Autoload.php';
 
-$f_connection = Logic\Connection::get_first_connection();
-$bd = Logic\Connection::bd;
+$f_connection = Logics\Connection::get_first_connection();
+$bd = Logics\Connection::bd;
 $request0 = "CREATE DATABASE `$bd`";
 $rezult0 = mysqli_query($f_connection, $request0);
 
-$connection = Logic\Connection::get_connection();
+$connection = Logics\Connection::get_connection();
 $request1 = "CREATE TABLE `users` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`login` VARCHAR(50) DEFAULT NULL,
