@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>RESET PASSWORD</title>
-	<link rel="stylesheet" href="/css/main.css">
-	<link rel="stylesheet" href="/css/reset.css">
+	<link rel="stylesheet" href="/Styles/main.css">
+	<link rel="stylesheet" href="/Styles/reset.css">
 </head>
 <body>
 	<header class="header">

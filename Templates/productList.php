@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>USER: <?php session_start(); echo $_SESSION['auth_name']; ?> </title>
-	<link rel="stylesheet" href="/css/main.css">
-	<link rel="stylesheet" href="/css/mainPage.css">
-	<link rel="stylesheet" href="/css/productList.css">
+	<link rel="stylesheet" href="/Styles/main.css">
+	<link rel="stylesheet" href="/Styles/mainPage.css">
+	<link rel="stylesheet" href="/Styles/productList.css">
 </head>
 <body>
 	<header class="header">
