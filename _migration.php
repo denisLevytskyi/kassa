@@ -29,7 +29,7 @@ $rezult1 = mysqli_query($connection, $request1);
 $rezult2 = mysqli_query($connection, $request2);
 
 echo "<pre>";
-echo "===== DATA BAZE ===============================<br>";
+echo "===== DATA BASE ===============================<br>";
 var_dump($rezult0);
 echo "<br><br>===== USERS TABLE =============================<br>";
 var_dump($rezult1);
@@ -38,6 +38,7 @@ var_dump($rezult2);
 
 $i1 = 0;
 $i2 = 0;
+echo "<br><br>===== USERS FABRIC ============================<br>";
 while ($i1 < 100) {
 	$rand = rand(1, 1000000);
 	$login = 'faker' . $rand . '@user.test';
@@ -46,9 +47,10 @@ while ($i1 < 100) {
 	$role = 1;
 	$request = "INSERT INTO users (login, password, name, role) VALUES ('$login', '$password', '$name', '$role')";
 	mysqli_query($connection, $request);
-	echo ('<br><br>' . $login . ', ' . $password . ', ' . $name . ', ' . $role . '<br>');
+	echo ($login . ', ' . $password . ', ' . $name . ', ' . $role . '<br>');
 	$i1++;
 }
+echo "<br><br>===== PRODUCTS FABRIC =========================<br>";
 while ($i2 < 300) {
 	$rand = rand(1, 10000000);
 	$art = $rand;
@@ -59,6 +61,6 @@ while ($i2 < 300) {
 	$id = 0;
 	$request = "INSERT INTO products (article, code, name, description, foto, auth_id) VALUES ('$art', '$code', '$name', '$desk', '$foto', '$id')";
 	mysqli_query($connection, $request);
-	echo ('<br><br>' . $art . ', ' . $code . ', ' . $name . ', ' . $desk . '<br>');
+	echo ($art . ', ' . $code . ', ' . $name . ', ' . $desk . '<br>');
 	$i2++;
 }
