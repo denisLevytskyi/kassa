@@ -15,23 +15,12 @@ class ProductModel {
 		}
 	}
 
-	public function get_product_by_id ($id) {
+	public function get_product ($search_p, $search_v) {
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM products WHERE id = '$id'";
+		$request = "SELECT * FROM products WHERE $search_p= '$search_v'";
 		if ( ($rezult = mysqli_query($connection, $request)) ) {
 			while ( ($record = mysqli_fetch_assoc($rezult)) ) {
 				return $record;
-			}
-		}
-	}
-
-	public function get_product_by_art ($art) {
-		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM products WHERE article = '$art'";
-		if ( ($rezult = mysqli_query($connection, $request)) ) {
-			while ( ($record = mysqli_fetch_assoc($rezult)) ) {
-				return $record;
-				die();
 			}
 		}
 	}

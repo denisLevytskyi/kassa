@@ -26,7 +26,7 @@ class ProductController {
 	protected function set_product_by_id () {
 		$model = new Models\ProductModel();
 		$id = $_GET['product_id'];
-		if ( ($product = $model->get_product_by_id($id)) ) {
+		if ( ($product = $model->get_product('id', $id)) ) {
 			session_start();
 			$_SESSION['product'] = $product;
 		} else {
@@ -34,10 +34,15 @@ class ProductController {
 		}
 	}
 
-	protected function set_product_by_art () {
+	protected function set_product_by_code () {
 		$model = new Models\ProductModel();
-		$art = $_GET['product_art'];
-		if ( ($product = $model->get_product_by_art($art)) ) {
+		$code = $_GET['product_code'];
+		$search_p = 'code';
+		if ($code[0] == '*') {
+			$search_p = 'article';
+			$code = trim($code, '*');
+		}
+		if ( ($product = $model->get_product($search_p, $code)) ) {
 			session_start();
 			$_SESSION['product'] = $product;
 		} else {
@@ -61,8 +66,8 @@ class ProductController {
 		} elseif (isset($_GET['product_id'])) {
 			$this->set_product_by_id();
 			$this->view_product();
-		} elseif (isset($_GET['product_art'])) {
-			$this->set_product_by_art();
+		} elseif (isset($_GET['product_code'])) {
+			$this->set_product_by_code();
 			$this->view_product();
 		} else {
 			ErrorController::get_view_error(14);

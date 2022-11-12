@@ -3,52 +3,27 @@ namespace Models;
 use Logics;
 
 class AuthModel {
-	protected function get_user_id_by_password ($rezult, $password) {
+	protected function get_user_data ($search_p, $search_v, $select_p, $select_v, $return) {
+		$connection = Logics\Connection::get_connection();
+		$request = "SELECT * FROM users WHERE $search_p='$search_v'";
+		$rezult = mysqli_query($connection, $request);
 		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
-			if ($record['password'] == $password) {
-				return $record['id'];
-				exit;
-			}
-		}
-	}
-
-	protected function get_user_name_by_id ($rezult, $id) {
-		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
-			if ($record['id'] == $id) {
-				return $record['name'];
-				exit;
-			}
-		}
-	}
-
-	protected function get_user_login_by_id ($rezult, $id) {
-		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
-			if ($record['id'] == $id) {
-				return $record['login'];
-				exit;
+			if ($record[$select_p] == $select_v) {
+				return $record[$return];
 			}
 		}
 	}
 
 	public function get_login_by_id ($id) {
-		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM users WHERE id='$id'";
-		$rezult = mysqli_query($connection, $request);
-		return $this->get_user_login_by_id($rezult, $id);
+		return $this->get_user_data('id', $id, 'id', $id, 'login');
 	}
 
 	public function get_name_by_id ($id) {
-		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM users WHERE id='$id'";
-		$rezult = mysqli_query($connection, $request);
-		return $this->get_user_name_by_id($rezult, $id);
+		return $this->get_user_data('id', $id, 'id', $id, 'name');
 	}
 
 	public function get_user_check ($login, $password) {
-		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM users WHERE login='$login'";
-		$rezult = mysqli_query($connection, $request);
-		return $this->get_user_id_by_password($rezult, $password);
+		return $this->get_user_data('login', $login, 'password', $password, 'id');
 	}
 
 	public function get_user_sing ($login, $password, $name, $role = '1') {
@@ -56,9 +31,7 @@ class AuthModel {
 		$request = "INSERT INTO users (login, password, name, role) VALUES ('$login', '$password', '$name', '$role')";
 		$rezult = mysqli_query($connection, $request);
 		if ( $rezult == 1 ) {
-			$request = "SELECT * FROM users WHERE login='$login'";
-			$rezult = mysqli_query($connection, $request);
-			return $this->get_user_id_by_password($rezult, $password);
+			return $this->get_user_check($login, $password);
 		}
 	}
 

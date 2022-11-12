@@ -86,4 +86,4 @@ class LoginController {
 			$this->get_other_check();
 		}
 	}
-}  
+}

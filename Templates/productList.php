@@ -34,7 +34,7 @@
 	<section class="search">
 		<div class="container">
 			<form action="/product.php" class="searchForm" method="GET">
-				<input type="text" class="serachFormInp" name="product_art" placeholder="Article" required>
+				<input type="text" class="serachFormInp" name="product_code" placeholder="Article or Code" required>
 				<button type="confirm" class="searchFormBtn">Serch!</button>
 			</form>
 		</div>
