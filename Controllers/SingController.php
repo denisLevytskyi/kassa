@@ -32,7 +32,7 @@ class SingController {
 		$model = new Models\AuthModel();
 		if ( ($id = $model->get_user_sing($login, $password, $name)) ) {
 			session_start();
-			$_SESSION['auth_id'] = $id;
+			$_SESSION['auth']['id'] = $id;
 			header('Location: /');
 		} else {
 			ErrorController::get_view_error(5);

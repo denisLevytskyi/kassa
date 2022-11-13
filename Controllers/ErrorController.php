@@ -10,7 +10,7 @@ class ErrorController {
 	}
 
 	public function get_error_check () {
-		if (isset($_SESSION['error'])) {
+		if (isset($_SESSION['error']['n'])) {
 			$this->view_error();
 		} else {
 			header('Location: /index.php');
@@ -40,8 +40,8 @@ class ErrorController {
 			18 => "Product not found!"
 		);
 		session_start();
-		$_SESSION['error'] = $n;
-		$_SESSION['error_desc'] = $error_desc[$n];
+		$_SESSION['error']['n'] = $n;
+		$_SESSION['error']['desc'] = $error_desc[$n];
 		header('Location: /error.php');
 	}
 }

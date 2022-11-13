@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>USER: <?php echo $_SESSION['auth_name']; ?> </title>
+	<title>USER: <?php echo $_SESSION['auth']['name']; ?> </title>
 	<link rel="stylesheet" href="/Styles/main.css">
 	<link rel="stylesheet" href="/Styles/mainPage.css">
 	<link rel="stylesheet" href="/Styles/productList.css">
@@ -20,10 +20,10 @@
 	<section class="auth">
 		<div class="container">
 			<p class="authP">
-				ID: <?php echo $_SESSION['auth_id']; ?>
-				Name: <?php echo $_SESSION['auth_name']; ?>
+				ID: <?php echo $_SESSION['auth']['id']; ?>
+				Name: <?php echo $_SESSION['auth']['name']; ?>
 			</p>
-			<a href="/?disconnect=1" class="authA">
+			<a href="/?auth_disconnect=1" class="authA">
 				Disconnect!
 			</a>
 			<a href="/editAuth.php" class="authA">

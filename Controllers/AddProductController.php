@@ -22,7 +22,7 @@ class AddProductController {
 		$name = $_POST['add_product_name'];
 		$desk = $_POST['add_product_description'];
 		$foto = '/Materials/no_foto.png';
-		$id = $_SESSION['auth_id'];
+		$id = $_SESSION['auth']['id'];
 		$model = new Models\ProductModel();
 		if ( (is_uploaded_file($_FILES['add_product_foto']['tmp_name'])) ) {
 			$file = $_FILES['add_product_foto'];

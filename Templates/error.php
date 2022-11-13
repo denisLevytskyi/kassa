@@ -22,10 +22,10 @@
 				ERROR!
 			</h1>
 			<p class="errorP">
-				Error code: <?php session_start(); echo $_SESSION['error']; ?>
+				Error code: <?php session_start(); echo $_SESSION['error']['n']; ?>
 			</p>
 			<p class="errorP">
-				Error description: <?php echo $_SESSION['error_desc']; ?>
+				Error description: <?php echo $_SESSION['error']['desc']; ?>
 			</p>
 			<a class="errorA" href="/">Go Home!</a>
 		</div>

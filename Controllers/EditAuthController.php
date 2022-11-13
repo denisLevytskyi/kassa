@@ -24,9 +24,9 @@ class EditAuthController {
 
 	protected function set_login_by_id () {
 		$model = new Models\AuthModel();
-		$id = $_SESSION['auth_id'];
+		$id = $_SESSION['auth']['id'];
 		if ( ($login = $model->get_login_by_id($id)) ) {
-			$_SESSION['auth_login'] = $login;
+			$_SESSION['auth']['login'] = $login;
 		} else {
 			ErrorController::get_view_error(7);
 		}
@@ -34,9 +34,9 @@ class EditAuthController {
 
 	protected function set_delete () {
 		$model = new Models\AuthModel();
-		$id = $_SESSION['auth_id'];
+		$id = $_SESSION['auth']['id'];
 		if ( ($model->get_delete($id)) ) {
-			header('Location: /?disconnect=1');
+			header('Location: /?auth_disconnect=1');
 		} else {
 			ErrorController::get_view_error(10);
 		}
@@ -53,7 +53,7 @@ class EditAuthController {
 				ErrorController::get_view_error(8);
 			}
 		}
-		if (isset($_GET['delete'])) {
+		if (isset($_GET['auth_delete'])) {
 			$this->set_delete();
 		}
 	}

@@ -72,7 +72,7 @@ class ProductController {
 		} else {
 			ErrorController::get_view_error(14);
 		}
-		if (isset($_GET['delete'])) {
+		if (isset($_GET['product_delete'])) {
 			$this->set_delete();
 		}
 	}

@@ -22,7 +22,7 @@ class LoginController {
 			if ($remember == true) {
 				setcookie('auth_id', $id, time() + 10000);
 			}
-			$_SESSION['auth_id'] = $id;
+			$_SESSION['auth']['id'] = $id;
 		} else {
 			ErrorController::get_view_error(1);
 		}
@@ -30,9 +30,9 @@ class LoginController {
 
 	protected function set_name_by_id () {
 		$model = new Models\AuthModel();
-		$id = $_SESSION['auth_id'];
+		$id = $_SESSION['auth']['id'];
 		if ( ($name = $model->get_name_by_id($id)) ) {
-			$_SESSION['auth_name'] = $name;
+			$_SESSION['auth']['name'] = $name;
 		} else {
 			$this->set_disconnect();
 			ErrorController::get_view_error(6);
@@ -40,11 +40,11 @@ class LoginController {
 	}
 
 	protected function get_main_check () {
-		if (isset($_SESSION['auth_id'])) {
+		if (isset($_SESSION['auth']['id'])) {
 			$this->set_name_by_id();
 			$this->view_main();
 		} elseif (isset($_COOKIE['auth_id'])) {
-			$_SESSION['auth_id'] = $_COOKIE['auth_id'];
+			$_SESSION['auth']['id'] = $_COOKIE['auth_id'];
 			$this->set_name_by_id();
 			$this->view_main();
 		} else {
@@ -54,23 +54,22 @@ class LoginController {
 
 	protected function get_other_check () {
 		if (isset($_COOKIE['auth_id'])) {
-			$_SESSION['auth_id'] = $_COOKIE['auth_id'];
+			$_SESSION['auth']['id'] = $_COOKIE['auth_id'];
 			$this->set_name_by_id();
 		}
-		if (empty($_SESSION['auth_id'])) {
+		if (empty($_SESSION['auth']['id'])) {
 			header('Location: /');
 		}
 	}
 
 	protected function set_disconnect () {		
-		unset($_SESSION['auth_id']);
-		unset($_SESSION['auth_name']);
+		unset($_SESSION['auth']);
 		setcookie('auth_id', '', time() - 100);
 		header('Location: /index.php');
 	}	
 
 	public function get_login_check () {
-		if (isset($_GET['disconnect'])) {
+		if (isset($_GET['auth_disconnect'])) {
 			$this->set_disconnect();
 			exit();
 		} elseif (isset($_POST['login_login'])) {
