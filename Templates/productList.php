@@ -12,7 +12,7 @@
 	<header class="header">
 		<div class="container">
 			<div class="headerWrap">
-				<img src="/mainLogo.png" class="headerWrapImg">
+				<img src="/Materials/main_logo.png" class="headerWrapImg">
 				<p class="headerWrapP">[LVZ] Product list</p>
 			</div>
 		</div>

@@ -7,22 +7,19 @@ class ProductModel {
 		$products = array();
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT id, article, name, foto FROM products ORDER BY article ASC";
-		if ( ($rezult = mysqli_query($connection, $request)) ) {
-			while ( ($record = mysqli_fetch_assoc($rezult)) ) {
-				array_push($products, $record);
-			}
-			return $products;
+		$rezult = mysqli_query($connection, $request);
+		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
+			array_push($products, $record);
 		}
+		return $products;
 	}
 
 	public function get_product ($search_p, $search_v) {
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT * FROM products WHERE $search_p= '$search_v'";
-		if ( ($rezult = mysqli_query($connection, $request)) ) {
-			while ( ($record = mysqli_fetch_assoc($rezult)) ) {
-				return $record;
-			}
-		}
+		$rezult = mysqli_query($connection, $request);
+		$record = mysqli_fetch_assoc($rezult);
+		return $record;
 	}
 
 	public function get_chenges($id, $art, $code, $name, $desk) {

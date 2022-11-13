@@ -11,7 +11,7 @@
 	<header class="header">
 		<div class="container">
 			<div class="headerWrap">
-				<img src="/mainLogo.png" class="headerWrapImg">
+				<img src="/Materials/main_logo.png" class="headerWrapImg">
 				<p class="headerWrapP">[LVZ] Add product</p>
 			</div>
 		</div>
