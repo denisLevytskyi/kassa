@@ -27,6 +27,7 @@ $_COOKIE
 $_GET
 	['auth_delete']
 	['auth_disconnect']
+	['product_code']
 	['product_delete']
 	['product_id']
 $_POST
