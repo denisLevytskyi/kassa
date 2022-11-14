@@ -25,8 +25,17 @@ $request2 = "CREATE TABLE `products` (
 	`auth_id` INT DEFAULT NULL,
 	PRIMARY KEY (`id`)
 )";
+$request3 = "CREATE TABLE `prices` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`article` VARCHAR(100) DEFAULT NULL,
+	`price` INT(100) DEFAULT NULL,
+	`timestamp` VARCHAR(100),
+	`auth_id` INT DEFAULT NULL,
+	PRIMARY KEY (`id`)
+);";
 $rezult1 = mysqli_query($connection, $request1);
 $rezult2 = mysqli_query($connection, $request2);
+$rezult3 = mysqli_query($connection, $request3);
 
 echo "<pre>";
 echo "===== DATA BASE ===============================<br>";
@@ -35,9 +44,11 @@ echo "<br><br>===== USERS TABLE =============================<br>";
 var_dump($rezult1);
 echo "<br><br>===== PRODUCTS TABLE ==========================<br>";
 var_dump($rezult2);
+echo "<br><br>===== PRICES TABLE ============================<br>";
+var_dump($rezult3);
 
-$i1 = 0;
-$i2 = 0;
+$i1 = 10000;
+$i2 = 10000;
 echo "<br><br>===== USERS FABRIC ============================<br>";
 while ($i1 < 100) {
 	$rand = rand(1, 1000000);

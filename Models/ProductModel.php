@@ -2,7 +2,7 @@
 namespace Models;
 use Logics;
 
-class ProductModel {
+class ProductModel extends PriceModel {
 	public function get_all_products () {
 		$products = array();
 		$connection = Logics\Connection::get_connection();
@@ -19,6 +19,11 @@ class ProductModel {
 		$request = "SELECT * FROM products WHERE $search_p= '$search_v'";
 		$rezult = mysqli_query($connection, $request);
 		$record = mysqli_fetch_assoc($rezult);
+		if (isset($record['article'])) {
+			$art = $record['article'];
+			$price = $this->get_price($art);
+			$record['price'] = $price;
+		}
 		return $record;
 	}
 
