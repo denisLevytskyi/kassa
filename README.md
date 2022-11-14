@@ -12,7 +12,6 @@ $_SESSION
 		['article']
 		['code']
 		['name']
-		[1028620]
 		['description']
 		['foto']
 		['auth_id']
