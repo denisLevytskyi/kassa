@@ -45,4 +45,8 @@ class View {
 	public function view_price_setter () {
 		require_once "Templates/priceSetter.php";
 	}
+
+	public function view_price_list () {
+		require_once "Templates/priceList.php";
+	}
 }
