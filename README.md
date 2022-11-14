@@ -64,4 +64,7 @@ $_POST
 	['sing_pin_2']
 	['sing_1']
 	['sing_2']
+**
+	['price_setter_article']
+	['price_setter_price']
 _

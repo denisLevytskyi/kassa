@@ -37,7 +37,8 @@ class ErrorController {
 			15 => "Problems with data entry! (PRODUCT)",
 			16 => "Problems with data entry! (CHANG PRODUCT)",
 			17 => "Problems with data entry! (DELETE PRODUCT)",
-			18 => "Product not found!"
+			18 => "Product not found!",
+			19 => "Problems with data entry! (PRICE SETTER)"
 		);
 		session_start();
 		$_SESSION['error']['n'] = $n;

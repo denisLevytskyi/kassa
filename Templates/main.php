@@ -42,6 +42,9 @@
 				<a href="/productList.php" class="linksWrapperA">
 					Get product List
 				</a>
+				<a href="/priceSetter.php" class="linksWrapperA">
+					Price Setter
+				</a>
 			</div>
 		</div>
 	</section>

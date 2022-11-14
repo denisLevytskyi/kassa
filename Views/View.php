@@ -41,4 +41,8 @@ class View {
 	public function view_reset () {
 		require_once "Templates/reset.php";
 	}
+
+	public function view_price_setter () {
+		require_once "Templates/priceSetter.php";
+	}
 }
