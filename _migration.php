@@ -47,8 +47,8 @@ var_dump($rezult2);
 echo "<br><br>===== PRICES TABLE ============================<br>";
 var_dump($rezult3);
 
-$i1 = 10000;
-$i2 = 10000;
+$i1 = 0;
+$i2 = 0;
 echo "<br><br>===== USERS FABRIC ============================<br>";
 while ($i1 < 100) {
 	$rand = rand(1, 1000000);

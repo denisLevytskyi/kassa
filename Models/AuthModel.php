@@ -6,7 +6,7 @@ class AuthModel {
 	protected function get_user_data ($search_p, $search_v, $select_p, $select_v, $return) {
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT * FROM users WHERE $search_p='$search_v'";
-		$rezult = mysqli_query($connection, $request);
+		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
 			if ($record[$select_p] == $select_v) {
 				return $record[$return];

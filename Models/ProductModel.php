@@ -7,7 +7,7 @@ class ProductModel extends PriceModel {
 		$products = array();
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT id, article, name, foto FROM products ORDER BY article ASC";
-		$rezult = mysqli_query($connection, $request);
+		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
 			array_push($products, $record);
 		}
@@ -17,7 +17,7 @@ class ProductModel extends PriceModel {
 	public function get_product ($search_p, $search_v) {
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT * FROM products WHERE $search_p= '$search_v'";
-		$rezult = mysqli_query($connection, $request);
+		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		$record = mysqli_fetch_assoc($rezult);
 		if (isset($record['article'])) {
 			$art = $record['article'];

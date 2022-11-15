@@ -7,7 +7,7 @@ class PriceModel {
 		$prices = array();
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT * FROM prices ORDER BY id DESC";
-		$rezult = mysqli_query($connection, $request);
+		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
 			$record['price'] = $record['price'] / 100;
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
@@ -19,7 +19,7 @@ class PriceModel {
 	public function get_price ($art) {
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT price FROM prices WHERE article = '$art' ORDER BY id DESC";
-		$rezult = mysqli_query($connection, $request);
+		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		if ( ($record = mysqli_fetch_assoc($rezult)) ) {
 			return ($record['price'] / 100);
 		} else {
