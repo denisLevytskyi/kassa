@@ -30,6 +30,16 @@ $_SESSION
 			['timestamp']
 			['auth_id']
 			['time']
+	['unika']
+		['summ']
+		['list']
+			[(key)]
+				['id']
+				['article']
+				['price']
+				['timestamp']
+				['auth_id']
+				['time']
 $_COOKIE
 	['auth_id']
 $_GET
@@ -38,6 +48,9 @@ $_GET
 	['product_code']
 	['product_delete']
 	['product_id']
+	['unika_add']
+	['unika_pay']
+	['unika_dell']
 $_POST
 	['add_product_art']
 	['add_product_code']

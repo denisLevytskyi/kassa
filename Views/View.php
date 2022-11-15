@@ -49,4 +49,8 @@ class View {
 	public function view_price_list () {
 		require_once "Templates/priceList.php";
 	}
+
+	public function view_unika () {
+		require_once "Templates/unika.php";
+	}
 }
