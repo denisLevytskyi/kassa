@@ -51,7 +51,7 @@
 				<a href="/unika.php" class="linksWrapperA">
 					Unika
 				</a>
-				<a href="/ckeckList.php" class="linksWrapperA">
+				<a href="/checkList.php" class="linksWrapperA">
 					Get check List
 				</a>
 			</div>
