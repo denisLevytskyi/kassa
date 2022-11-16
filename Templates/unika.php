@@ -33,6 +33,16 @@
 			</div>
 			<div class="headerSecondHead">
 				<h2 class="headerSecondHeadH2">
+					Amount
+				</h2>
+			</div>
+			<div class="headerSecondHead">
+				<h2 class="headerSecondHeadH2">
+					Summ
+				</h2>
+			</div>
+			<div class="headerSecondHead">
+				<h2 class="headerSecondHeadH2">
 					Dellet
 				</h2>
 			</div>
@@ -51,6 +61,16 @@
 					<?php echo ($v['price']); ?>
 				</div>
 				<div class="listWrapElse">
+					<form action="/unika.php" class="listWrapElseForm" method="GET">
+						<input type="text" class="listWrapElseFormInp" name="unika_amount_val" value="<?php echo ($v['amount']); ?>" required>
+						<input type="text" style="display: none;" name="unika_amount_key" value="<?php echo ($k); ?>" required>
+						<button type="confirm" style="display: none;">+</button>
+					</form>
+				</div>
+				<div class="listWrapElse">
+					<?php echo ($v['summ']); ?>
+				</div>
+				<div class="listWrapElse">
 					<a href="/unika.php?unika_dell=<?php echo($k); ?>" class="listWrapElseA">
 						DELLET
 					</a>
@@ -61,11 +81,15 @@
 	<footer class="footer">
 		<form action="/unika.php" class="footerForm" method="GET">
 			<div class="footerFormWrap">
-				<input type="radio" class="footerFormWrapInp" name="unika_pay" value="card" checked>
+				<input type="text" class="footerFormWrapInp" name="unika_cash" value="0.00" required>
+				<p class="footerFormWrapP">Received</p>
+			</div>
+			<div class="footerFormWrap">
+				<input type="radio" name="unika_pay" value="card" checked>
 				<p class="footerFormWrapP">CARD</p>
 			</div>
 			<div class="footerFormWrap">
-				<input type="radio" class="footerFormWrapInp" name="unika_pay" value="cash">
+				<input type="radio" name="unika_pay" value="cash">
 				<p class="footerFormWrapP">CASH</p>
 			</div>
 			<button type="confirm" class="footerFormBtn">PAY</button>
