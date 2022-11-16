@@ -57,4 +57,8 @@ class View {
 	public function view_check_list () {
 		require_once "Templates/checkList.php";
 	}
+
+	public function view_check () {
+		require_once "Templates/check.php";
+	}
 }

@@ -67,6 +67,7 @@ $_GET
 	['unika_pay']
 	['unika_cash']
 	['check_id']
+	['check_data']
 $_POST
 	['add_product_art']
 	['add_product_code']

@@ -41,7 +41,7 @@ class UnikaController {
 		$time = time();
 		$summ = $_SESSION['unika']['summ'];
 		$body = serialize($_SESSION['unika']['list']);
-		$received_cash = $_GET['unika_cash'];
+		$received_cash = round($_GET['unika_cash'], 2);
 		$received_card = 0;
 		if ($_GET['unika_pay'] == 'card') {
 			$received_card = round($summ - $received_cash, 2);
@@ -59,7 +59,10 @@ class UnikaController {
 		}
 		if ($rezult == true) {
 			unset($_SESSION['unika']);
-			header('Location: /unika.php');
+			$model = new Models\CheckModel();
+			$check = $model->get_check('timestamp', $time);
+			$check_id = $check['id'];
+			header("Location: /check.php/?check_id=$check_id");
 		}
 	}
 
@@ -82,6 +85,8 @@ class UnikaController {
 	public function get_unika () {
 		if (empty($_SESSION['unika'])) {
 			$_SESSION['unika'] = array();
+		}
+		if (empty($_SESSION['unika']['list'])) {
 			$_SESSION['unika']['list'] = array();
 		}
 		if (isset($_GET['unika_add'])) {
