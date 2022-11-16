@@ -43,7 +43,15 @@ $_SESSION
 				['auth_id']
 				['price']
 				['amount']
-				['summ']		
+				['summ']
+	['check_list']
+		[(key)]
+			['id']
+			['auth_id']
+			['auth_name']
+			['timestamp']
+			['summ']
+			['time']
 $_COOKIE
 	['auth_id']
 $_GET
@@ -58,6 +66,7 @@ $_GET
 	['unika_amount_key']
 	['unika_pay']
 	['unika_cash']
+	['check_id']
 $_POST
 	['add_product_art']
 	['add_product_code']

@@ -9,7 +9,9 @@
 <body>
 	<header class="header">
 		<div class="headerFirst">
-			<img src="/Materials/main_logo.png" class="headerFirstImg">
+			<a href="/" class="headerFirstA">
+				<img src="/Materials/main_logo.png" class="headerFirstAImg">
+			</a>
 			<form action="/unika.php" class="headerFirstForm" method="GET">
 				<input type="text" class="headerFirstFormInp" name="unika_add" placeholder="Article or Code" required>
 				<button type="confirm" class="headerFirstFormBtn">+</button>
@@ -85,12 +87,12 @@
 				<p class="footerFormWrapP">Received</p>
 			</div>
 			<div class="footerFormWrap">
-				<input type="radio" name="unika_pay" value="card" checked>
-				<p class="footerFormWrapP">CARD</p>
+				<input type="radio" name="unika_pay" value="cash" checked>
+				<p class="footerFormWrapP">CASH</p>
 			</div>
 			<div class="footerFormWrap">
-				<input type="radio" name="unika_pay" value="cash">
-				<p class="footerFormWrapP">CASH</p>
+				<input type="radio" name="unika_pay" value="card">
+				<p class="footerFormWrapP">CARD</p>
 			</div>
 			<button type="confirm" class="footerFormBtn">PAY</button>
 		</form>

@@ -53,4 +53,8 @@ class View {
 	public function view_unika () {
 		require_once "Templates/unika.php";
 	}
+
+	public function view_check_list () {
+		require_once "Templates/checkList.php";
+	}
 }
