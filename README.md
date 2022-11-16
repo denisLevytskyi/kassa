@@ -65,7 +65,7 @@ $_SESSION
 		['time']
 		['main']
 		  [(key)]
-			['id']=
+			['id']
 			['article']
 			['code']
 			['name']
