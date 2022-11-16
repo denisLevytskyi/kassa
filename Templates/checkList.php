@@ -31,6 +31,14 @@
 			</a>
 		</div>
 	</section>
+	<section class="search">
+		<div class="container">
+			<form action="/check.php" class="searchForm" method="GET">
+				<input type="text" class="serachFormInp" name="check_data" placeholder="ID or Summ" required>
+				<button type="confirm" class="searchFormBtn">Serch!</button>
+			</form>
+		</div>
+	</section>
 	<section class="list">
 		<div class="container">
 			<div class="listWrap">

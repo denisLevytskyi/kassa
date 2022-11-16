@@ -10,7 +10,7 @@ class UnikaController {
 	}
 
 	protected function set_summ () {
-		$summ = 0;
+		$summ = '0.00';
 		if (isset($_SESSION['unika']['list'])) {
 			foreach ($_SESSION['unika']['list'] as $k => $v) {
 				$summ = $summ + $v['summ'];
@@ -53,7 +53,7 @@ class UnikaController {
 		}
 		$change = $summ - $received_cash - $received_card;
 		$change = -round($change, 2);
-		if ($change >= 0) {
+		if ($change >= 0 and $summ > 0) {
 			$model = new Models\CheckModel();
 			$rezult = $model->get_check_registration($auth_id, $auth_name, $time, $summ, $body, $received_cash, $received_card, $change);
 		}
@@ -80,7 +80,7 @@ class UnikaController {
 	}
 
 	public function get_unika () {
-		if (empty($_SESSION['unika']['list'])) {
+		if (empty($_SESSION['unika'])) {
 			$_SESSION['unika'] = array();
 			$_SESSION['unika']['list'] = array();
 		}
