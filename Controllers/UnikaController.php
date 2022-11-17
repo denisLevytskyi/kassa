@@ -20,8 +20,8 @@ class UnikaController {
 	}
 
 	protected function change_amount () {
-		$val = abs(round($_GET['unika_amount_val'], 3));
-		$key = $_GET['unika_amount_key'];
+		$val = abs(round($_POST['unika_amount_val'], 3));
+		$key = $_POST['unika_amount_key'];
 		$price = $_SESSION['unika']['list'][$key]['price'];
 		$_SESSION['unika']['list'][$key]['amount'] = $val;
 		$_SESSION['unika']['list'][$key]['summ'] = round($val * $price, 2);
@@ -29,22 +29,22 @@ class UnikaController {
 	}
 
 	protected function dell_product () {
-		$key = $_GET['unika_dell'];
+		$key = $_GET['unika_del'];
 		unset($_SESSION['unika']['list'][$key]);
 		header('Location: /unika.php');
 	}
 
 	protected function set_check () {
 		$rezult = false;
+		$time = time();
 		$auth_id = $_SESSION['auth']['id'];
 		$auth_name = $_SESSION['auth']['name'];
-		$time = time();
-		$summ = $_SESSION['unika']['summ'];
 		$body = serialize($_SESSION['unika']['list']);
-		$received_cash = round($_GET['unika_cash'], 2);
+		$summ = $_SESSION['unika']['summ'];
+		$received_cash = round($_POST['unika_cash'], 2);
 		$received_card = 0;
-		if ($_GET['unika_pay'] == 'card') {
-			$received_card = round($summ - $received_cash, 2);
+		if ($_POST['unika_pay'] == 'card') {
+			$received_card = $summ - $received_cash;
 		} else {
 			$received_card = 0;
 		}
@@ -59,7 +59,6 @@ class UnikaController {
 		}
 		if ($rezult == true) {
 			unset($_SESSION['unika']);
-			$model = new Models\CheckModel();
 			$check = $model->get_check('timestamp', $time);
 			$check_id = $check['id'];
 			header("Location: /check.php/?check_id=$check_id");
@@ -68,7 +67,7 @@ class UnikaController {
 
 	protected function add_product () {
 		$model = new Models\ProductModel();
-		$code = $_GET['unika_add'];
+		$code = $_POST['unika_add'];
 		$search_p = 'code';
 		if ($code[0] == '*') {
 			$search_p = 'article';
@@ -89,13 +88,13 @@ class UnikaController {
 		if (empty($_SESSION['unika']['list'])) {
 			$_SESSION['unika']['list'] = array();
 		}
-		if (isset($_GET['unika_add'])) {
+		if (isset($_POST['unika_add'])) {
 			$this->add_product();
-		} elseif (isset($_GET['unika_dell'])) {
+		} elseif (isset($_GET['unika_del'])) {
 			$this->dell_product();
-		} elseif (isset($_GET['unika_amount_key']) and is_numeric($_GET['unika_amount_val'])) {
+		} elseif (isset($_POST['unika_amount_key']) and is_numeric($_POST['unika_amount_val'])) {
 			$this->change_amount();
-		} elseif (isset($_GET['unika_cash']) and is_numeric($_GET['unika_cash'])) {
+		} elseif (isset($_POST['unika_cash']) and is_numeric($_POST['unika_cash'])) {
 			$this->set_check();
 		}
 		$this->set_summ();

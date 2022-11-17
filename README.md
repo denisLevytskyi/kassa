@@ -80,17 +80,12 @@ $_COOKIE
 $_GET
 	['auth_delete']
 	['auth_disconnect']
-	['product_code']
-	['product_delete']
-	['product_id']
-	['unika_add']
-	['unika_dell']
-	['unika_amount_val']
-	['unika_amount_key']
-	['unika_pay']
-	['unika_cash']
 	['check_id']
 	['check_data']
+	['product_code']
+	['product_id']
+	['product_delete']
+	['unika_del']
 $_POST
 	['add_product_art']
 	['add_product_code']
@@ -129,4 +124,9 @@ $_POST
 **
 	['price_setter_article']
 	['price_setter_price']
-_
+**
+	['unika_add']
+	['unika_amount_val']
+	['unika_amount_key']
+	['unika_pay']
+	['unika_cash']

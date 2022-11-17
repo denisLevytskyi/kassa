@@ -11,7 +11,7 @@ class PriceSetterController {
 
 	protected function set_new_price () {
 		$art = $_POST['price_setter_article'];
-		$price = $_POST['price_setter_price'] * 100;
+		$price = abs($_POST['price_setter_price'] * 100);
 		$time = time();
 		$id = $_SESSION['auth']['id'];
 		$model = new Models\PriceModel();
@@ -23,10 +23,10 @@ class PriceSetterController {
 	}
 
 	public function get_price_setter () {
-		if (empty($_POST['price_setter_article'])) {
-			$this->view_price_setter();
-		} else {
+		if (isset($_POST['price_setter_article']) and is_numeric($_POST['price_setter_price'])) {
 			$this->set_new_price();
+		} else {
+			$this->view_price_setter();
 		}
 	}
 }

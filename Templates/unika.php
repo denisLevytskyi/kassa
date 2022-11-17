@@ -12,7 +12,7 @@
 			<a href="/" class="headerFirstA">
 				<img src="/Materials/main_logo.png" class="headerFirstAImg">
 			</a>
-			<form action="/unika.php" class="headerFirstForm" method="GET">
+			<form action="/unika.php" class="headerFirstForm" method="POST">
 				<input type="text" class="headerFirstFormInp" name="unika_add" placeholder="Article or Code" required>
 				<button type="confirm" class="headerFirstFormBtn">+</button>
 			</form>
@@ -45,7 +45,7 @@
 			</div>
 			<div class="headerSecondHead">
 				<h2 class="headerSecondHeadH2">
-					Dellet
+					Delete
 				</h2>
 			</div>
 		</div>
@@ -63,7 +63,7 @@
 					<?php echo ($v['price']); ?>
 				</div>
 				<div class="listWrapElse">
-					<form action="/unika.php" class="listWrapElseForm" method="GET">
+					<form action="/unika.php" class="listWrapElseForm" method="POST">
 						<input type="text" class="listWrapElseFormInp" name="unika_amount_val" value="<?php echo ($v['amount']); ?>" required>
 						<input type="text" style="display: none;" name="unika_amount_key" value="<?php echo ($k); ?>" required>
 						<button type="confirm" style="display: none;">+</button>
@@ -73,15 +73,15 @@
 					<?php echo ($v['summ']); ?>
 				</div>
 				<div class="listWrapElse">
-					<a href="/unika.php?unika_dell=<?php echo($k); ?>" class="listWrapElseA">
-						DELLET
+					<a href="/unika.php?unika_del=<?php echo($k); ?>" class="listWrapElseA">
+						DELETE
 					</a>
 				</div>
 			</div>
 		<?php } ?>
 	</section>
 	<footer class="footer">
-		<form action="/unika.php" class="footerForm" method="GET">
+		<form action="/unika.php" class="footerForm" method="POST">
 			<div class="footerFormWrap">
 				<input type="text" class="footerFormWrapInp" name="unika_cash" value="0.00" required>
 				<p class="footerFormWrapP">Received</p>

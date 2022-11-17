@@ -18,7 +18,7 @@
 			Магазин "LVZ STORE"
 		</p>
 		<p class="headerP">
-			Україна, Волинська обл., м. Луцьк, пр. Волі, буд. 22
+			Україна, Волинська обл., м. Луцьк,<br>пр. Волі, буд. 22
 		</p>
 		<div class="headerInfo">
 			<p class="headerInfoNum">

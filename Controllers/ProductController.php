@@ -14,7 +14,7 @@ class ProductController {
 		$art = $_POST['edit_product_art'];
 		$code = $_POST['edit_product_code'];
 		$name = $_POST['edit_product_name'];
-		$desk = $_POST['edit_product_description'];
+		$desk = $_POST['edit_product_desc'];
 		$model = new Models\ProductModel();
 		if ( ($model->get_chenges($id, $art, $code, $name, $desk)) ) {
 			header('Location: /productList.php');
