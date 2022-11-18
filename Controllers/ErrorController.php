@@ -42,7 +42,8 @@ class ErrorController {
 			20 => "Data retrieval problem (SHOW PRICE LIST)",
 			21 => "Data retrieval problem (SHOW CHECK LIST)",
 			22 => "Check not selected!",
-			23 => "Check not found!"
+			23 => "Check not found!",
+			24 => "Problems with data entry! (BRANCH SETTER)",
 		);
 		session_start();
 		$_SESSION['error']['n'] = $n;

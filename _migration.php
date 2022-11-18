@@ -35,6 +35,7 @@ $request3 = "CREATE TABLE `prices` (
 );";
 $request4 = "CREATE TABLE `checks` (
 	`id` INT NOT NULL AUTO_INCREMENT,
+	`z_id` INT DEFAULT NULL,
 	`auth_id` INT DEFAULT NULL,
 	`auth_name` VARCHAR(50) DEFAULT NULL,
 	`timestamp` VARCHAR(100) DEFAULT NULL,
@@ -45,10 +46,43 @@ $request4 = "CREATE TABLE `checks` (
 	`change` VARCHAR(50) DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
+$request5 = "CREATE TABLE `balances` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`auth_id` INT DEFAULT NULL,
+	`auth_name` VARCHAR(50) DEFAULT NULL,
+	`timestamp` VARCHAR(100) DEFAULT NULL,
+	`timestamp_open` VARCHAR(100) DEFAULT NULL,
+	`timestamp_close` VARCHAR(100) DEFAULT NULL,
+	`check_first` VARCHAR(50) DEFAULT NULL,
+	`check_last` VARCHAR(50) DEFAULT NULL,
+	`received_cash` VARCHAR(50) DEFAULT NULL,
+	`received_card` VARCHAR(50) DEFAULT NULL,
+	`change` VARCHAR(50) DEFAULT NULL,
+	`summ` VARCHAR(50) DEFAULT NULL,
+	`summ_cash` VARCHAR(50) DEFAULT NULL,
+	`summ_card` VARCHAR(50) DEFAULT NULL,
+	`balance_open` VARCHAR(50) DEFAULT NULL,
+	`balance_close` VARCHAR(50) DEFAULT NULL,
+	`staff_in` VARCHAR(50) DEFAULT NULL,
+	`staff_out` VARCHAR(50) DEFAULT NULL,
+	PRIMARY KEY (`id`)
+);";
+$request6 = "CREATE TABLE `branches` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`z_id` INT DEFAULT NULL,
+	`auth_id` INT DEFAULT NULL,
+	`auth_name` VARCHAR(50) DEFAULT NULL,
+	`timestamp` VARCHAR(100) DEFAULT NULL,
+	`type` VARCHAR(50) DEFAULT NULL,	
+	`summ` VARCHAR(50) DEFAULT NULL,
+	PRIMARY KEY (`id`)
+);";
 $rezult1 = mysqli_query($connection, $request1);
 $rezult2 = mysqli_query($connection, $request2);
 $rezult3 = mysqli_query($connection, $request3);
 $rezult4 = mysqli_query($connection, $request4);
+$rezult5 = mysqli_query($connection, $request5);
+$rezult6 = mysqli_query($connection, $request6);
 
 echo "<pre>";
 echo "===== DATA BASE ===============================<br>";
@@ -61,6 +95,10 @@ echo "<br><br>===== PRICES TABLE ============================<br>";
 var_dump($rezult3);
 echo "<br><br>===== CHECKS TABLE ============================<br>";
 var_dump($rezult4);
+echo "<br><br>===== Z-BALANCE TABLE =========================<br>";
+var_dump($rezult5);
+echo "<br><br>===== BRANCHES TABLE ==========================<br>";
+var_dump($rezult6);
 
 $i1 = 1000;
 $i2 = 1000;

@@ -54,6 +54,9 @@
 				<a href="/checkList.php" class="linksWrapperA">
 					Get check List
 				</a>
+				<a href="/staff.php" class="linksWrapperA">
+					Staff Panel
+				</a>
 			</div>
 		</div>
 	</section>

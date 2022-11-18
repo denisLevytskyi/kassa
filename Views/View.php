@@ -61,4 +61,8 @@ class View {
 	public function view_check () {
 		require_once "Templates/check.php";
 	}
+	
+	public function view_staff () {
+		require_once "Templates/staff.php";
+	}
 }

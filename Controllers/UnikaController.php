@@ -28,13 +28,23 @@ class UnikaController {
 		header('Location: /unika.php');
 	}
 
-	protected function dell_product () {
+	protected function del_product () {
 		$key = $_GET['unika_del'];
 		unset($_SESSION['unika']['list'][$key]);
 		header('Location: /unika.php');
 	}
+	
+	protected function set_z_id () {
+		$model = new Models\StaffModel();
+		if ( ($rezult = $model->get_last_z_data()) ) {
+			return $rezult['id'] + 1;
+		} else {
+			return 1;
+		}
+	}
 
 	protected function set_check () {
+		$z_id = $this->set_z_id();
 		$rezult = false;
 		$time = time();
 		$auth_id = $_SESSION['auth']['id'];
@@ -55,7 +65,7 @@ class UnikaController {
 		$change = -round($change, 2);
 		if ($change >= 0 and $summ > 0) {
 			$model = new Models\CheckModel();
-			$rezult = $model->get_check_registration($auth_id, $auth_name, $time, $summ, $body, $received_cash, $received_card, $change);
+			$rezult = $model->get_check_registration($z_id, $auth_id, $auth_name, $time, $summ, $body, $received_cash, $received_card, $change);
 		}
 		if ($rezult == true) {
 			unset($_SESSION['unika']);
@@ -91,7 +101,7 @@ class UnikaController {
 		if (isset($_POST['unika_add'])) {
 			$this->add_product();
 		} elseif (isset($_GET['unika_del'])) {
-			$this->dell_product();
+			$this->del_product();
 		} elseif (isset($_POST['unika_amount_key']) and is_numeric($_POST['unika_amount_val'])) {
 			$this->change_amount();
 		} elseif (isset($_POST['unika_cash']) and is_numeric($_POST['unika_cash'])) {

@@ -1,0 +1,32 @@
+.list .container, .staff .container {
+	background: white;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.staffForm {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.staffForm * {
+	margin: 1px 5px;
+	max-width: 90%;
+}
+
+.staffFormBtn {
+	width: 150px;
+	padding: 2px;
+}
+
+.listWrapItem {
+	margin: 10px 5px;
+}
+
+.listA, .staffA {
+	display: block;
+	margin-top: 15px;
+	color: blue;
+}

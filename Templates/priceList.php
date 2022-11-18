@@ -37,7 +37,11 @@
 				<?php foreach ($_SESSION['price_list'] as $k => $v) { ?>
 					<div class="listWrapItem">
 						<p class="listWrapItemP"><?php
-							echo ($v['time'] . ' => ' . $v['price'] . ' => art. ' . $v['article'] . ' added by ' . $v['auth_id']);
+							echo ($v['time'] .
+								' => ' . $v['price'] .
+								' => art. ' . $v['article'] .
+								' added by ' . $v['auth_id']
+							);
 						?></p>
 					</div>					
 				<?php } ?>

@@ -22,7 +22,7 @@
 		</p>
 		<div class="headerInfo">
 			<p class="headerInfoNum">
-				ПРЕЧЕК № <?php echo $_SESSION['check']['id']; ?>
+				ЧЕК № <?php echo $_SESSION['check']['id']; ?>
 			</p>
 			<p class="headerInfoP">
 				КАСИР: <?php echo $_SESSION['check']['auth_name']; ?>
@@ -30,6 +30,9 @@
 			</p>
 			<p class="headerInfoP">
 				Д/Ч: <?php echo $_SESSION['check']['time']; ?>
+			</p>
+			<p class="headerInfoP">
+				Z-ЗВІТ: <?php echo $_SESSION['check']['z_id']; ?>
 			</p>
 		</div>
 	</header>
@@ -69,7 +72,7 @@
 			</p>
 		</div>
 		<p class="footerFiskal">
-			= = = = = НЕФІСКАЛЬНИЙ ЧЕК = = = = =
+			= = = = = = ФІСКАЛЬНИЙ ЧЕК = = = = = =
 		</p>
 		<p class="footerP">
 			UNIKA Fiskal
