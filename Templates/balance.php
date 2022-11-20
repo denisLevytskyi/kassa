@@ -36,7 +36,7 @@
 	<section class="main">
 			<div class="mainItem">
 				<p class="mainItemP mainItemName">
-					= = = ПРОДАЖІ = = =
+					= = = = = = ПРОДАЖІ = = = = = =
 				</p>
 				<p class="mainItemP">
 					Перший чек №: <?php echo $_SESSION['balance']['sale_id_first']; ?>
@@ -49,6 +49,9 @@
 				</p>
 				<p class="mainItemP">
 					Д/Ч: <?php echo $_SESSION['balance']['sale_time_last']; ?>
+				</p>
+				<p class="mainItemP">
+					Чеків: <?php echo $_SESSION['balance']['sale_checks']; ?>
 				</p>
 				<br>
 				<p class="mainItemP">
@@ -71,10 +74,9 @@
 				</p>
 			</div>
 			<br>
-			<br>
 			<div class="mainItem">
 				<p class="mainItemP mainItemName">
-					= = = ПОВЕРНЕННЯ = = =
+					= = = = = = ПОВЕРНЕННЯ = = = = = =
 				</p>
 				<p class="mainItemP">
 					Перший чек №: <?php echo $_SESSION['balance']['return_id_first']; ?>
@@ -87,6 +89,9 @@
 				</p>
 				<p class="mainItemP">
 					Д/Ч: <?php echo $_SESSION['balance']['return_time_last']; ?>
+				</p>
+				<p class="mainItemP">
+					Чеків: <?php echo $_SESSION['balance']['return_checks']; ?>
 				</p>
 				<br>
 				<p class="mainItemP">
@@ -137,9 +142,13 @@
 				<?php echo ('КІНЦЕВИЙ ЗАЛИШОК: .......... ' . $_SESSION['balance']['balance_close'] . ' грн'); ?>
 			</p>
 		</div>
-		<p class="footerFiskal">
-			= = = = = = ФІСКАЛЬНИЙ ЧЕК = = = = = =
-		</p>
+		<p class="footerFiskal"><?php
+			if ($_SESSION['balance']['type'] == "Z") {
+					echo '= = = = = = ФІСКАЛЬНИЙ ЧЕК = = = = = =';
+				} else {
+					echo '= = = = = НЕФІСКАЛЬНИЙ ЧЕК = = = = =';
+				}
+		?></p>
 		<p class="footerP">
 			UNIKA Fiskal
 		</p>

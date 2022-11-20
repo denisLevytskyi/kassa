@@ -35,12 +35,12 @@ class UnikaController extends StaffController {
 	}
 	
 	protected function set_check_type () {
-		$summ = $_SESSION['unika']['summ'];
+		$summ = $_POST['unika_cash'];
 		$data = $this->set_balance_data();
 		$rezult = $data['balance_close'] - $summ;
-		if ($rezult >= 0 and $_POST['unika_return'] == 'on') {
+		if ($rezult >= 0 and isset($_POST['unika_return'])) {
 			return 'ВИДАТКОВИЙ ЧЕК';
-		} elseif ($rezult < 100000 and empty($_POST['unika_return'])) {
+		} elseif ($summ < 100000 and empty($_POST['unika_return'])) {
 			return 'ФІСКАЛЬНИЙ ЧЕК';
 		} else {
 			return null;
@@ -68,7 +68,7 @@ class UnikaController extends StaffController {
 		}
 		$change = $summ - $received_cash - $received_card;
 		$change = -round($change, 2);
-		if ($change >= 0 and $summ > 0) {
+		if ($change >= 0 and $summ > 0 and isset($type)) {
 			$model = new Models\CheckModel();
 			$rezult = $model->get_check_registration($z_id, $auth_id, $auth_name, $time, $type, $body, $received_cash, $received_card, $change, $summ);
 		}
@@ -84,13 +84,19 @@ class UnikaController extends StaffController {
 		$model = new Models\ProductModel();
 		$code = $_POST['unika_add'];
 		$search_p = 'code';
+		$amount = 1;
 		if ($code[0] == '*') {
 			$search_p = 'article';
 			$code = trim($code, '*');
+		} elseif (mb_substr($code, 0, 3) == '250' and is_numeric($code)) {
+			$search_p = 'article';
+			$code = mb_substr($code, 3, 5);
+			$amount = mb_substr($_POST['unika_add'], 8) / 1000;
+			$amount = abs(round($amount, 3));
 		}
 		if ( ($product = $model->get_product($search_p, $code)) ) {
-			$product['amount'] = 1;
-			$product['summ'] = $product['price'];
+			$product['amount'] = $amount;
+			$product['summ'] = round($product['price'] * $amount, 2);
 			array_push($_SESSION['unika']['list'], $product);
 		}
 		header('Location: /unika.php');

@@ -185,6 +185,7 @@ class StaffController {
 			$check = array(
 				'id' => 0,
 				'timestamp' => time(),
+				'type' => 0,
 				'summ' => 0,
 				'received_cash' => 0,
 				'received_card' => 0,
@@ -202,8 +203,8 @@ class StaffController {
 		} else {
 			$branches = array();
 			$branch = array(
-				'summ' => '0',
-				'type' => '0'
+				'summ' => 0,
+				'type' => 0
 			);
 			array_push($branches, $branch);
 			return $branches;
@@ -242,7 +243,6 @@ class StaffController {
 				'auth_name' => 'NAME',
 				'timestamp' => '0',
 				'time' => '0',
-				'type' => '0',
 				'summ' => '0'
 			);
 			array_push($_SESSION['staff']['balances'], $balance);

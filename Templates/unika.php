@@ -83,7 +83,7 @@
 	<footer class="footer">
 		<form action="/unika.php" class="footerForm" method="POST">
 			<div class="footerFormWrap">
-				<input type="text" class="footerFormWrapInp" name="unika_cash" value="0.00" required>
+				<input type="text" class="footerFormWrapInp" name="unika_cash" value="0" required>
 				<p class="footerFormWrapP">Received</p>
 			</div>
 			<div class="footerFormWrap">

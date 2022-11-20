@@ -62,13 +62,13 @@
 		</div>
 		<div class="footerNum">
 			<p class="footerNumP">
-				<?php echo ('ОТРИМАНО ГОТІВКОЮ: .... ' . $_SESSION['check']['received_cash'] . ' грн'); ?>
+				<?php echo ('ГОТІВКОЮ: ..................... ' . $_SESSION['check']['received_cash'] . ' грн'); ?>
 			</p>
 			<p class="footerNumP">
-				<?php echo ('ОТРИМАНО КАРТКОЮ: ..... ' . $_SESSION['check']['received_card'] . ' грн'); ?>
+				<?php echo ('КАРТКОЮ: ...................... ' . $_SESSION['check']['received_card'] . ' грн'); ?>
 			</p>
 			<p class="footerNumP">
-				<?php echo ('РЕШТА: ................................ ' . $_SESSION['check']['change'] . ' грн'); ?>
+				<?php echo ('РЕШТА: ........................... ' . $_SESSION['check']['change'] . ' грн'); ?>
 			</p>
 		</div>
 		<p class="footerFiskal">

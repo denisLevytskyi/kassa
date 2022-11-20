@@ -28,6 +28,10 @@ button:hover {
 	background: blue;
 }
 
+html {
+	background: grey;
+}
+
 body {
 	width: 300px;
 	min-height: 100px;
@@ -35,6 +39,7 @@ body {
 	display: block;
 	margin: auto;
 	padding: 10px;
+	background: white;
 }
 
 .header {
