@@ -18,39 +18,29 @@ class ProductModel extends PriceModel {
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT * FROM products WHERE $search_p= '$search_v'";
 		$rezult = mysqli_query($connection, $request) or header('Location: /');
-		$record = mysqli_fetch_assoc($rezult);
-		if (isset($record['article'])) {
+		if ( ($record = mysqli_fetch_assoc($rezult)) ) {
 			$art = $record['article'];
 			$price = $this->get_price($art);
 			$record['price'] = $price;
+			return $record;
 		}
-		return $record;
 	}
 
 	public function get_chenges($id, $art, $code, $name, $desk) {
 		$connection = Logics\Connection::get_connection();
 		$request = "UPDATE products SET article = '$art', code = '$code', name = '$name', description = '$desk' WHERE id = '$id'";
-		$rezult = mysqli_query($connection, $request);
-		if ( $rezult == 1 ) {
-			return true;
-		}
+		return mysqli_query($connection, $request);
 	}
 
 	public function get_product_registration ($art, $code, $name, $desk, $foto, $id) {
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO products (article, code, name, description, foto, auth_id) VALUES ('$art', '$code', '$name', '$desk', '$foto', '$id')";
-		$rezult = mysqli_query($connection, $request);
-		if ( $rezult == 1 ) {
-			return true;
-		}
+		return mysqli_query($connection, $request);
 	}
 
 	public function get_delete ($id) {
 		$connection = Logics\Connection::get_connection();
 		$request = "DELETE FROM products WHERE id = '$id'";
-		$rezult = mysqli_query($connection, $request);
-		if ( $rezult == 1 ) {
-			return true;
-		}
+		return mysqli_query($connection, $request);
 	}
 }

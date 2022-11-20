@@ -65,4 +65,12 @@ class View {
 	public function view_staff () {
 		require_once "Templates/staff.php";
 	}
+	
+	public function view_branch () {
+		require_once "Templates/branch.php";
+	}
+	
+	public function view_balance () {
+		require_once "Templates/balance.php";
+	}
 }

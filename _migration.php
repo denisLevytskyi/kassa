@@ -55,6 +55,7 @@ $request5 = "CREATE TABLE `balances` (
 	`timestamp_close` VARCHAR(100) DEFAULT NULL,
 	`check_first` VARCHAR(50) DEFAULT NULL,
 	`check_last` VARCHAR(50) DEFAULT NULL,
+	`checks` VARCHAR(50) DEFAULT NULL,
 	`received_cash` VARCHAR(50) DEFAULT NULL,
 	`received_card` VARCHAR(50) DEFAULT NULL,
 	`change` VARCHAR(50) DEFAULT NULL,

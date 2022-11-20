@@ -14,6 +14,18 @@ class CheckModel {
 			return $record;
 		}
 	}
+	
+	public function get_checks_by_z_id ($z_id) {
+		$checks = array();
+		$connection = Logics\Connection::get_connection();
+		$request = "SELECT * FROM checks WHERE z_id= '$z_id'";
+		$rezult = mysqli_query($connection, $request) or header('Location: /');
+		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
+			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
+			array_push($checks, $record);
+		}
+		return $checks;
+	}
 
 	public function get_all_checks () {
 		$checks = array();
@@ -41,9 +53,6 @@ class CheckModel {
 			`change`) VALUES (
 			'$z_id', '$auth_id', '$auth_name', '$time', '$summ', '$body', '$received_cash', '$received_card', '$change'
 		)";
-		$rezult = mysqli_query($connection, $request);
-		if ( $rezult == 1 ) {
-			return true;
-		}
+		return mysqli_query($connection, $request);
 	}
 }

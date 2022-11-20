@@ -37,10 +37,10 @@
 				<input type="text" class="serachFormInp" name="staff_branch_summ" placeholder="Branch Summ" required>
 				<button type="confirm" class="staffFormBtn">Add branch!</button>
 			</form>
-			<a href="/staff.php/?staff_balance=z" class="staffA">
+			<a href="/staff.php/?staff_balance=Z" class="staffA">
 				GET Z-BALANCE!
 			</a>
-			<a href="/staff.php/?staff_balance=x" class="staffA">
+			<a href="/staff.php/?staff_balance=X" class="staffA">
 				GET X-BALANCE!
 			</a>
 		</div>

@@ -30,9 +30,6 @@ class PriceModel {
 	public function get_price_registration ($art, $price, $time, $id) {
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO prices (article, price, timestamp, auth_id) VALUES ('$art', '$price', '$time', '$id')";
-		$rezult = mysqli_query($connection, $request);
-		if ( $rezult == 1 ) {
-			return true;
-		}
+		return mysqli_query($connection, $request);
 	}
 }

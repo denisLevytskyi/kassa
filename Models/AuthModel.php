@@ -29,36 +29,25 @@ class AuthModel {
 	public function get_user_sing ($login, $password, $name, $role = '1') {
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO users (login, password, name, role) VALUES ('$login', '$password', '$name', '$role')";
-		$rezult = mysqli_query($connection, $request);
-		if ( $rezult == 1 ) {
-			return $this->get_user_check($login, $password);
-		}
+		return mysqli_query($connection, $request);
 	}
 
 	public function get_chenges ($id, $login, $password, $name) {
 		$connection = Logics\Connection::get_connection();
 		$request = "UPDATE users SET login = '$login', password = '$password', name = '$name' WHERE id = '$id'";
-		$rezult = mysqli_query($connection, $request);
-		if ( $rezult == 1 ) {
-			return true;
-		}
+		return mysqli_query($connection, $request);
 	}
 
 	public function get_delete ($id) {
 		$connection = Logics\Connection::get_connection();
 		$request = "DELETE FROM users WHERE id = '$id'";
 		$rezult = mysqli_query($connection, $request);
-		if ( $rezult == 1 ) {
-			return true;
-		}
+		return mysqli_query($connection, $request);
 	}
 
 	public function get_reset ($login, $password) {
 		$connection = Logics\Connection::get_connection();
 		$request = "UPDATE users SET password = '$password' WHERE login = '$login'";
-		$rezult = mysqli_query($connection, $request);
-		if ( $rezult == 1 ) {
-			return true;
-		}
+		return mysqli_query($connection, $request);
 	}
 }

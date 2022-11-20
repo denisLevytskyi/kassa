@@ -43,18 +43,15 @@ class EditAuthController {
 	}
 
 	public function get_edit_auth_check () {
-		if (empty($_POST['edit_auth_1'])) {
-			$this->set_login_by_id();
-			$this->view_edit_auth();
-		} else {
-			if ($_POST['edit_auth_password_1'] == $_POST['edit_auth_password_2']) {
-				$this->set_changes();
-			} else {
-				ErrorController::get_view_error(8);
-			}
-		}
 		if (isset($_GET['auth_delete'])) {
 			$this->set_delete();
+		} elseif (empty($_POST['edit_auth_1'])) {
+			$this->set_login_by_id();
+			$this->view_edit_auth();
+		} elseif ($_POST['edit_auth_password_1'] == $_POST['edit_auth_password_2']) {
+			$this->set_changes();
+		} else {
+			ErrorController::get_view_error(8);
 		}
 	}
 }

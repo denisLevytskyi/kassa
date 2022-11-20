@@ -61,7 +61,9 @@ class ProductController {
 	}
 
 	public function get_product () {
-		if (isset($_POST['edit_product_1'])) {
+		if (isset($_GET['product_delete'])) {
+			$this->set_delete();
+		} elseif (isset($_POST['edit_product_1'])) {
 			$this->set_changes_product();
 		} elseif (isset($_GET['product_id'])) {
 			$this->set_product_by_id();
@@ -71,9 +73,6 @@ class ProductController {
 			$this->view_product();
 		} else {
 			ErrorController::get_view_error(14);
-		}
-		if (isset($_GET['product_delete'])) {
-			$this->set_delete();
 		}
 	}
 }

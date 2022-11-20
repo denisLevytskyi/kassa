@@ -62,13 +62,11 @@ class SingController {
 			exit;
 		} elseif (empty($_POST['sing_1'])) {
 			$this->view_sing1();
+		} elseif ($_POST['sing_password_1'] == $_POST['sing_password_2']) {
+			$this->send_pin();
+			$this->view_sing2();
 		} else {
-			if ($_POST['sing_password_1'] == $_POST['sing_password_2']) {
-				$this->send_pin();
-				$this->view_sing2();
-			} else {
-				ErrorController::get_view_error(2);
-			}
+			ErrorController::get_view_error(2);
 		}
 	}
 }

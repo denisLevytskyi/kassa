@@ -72,12 +72,10 @@ class LoginController {
 		if (isset($_GET['auth_disconnect'])) {
 			$this->set_disconnect();
 			exit();
-		} elseif (isset($_POST['login_login'])) {
-			if (isset($_POST['login_remember'])) {
-				$this->set_id(true);
-			} else {
-				$this->set_id();
-			}
+		} elseif (isset($_POST['login_login']) and empty($_POST['login_remember'])) {
+			$this->set_id();
+		} elseif (isset($_POST['login_remember'])) {
+			$this->set_id(true);
 		}
 		if ($_SERVER['PHP_SELF'] == '/index.php') {
 			$this->get_main_check();
