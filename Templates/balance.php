@@ -36,34 +36,79 @@
 	<section class="main">
 			<div class="mainItem">
 				<p class="mainItemP mainItemName">
-					ЗМІНА ВІДКРИТА: <?php echo $_SESSION['balance']['time_open']; ?>
+					= = = ПРОДАЖІ = = =
 				</p>
 				<p class="mainItemP">
-					Перший чек №: <?php echo $_SESSION['balance']['check_first']; ?>
-				</p>
-			</div>	
-			<div class="mainItem">
-				<p class="mainItemP mainItemName">
-					ЗМІНА ЗАКРИТА: <?php echo $_SESSION['balance']['time_close']; ?>
+					Перший чек №: <?php echo $_SESSION['balance']['sale_id_first']; ?>
 				</p>
 				<p class="mainItemP">
-					Останній чек №: <?php echo $_SESSION['balance']['check_last']; ?>
+					Д/Ч: <?php echo $_SESSION['balance']['sale_time_first']; ?>
+				</p>
+				<p class="mainItemP">
+					Останній чек №: <?php echo $_SESSION['balance']['sale_id_last']; ?>
+				</p>
+				<p class="mainItemP">
+					Д/Ч: <?php echo $_SESSION['balance']['sale_time_last']; ?>
+				</p>
+				<br>
+				<p class="mainItemP">
+					Прийнято готівкою: ... <?php echo $_SESSION['balance']['sale_received_cash']; ?> грн
+				</p>
+				<p class="mainItemP">
+					Прийнято карткою: ... <?php echo $_SESSION['balance']['sale_received_card']; ?> грн
+				</p>
+				<p class="mainItemP">
+					Решта: ........................ <?php echo $_SESSION['balance']['sale_change']; ?> грн
+				</p>
+				<p class="mainItemP">
+					СУМА ГОТІВКОЮ: .... <?php echo $_SESSION['balance']['sale_summ_cash']; ?> грн
+				</p>
+				<p class="mainItemP">
+					СУМА КАРТКОЮ: ..... <?php echo $_SESSION['balance']['sale_summ_card']; ?> грн
+				</p>
+				<p class="mainItemP">
+					СУМА : ....................... <?php echo $_SESSION['balance']['sale_summ']; ?> грн
 				</p>
 			</div>
+			<br>
+			<br>
 			<div class="mainItem">
 				<p class="mainItemP mainItemName">
-					ПРИЙНЯТО ГОТІВКОЮ: <?php echo $_SESSION['balance']['received_cash']; ?> грн
-				</p>
-				<p class="mainItemP mainItemName">
-					ПРИЙНЯТО КАРТКОЮ: <?php echo $_SESSION['balance']['received_card']; ?> грн
+					= = = ПОВЕРНЕННЯ = = =
 				</p>
 				<p class="mainItemP">
-					Видано решти: <?php echo $_SESSION['balance']['change']; ?>
+					Перший чек №: <?php echo $_SESSION['balance']['return_id_first']; ?>
 				</p>
 				<p class="mainItemP">
-					Видано чеків: <?php echo $_SESSION['balance']['checks']; ?>
+					Д/Ч: <?php echo $_SESSION['balance']['return_time_first']; ?>
 				</p>
-			</div>				
+				<p class="mainItemP">
+					Останній чек №: <?php echo $_SESSION['balance']['return_id_last']; ?>
+				</p>
+				<p class="mainItemP">
+					Д/Ч: <?php echo $_SESSION['balance']['return_time_last']; ?>
+				</p>
+				<br>
+				<p class="mainItemP">
+					Видано готівкою: ....... <?php echo $_SESSION['balance']['return_received_cash']; ?> грн
+				</p>
+				<p class="mainItemP">
+					Видано карткою: ........ <?php echo $_SESSION['balance']['return_received_card']; ?> грн
+				</p>
+				<p class="mainItemP">
+					Решта: ........................ <?php echo $_SESSION['balance']['return_change']; ?> грн
+				</p>
+				<p class="mainItemP">
+					СУМА ГОТІВКОЮ: .... <?php echo $_SESSION['balance']['return_summ_cash']; ?> грн
+				</p>
+				<p class="mainItemP">
+					СУМА КАРТКОЮ: ..... <?php echo $_SESSION['balance']['return_summ_card']; ?> грн
+				</p>
+				<p class="mainItemP">
+					СУМА : ....................... <?php echo $_SESSION['balance']['return_summ']; ?> грн
+				</p>
+			</div>	
+						
 	</section>
 	<footer class="footer">
 		<div class="footerSumm">

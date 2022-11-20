@@ -40,8 +40,10 @@ class StaffController {
 		if ($_GET['staff_balance'] == 'X') {
 			$_SESSION['balance']['id'] = $this->set_z_id();
 			$_SESSION['balance']['time'] = date("y-m-d H:i:s", $data['timestamp']);
-			$_SESSION['balance']['time_open'] = date("y-m-d H:i:s", $data['timestamp_open']);
-			$_SESSION['balance']['time_close'] = date("y-m-d H:i:s", $data['timestamp_close']);
+			$_SESSION['balance']['sale_time_first'] = date("y-m-d H:i:s", $data['sale_timestamp_first']);
+			$_SESSION['balance']['sale_time_last'] = date("y-m-d H:i:s", $data['sale_timestamp_last']);
+			$_SESSION['balance']['return_time_first'] = date("y-m-d H:i:s", $data['return_timestamp_first']);
+			$_SESSION['balance']['return_time_last'] = date("y-m-d H:i:s", $data['return_timestamp_last']);
 			$this->view_balance();
 			exit();
 		} elseif ($_GET['staff_balance'] == 'Z') {
@@ -50,7 +52,8 @@ class StaffController {
 	}
 	
 	protected function set_balance_data () {
-		$gate = 0;
+		$gate1 = 0;
+		$gate2 = 0;
 		$z_id = $this->set_z_id();
 		$b_data = $this->set_branches_by_z_id($z_id);
 		$c_data = $this->set_checks_by_z_id($z_id);
@@ -58,21 +61,35 @@ class StaffController {
 			'auth_id' => $_SESSION['auth']['id'],
 			'auth_name' => $_SESSION['auth']['name'],
 			'timestamp' => time(),
-			'timestamp_open' => time(),
-			'timestamp_close' => time(),
-			'check_first' => '0',
-			'check_last' => '0',
-			'checks' => '-',
-			'received_cash' => 0,
-			'received_card' => 0,
-			'change' => 0,
-			'summ' => 0,
-			'summ_cash' => 0,
-			'summ_card' => 0,
+			'staff_in' => '0',
+			'staff_out' => '0',
+			'sale_id_first' => '0',
+			'sale_id_last' => '0',
+			'sale_timestamp_first' => time(),
+			'sale_timestamp_last' => time(),
+			'sale_checks' => '0',
+			'sale_received_cash' => '0',
+			'sale_received_card' => '0',
+			'sale_change' => '0',
+			'sale_summ_cash' => '0',
+			'sale_summ_card' => '0',
+			'sale_summ' => '0',
+			'return_id_first' => '0',
+			'return_id_last' => '0',
+			'return_timestamp_first' => time(),
+			'return_timestamp_last' => time(),
+			'return_checks' => '0',
+			'return_received_cash' => '0',
+			'return_received_card' => '0',
+			'return_change' => '0',
+			'return_summ_cash' => '0',
+			'return_summ_card' => '0',
+			'return_summ' => '0',
+			'summ_cash' => '0',
+			'summ_card' => '0',
+			'summ' => '0',
 			'balance_open' => $this->set_z_balance_close(),
-			'balance_close' => 0,
-			'staff_in'  => 0,
-			'staff_out'  => 0
+			'balance_close' => '0'
 		);
 		foreach ($b_data as $k => $v) {
 			if ($v['type'] == 'СЛУЖБОВЕ ВИЛУЧЕННЯ') {
@@ -82,21 +99,41 @@ class StaffController {
 			}
 		}
 		foreach ($c_data as $k => $v) {
-			if ($gate == 0) {
-				$data['check_first'] = $v['id'];
-				$data['timestamp_open'] = $v['timestamp'];
-				$gate = 1;
+			if ($v['type'] == 'ФІСКАЛЬНИЙ ЧЕК') {
+				if ($gate1 == 0) {
+					$data['sale_id_first'] = $v['id'];
+					$data['sale_timestamp_first'] = $v['timestamp'];
+					$gate1 = 1;
+				}
+				$data['sale_id_last'] = $v['id'];
+				$data['sale_timestamp_last'] = $v['timestamp'];
+				$data['sale_received_cash'] = $data['sale_received_cash'] + $v['received_cash'];
+				$data['sale_received_card'] = $data['sale_received_card'] + $v['received_card'];
+				$data['sale_change'] = $data['sale_change'] + $v['change'];
+				$data['sale_summ'] = $data['sale_summ'] + $v['summ'];
+			} else {
+				if ($gate2 == 0) {
+					$data['return_id_first'] = $v['id'];
+					$data['return_timestamp_first'] = $v['timestamp'];
+					$gate2 = 1;
+				}
+				$data['return_id_last'] = $v['id'];
+				$data['return_timestamp_last'] = $v['timestamp'];
+				$data['return_received_cash'] = $data['return_received_cash'] + $v['received_cash'];
+				$data['return_received_card'] = $data['return_received_card'] + $v['received_card'];
+				$data['return_change'] = $data['return_change'] + $v['change'];
+				$data['return_summ'] = $data['return_summ'] + $v['summ'];
 			}
-			$data['check_last'] = $v['id'];
-			$data['timestamp_close'] = $v['timestamp'];
-			$data['received_cash'] = $data['received_cash'] + $v['received_cash'];
-			$data['received_card'] = $data['received_card'] + $v['received_card'];
-			$data['change'] = $data['change'] + abs($v['change']);
-			$data['summ'] = $data['summ'] + $v['summ'];
 		}
-		$data['checks'] = $data['check_last'] - $data['check_first'] + 1;
-		$data['summ_card'] = $data['received_card'];
-		$data['summ_cash'] = $data['received_cash'] - $data['change'];
+		$data['sale_checks'] = $data['sale_id_last'] - $data['sale_id_first'] + 1;
+		$data['sale_summ_cash'] = $data['sale_received_cash'] - $data['sale_change'];
+		$data['sale_summ_card'] = $data['sale_received_card'];
+		$data['return_checks'] = $data['return_id_last'] - $data['return_id_first'] + 1;
+		$data['return_summ_cash'] = $data['return_received_cash'] - $data['return_change'];
+		$data['return_summ_card'] = $data['return_received_card'];
+		$data['summ_cash'] = $data['sale_summ_cash'] - $data['return_summ_cash'];
+		$data['summ_card'] = $data['sale_summ_card'] - $data['return_summ_card'];
+		$data['summ'] = $data['sale_summ'] - $data['return_summ'];
 		$data['balance_close'] = $data['balance_open'] + $data['summ_cash'] + $data['staff_in'] - $data['staff_out'];
 		return $data;
 	}
@@ -186,8 +223,8 @@ class StaffController {
 				'auth_name' => 'NAME',
 				'timestamp' => '0',
 				'time' => '0',
-				'summ' => '0',
-				'type' => '0'
+				'type' => '0',
+				'summ' => '0'
 			);
 			array_push($_SESSION['staff']['branches'], $branch);
 		}
@@ -205,6 +242,7 @@ class StaffController {
 				'auth_name' => 'NAME',
 				'timestamp' => '0',
 				'time' => '0',
+				'type' => '0',
 				'summ' => '0'
 			);
 			array_push($_SESSION['staff']['balances'], $balance);

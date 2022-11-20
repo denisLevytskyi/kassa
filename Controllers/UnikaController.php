@@ -3,7 +3,7 @@ namespace Controllers;
 use Views;
 use Models;
 
-class UnikaController {
+class UnikaController extends StaffController {
 	protected function view_unika () {
 		$view = new Views\View();
 		$view->view_unika();
@@ -34,25 +34,30 @@ class UnikaController {
 		header('Location: /unika.php');
 	}
 	
-	protected function set_z_id () {
-		$model = new Models\StaffModel();
-		if ( ($rezult = $model->get_last_z_data()) ) {
-			return $rezult['id'] + 1;
+	protected function set_check_type () {
+		$summ = $_SESSION['unika']['summ'];
+		$data = $this->set_balance_data();
+		$rezult = $data['balance_close'] - $summ;
+		if ($rezult >= 0 and $_POST['unika_return'] == 'on') {
+			return 'ВИДАТКОВИЙ ЧЕК';
+		} elseif ($rezult < 100000 and empty($_POST['unika_return'])) {
+			return 'ФІСКАЛЬНИЙ ЧЕК';
 		} else {
-			return 1;
+			return null;
 		}
 	}
 
 	protected function set_check () {
-		$z_id = $this->set_z_id();
 		$rezult = false;
-		$time = time();
+		$z_id = $this->set_z_id();
 		$auth_id = $_SESSION['auth']['id'];
 		$auth_name = $_SESSION['auth']['name'];
+		$time = time();
+		$type = $this->set_check_type();
 		$body = serialize($_SESSION['unika']['list']);
-		$summ = $_SESSION['unika']['summ'];
 		$received_cash = round($_POST['unika_cash'], 2);
 		$received_card = 0;
+		$summ = $_SESSION['unika']['summ'];
 		if ($_POST['unika_pay'] == 'card') {
 			$received_card = $summ - $received_cash;
 		} else {
@@ -65,7 +70,7 @@ class UnikaController {
 		$change = -round($change, 2);
 		if ($change >= 0 and $summ > 0) {
 			$model = new Models\CheckModel();
-			$rezult = $model->get_check_registration($z_id, $auth_id, $auth_name, $time, $summ, $body, $received_cash, $received_card, $change);
+			$rezult = $model->get_check_registration($z_id, $auth_id, $auth_name, $time, $type, $body, $received_cash, $received_card, $change, $summ);
 		}
 		if ($rezult == true) {
 			unset($_SESSION['unika']);

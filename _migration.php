@@ -39,43 +39,58 @@ $request4 = "CREATE TABLE `checks` (
 	`auth_id` INT DEFAULT NULL,
 	`auth_name` VARCHAR(50) DEFAULT NULL,
 	`timestamp` VARCHAR(100) DEFAULT NULL,
-	`summ` VARCHAR(50) DEFAULT NULL,
+	`type` VARCHAR(50) DEFAULT NULL,
 	`body` VARCHAR(9000) DEFAULT NULL,
 	`received_cash` VARCHAR(50) DEFAULT NULL,
 	`received_card` VARCHAR(50) DEFAULT NULL,
 	`change` VARCHAR(50) DEFAULT NULL,
-	PRIMARY KEY (`id`)
-);";
-$request5 = "CREATE TABLE `balances` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`auth_id` INT DEFAULT NULL,
-	`auth_name` VARCHAR(50) DEFAULT NULL,
-	`timestamp` VARCHAR(100) DEFAULT NULL,
-	`timestamp_open` VARCHAR(100) DEFAULT NULL,
-	`timestamp_close` VARCHAR(100) DEFAULT NULL,
-	`check_first` VARCHAR(50) DEFAULT NULL,
-	`check_last` VARCHAR(50) DEFAULT NULL,
-	`checks` VARCHAR(50) DEFAULT NULL,
-	`received_cash` VARCHAR(50) DEFAULT NULL,
-	`received_card` VARCHAR(50) DEFAULT NULL,
-	`change` VARCHAR(50) DEFAULT NULL,
 	`summ` VARCHAR(50) DEFAULT NULL,
-	`summ_cash` VARCHAR(50) DEFAULT NULL,
-	`summ_card` VARCHAR(50) DEFAULT NULL,
-	`balance_open` VARCHAR(50) DEFAULT NULL,
-	`balance_close` VARCHAR(50) DEFAULT NULL,
-	`staff_in` VARCHAR(50) DEFAULT NULL,
-	`staff_out` VARCHAR(50) DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
-$request6 = "CREATE TABLE `branches` (
+$request5 = "CREATE TABLE `branches` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`z_id` INT DEFAULT NULL,
 	`auth_id` INT DEFAULT NULL,
 	`auth_name` VARCHAR(50) DEFAULT NULL,
-	`timestamp` VARCHAR(100) DEFAULT NULL,
+	`timestamp` VARCHAR(50) DEFAULT NULL,
 	`type` VARCHAR(50) DEFAULT NULL,	
 	`summ` VARCHAR(50) DEFAULT NULL,
+	PRIMARY KEY (`id`)
+);";
+$request6 = "CREATE TABLE `balances` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`auth_id` INT DEFAULT NULL,
+	`auth_name` VARCHAR(50) DEFAULT NULL,
+	`timestamp` VARCHAR(50) DEFAULT NULL,
+	`staff_in` VARCHAR(50) DEFAULT NULL,
+	`staff_out` VARCHAR(50) DEFAULT NULL,
+	`sale_id_first` VARCHAR(50) DEFAULT NULL,
+	`sale_id_last` VARCHAR(50) DEFAULT NULL,
+	`sale_timestamp_first` VARCHAR(50) DEFAULT NULL,
+	`sale_timestamp_last` VARCHAR(50) DEFAULT NULL,
+	`sale_checks` VARCHAR(50) DEFAULT NULL,
+	`sale_received_cash` VARCHAR(50) DEFAULT NULL,
+	`sale_received_card` VARCHAR(50) DEFAULT NULL,
+	`sale_change` VARCHAR(50) DEFAULT NULL,
+	`sale_summ_cash` VARCHAR(50) DEFAULT NULL,
+	`sale_summ_card` VARCHAR(50) DEFAULT NULL,
+	`sale_summ` VARCHAR(50) DEFAULT NULL,
+	`return_id_first` VARCHAR(50) DEFAULT NULL,
+	`return_id_last` VARCHAR(50) DEFAULT NULL,
+	`return_timestamp_first` VARCHAR(50) DEFAULT NULL,
+	`return_timestamp_last` VARCHAR(50) DEFAULT NULL,
+	`return_checks` VARCHAR(50) DEFAULT NULL,
+	`return_received_cash` VARCHAR(50) DEFAULT NULL,
+	`return_received_card` VARCHAR(50) DEFAULT NULL,
+	`return_change` VARCHAR(50) DEFAULT NULL,
+	`return_summ_cash` VARCHAR(50) DEFAULT NULL,
+	`return_summ_card` VARCHAR(50) DEFAULT NULL,
+	`return_summ` VARCHAR(50) DEFAULT NULL,
+	`summ_cash` VARCHAR(50) DEFAULT NULL,
+	`summ_card` VARCHAR(50) DEFAULT NULL,
+	`summ` VARCHAR(50) DEFAULT NULL,
+	`balance_open` VARCHAR(50) DEFAULT NULL,
+	`balance_close` VARCHAR(50) DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
 $rezult1 = mysqli_query($connection, $request1);
@@ -96,9 +111,9 @@ echo "<br><br>===== PRICES TABLE ============================<br>";
 var_dump($rezult3);
 echo "<br><br>===== CHECKS TABLE ============================<br>";
 var_dump($rezult4);
-echo "<br><br>===== Z-BALANCE TABLE =========================<br>";
-var_dump($rezult5);
 echo "<br><br>===== BRANCHES TABLE ==========================<br>";
+var_dump($rezult5);
+echo "<br><br>===== Z-BALANCE TABLE =========================<br>";
 var_dump($rezult6);
 
 $i1 = 1000;

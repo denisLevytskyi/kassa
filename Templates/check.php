@@ -72,7 +72,7 @@
 			</p>
 		</div>
 		<p class="footerFiskal">
-			= = = = = = ФІСКАЛЬНИЙ ЧЕК = = = = = =
+			= = = = = = <?php echo $_SESSION['check']['type']; ?> = = = = = =
 		</p>
 		<p class="footerP">
 			UNIKA Fiskal

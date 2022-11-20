@@ -30,7 +30,7 @@ class CheckModel {
 	public function get_all_checks () {
 		$checks = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT id, z_id, auth_id, auth_name, `timestamp`, summ FROM checks ORDER BY id DESC";
+		$request = "SELECT id, z_id, auth_id, auth_name, `timestamp`, type, summ FROM checks ORDER BY id DESC";
 		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
@@ -39,20 +39,21 @@ class CheckModel {
 		return $checks;
 	}
 
-	public function get_check_registration ($z_id, $auth_id, $auth_name, $time, $summ, $body, $received_cash, $received_card, $change) {
+	public function get_check_registration ($z_id, $auth_id, $auth_name, $time, $type, $body, $received_cash, $received_card, $change, $summ) {
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO checks (
 			z_id,
 			auth_id,
 			auth_name,
 			`timestamp`,
-			summ,
+			type,
 			body,
 			received_cash,
 			received_card,
-			`change`) VALUES (
-			'$z_id', '$auth_id', '$auth_name', '$time', '$summ', '$body', '$received_cash', '$received_card', '$change'
-		)";
+			`change`,
+			summ)
+			VALUES
+			('$z_id', '$auth_id', '$auth_name', '$time', '$type', '$body', '$received_cash', '$received_card', '$change', '$summ')";
 		return mysqli_query($connection, $request);
 	}
 }

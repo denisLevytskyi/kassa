@@ -49,6 +49,7 @@
 								' № => ' . $v['id'] .
 								' Z-bal => ' . $v['z_id'] .
 								' Summ => ' . $v['summ'] .
+								' Type => ' . $v['type'] .
 								' added by => ' . $v['auth_id'] .
 								' ' . $v['auth_name']
 							);

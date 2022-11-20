@@ -94,6 +94,10 @@
 				<input type="radio" name="unika_pay" value="card">
 				<p class="footerFormWrapP">CARD</p>
 			</div>
+			<div class="footerFormWrap">
+				<input type="checkbox" name="unika_return">
+				<p class="footerFormWrapP">RETURN</p>
+			</div>
 			<button type="confirm" class="footerFormBtn">PAY</button>
 		</form>
 	</footer>
