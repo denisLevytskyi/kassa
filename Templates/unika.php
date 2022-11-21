@@ -13,7 +13,7 @@
 				<img src="/Materials/main_logo.png" class="headerFirstAImg">
 			</a>
 			<form action="/unika.php" class="headerFirstForm" method="POST">
-				<input type="text" class="headerFirstFormInp" name="unika_add" placeholder="Article or Code" required>
+				<input autofocus type="text" class="headerFirstFormInp" name="unika_add" placeholder="Article or Code" required>
 				<button type="confirm" class="headerFirstFormBtn">+</button>
 			</form>
 			<div class="headerFirstSumm">

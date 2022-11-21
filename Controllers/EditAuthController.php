@@ -25,7 +25,7 @@ class EditAuthController {
 	protected function set_login_by_id () {
 		$model = new Models\AuthModel();
 		$id = $_SESSION['auth']['id'];
-		if ( ($login = $model->get_login_by_id($id)) ) {
+		if ( ($login = $model->get_user_data('id', $id, 'id', $id, 'login')) ) {
 			$_SESSION['auth']['login'] = $login;
 		} else {
 			ErrorController::get_view_error(7);

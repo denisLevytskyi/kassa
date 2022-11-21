@@ -18,7 +18,7 @@ class LoginController {
 		$model = new Models\AuthModel();
 		$login = $_POST['login_login'];
 		$password = $_POST['login_password'];
-		if ( ($id = $model->get_user_check($login, $password)) ) {
+		if ( ($id = $model->get_user_data('login', $login, 'password', $password, 'id')) ) {
 			if ($remember == true) {
 				setcookie('auth_id', $id, time() + 10000);
 			}
@@ -31,7 +31,7 @@ class LoginController {
 	protected function set_name_by_id () {
 		$model = new Models\AuthModel();
 		$id = $_SESSION['auth']['id'];
-		if ( ($name = $model->get_name_by_id($id)) ) {
+		if ( ($name = $model->get_user_data('id', $id, 'id', $id, 'name')) ) {
 			$_SESSION['auth']['name'] = $name;
 		} else {
 			$this->set_disconnect();
