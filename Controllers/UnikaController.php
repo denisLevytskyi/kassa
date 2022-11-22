@@ -88,6 +88,12 @@ class UnikaController extends StaffController {
 		if ($code[0] == '*') {
 			$search_p = 'article';
 			$code = trim($code, '*');
+		} elseif ($code[0] == '=') {
+			$search_p = 'name';
+			$code = trim($code, '=');
+		} elseif ($code[0] == 'i') {
+			$search_p = 'id';
+			$code = trim($code, 'i');
 		} elseif (mb_substr($code, 0, 3) == '250' and is_numeric($code)) {
 			$search_p = 'article';
 			$code = mb_substr($code, 3, 5);

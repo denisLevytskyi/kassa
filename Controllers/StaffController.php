@@ -34,11 +34,11 @@ class StaffController {
 
 	protected function set_balance () {
 		$data = $this->set_balance_data();
-		session_start();
-		$_SESSION['balance'] = $data;
-		$_SESSION['balance']['type'] = $_GET['staff_balance'];
 		if ($_GET['staff_balance'] == 'X') {
+			session_start();
+			$_SESSION['balance'] = $data;
 			$_SESSION['balance']['id'] = $this->set_z_id();
+			$_SESSION['balance']['type'] = $_GET['staff_balance'];
 			$_SESSION['balance']['time'] = date("y-m-d H:i:s", $data['timestamp']);
 			$_SESSION['balance']['sale_time_first'] = date("y-m-d H:i:s", $data['sale_timestamp_first']);
 			$_SESSION['balance']['sale_time_last'] = date("y-m-d H:i:s", $data['sale_timestamp_last']);
@@ -94,7 +94,7 @@ class StaffController {
 		foreach ($b_data as $k => $v) {
 			if ($v['type'] == 'СЛУЖБОВЕ ВИЛУЧЕННЯ') {
 				$data['staff_out'] = $data['staff_out'] + $v['summ'];
-			} else {
+			} elseif ($v['type'] == 'СЛУЖБОВЕ ВНЕСЕННЯ') {
 				$data['staff_in'] = $data['staff_in'] + $v['summ'];
 			}
 		}
@@ -111,7 +111,7 @@ class StaffController {
 				$data['sale_received_card'] = $data['sale_received_card'] + $v['received_card'];
 				$data['sale_change'] = $data['sale_change'] + $v['change'];
 				$data['sale_summ'] = $data['sale_summ'] + $v['summ'];
-			} else {
+			} elseif ($v['type'] == 'ВИДАТКОВИЙ ЧЕК') {
 				if ($gate2 == 0) {
 					$data['return_id_first'] = $v['id'];
 					$data['return_timestamp_first'] = $v['timestamp'];
@@ -135,6 +135,11 @@ class StaffController {
 		$data['summ_card'] = $data['sale_summ_card'] - $data['return_summ_card'];
 		$data['summ'] = $data['sale_summ'] - $data['return_summ'];
 		$data['balance_close'] = $data['balance_open'] + $data['summ_cash'] + $data['staff_in'] - $data['staff_out'];
+		foreach ($data as $k => $v) {
+			if (is_numeric($v)) {
+				$data[$k] = abs(round($v, 2));
+			}
+		}
 		return $data;
 	}
 
@@ -162,6 +167,7 @@ class StaffController {
 		$auth_id = $_SESSION['auth']['id'];
 		$auth_name = $_SESSION['auth']['name'];
 		$time = time();
+		$type = "НУЛЬОВИЙ ЧЕК";
 		$summ = round($_POST['staff_branch_summ'], 2);
 		if ($summ < 0) {
 			$summ = -$summ;
@@ -183,13 +189,7 @@ class StaffController {
 		} else {
 			$checks = array();
 			$check = array(
-				'id' => 0,
-				'timestamp' => time(),
 				'type' => 0,
-				'summ' => 0,
-				'received_cash' => 0,
-				'received_card' => 0,
-				'change' => 0
 			);
 			array_push($checks, $check);
 			return $checks;
@@ -203,7 +203,6 @@ class StaffController {
 		} else {
 			$branches = array();
 			$branch = array(
-				'summ' => 0,
 				'type' => 0
 			);
 			array_push($branches, $branch);
@@ -252,7 +251,7 @@ class StaffController {
 	public function get_staff_check () {
 		if (empty($_SESSION['staff'])) {
 			$_SESSION['staff'] = array();
-		} elseif (isset($_POST['staff_branch_summ']) and is_numeric($_POST['staff_branch_summ']) and $_POST['staff_branch_summ'] != 0) {
+		} elseif (isset($_POST['staff_branch_summ']) and is_numeric($_POST['staff_branch_summ'])) {
 			$this->prepare_branch_registration();
 		} elseif (isset($_GET['staff_balance'])) {
 			$this->set_balance();

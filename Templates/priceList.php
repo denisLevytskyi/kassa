@@ -38,9 +38,10 @@
 					<div class="listWrapItem">
 						<p class="listWrapItemP"><?php
 							echo ($v['time'] .
-								' => ' . $v['price'] .
-								' => art. ' . $v['article'] .
-								' added by ' . $v['auth_id']
+								' № => ' . $v['id'] .
+								' Price => ' . $v['price'] .
+								' Article => ' . $v['article'] .
+								' added by => ' . $v['auth_id']
 							);
 						?></p>
 					</div>					

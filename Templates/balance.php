@@ -8,7 +8,7 @@
 </head>
 <body>
 	<header class="header">
-		<a href="/unika.php" class="headerA">
+		<a href="/staff.php" class="headerA">
 			<img src="/Materials/main_logo.png" class="headerAImg">
 		</a>
 		<p class="headerP">
@@ -61,7 +61,7 @@
 					Прийнято карткою: ... <?php echo $_SESSION['balance']['sale_received_card']; ?> грн
 				</p>
 				<p class="mainItemP">
-					Решта: ........................ <?php echo $_SESSION['balance']['sale_change']; ?> грн
+					Решта: ....................... <?php echo $_SESSION['balance']['sale_change']; ?> грн
 				</p>
 				<p class="mainItemP">
 					СУМА ГОТІВКОЮ: .... <?php echo $_SESSION['balance']['sale_summ_cash']; ?> грн
@@ -70,7 +70,7 @@
 					СУМА КАРТКОЮ: ..... <?php echo $_SESSION['balance']['sale_summ_card']; ?> грн
 				</p>
 				<p class="mainItemP">
-					СУМА : ....................... <?php echo $_SESSION['balance']['sale_summ']; ?> грн
+					СУМА : ...................... <?php echo $_SESSION['balance']['sale_summ']; ?> грн
 				</p>
 			</div>
 			<br>
@@ -98,10 +98,10 @@
 					Видано готівкою: ....... <?php echo $_SESSION['balance']['return_received_cash']; ?> грн
 				</p>
 				<p class="mainItemP">
-					Видано карткою: ........ <?php echo $_SESSION['balance']['return_received_card']; ?> грн
+					Видано карткою: ....... <?php echo $_SESSION['balance']['return_received_card']; ?> грн
 				</p>
 				<p class="mainItemP">
-					Решта: ........................ <?php echo $_SESSION['balance']['return_change']; ?> грн
+					Решта: ....................... <?php echo $_SESSION['balance']['return_change']; ?> грн
 				</p>
 				<p class="mainItemP">
 					СУМА ГОТІВКОЮ: .... <?php echo $_SESSION['balance']['return_summ_cash']; ?> грн
@@ -110,7 +110,7 @@
 					СУМА КАРТКОЮ: ..... <?php echo $_SESSION['balance']['return_summ_card']; ?> грн
 				</p>
 				<p class="mainItemP">
-					СУМА : ....................... <?php echo $_SESSION['balance']['return_summ']; ?> грн
+					СУМА : ...................... <?php echo $_SESSION['balance']['return_summ']; ?> грн
 				</p>
 			</div>	
 						
