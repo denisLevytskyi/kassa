@@ -34,7 +34,6 @@ class CheckListController {
 	public function get_check_list () {
 		if (isset($_GET['check_id'])) {
 			$this->set_check_by_id();
-			$this->view_check();
 		} else {
 			$this->set_cheks();
 			$this->view_check_list();
