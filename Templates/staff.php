@@ -50,7 +50,7 @@
 			<div class="listWrap">
 				<?php foreach ($_SESSION['staff']['branches'] as $k => $v) { ?>
 					<div class="listWrapItem">
-						<a href="/branch.php/?branch_id=<?php echo ($v['id']); ?>" class="listWrapItemP"><?php
+						<a href="/branch.php/?branch_id=<?php echo ($v['id']); ?>" class="listWrapItemA"><?php
 							echo($v['time'] .
 								' № => ' . $v['id'] .
 								' Z-bal => ' . $v['z_id'] .
@@ -71,7 +71,7 @@
 			<div class="listWrap">
 				<?php foreach ($_SESSION['staff']['balances'] as $k => $v) { ?>
 					<div class="listWrapItem">
-						<a href="/balance.php/?balance_id=<?php echo ($v['id']); ?>" class="listWrapItemP"><?php
+						<a href="/balance.php/?balance_id=<?php echo ($v['id']); ?>" class="listWrapItemA"><?php
 							echo($v['time'] .
 								' № => ' . $v['id'] .
 								' Summ => ' . $v['summ'] .

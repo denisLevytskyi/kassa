@@ -44,7 +44,7 @@
 			<div class="listWrap">
 				<?php foreach ($_SESSION['check_list'] as $k => $v) { ?>
 					<div class="listWrapItem">
-						<a href="/check.php/?check_id=<?php echo ($v['id']); ?>" class="listWrapItemP"><?php
+						<a href="/check.php/?check_id=<?php echo ($v['id']); ?>" class="listWrapItemA"><?php
 							echo($v['time'] .
 								' № => ' . $v['id'] .
 								' Z-bal => ' . $v['z_id'] .
@@ -54,6 +54,9 @@
 								' ' . $v['auth_name']
 							);
 						?></a>
+						<a href="/checkList.php/?check_id=<?php echo ($v['id']); ?>" class="listWrapItemAGo">
+							To Go!
+						</a>
 					</div>					
 				<?php } ?>
 			</div>
