@@ -80,6 +80,26 @@ class UnikaController extends StaffController {
 		}
 	}
 
+	protected function set_sale ($code) {
+		$sale = mb_substr($code, 1, 2);
+		$article = mb_substr($code, 3);
+		if (empty($_SESSION['unika']['list']) or !is_numeric($sale) or $sale < 0) {
+			return;
+		}
+		foreach ($_SESSION['unika']['list'] as $k => $v) {
+			if ($v['article'] == $article) {
+				$_SESSION['unika']['list'][$k]['article'] = $article . ' -' . $sale . '%';
+				$_SESSION['unika']['list'][$k]['price'] = round(
+					$_SESSION['unika']['list'][$k]['price'] * (100 - $sale) / 100, 2
+				);
+				$_SESSION['unika']['list'][$k]['summ'] = round(
+					$_SESSION['unika']['list'][$k]['price'] * $_SESSION['unika']['list'][$k]['amount'], 2
+				);
+				return;
+			}
+		}
+	}
+
 	protected function add_product () {
 		$model = new Models\ProductModel();
 		$code = $_POST['unika_add'];
@@ -91,6 +111,8 @@ class UnikaController extends StaffController {
 		} elseif ($code[0] == '=') {
 			$search_p = 'name';
 			$code = trim($code, '=');
+		} elseif ($code[0] == '~') {
+			$this->set_sale($code);
 		} elseif ($code[0] == 'i') {
 			$search_p = 'id';
 			$code = trim($code, 'i');
