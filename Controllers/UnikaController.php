@@ -35,15 +35,22 @@ class UnikaController extends StaffController {
 	}
 	
 	protected function set_check_type () {
-		$summ = $_POST['unika_cash'];
+		$cash = $_POST['unika_cash'];
+		$summ = $_SESSION['unika']['summ'];
+		$count = count($_SESSION['unika']['list']);
 		$data = $this->set_balance_data();
-		$rezult = $data['balance_close'] - $summ;
-		if ($rezult >= 0 and isset($_POST['unika_return'])) {
+		$rezult = $data['balance_close'] - $cash;
+		if ($count == 0) {
+			return;
+		}
+		if ($summ == 0) {
+			return 'АНУЛЬВОНО';
+		} elseif ($rezult >= 0 and isset($_POST['unika_return'])) {
 			return 'ВИДАТКОВИЙ ЧЕК';
-		} elseif ($summ < 100000 and empty($_POST['unika_return'])) {
+		} elseif ($cash < 100000 and empty($_POST['unika_return'])) {
 			return 'ФІСКАЛЬНИЙ ЧЕК';
 		} else {
-			return null;
+			return;
 		}
 	}
 
@@ -68,7 +75,7 @@ class UnikaController extends StaffController {
 		}
 		$change = $summ - $received_cash - $received_card;
 		$change = -round($change, 2);
-		if ($change >= 0 and $summ > 0 and isset($type)) {
+		if ($change >= 0 and $summ >= 0 and isset($type)) {
 			$model = new Models\CheckModel();
 			$rezult = $model->get_check_registration($z_id, $auth_id, $auth_name, $time, $type, $body, $received_cash, $received_card, $change, $summ);
 		}
@@ -88,7 +95,8 @@ class UnikaController extends StaffController {
 		}
 		foreach ($_SESSION['unika']['list'] as $k => $v) {
 			if ($v['article'] == $article) {
-				$_SESSION['unika']['list'][$k]['article'] = $article . ' -' . $sale . '%';
+				$_SESSION['unika']['list'][$k]['article'] .= '_S';
+				$_SESSION['unika']['list'][$k]['name'] .= ' (-' . $sale . '%)';
 				$_SESSION['unika']['list'][$k]['price'] = round(
 					$_SESSION['unika']['list'][$k]['price'] * (100 - $sale) / 100, 2
 				);

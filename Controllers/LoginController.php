@@ -53,7 +53,7 @@ class LoginController {
 	}
 
 	protected function get_other_check () {
-		if (isset($_COOKIE['auth_id'])) {
+		if (isset($_COOKIE['auth_id']) and empty($_SESSION['auth']['id'])) {
 			$_SESSION['auth']['id'] = $_COOKIE['auth_id'];
 			$this->set_name_by_id();
 		}

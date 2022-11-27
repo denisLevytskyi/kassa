@@ -93,9 +93,9 @@ class StaffController {
 		);
 		foreach ($b_data as $k => $v) {
 			if ($v['type'] == 'СЛУЖБОВЕ ВИЛУЧЕННЯ') {
-				$data['staff_out'] = $data['staff_out'] + $v['summ'];
+				$data['staff_out'] += $v['summ'];
 			} elseif ($v['type'] == 'СЛУЖБОВЕ ВНЕСЕННЯ') {
-				$data['staff_in'] = $data['staff_in'] + $v['summ'];
+				$data['staff_in'] += $v['summ'];
 			}
 		}
 		foreach ($c_data as $k => $v) {
@@ -107,10 +107,11 @@ class StaffController {
 				}
 				$data['sale_id_last'] = $v['id'];
 				$data['sale_timestamp_last'] = $v['timestamp'];
-				$data['sale_received_cash'] = $data['sale_received_cash'] + $v['received_cash'];
-				$data['sale_received_card'] = $data['sale_received_card'] + $v['received_card'];
-				$data['sale_change'] = $data['sale_change'] + $v['change'];
-				$data['sale_summ'] = $data['sale_summ'] + $v['summ'];
+				$data['sale_checks'] += 1;
+				$data['sale_received_cash'] += $v['received_cash'];
+				$data['sale_received_card'] += $v['received_card'];
+				$data['sale_change'] += $v['change'];
+				$data['sale_summ'] += $v['summ'];
 			} elseif ($v['type'] == 'ВИДАТКОВИЙ ЧЕК') {
 				if ($gate2 == 0) {
 					$data['return_id_first'] = $v['id'];
@@ -119,16 +120,15 @@ class StaffController {
 				}
 				$data['return_id_last'] = $v['id'];
 				$data['return_timestamp_last'] = $v['timestamp'];
-				$data['return_received_cash'] = $data['return_received_cash'] + $v['received_cash'];
-				$data['return_received_card'] = $data['return_received_card'] + $v['received_card'];
-				$data['return_change'] = $data['return_change'] + $v['change'];
-				$data['return_summ'] = $data['return_summ'] + $v['summ'];
+				$data['return_checks'] += 1;
+				$data['return_received_cash'] += $v['received_cash'];
+				$data['return_received_card'] += $v['received_card'];
+				$data['return_change'] += $v['change'];
+				$data['return_summ'] += $v['summ'];
 			}
 		}
-		$data['sale_checks'] = $data['sale_id_last'] - $data['sale_id_first'] + 1;
 		$data['sale_summ_cash'] = $data['sale_received_cash'] - $data['sale_change'];
 		$data['sale_summ_card'] = $data['sale_received_card'];
-		$data['return_checks'] = $data['return_id_last'] - $data['return_id_first'] + 1;
 		$data['return_summ_cash'] = $data['return_received_cash'] - $data['return_change'];
 		$data['return_summ_card'] = $data['return_received_card'];
 		$data['summ_cash'] = $data['sale_summ_cash'] - $data['return_summ_cash'];
@@ -137,7 +137,7 @@ class StaffController {
 		$data['balance_close'] = $data['balance_open'] + $data['summ_cash'] + $data['staff_in'] - $data['staff_out'];
 		foreach ($data as $k => $v) {
 			if (is_numeric($v)) {
-				$data[$k] = abs(round($v, 2));
+				$data[$k] = round($v, 2);
 			}
 		}
 		return $data;
@@ -187,11 +187,9 @@ class StaffController {
 		if ( ($checks = $model->get_checks_by_z_id($z_id)) ) {
 			return $checks;
 		} else {
-			$checks = array();
-			$check = array(
-				'type' => 0,
-			);
-			array_push($checks, $check);
+			$checks = array(array(
+				'type' => null
+			));
 			return $checks;
 		}
 	}
@@ -201,11 +199,9 @@ class StaffController {
 		if ( ($branches = $model->get_branches_by_z_id($z_id)) ) {
 			return $branches;
 		} else {
-			$branches = array();
-			$branch = array(
-				'type' => 0
-			);
-			array_push($branches, $branch);
+			$branches = array(array(
+				'type' => null
+			));
 			return $branches;
 		}
 	}
