@@ -95,7 +95,7 @@ class UnikaController extends StaffController {
 		}
 		foreach ($_SESSION['unika']['list'] as $k => $v) {
 			if ($v['article'] == $article) {
-				$_SESSION['unika']['list'][$k]['article'] .= '_S';
+				$_SESSION['unika']['list'][$k]['article'] .= 's';
 				$_SESSION['unika']['list'][$k]['name'] .= ' (-' . $sale . '%)';
 				$_SESSION['unika']['list'][$k]['price'] = round(
 					$_SESSION['unika']['list'][$k]['price'] * (100 - $sale) / 100, 2

@@ -36,7 +36,28 @@
 	<section class="main">
 			<div class="mainItem">
 				<p class="mainItemP mainItemName">
-					= = = = = = ПРОДАЖІ = = = = = =
+					= = = = = = АНУЛЬОВАНО = = = = = =
+				</p>
+				<p class="mainItemP">
+					Перший чек №: <?php echo $_SESSION['balance']['null_id_first']; ?>
+				</p>
+				<p class="mainItemP">
+					Д/Ч: <?php echo $_SESSION['balance']['null_time_first']; ?>
+				</p>
+				<p class="mainItemP">
+					Останній чек №: <?php echo $_SESSION['balance']['null_id_last']; ?>
+				</p>
+				<p class="mainItemP">
+					Д/Ч: <?php echo $_SESSION['balance']['null_time_last']; ?>
+				</p>
+				<p class="mainItemP">
+					Чеків: <?php echo $_SESSION['balance']['null_checks']; ?>
+				</p>
+			</div>
+			<br>
+			<div class="mainItem">
+				<p class="mainItemP mainItemName">
+					= = = = = = ПРОДАЖІ = = = = = = = = =
 				</p>
 				<p class="mainItemP">
 					Перший чек №: <?php echo $_SESSION['balance']['sale_id_first']; ?>
@@ -141,6 +162,18 @@
 			<p class="footerNumP">
 				<?php echo ('КІНЦЕВИЙ ЗАЛИШОК: .......... ' . $_SESSION['balance']['balance_close'] . ' грн'); ?>
 			</p>
+			<?php if ($_SESSION['balance']['type'] == "Z") { ?>
+				<br>
+				<p class="footerNumP">
+					<?php echo 'ФІСКАЛЬНИЙ ЗВІТ ДІЙСНИЙ'; ?>
+				</p>
+				<p class="footerNumP">
+					<?php echo 'ДАНІ ЗАПИСАНІ ТА ПЕРЕДАНІ'; ?>
+				</p>
+				<p class="footerNumP">
+					<?php echo 'РЕГІСТРИ ФІСК. ДАНИХ ОБНУЛЕНІ'; ?>
+				</p>
+			<?php } ?>
 		</div>
 		<p class="footerFiskal"><?php
 			if ($_SESSION['balance']['type'] == "Z") {

@@ -124,6 +124,10 @@ button:hover {
 	font-weight: bold;
 }
 
+.list {
+	padding-bottom: 50px;
+}
+
 .listWrap {
 	display: flex;
 	align-items: center;

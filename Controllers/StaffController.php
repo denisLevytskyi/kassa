@@ -40,6 +40,8 @@ class StaffController {
 			$_SESSION['balance']['id'] = $this->set_z_id();
 			$_SESSION['balance']['type'] = $_GET['staff_balance'];
 			$_SESSION['balance']['time'] = date("y-m-d H:i:s", $data['timestamp']);
+			$_SESSION['balance']['null_time_first'] = date("y-m-d H:i:s", $data['null_timestamp_first']);
+			$_SESSION['balance']['null_time_last'] = date("y-m-d H:i:s", $data['null_timestamp_last']);
 			$_SESSION['balance']['sale_time_first'] = date("y-m-d H:i:s", $data['sale_timestamp_first']);
 			$_SESSION['balance']['sale_time_last'] = date("y-m-d H:i:s", $data['sale_timestamp_last']);
 			$_SESSION['balance']['return_time_first'] = date("y-m-d H:i:s", $data['return_timestamp_first']);
@@ -52,6 +54,7 @@ class StaffController {
 	}
 	
 	protected function set_balance_data () {
+		$gate0 = 0;
 		$gate1 = 0;
 		$gate2 = 0;
 		$z_id = $this->set_z_id();
@@ -63,6 +66,11 @@ class StaffController {
 			'timestamp' => time(),
 			'staff_in' => '0',
 			'staff_out' => '0',
+			'null_id_first' => '0',
+			'null_id_last' => '0',
+			'null_timestamp_first' => time(),
+			'null_timestamp_last' => time(),
+			'null_checks' => '0',
 			'sale_id_first' => '0',
 			'sale_id_last' => '0',
 			'sale_timestamp_first' => time(),
@@ -99,7 +107,16 @@ class StaffController {
 			}
 		}
 		foreach ($c_data as $k => $v) {
-			if ($v['type'] == 'ФІСКАЛЬНИЙ ЧЕК') {
+			if ($v['type'] == 'АНУЛЬВОНО') {
+				if ($gate0 == 0) {
+					$data['null_id_first'] = $v['id'];
+					$data['null_timestamp_first'] = $v['timestamp'];
+					$gate0 = 1;
+				}
+				$data['null_id_last'] = $v['id'];
+				$data['null_timestamp_last'] = $v['timestamp'];
+				$data['null_checks'] += 1;
+			} elseif ($v['type'] == 'ФІСКАЛЬНИЙ ЧЕК') {
 				if ($gate1 == 0) {
 					$data['sale_id_first'] = $v['id'];
 					$data['sale_timestamp_first'] = $v['timestamp'];

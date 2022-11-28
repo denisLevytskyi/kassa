@@ -3,7 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><?php session_start(); echo $_SESSION['auth']['name']; ?> </title>
+	<title>
+		<?php session_start(); echo ($_SESSION['unika']['summ']	. ' | ' . $_SESSION['auth']['name']); ?>
+	</title>
 	<link rel="stylesheet" href="/Styles/unika.css">
 </head>
 <body>
