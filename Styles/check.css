@@ -87,7 +87,6 @@ body {
 	border-bottom: 2px dashed black;
 	margin: 10px 0;
 	padding: 10px 0;
-
 }
 
 .footerFiskal {
@@ -102,4 +101,8 @@ body {
 	text-align: right;
 	font-weight: bold;
 	font-style: italic;
+}
+
+.c0 {
+	display: none;
 }

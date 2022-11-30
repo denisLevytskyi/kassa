@@ -23,6 +23,13 @@
 				<input type="text" class="addProductFormInp" name="add_product_code" placeholder="Code" required>
 				<input type="text" class="addProductFormInp" name="add_product_name" placeholder="Name of product" required>
 				<input type="text" class="addProductFormInp" name="add_product_description" placeholder="Description" required>
+				<select class="addProductFormInp" name="add_product_group" id="list" required>
+					<option value="А">А</option>
+					<option value="Б">Б</option>
+					<option value="В">В</option>
+					<option value="Г">Г</option>
+					<option value="М+А">М+А</option>
+				</select>
 				<input type="file" class="addProductFormInp" name="add_product_foto">
 				<input type="text" style="display: none;" name="add_product_1" value="1" required>
 				<button type="confirm" class="addProductFormBtn">Add!</button>

@@ -32,9 +32,9 @@ class ProductModel extends PriceModel {
 		return mysqli_query($connection, $request);
 	}
 
-	public function get_product_registration ($art, $code, $name, $desk, $foto, $id) {
+	public function get_product_registration ($group, $art, $code, $name, $desk, $foto, $id) {
 		$connection = Logics\Connection::get_connection();
-		$request = "INSERT INTO products (article, code, name, description, foto, auth_id) VALUES ('$art', '$code', '$name', '$desk', '$foto', '$id')";
+		$request = "INSERT INTO products (`group`, article, code, name, description, foto, auth_id) VALUES ('$group', '$art', '$code', '$name', '$desk', '$foto', '$id')";
 		return mysqli_query($connection, $request);
 	}
 

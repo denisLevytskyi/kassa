@@ -48,7 +48,7 @@ button:hover {
 	background: blue;
 }
 
-input, textarea {
+input, textarea, select {
 	display: block;
 	font-weight: bold;
 	padding: 10px 10px;

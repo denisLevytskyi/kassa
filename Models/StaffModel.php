@@ -95,22 +95,44 @@ class StaffModel extends CheckModel {
 		$i18 = $data['sale_summ_cash'];
 		$i19 = $data['sale_summ_card'];
 		$i20 = $data['sale_summ'];
-		$i21 = $data['return_id_first'];
-		$i22 = $data['return_id_last'];
-		$i23 = $data['return_timestamp_first'];
-		$i24 = $data['return_timestamp_last'];
-		$i25 = $data['return_checks'];
-		$i26 = $data['return_received_cash'];
-		$i27 = $data['return_received_card'];
-		$i28 = $data['return_change'];
-		$i29 = $data['return_summ_cash'];
-		$i30 = $data['return_summ_card'];
-		$i31 = $data['return_summ'];
-		$i32 = $data['summ_cash'];
-		$i33 = $data['summ_card'];
-		$i34 = $data['summ'];
-		$i35 = $data['balance_open'];
-		$i36 = $data['balance_close'];
+		$i21 = $data['sale_summ_a'];
+		$i22 = $data['sale_summ_b'];
+		$i23 = $data['sale_summ_v'];
+		$i24 = $data['sale_summ_g'];
+		$i25 = $data['sale_summ_m+a'];
+		$i26 = $data['sale_summ_tax_a'];
+		$i27 = $data['sale_summ_tax_b'];
+		$i28 = $data['sale_summ_tax_v'];
+		$i29 = $data['sale_summ_tax_g'];
+		$i30 = $data['sale_summ_tax_m+a'];
+		$i31 = $data['sale_summ_tax'];
+		$i32 = $data['return_id_first'];
+		$i33 = $data['return_id_last'];
+		$i34 = $data['return_timestamp_first'];
+		$i35 = $data['return_timestamp_last'];
+		$i36 = $data['return_checks'];
+		$i37 = $data['return_received_cash'];
+		$i38 = $data['return_received_card'];
+		$i39 = $data['return_change'];
+		$i40 = $data['return_summ_cash'];
+		$i41 = $data['return_summ_card'];
+		$i42 = $data['return_summ'];
+		$i43 = $data['return_summ_a'];
+		$i44 = $data['return_summ_b'];
+		$i45 = $data['return_summ_v'];
+		$i46 = $data['return_summ_g'];
+		$i47 = $data['return_summ_m+a'];
+		$i48 = $data['return_summ_tax_a'];
+		$i49 = $data['return_summ_tax_b'];
+		$i50 = $data['return_summ_tax_v'];
+		$i51 = $data['return_summ_tax_g'];
+		$i52 = $data['return_summ_tax_m+a'];
+		$i53 = $data['return_summ_tax'];
+		$i54 = $data['summ_cash'];
+		$i55 = $data['summ_card'];
+		$i56 = $data['summ'];
+		$i57 = $data['balance_open'];
+		$i58 = $data['balance_close'];
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO balances (
 			auth_id,
@@ -134,6 +156,17 @@ class StaffModel extends CheckModel {
 			sale_summ_cash,
 			sale_summ_card,
 			sale_summ,
+			sale_summ_a,
+			sale_summ_b,
+			sale_summ_v,
+			sale_summ_g,
+			`sale_summ_m+a`,
+			sale_summ_tax_a,
+			sale_summ_tax_b,
+			sale_summ_tax_v,
+			sale_summ_tax_g,
+			`sale_summ_tax_m+a`,
+			sale_summ_tax,
 			return_id_first,
 			return_id_last,
 			return_timestamp_first,
@@ -145,13 +178,24 @@ class StaffModel extends CheckModel {
 			return_summ_cash,
 			return_summ_card,
 			return_summ,
+			return_summ_a,
+			return_summ_b,
+			return_summ_v,
+			return_summ_g,
+			`return_summ_m+a`,
+			return_summ_tax_a,
+			return_summ_tax_b,
+			return_summ_tax_v,
+			return_summ_tax_g,
+			`return_summ_tax_m+a`,
+			return_summ_tax,
 			summ_cash,
 			summ_card,
 			summ,
 			balance_open,
 			balance_close)
 			VALUES
-			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27', '$i28', '$i29', '$i30', '$i31', '$i32', '$i33', '$i34', '$i35', '$i36')";
+			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27', '$i28', '$i29', '$i30', '$i31', '$i32', '$i33', '$i34', '$i35', '$i36', '$i37', '$i38', '$i39', '$i41', '$i41', '$i42', '$i43', '$i44', '$i45', '$i46', '$i47', '$i48', '$i49', '$i50', '$i51', '$i52', '$i53', '$i54', '$i55', '$i56', '$i57', '$i58')";
 		return mysqli_query($connection, $request);
 	}
 

@@ -17,6 +17,7 @@ class AddProductController {
 	}
 
 	protected function set_product_registration () {
+		$group = $_POST['add_product_group'];
 		$art = $_POST['add_product_art'];
 		$code = $_POST['add_product_code'];
 		$name = $_POST['add_product_name'];
@@ -28,7 +29,7 @@ class AddProductController {
 			$file = $_FILES['add_product_foto'];
 			$foto = $this->set_move_foto($file);
 		}
-		if ( ($model->get_product_registration($art, $code, $name, $desk, $foto, $id)) ) {
+		if ( ($model->get_product_registration($group, $art, $code, $name, $desk, $foto, $id)) ) {
 			header('Location: /');
 		} else {
 			ErrorController::get_view_error(11);

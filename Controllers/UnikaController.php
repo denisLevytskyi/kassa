@@ -33,6 +33,46 @@ class UnikaController extends StaffController {
 		unset($_SESSION['unika']['list'][$key]);
 		header('Location: /unika.php');
 	}
+
+	protected function set_tax_data () {
+		$data = array(
+			'summ_a' => '0',
+			'summ_b' => '0',
+			'summ_v' => '0',
+			'summ_g' => '0',
+			'summ_m+a' => '0',
+			'summ_tax_a' => '0',
+			'summ_tax_b' => '0',
+			'summ_tax_v' => '0',
+			'summ_tax_g' => '0',
+			'summ_tax_m+a' => '0'
+		);
+		$list = $_SESSION['unika']['list'];
+		foreach ($list as $k => $v) {
+			if ($v['group'] == 'А') {
+				$data['summ_a'] += $v['summ'];
+				$data['summ_tax_a'] += $v['summ'] * 0.2;
+			} elseif ($v['group'] == 'Б') {
+				$data['summ_b'] += $v['summ'];
+				$data['summ_tax_b'] += $v['summ'] * 0.14;
+			} elseif ($v['group'] == 'В') {
+				$data['summ_v'] += $v['summ'];
+				$data['summ_tax_v'] += $v['summ'] * 0.07;
+			} elseif ($v['group'] == 'Г') {
+				$data['summ_g'] += $v['summ'];
+				$data['summ_tax_g'] += $v['summ'] * 0;
+			} elseif ($v['group'] == 'М+А') {
+				$data['summ_m+a'] += $v['summ'];
+				$data['summ_tax_m+a'] += $v['summ'] * 0.26;
+			}
+		}
+		foreach ($data as $k => $v) {
+			if (is_numeric($v)) {
+				$data[$k] = round($v, 2);
+			}
+		}
+		return $data;
+	}
 	
 	protected function set_check_type () {
 		$cash = $_POST['unika_cash'];
@@ -55,33 +95,47 @@ class UnikaController extends StaffController {
 	}
 
 	protected function set_check () {
+		$tax_data = $this->set_tax_data();
 		$rezult = false;
-		$z_id = $this->set_z_id();
-		$auth_id = $_SESSION['auth']['id'];
-		$auth_name = $_SESSION['auth']['name'];
-		$time = time();
-		$type = $this->set_check_type();
-		$body = serialize($_SESSION['unika']['list']);
-		$received_cash = round($_POST['unika_cash'], 2);
-		$received_card = 0;
-		$summ = $_SESSION['unika']['summ'];
+		$data = array(
+			'z_id' => $this->set_z_id(),
+			'auth_id' => $_SESSION['auth']['id'],
+			'auth_name' =>  $_SESSION['auth']['name'],
+			'timestamp' => time(),
+			'type' => $this->set_check_type(),
+			'body' => serialize($_SESSION['unika']['list']),
+			'received_cash' => round($_POST['unika_cash'], 2),
+			'received_card' => '0',
+			'change' => '0',
+			'summ' => $_SESSION['unika']['summ'],
+			'summ_a' => $tax_data['summ_a'],
+			'summ_b' => $tax_data['summ_b'],
+			'summ_v' => $tax_data['summ_v'],
+			'summ_g' => $tax_data['summ_g'],
+			'summ_m+a' => $tax_data['summ_m+a'],
+			'summ_tax_a' => $tax_data['summ_tax_a'],
+			'summ_tax_b' => $tax_data['summ_tax_b'],
+			'summ_tax_v' => $tax_data['summ_tax_v'],
+			'summ_tax_g' => $tax_data['summ_tax_g'],
+			'summ_tax_m+a' => $tax_data['summ_tax_m+a']
+		);
 		if ($_POST['unika_pay'] == 'card') {
-			$received_card = $summ - $received_cash;
+			$data['received_card'] = $data['summ'] - $data['received_cash'];
 		} else {
-			$received_card = 0;
+			$data['received_card'] = 0;
 		}
-		if ($received_card < 0) {
-			$received_card = 0;
+		if ($data['received_card'] < 0) {
+			$data['received_card'] = 0;
 		}
-		$change = $summ - $received_cash - $received_card;
-		$change = -round($change, 2);
-		if ($change >= 0 and $summ >= 0 and isset($type)) {
+		$data['change'] = $data['summ'] - $data['received_cash'] - $data['received_card'];
+		$data['change'] = -round($data['change'], 2);
+		if ($data['change'] >= 0 and $data['summ'] >= 0 and isset($data['type'])) {
 			$model = new Models\CheckModel();
-			$rezult = $model->get_check_registration($z_id, $auth_id, $auth_name, $time, $type, $body, $received_cash, $received_card, $change, $summ);
+			$rezult = $model->get_check_registration($data);
 		}
 		if ($rezult == true) {
 			unset($_SESSION['unika']);
-			$check = $model->get_check('timestamp', $time);
+			$check = $model->get_check('timestamp', $data['timestamp']);
 			$check_id = $check['id'];
 			header("Location: /check.php/?check_id=$check_id");
 		}

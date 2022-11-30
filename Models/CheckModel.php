@@ -39,7 +39,27 @@ class CheckModel {
 		return $checks;
 	}
 
-	public function get_check_registration ($z_id, $auth_id, $auth_name, $time, $type, $body, $received_cash, $received_card, $change, $summ) {
+	public function get_check_registration ($data) {
+		$i0 = $data['z_id'];
+		$i1 = $data['auth_id'];
+		$i2 = $data['auth_name'];
+		$i3 = $data['timestamp'];
+		$i4 = $data['type'];
+		$i5 = $data['body'];
+		$i6 = $data['received_cash'];
+		$i7 = $data['received_card'];
+		$i8 = $data['change'];
+		$i9 = $data['summ'];
+		$i10 = $data['summ_a'];
+		$i11 = $data['summ_b'];
+		$i12 = $data['summ_v'];
+		$i13 = $data['summ_g'];
+		$i14 = $data['summ_m+a'];
+		$i15 = $data['summ_tax_a'];
+		$i16 = $data['summ_tax_b'];
+		$i17 = $data['summ_tax_v'];
+		$i18 = $data['summ_tax_g'];
+		$i19 = $data['summ_tax_m+a'];
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO checks (
 			z_id,
@@ -51,9 +71,20 @@ class CheckModel {
 			received_cash,
 			received_card,
 			`change`,
-			summ)
+			summ,
+			summ_a,
+			summ_b,
+			summ_v,
+			summ_g,
+			`summ_m+a`,
+			summ_tax_a,
+			summ_tax_b,
+			summ_tax_v,
+			summ_tax_g,
+			`summ_tax_m+a`
+			)
 			VALUES
-			('$z_id', '$auth_id', '$auth_name', '$time', '$type', '$body', '$received_cash', '$received_card', '$change', '$summ')";
+			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19')";
 		return mysqli_query($connection, $request);
 	}
 }
