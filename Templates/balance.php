@@ -95,38 +95,38 @@
 			</p>
 			<br>
 			<p class="mainItemP">
-				ОБІГ А: ...... <?php echo $_SESSION['balance']['sale_summ_a']; ?> грн
+				ОБІГ А: ...................... <?php echo $_SESSION['balance']['sale_summ_a']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ОБІГ Б: ...... <?php echo $_SESSION['balance']['sale_summ_b']; ?> грн
+				ОБІГ Б: ...................... <?php echo $_SESSION['balance']['sale_summ_b']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ОБІГ В: ...... <?php echo $_SESSION['balance']['sale_summ_v']; ?> грн
+				ОБІГ В: ...................... <?php echo $_SESSION['balance']['sale_summ_v']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ОБІГ Г: ...... <?php echo $_SESSION['balance']['sale_summ_g']; ?> грн
+				ОБІГ Г: ...................... <?php echo $_SESSION['balance']['sale_summ_g']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ОБІГ М+А: .. <?php echo $_SESSION['balance']['sale_summ_m+a']; ?> грн
+				ОБІГ М+А: ................. <?php echo $_SESSION['balance']['sale_summ_m+a']; ?> грн
 			</p>
 			<br>
 			<p class="mainItemP">
-				ПДВ А 20%: ...... <?php echo $_SESSION['balance']['sale_summ_tax_a']; ?> грн
+				ПДВ А 20%: .............. <?php echo $_SESSION['balance']['sale_summ_tax_a']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ПДВ Б 14%: ...... <?php echo $_SESSION['balance']['sale_summ_tax_b']; ?> грн
+				ПДВ Б 14%: .............. <?php echo $_SESSION['balance']['sale_summ_tax_b']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ПДВ В 07%: ...... <?php echo $_SESSION['balance']['sale_summ_tax_v']; ?> грн
+				ПДВ В 07%: .............. <?php echo $_SESSION['balance']['sale_summ_tax_v']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ПДВ Г 00%: ...... <?php echo $_SESSION['balance']['sale_summ_tax_g']; ?> грн
+				ПДВ Г 00%: .............. <?php echo $_SESSION['balance']['sale_summ_tax_g']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ЗБІР М+А 20+6%: .. <?php echo $_SESSION['balance']['sale_summ_tax_m+a']; ?> грн
+				ЗБІР М+А 6%+А: ...... <?php echo $_SESSION['balance']['sale_summ_tax_m+a']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ПОДАТОК: ...... <?php echo $_SESSION['balance']['sale_summ_tax']; ?> грн
+				ПОДАТОК: ................ <?php echo $_SESSION['balance']['sale_summ_tax']; ?> грн
 			</p>
 		</div>
 		<br>
@@ -151,7 +151,7 @@
 			</p>
 			<br>
 			<p class="mainItemP">
-				Видано готівкою: ....... <?php echo $_SESSION['balance']['return_received_cash']; ?> грн
+				Видано готівкою: ...... <?php echo $_SESSION['balance']['return_received_cash']; ?> грн
 			</p>
 			<p class="mainItemP">
 				Видано карткою: ....... <?php echo $_SESSION['balance']['return_received_card']; ?> грн
@@ -170,38 +170,38 @@
 			</p>
 				<br>
 			<p class="mainItemP">
-				ОБІГ А: ...... <?php echo $_SESSION['balance']['return_summ_a']; ?> грн
+				ОБІГ А: ...................... <?php echo $_SESSION['balance']['return_summ_a']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ОБІГ Б: ...... <?php echo $_SESSION['balance']['return_summ_b']; ?> грн
+				ОБІГ Б: ...................... <?php echo $_SESSION['balance']['return_summ_b']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ОБІГ В: ...... <?php echo $_SESSION['balance']['return_summ_v']; ?> грн
+				ОБІГ В: ...................... <?php echo $_SESSION['balance']['return_summ_v']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ОБІГ Г: ...... <?php echo $_SESSION['balance']['return_summ_g']; ?> грн
+				ОБІГ Г: ...................... <?php echo $_SESSION['balance']['return_summ_g']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ОБІГ М+А: .. <?php echo $_SESSION['balance']['return_summ_m+a']; ?> грн
+				ОБІГ М+А: ................. <?php echo $_SESSION['balance']['return_summ_m+a']; ?> грн
 			</p>
 			<br>
 			<p class="mainItemP">
-				ПДВ А 20%: ...... <?php echo $_SESSION['balance']['return_summ_tax_a']; ?> грн
+				ПДВ А 20%: .............. <?php echo $_SESSION['balance']['return_summ_tax_a']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ПДВ Б 14%: ...... <?php echo $_SESSION['balance']['return_summ_tax_b']; ?> грн
+				ПДВ Б 14%: .............. <?php echo $_SESSION['balance']['return_summ_tax_b']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ПДВ В 07%: ...... <?php echo $_SESSION['balance']['return_summ_tax_v']; ?> грн
+				ПДВ В 07%: .............. <?php echo $_SESSION['balance']['return_summ_tax_v']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ПДВ Г 00%: ...... <?php echo $_SESSION['balance']['return_summ_tax_g']; ?> грн
+				ПДВ Г 00%: .............. <?php echo $_SESSION['balance']['return_summ_tax_g']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ЗБІР М+А 20+6%: .. <?php echo $_SESSION['balance']['return_summ_tax_m+a']; ?> грн
+				ЗБІР М+А 6%+А: ...... <?php echo $_SESSION['balance']['return_summ_tax_m+a']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ПОДАТОК: ...... <?php echo $_SESSION['balance']['return_summ_tax']; ?> грн
+				ПОДАТОК: ................ <?php echo $_SESSION['balance']['return_summ_tax']; ?> грн
 			</p>
 		</div>
 	</section>

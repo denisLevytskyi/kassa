@@ -162,6 +162,14 @@ class UnikaController extends StaffController {
 		}
 	}
 
+	protected function set_mark ($code) {
+		$mark = trim($code, '!');
+		$key = array_key_last($_SESSION['unika']['list']);
+		if ($key !== false) {
+			$_SESSION['unika']['list'][$key]['name'] .= '<br>А/М:' . $mark;
+		}
+	}
+
 	protected function add_product () {
 		$model = new Models\ProductModel();
 		$code = $_POST['unika_add'];
@@ -175,6 +183,8 @@ class UnikaController extends StaffController {
 			$code = trim($code, '=');
 		} elseif ($code[0] == '~') {
 			$this->set_sale($code);
+		} elseif ($code[0] == '!') {
+			$this->set_mark($code);
 		} elseif ($code[0] == 'i') {
 			$search_p = 'id';
 			$code = trim($code, 'i');

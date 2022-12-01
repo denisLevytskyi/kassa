@@ -150,6 +150,10 @@ button:hover {
 	margin: 0 10px;
 }
 
+.listWrapNameP {
+	text-align: left;
+}
+
 .listWrapElse {
 	width: 12%;
 }
