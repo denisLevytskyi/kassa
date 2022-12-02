@@ -19,13 +19,18 @@
 				<button type="confirm" class="headerFirstFormBtn">+</button>
 			</form>
 			<div class="headerFirstSumm">
-				<p class="headerFirstSumm">
+				<p class="headerFirstSummP">
 					<?php echo ($_SESSION['unika']['summ']); ?>
 				</p>
 			</div>
 		</div>
 		<div class="headerSecond">
 			<div class="headerSecondHead headerSecondHead1">
+				<h2 class="headerSecondHeadH2">
+					№
+				</h2>
+			</div>
+			<div class="headerSecondHead headerSecondHead2">
 				<h2 class="headerSecondHeadH2">
 					Name
 				</h2>
@@ -55,6 +60,9 @@
 	<section class="list">
 		<?php foreach ($_SESSION['unika']['list'] as $k => $v) { ?>
 			<div class="listWrap">
+				<div class="listWrapFirst">
+					<?php echo ($k + 1); ?>
+				</div>
 				<div class="listWrapName">
 					<img src="<?php echo ($v['foto']); ?>" class="listWrapNameImg">
 					<p class="listWrapNameP">

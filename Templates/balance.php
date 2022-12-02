@@ -123,7 +123,7 @@
 				ПДВ Г 00%: .............. <?php echo $_SESSION['balance']['sale_summ_tax_g']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ЗБІР М+А 6%+А: ...... <?php echo $_SESSION['balance']['sale_summ_tax_m+a']; ?> грн
+				ЗБІР М+А 06%: ........ <?php echo $_SESSION['balance']['sale_summ_tax_m+a']; ?> грн
 			</p>
 			<p class="mainItemP">
 				ПОДАТОК: ................ <?php echo $_SESSION['balance']['sale_summ_tax']; ?> грн
@@ -198,7 +198,7 @@
 				ПДВ Г 00%: .............. <?php echo $_SESSION['balance']['return_summ_tax_g']; ?> грн
 			</p>
 			<p class="mainItemP">
-				ЗБІР М+А 6%+А: ...... <?php echo $_SESSION['balance']['return_summ_tax_m+a']; ?> грн
+				ЗБІР М+А 06%: ........ <?php echo $_SESSION['balance']['return_summ_tax_m+a']; ?> грн
 			</p>
 			<p class="mainItemP">
 				ПОДАТОК: ................ <?php echo $_SESSION['balance']['return_summ_tax']; ?> грн

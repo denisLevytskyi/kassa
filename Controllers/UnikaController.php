@@ -11,7 +11,7 @@ class UnikaController extends StaffController {
 
 	protected function set_summ () {
 		$summ = '0.00';
-		if (isset($_SESSION['unika']['list'])) {
+		if (!empty($_SESSION['unika']['list'])) {
 			foreach ($_SESSION['unika']['list'] as $k => $v) {
 				$summ = $summ + $v['summ'];
 			}
@@ -51,19 +51,23 @@ class UnikaController extends StaffController {
 		foreach ($list as $k => $v) {
 			if ($v['group'] == 'А') {
 				$data['summ_a'] += $v['summ'];
-				$data['summ_tax_a'] += $v['summ'] * 0.2;
+				$data['summ_tax_a'] += $v['summ'] * 20 / 120;
 			} elseif ($v['group'] == 'Б') {
 				$data['summ_b'] += $v['summ'];
-				$data['summ_tax_b'] += $v['summ'] * 0.14;
+				$data['summ_tax_b'] += $v['summ'] * 14 / 114;
 			} elseif ($v['group'] == 'В') {
 				$data['summ_v'] += $v['summ'];
-				$data['summ_tax_v'] += $v['summ'] * 0.07;
+				$data['summ_tax_v'] += $v['summ'] * 7 / 107;
 			} elseif ($v['group'] == 'Г') {
 				$data['summ_g'] += $v['summ'];
-				$data['summ_tax_g'] += $v['summ'] * 0;
+				$data['summ_tax_g'] += $v['summ'] * 0 / 100;
 			} elseif ($v['group'] == 'М+А') {
-				$data['summ_m+a'] += $v['summ'];
-				$data['summ_tax_m+a'] += $v['summ'] * 0.26;
+				$summ_m = $v['summ'];
+				$summ_tax_m = $v['summ'] * 6 / 106;
+				$data['summ_m+a'] += $summ_m;
+				$data['summ_tax_m+a'] += $summ_tax_m;
+				$data['summ_a'] += $summ_m - $summ_tax_m;
+				$data['summ_tax_a'] += ($summ_m - $summ_tax_m) * 20 / 120;
 			}
 		}
 		return $data;
@@ -123,13 +127,13 @@ class UnikaController extends StaffController {
 			$data['received_card'] = 0;
 		}
 		$data['change'] = $data['summ'] - $data['received_cash'] - $data['received_card'];
-		$data['change'] = -$data['change'];
+		$change = -$data['change'];
 		foreach ($data as $k => $v) {
 			if (is_numeric($v)) {
 				$data[$k] = abs(round($v, 2));
 			}
 		}
-		if ($data['change'] >= 0 and $data['summ'] >= 0 and isset($data['type'])) {
+		if ($change >= 0 and $data['summ'] >= 0 and isset($data['type'])) {
 			$model = new Models\CheckModel();
 			$rezult = $model->get_check_registration($data);
 		}

@@ -9,8 +9,10 @@ body, button {
 	padding: 0;
 	margin: 0;
 	font-size: 20px;
-	background: url('bg.jpg') no-repeat top fixed;
-	background-size: cover;
+}
+
+body {
+	min-width: 800px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,6 +28,7 @@ a {
 
 button:hover {
 	background: blue;
+	color: white;
 }
 
 .headerFirst {
@@ -38,7 +41,7 @@ button:hover {
 }
 
 .headerFirstAImg {
-	height: 65px;
+	height: 60px;
 	background: white;
 }
 
@@ -55,7 +58,7 @@ button:hover {
 
 .headerFirstFormBtn {
 	background: yellow;
-	padding: 5px 10px;
+	padding: 3px 15px;
 	border-radius: 100px;
 }
 
@@ -81,7 +84,11 @@ button:hover {
 }
 
 .headerSecondHead1 {
-	width: 50%;
+	width: 4%;
+}
+
+.headerSecondHead2 {
+	width: 46%;
 }
 
 .footer {
@@ -137,17 +144,21 @@ button:hover {
 	margin: 5px 0;
 }
 
+.listWrapFirst {
+	width: 4%;
+}
+
 .listWrapName {
 	display: flex;
 	align-items: center;
 	justify-content: left;
-	width: 50%;
+	width: 46%;
 }
 
 .listWrapNameImg {
 	height: 50px;
 	display: inline;
-	margin: 0 10px;
+	margin-right: 10px;
 }
 
 .listWrapNameP {
