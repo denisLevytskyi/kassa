@@ -8,7 +8,6 @@ class CheckModel {
 		$request = "SELECT * FROM checks WHERE $search_p= '$search_v'";
 		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		if ( ($record = mysqli_fetch_assoc($rezult)) ) {
-			$record['change'] = abs($record['change']);
 			$record['main'] = unserialize($record['body']);
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
 			return $record;

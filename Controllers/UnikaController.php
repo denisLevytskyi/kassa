@@ -66,11 +66,6 @@ class UnikaController extends StaffController {
 				$data['summ_tax_m+a'] += $v['summ'] * 0.26;
 			}
 		}
-		foreach ($data as $k => $v) {
-			if (is_numeric($v)) {
-				$data[$k] = round($v, 2);
-			}
-		}
 		return $data;
 	}
 	
@@ -104,7 +99,7 @@ class UnikaController extends StaffController {
 			'timestamp' => time(),
 			'type' => $this->set_check_type(),
 			'body' => serialize($_SESSION['unika']['list']),
-			'received_cash' => round($_POST['unika_cash'], 2),
+			'received_cash' => $_POST['unika_cash'],
 			'received_card' => '0',
 			'change' => '0',
 			'summ' => $_SESSION['unika']['summ'],
@@ -128,7 +123,12 @@ class UnikaController extends StaffController {
 			$data['received_card'] = 0;
 		}
 		$data['change'] = $data['summ'] - $data['received_cash'] - $data['received_card'];
-		$data['change'] = -round($data['change'], 2);
+		$data['change'] = -$data['change'];
+		foreach ($data as $k => $v) {
+			if (is_numeric($v)) {
+				$data[$k] = abs(round($v, 2));
+			}
+		}
 		if ($data['change'] >= 0 and $data['summ'] >= 0 and isset($data['type'])) {
 			$model = new Models\CheckModel();
 			$rezult = $model->get_check_registration($data);
@@ -165,8 +165,8 @@ class UnikaController extends StaffController {
 	protected function set_mark ($code) {
 		$mark = trim($code, '!');
 		$key = array_key_last($_SESSION['unika']['list']);
-		if ($key !== false) {
-			$_SESSION['unika']['list'][$key]['name'] .= '<br>А/М:' . $mark;
+		if ($key !== null) {
+			$_SESSION['unika']['list'][$key]['name'] .= '<br>А/М: ' . $mark;
 		}
 	}
 
