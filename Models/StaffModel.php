@@ -99,12 +99,12 @@ class StaffModel extends CheckModel {
 		$i22 = $data['sale_summ_b'];
 		$i23 = $data['sale_summ_v'];
 		$i24 = $data['sale_summ_g'];
-		$i25 = $data['sale_summ_m+a'];
+		$i25 = $data['sale_summ_m'];
 		$i26 = $data['sale_summ_tax_a'];
 		$i27 = $data['sale_summ_tax_b'];
 		$i28 = $data['sale_summ_tax_v'];
 		$i29 = $data['sale_summ_tax_g'];
-		$i30 = $data['sale_summ_tax_m+a'];
+		$i30 = $data['sale_summ_tax_m'];
 		$i31 = $data['sale_summ_tax'];
 		$i32 = $data['return_id_first'];
 		$i33 = $data['return_id_last'];
@@ -121,12 +121,12 @@ class StaffModel extends CheckModel {
 		$i44 = $data['return_summ_b'];
 		$i45 = $data['return_summ_v'];
 		$i46 = $data['return_summ_g'];
-		$i47 = $data['return_summ_m+a'];
+		$i47 = $data['return_summ_m'];
 		$i48 = $data['return_summ_tax_a'];
 		$i49 = $data['return_summ_tax_b'];
 		$i50 = $data['return_summ_tax_v'];
 		$i51 = $data['return_summ_tax_g'];
-		$i52 = $data['return_summ_tax_m+a'];
+		$i52 = $data['return_summ_tax_m'];
 		$i53 = $data['return_summ_tax'];
 		$i54 = $data['summ_cash'];
 		$i55 = $data['summ_card'];
@@ -160,12 +160,12 @@ class StaffModel extends CheckModel {
 			sale_summ_b,
 			sale_summ_v,
 			sale_summ_g,
-			`sale_summ_m+a`,
+			sale_summ_m,
 			sale_summ_tax_a,
 			sale_summ_tax_b,
 			sale_summ_tax_v,
 			sale_summ_tax_g,
-			`sale_summ_tax_m+a`,
+			sale_summ_tax_m,
 			sale_summ_tax,
 			return_id_first,
 			return_id_last,
@@ -182,12 +182,12 @@ class StaffModel extends CheckModel {
 			return_summ_b,
 			return_summ_v,
 			return_summ_g,
-			`return_summ_m+a`,
+			return_summ_m,
 			return_summ_tax_a,
 			return_summ_tax_b,
 			return_summ_tax_v,
 			return_summ_tax_g,
-			`return_summ_tax_m+a`,
+			return_summ_tax_m,
 			return_summ_tax,
 			summ_cash,
 			summ_card,

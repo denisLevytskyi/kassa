@@ -86,12 +86,12 @@ class StaffController {
 			'sale_summ_b' => '0',
 			'sale_summ_v' => '0',
 			'sale_summ_g' => '0',
-			'sale_summ_m+a' => '0',
+			'sale_summ_m' => '0',
 			'sale_summ_tax_a' => '0',
 			'sale_summ_tax_b' => '0',
 			'sale_summ_tax_v' => '0',
 			'sale_summ_tax_g' => '0',
-			'sale_summ_tax_m+a' => '0',
+			'sale_summ_tax_m' => '0',
 			'sale_summ_tax' => '0',
 			'return_id_first' => '0',
 			'return_id_last' => '0',
@@ -108,12 +108,12 @@ class StaffController {
 			'return_summ_b' => '0',
 			'return_summ_v' => '0',
 			'return_summ_g' => '0',
-			'return_summ_m+a' => '0',
+			'return_summ_m' => '0',
 			'return_summ_tax_a' => '0',
 			'return_summ_tax_b' => '0',
 			'return_summ_tax_v' => '0',
 			'return_summ_tax_g' => '0',
-			'return_summ_tax_m+a' => '0',
+			'return_summ_tax_m' => '0',
 			'return_summ_tax' => '0',
 			'summ_cash' => '0',
 			'summ_card' => '0',
@@ -155,12 +155,12 @@ class StaffController {
 				$data['sale_summ_b'] += $v['summ_b'];
 				$data['sale_summ_v'] += $v['summ_v'];
 				$data['sale_summ_g'] += $v['summ_g'];
-				$data['sale_summ_m+a'] += $v['summ_m+a'];
+				$data['sale_summ_m'] += $v['summ_m'];
 				$data['sale_summ_tax_a'] += $v['summ_tax_a'];
 				$data['sale_summ_tax_b'] += $v['summ_tax_b'];
 				$data['sale_summ_tax_v'] += $v['summ_tax_v'];
 				$data['sale_summ_tax_g'] += $v['summ_tax_g'];
-				$data['sale_summ_tax_m+a'] += $v['summ_tax_m+a'];
+				$data['sale_summ_tax_m'] += $v['summ_tax_m'];
 			} elseif ($v['type'] == 'ВИДАТКОВИЙ ЧЕК') {
 				if ($gate2 == 0) {
 					$data['return_id_first'] = $v['id'];
@@ -178,12 +178,12 @@ class StaffController {
 				$data['return_summ_b'] += $v['summ_b'];
 				$data['return_summ_v'] += $v['summ_v'];
 				$data['return_summ_g'] += $v['summ_g'];
-				$data['return_summ_m+a'] += $v['summ_m+a'];
+				$data['return_summ_m'] += $v['summ_m'];
 				$data['return_summ_tax_a'] += $v['summ_tax_a'];
 				$data['return_summ_tax_b'] += $v['summ_tax_b'];
 				$data['return_summ_tax_v'] += $v['summ_tax_v'];
 				$data['return_summ_tax_g'] += $v['summ_tax_g'];
-				$data['return_summ_tax_m+a'] += $v['summ_tax_m+a'];
+				$data['return_summ_tax_m'] += $v['summ_tax_m'];
 			}
 		}
 		$data['sale_summ_cash'] = $data['sale_received_cash'] - $data['sale_change'];
@@ -193,7 +193,7 @@ class StaffController {
 			$data['sale_summ_tax_b'] +
 			$data['sale_summ_tax_v'] +
 			$data['sale_summ_tax_g'] +
-			$data['sale_summ_tax_m+a']
+			$data['sale_summ_tax_m']
 		);
 		$data['return_summ_cash'] = $data['return_received_cash'] - $data['return_change'];
 		$data['return_summ_card'] = $data['return_received_card'];
@@ -202,7 +202,7 @@ class StaffController {
 			$data['return_summ_tax_b'] +
 			$data['return_summ_tax_v'] +
 			$data['return_summ_tax_g'] +
-			$data['return_summ_tax_m+a']
+			$data['return_summ_tax_m']
 		);
 		$data['summ_cash'] = $data['sale_summ_cash'] - $data['return_summ_cash'];
 		$data['summ_card'] = $data['sale_summ_card'] - $data['return_summ_card'];

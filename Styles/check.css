@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body, div, p, input, button, form, span, a, ul, li, xmp, pre {
 	box-sizing: border-box;
 	padding: 0;
@@ -90,7 +92,7 @@ body {
 }
 
 .footerFiskal {
-	text-align: center;
+	text-align-last: justify;
 	border-top: 1.5px dashed black;
 	border-bottom: 1.5px dashed black;
 	margin: 10px 0;

@@ -40,12 +40,12 @@ class UnikaController extends StaffController {
 			'summ_b' => '0',
 			'summ_v' => '0',
 			'summ_g' => '0',
-			'summ_m+a' => '0',
+			'summ_m' => '0',
 			'summ_tax_a' => '0',
 			'summ_tax_b' => '0',
 			'summ_tax_v' => '0',
 			'summ_tax_g' => '0',
-			'summ_tax_m+a' => '0'
+			'summ_tax_m' => '0'
 		);
 		$list = $_SESSION['unika']['list'];
 		foreach ($list as $k => $v) {
@@ -63,9 +63,9 @@ class UnikaController extends StaffController {
 				$data['summ_tax_g'] += $v['summ'] * 0 / 100;
 			} elseif ($v['group'] == 'М+А') {
 				$summ_m = $v['summ'];
-				$summ_tax_m = $v['summ'] * 6 / 106;
-				$data['summ_m+a'] += $summ_m;
-				$data['summ_tax_m+a'] += $summ_tax_m;
+				$summ_tax_m = $v['summ'] * 5 / 105;
+				$data['summ_m'] += $summ_m;
+				$data['summ_tax_m'] += $summ_tax_m;
 				$data['summ_a'] += $summ_m - $summ_tax_m;
 				$data['summ_tax_a'] += ($summ_m - $summ_tax_m) * 20 / 120;
 			}
@@ -111,12 +111,12 @@ class UnikaController extends StaffController {
 			'summ_b' => $tax_data['summ_b'],
 			'summ_v' => $tax_data['summ_v'],
 			'summ_g' => $tax_data['summ_g'],
-			'summ_m+a' => $tax_data['summ_m+a'],
+			'summ_m' => $tax_data['summ_m'],
 			'summ_tax_a' => $tax_data['summ_tax_a'],
 			'summ_tax_b' => $tax_data['summ_tax_b'],
 			'summ_tax_v' => $tax_data['summ_tax_v'],
 			'summ_tax_g' => $tax_data['summ_tax_g'],
-			'summ_tax_m+a' => $tax_data['summ_tax_m+a']
+			'summ_tax_m' => $tax_data['summ_tax_m']
 		);
 		if ($_POST['unika_pay'] == 'card') {
 			$data['received_card'] = $data['summ'] - $data['received_cash'];

@@ -53,12 +53,12 @@ class CheckModel {
 		$i11 = $data['summ_b'];
 		$i12 = $data['summ_v'];
 		$i13 = $data['summ_g'];
-		$i14 = $data['summ_m+a'];
+		$i14 = $data['summ_m'];
 		$i15 = $data['summ_tax_a'];
 		$i16 = $data['summ_tax_b'];
 		$i17 = $data['summ_tax_v'];
 		$i18 = $data['summ_tax_g'];
-		$i19 = $data['summ_tax_m+a'];
+		$i19 = $data['summ_tax_m'];
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO checks (
 			z_id,
@@ -75,12 +75,12 @@ class CheckModel {
 			summ_b,
 			summ_v,
 			summ_g,
-			`summ_m+a`,
+			summ_m,
 			summ_tax_a,
 			summ_tax_b,
 			summ_tax_v,
 			summ_tax_g,
-			`summ_tax_m+a`
+			summ_tax_m
 			)
 			VALUES
 			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19')";

@@ -73,8 +73,8 @@
 			<p class="footerTaxP c<?php echo ($_SESSION['check']['summ_g']) ?>">
 				<?php echo ('ОБІГ Г: .... ' . $_SESSION['check']['summ_g'] . ' ПДВ 00% = ' . $_SESSION['check']['summ_tax_g']); ?>
 			</p>
-			<p class="footerTaxP c<?php echo ($_SESSION['check']['summ_m+a']) ?>">
-				<?php echo ('ОБІГ М+A: ' . $_SESSION['check']['summ_m+a'] . ' Ак/З 06% = ' . $_SESSION['check']['summ_tax_m+a']); ?>
+			<p class="footerTaxP c<?php echo ($_SESSION['check']['summ_m']) ?>">
+				<?php echo ('ОБІГ М: ... ' . $_SESSION['check']['summ_m'] . ' Ак/З 05% = ' . $_SESSION['check']['summ_tax_m']); ?>
 			</p>
 		</div>
 		<br>
@@ -83,14 +83,14 @@
 				<?php echo ('ГОТІВКОЮ: ..................... ' . $_SESSION['check']['received_cash'] . ' грн'); ?>
 			</p>
 			<p class="footerNumP">
-				<?php echo ('КАРТКОЮ: ...................... ' . $_SESSION['check']['received_card'] . ' грн'); ?>
+				<?php echo ('КАРТКОЮ: ..................... ' . $_SESSION['check']['received_card'] . ' грн'); ?>
 			</p>
 			<p class="footerNumP">
 				<?php echo ('РЕШТА: ........................... ' . $_SESSION['check']['change'] . ' грн'); ?>
 			</p>
 		</div>
 		<p class="footerFiskal">
-			= = = = = = <?php echo $_SESSION['check']['type']; ?> = = = = = =
+			= = = = = <?php echo $_SESSION['check']['type']; ?> = = = = =
 		</p>
 		<p class="footerP">
 			UNIKA Fiskal
