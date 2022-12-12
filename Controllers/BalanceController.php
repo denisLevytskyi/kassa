@@ -6,7 +6,7 @@ use Models;
 class BalanceController {
 	protected function view_balance () {
 		ob_start();
-		$data = 'Ksef/Z-balance_№_' . $_SESSION['balance']['id'] . '__' . $_SESSION['balance']['timestamp'] . '.html';
+		$data = 'Ksef/' . $_SESSION['balance']['timestamp'] . '_Z-balance_№_' . $_SESSION['balance']['id'] . '.html';
 		$view = new Views\View();
 		$view->view_balance();
 		$model = new Models\KsefModel();
