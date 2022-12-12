@@ -6,7 +6,7 @@ use Models;
 class BranchController {
 	protected function view_branch () {
 		ob_start();
-		$data = 'Ksef/S' . $_SESSION['branch']['timestamp'] . '.html';
+		$data = 'Ksef/Branch_№_' . $_SESSION['branch']['id'] . '__' . $_SESSION['branch']['timestamp'] . '.html';
 		$view = new Views\View();
 		$view->view_branch();
 		$model = new Models\KsefModel();

@@ -6,7 +6,7 @@ use Models;
 class CheckController {
 	protected function view_check () {
 		ob_start();
-		$data = 'Ksef/C' . $_SESSION['check']['timestamp'] . '.html';
+		$data = 'Ksef/Check_№_' . $_SESSION['check']['id'] . '__' . $_SESSION['check']['timestamp'] . '.html';
 		$view = new Views\View();
 		$view->view_check();
 		$model = new Models\KsefModel();

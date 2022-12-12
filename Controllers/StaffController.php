@@ -11,7 +11,7 @@ class StaffController {
 
 	protected function view_balance () {
 		ob_start();
-		$data = 'Ksef/X' . $_SESSION['balance']['timestamp'] . '.html';
+		$data = 'Ksef/X-balance_№_' . $_SESSION['balance']['id'] . '__' . $_SESSION['balance']['timestamp'] . '.html';
 		$view = new Views\View();
 		$view->view_balance();
 		$model = new Models\KsefModel();
