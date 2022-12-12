@@ -57,6 +57,9 @@
 				<a href="/staff.php" class="linksWrapperA">
 					Staff Panel
 				</a>
+				<a href="/ksef.php" class="linksWrapperA">
+					KSEF
+				</a>
 			</div>
 		</div>
 	</section>

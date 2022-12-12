@@ -48,7 +48,8 @@ class ErrorController {
 			26 => "BRANCH: Branch not found!",
 			27 => "BALANCE: Balance not selected!",
 			28 => "BALANCE: Balance not found!",
-			29 => "STAFF: Problems with data entry! (BALANCE)"
+			29 => "STAFF: Problems with data entry! (BALANCE)",
+			30 => "KSEF: List is empty!"
 		);
 		session_start();
 		$_SESSION['error']['n'] = $n;

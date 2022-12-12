@@ -196,6 +196,9 @@ $_SESSION
 				['type']
 				['summ']
 				['time']
+**
+	['ksef']
+		[(key)]
 $_COOKIE
 	['auth_id']
 $_GET

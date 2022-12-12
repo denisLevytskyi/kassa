@@ -73,4 +73,8 @@ class View {
 	public function view_balance () {
 		require_once "Templates/balance.php";
 	}
+
+	public function view_ksef () {
+		require_once "Templates/ksef.php";
+	}
 }

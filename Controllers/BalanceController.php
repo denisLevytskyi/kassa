@@ -5,8 +5,12 @@ use Models;
 
 class BalanceController {
 	protected function view_balance () {
+		ob_start();
+		$data = 'Ksef/Z' . $_SESSION['balance']['timestamp'] . '.html';
 		$view = new Views\View();
 		$view->view_balance();
+		$model = new Models\KsefModel();
+		$model->get_document_registrarion($data);
 	}
 
 	protected function set_balance_by_id () {

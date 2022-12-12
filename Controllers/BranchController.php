@@ -5,8 +5,12 @@ use Models;
 
 class BranchController {
 	protected function view_branch () {
+		ob_start();
+		$data = 'Ksef/S' . $_SESSION['branch']['timestamp'] . '.html';
 		$view = new Views\View();
 		$view->view_branch();
+		$model = new Models\KsefModel();
+		$model->get_document_registrarion($data);
 	}
 
 	protected function set_branch_by_id () {

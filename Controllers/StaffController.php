@@ -10,8 +10,12 @@ class StaffController {
 	}
 
 	protected function view_balance () {
+		ob_start();
+		$data = 'Ksef/X' . $_SESSION['balance']['timestamp'] . '.html';
 		$view = new Views\View();
 		$view->view_balance();
+		$model = new Models\KsefModel();
+		$model->get_document_registrarion($data);
 	}
 	
 	protected function set_z_balance_close () {
@@ -219,7 +223,9 @@ class StaffController {
 	protected function set_balance_registration ($data) {
 		$model = new Models\StaffModel();
 		if ( ($model->get_balance_registration($data)) ) {
-			header("Location: /staff.php");
+			$balance = $model->get_balance('timestamp', $data['timestamp']);
+			$balance_id = $balance['id'];
+			header("Location: /balance.php/?balance_id=$balance_id");
 		} else {
 			ErrorController::get_view_error(29);
 		}
@@ -249,7 +255,9 @@ class StaffController {
 			$type = 'СЛУЖБОВЕ ВНЕСЕННЯ';
 		}
 		if ( ($model->get_branch_registration($z_id, $auth_id, $auth_name, $time, $type, $summ)) ) {
-			header("Location: /staff.php", true, 303);
+			$branch = $model->get_branch('timestamp', $time);
+			$branch_id = $branch['id'];
+			header("Location: /branch.php/?branch_id=$branch_id");
 		} else {
 			ErrorController::get_view_error(24);
 		}

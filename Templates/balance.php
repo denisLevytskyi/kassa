@@ -54,8 +54,8 @@
 				Чеків: <?php echo $_SESSION['balance']['null_checks']; ?>
 			</p>
 		</div>
-        <br>
-        <div class="mainItem">
+		<br>
+		<div class="mainItem">
 			<p class="mainItemP mainItemName">
 				= = = = = = ПРОДАЖІ = = = = = = = = =
 			</p>
@@ -129,8 +129,8 @@
 				ПОДАТОК: ............... <?php echo $_SESSION['balance']['sale_summ_tax']; ?> грн
 			</p>
 		</div>
-        <br>
-        <div class="mainItem c<?php echo $_SESSION['balance']['return_checks']; ?>">
+		<br>
+		<div class="mainItem c<?php echo $_SESSION['balance']['return_checks']; ?>">
 			<p class="mainItemP mainItemName">
 				= = = = = = ПОВЕРНЕННЯ = = = = = =
 			</p>
