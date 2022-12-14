@@ -34,11 +34,19 @@
 <section class="list">
 	<div class="container">
 		<div class="listWrap">
-			<?php foreach ($_SESSION['ksef'] as $k => $v) { ?>
-				<div class="listWrapItem">
+			<?php foreach ($_SESSION['ksef'] as $k => $v) {
+				$type = null;
+				if ($v[11] == 'X') {
+					$type = 'x_balance';
+				} elseif ($v[11] == 'Z') {
+					$type = 'z_balance';
+				} elseif ($v[11] == 'B') {
+					$type = 'branch';
+				} ?>
+				<div class="listWrapItem <?php echo $type; ?>">
 					<a href="/Ksef/<?php echo $v; ?>" class="listWrapItemA">
 						<?php echo $v; ?>
-					</a>
+                    </a>
 				</div>
 			<?php } ?>
 		</div>

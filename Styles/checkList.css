@@ -43,3 +43,11 @@
 	margin-top: 15px;
 	color: blue;
 }
+
+.return {
+	color: red;
+}
+
+.null {
+	color: grey;
+}

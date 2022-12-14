@@ -48,8 +48,14 @@
 	<section class="list">
 		<div class="container">
 			<div class="listWrap">
-				<?php foreach ($_SESSION['staff']['branches'] as $k => $v) { ?>
-					<div class="listWrapItem">
+				<?php foreach ($_SESSION['staff']['branches'] as $k => $v) {
+					$type = null;
+					if ($v['type'] == 'НУЛЬОВИЙ ЧЕК') {
+						$type = 'null';
+					} elseif ($v['type'] == 'СЛУЖБОВЕ ВИЛУЧЕННЯ') {
+						$type = 'out';
+					} ?>
+					<div class="listWrapItem <?php echo $type; ?>">
 						<a href="/branch.php/?branch_id=<?php echo ($v['id']); ?>" class="listWrapItemA"><?php
 							echo($v['time'] .
 								' № => ' . $v['id'] .

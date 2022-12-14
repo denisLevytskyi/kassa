@@ -30,3 +30,11 @@
 	margin-top: 15px;
 	color: blue;
 }
+
+.out {
+	color: red;
+}
+
+.null {
+	color: grey;
+}

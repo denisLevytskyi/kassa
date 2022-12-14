@@ -13,3 +13,15 @@
 	margin-top: 15px;
 	color: blue;
 }
+
+.x_balance {
+	color: grey;
+}
+
+.z_balance {
+	color: red;
+}
+
+.branch {
+	color: green;
+}

@@ -83,7 +83,7 @@ class UnikaController extends StaffController {
 			return;
 		}
 		if ($summ == 0) {
-			return 'АНУЛЬВОНО';
+			return 'АНУЛЬОВАНО';
 		} elseif ($rezult >= 0 and isset($_POST['unika_return'])) {
 			return 'ВИДАТКОВИЙ ЧЕК';
 		} elseif ($cash < 100000 and empty($_POST['unika_return'])) {

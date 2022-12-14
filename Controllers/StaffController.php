@@ -133,7 +133,7 @@ class StaffController {
 			}
 		}
 		foreach ($c_data as $k => $v) {
-			if ($v['type'] == 'АНУЛЬВОНО') {
+			if ($v['type'] == 'АНУЛЬОВАНО') {
 				if ($gate0 == 0) {
 					$data['null_id_first'] = $v['id'];
 					$data['null_timestamp_first'] = $v['timestamp'];
