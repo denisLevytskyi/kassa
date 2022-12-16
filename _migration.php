@@ -153,32 +153,3 @@ echo "<br><br>===== BRANCHES TABLE ==========================<br>";
 var_dump($rezult5);
 echo "<br><br>===== Z-BALANCE TABLE =========================<br>";
 var_dump($rezult6);
-
-$i1 = 1000;
-$i2 = 1000;
-echo "<br><br>===== USERS FABRIC ============================<br>";
-while ($i1 < 100) {
-	$rand = rand(1, 1000000);
-	$login = 'faker' . $rand . '@user.test';
-	$password = rand(1000000, 9999999);
-	$name = 'FAKER_' . $rand;
-	$role = 1;
-	$request = "INSERT INTO users (login, password, name, role) VALUES ('$login', '$password', '$name', '$role')";
-	mysqli_query($connection, $request);
-	echo ($login . ', ' . $password . ', ' . $name . ', ' . $role . '<br>');
-	$i1++;
-}
-echo "<br><br>===== PRODUCTS FABRIC =========================<br>";
-while ($i2 < 300) {
-	$rand = rand(1, 10000000);
-	$art = $rand;
-	$code = '43000' . $rand;
-	$name = "FAKER PROD [$rand]";
-	$desk = "FAKER DESCRIPTION FOR FAKER PRODUCT $rand";
-	$foto = '/Materials/no_foto.png';
-	$id = 0;
-	$request = "INSERT INTO products (article, code, name, description, foto, auth_id) VALUES ('$art', '$code', '$name', '$desk', '$foto', '$id')";
-	mysqli_query($connection, $request);
-	echo ($art . ', ' . $code . ', ' . $name . ', ' . $desk . '<br>');
-	$i2++;
-}
