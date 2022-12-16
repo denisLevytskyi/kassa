@@ -89,7 +89,7 @@ class UnikaController extends StaffController {
 		} elseif ($cash < 100000 and empty($_POST['unika_return'])) {
 			return 'ФІСКАЛЬНИЙ ЧЕК';
 		} else {
-			return;
+			return null;
 		}
 	}
 
@@ -137,7 +137,7 @@ class UnikaController extends StaffController {
 			$model = new Models\CheckModel();
 			$rezult = $model->get_check_registration($data);
 		}
-		if ($rezult == true) {
+		if ($rezult) {
 			unset($_SESSION['unika']);
 			$check = $model->get_check('timestamp', $data['timestamp']);
 			$check_id = $check['id'];
@@ -201,7 +201,7 @@ class UnikaController extends StaffController {
 		if ( ($product = $model->get_product($search_p, $code)) ) {
 			$product['amount'] = $amount;
 			$product['summ'] = round($product['price'] * $amount, 2);
-			array_push($_SESSION['unika']['list'], $product);
+			$_SESSION['unika']['list'][] = $product;
 		}
 		header('Location: /unika.php');
 	}

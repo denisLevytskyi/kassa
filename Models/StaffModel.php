@@ -44,7 +44,7 @@ class StaffModel extends CheckModel {
 		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
-			array_push($branches, $record);
+			$branches[] = $record;
 		}
 		return $branches;
 	}
@@ -56,7 +56,7 @@ class StaffModel extends CheckModel {
 		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
-			array_push($branches, $record);
+			$branches[] = $record;
 		}
 		return $branches;
 	}
@@ -68,7 +68,7 @@ class StaffModel extends CheckModel {
 		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
-			array_push($balances, $record);
+			$balances[] = $record;
 		}
 		return $balances;
 	}

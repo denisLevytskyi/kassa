@@ -9,7 +9,7 @@ class ProductModel extends PriceModel {
 		$request = "SELECT id, article, name, foto FROM products ORDER BY article ASC";
 		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
-			array_push($products, $record);
+			$products[] = $record;
 		}
 		return $products;
 	}

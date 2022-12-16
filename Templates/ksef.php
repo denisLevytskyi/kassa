@@ -42,7 +42,9 @@
 					$type = 'z_balance';
 				} elseif ($v[11] == 'B') {
 					$type = 'branch';
-				} ?>
+				} elseif ($v[11] == 'P') {
+					$type = 'periodical';
+                } ?>
 				<div class="listWrapItem <?php echo $type; ?>">
 					<a href="/Ksef/<?php echo $v; ?>" class="listWrapItemA">
 						<?php echo $v; ?>

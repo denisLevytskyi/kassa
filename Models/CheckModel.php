@@ -21,7 +21,7 @@ class CheckModel {
 		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
-			array_push($checks, $record);
+			$checks[] = $record;
 		}
 		return $checks;
 	}
@@ -33,7 +33,7 @@ class CheckModel {
 		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
-			array_push($checks, $record);
+			$checks[] = $record;
 		}
 		return $checks;
 	}

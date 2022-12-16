@@ -34,7 +34,7 @@
 	<section class="staff">
 		<div class="container">
 			<form action="/staff.php" class="staffForm" method="POST">
-				<input type="text" class="serachFormInp" name="staff_branch_summ" placeholder="Branch Summ" required>
+				<input type="text" class="staffFormInp" name="staff_branch_summ" placeholder="Branch Summ" required>
 				<button type="confirm" class="staffFormBtn">Add branch!</button>
 			</form>
 			<a href="/staff.php/?staff_balance=Z" class="staffA">
@@ -45,6 +45,15 @@
 			</a>
 		</div>
 	</section>
+    <section class="staff">
+        <div class="container">
+            <form action="/staff.php" class="staffForm" method="POST">
+                <input type="number" step="1" class="staffFormInp" name="staff_periodical_f" placeholder="Z-id first" required>
+                <input type="number" step="1" class="staffFormInp" name="staff_periodical_l" placeholder="Z-id last" required>
+                <button type="confirm" class="staffFormBtn">Get periodical!</button>
+            </form>
+        </div>
+    </section>
 	<section class="list">
 		<div class="container">
 			<div class="listWrap">

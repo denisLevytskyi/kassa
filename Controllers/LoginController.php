@@ -19,7 +19,7 @@ class LoginController {
 		$login = $_POST['login_login'];
 		$password = $_POST['login_password'];
 		if ( ($id = $model->get_user_data('login', $login, 'password', $password, 'id')) ) {
-			if ($remember == true) {
+			if ($remember) {
 				setcookie('auth_id', $id, time() + 10000);
 			}
 			$_SESSION['auth']['id'] = $id;

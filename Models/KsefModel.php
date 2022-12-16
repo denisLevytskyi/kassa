@@ -11,11 +11,11 @@ class KsefModel {
 	}
 
 	public function get_all_documents () {
-		$list = scandir($_SERVER['DOCUMENT_ROOT'] . '/Ksef');
+		$list = scandir($_SERVER['DOCUMENT_ROOT'] . '/Ksef', 1);
 		$documents = array();
 		foreach ($list as $k => $v) {
 			if (preg_match('/\.(html)/', $v)) {
-				array_push($documents, $v);
+				$documents[] = $v;
 			}
 		}
 		return $documents;

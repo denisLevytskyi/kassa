@@ -246,10 +246,12 @@
 		</div>
 		<p class="footerFiskal"><?php
 			if ($_SESSION['balance']['type'] == "Z") {
-					echo '= = = = = ФІСКАЛЬНИЙ ЧЕК = = = = =';
-				} else {
-					echo '= = = = = НЕФІСКАЛЬНИЙ ЧЕК = = = = =';
-				}
+                echo '= = = = = ФІСКАЛЬНИЙ ЧЕК = = = = =';
+            } elseif ($_SESSION['balance']['type'] == "ПЕРІОДИЧНИЙ<br>Z") {
+				echo '= = = = = ПЕРІОДИЧНИЙ ЗВІТ = = = = =';
+            } else {
+                echo '= = = = = НЕФІСКАЛЬНИЙ ЧЕК = = = = =';
+            }
 		?></p>
 		<p class="footerP">
 			UNIKA Fiskal
