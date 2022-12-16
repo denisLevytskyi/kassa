@@ -49,7 +49,8 @@ class ErrorController {
 			27 => "BALANCE: Balance not selected!",
 			28 => "BALANCE: Balance not found!",
 			29 => "STAFF: Problems with data entry! (BALANCE)",
-			30 => "KSEF: List is empty!"
+			30 => "KSEF: List is empty!",
+			31 => "STAFF: The entered data is incorrect! (PERIODICAL SETTER)"
 		);
 		session_start();
 		$_SESSION['error']['n'] = $n;

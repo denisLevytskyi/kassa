@@ -212,6 +212,9 @@ class StaffController {
 				$data['summ_card'] += $balance['summ_card'];
 				$data['summ'] += $balance['summ'];
 				$data['balance_close'] = $balance['balance_close'];
+			} else {
+				ErrorController::get_view_error(31);
+				die();
 			}
 			$index++;
 		}
@@ -452,7 +455,7 @@ class StaffController {
 			$_SESSION['staff'] = array();
 		} elseif (isset($_POST['staff_branch_summ']) and is_numeric($_POST['staff_branch_summ'])) {
 			$this->set_branch();
-		} elseif (isset($_POST['staff_periodical_f']) and is_numeric($_POST['staff_periodical_f']) and is_numeric($_POST['staff_periodical_l'])) {
+		} elseif (isset($_POST['staff_periodical_f']) and $_POST['staff_periodical_f'] <= $_POST['staff_periodical_l']) {
 			$this->set_periodical();
 		} elseif (isset($_GET['staff_balance'])) {
 			$this->set_balance();
