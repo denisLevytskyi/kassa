@@ -41,6 +41,7 @@
 	</section>
 	<section class="list">
 		<div class="container">
+            <a class="listA" href="/">Go Home!</a>
 			<div class="listWrap">
 				<?php foreach ($_SESSION['check_list'] as $k => $v) {
                     $type = null;

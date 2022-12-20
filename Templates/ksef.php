@@ -33,6 +33,7 @@
 </section>
 <section class="list">
 	<div class="container">
+        <a class="listA" href="/">Go Home!</a>
 		<div class="listWrap">
 			<?php foreach ($_SESSION['ksef'] as $k => $v) {
 				$type = null;

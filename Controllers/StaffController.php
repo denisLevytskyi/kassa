@@ -450,6 +450,11 @@ class StaffController {
 		}
 	}
 
+	protected function set_balance_summ () {
+		$data = $this->set_balance_data();
+		$_SESSION['staff']['balance'] = $data['balance_close'];
+	}
+
 	public function get_staff_check () {
 		if (empty($_SESSION['staff'])) {
 			$_SESSION['staff'] = array();
@@ -462,6 +467,7 @@ class StaffController {
 		}
 		$this->set_balances();
 		$this->set_branches();
+		$this->set_balance_summ();
 		$this->view_staff();
 	}
 }

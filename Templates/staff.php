@@ -54,8 +54,16 @@
             </form>
         </div>
     </section>
+    <section class="staff">
+        <div class="container">
+            <p class="staffP">
+                Balance: <?php echo $_SESSION['staff']['balance']; ?>
+            </p>
+        </div>
+    </section>
 	<section class="list">
 		<div class="container">
+            <a class="listA" href="/">Go Home!</a>
 			<div class="listWrap">
 				<?php foreach ($_SESSION['staff']['branches'] as $k => $v) {
 					$type = null;

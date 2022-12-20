@@ -196,6 +196,7 @@ $_SESSION
 				['type']
 				['summ']
 				['time']
+		['balance']
 **
 	['ksef']
 		[(key)]
@@ -259,6 +260,7 @@ $_POST
 	['unika_pay']
 	['unika_cash']
 	['unika_return']
+	['unika_null']
 **
 	['staff_branch_summ']
 	['staff_periodical_f']

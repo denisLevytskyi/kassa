@@ -41,6 +41,7 @@
 	</section>
 	<section class="list">
 		<div class="container">
+            <a class="listA" href="/">Go Home!</a>
 			<div class="listWrap">
 				<?php foreach ($_SESSION['product_list'] as $k => $v) { ?>
 					<div class="listWrapItem">
