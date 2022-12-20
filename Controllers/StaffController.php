@@ -336,7 +336,7 @@ class StaffController {
 		$data['summ_cash'] = $data['sale_summ_cash'] - $data['return_summ_cash'];
 		$data['summ_card'] = $data['sale_summ_card'] - $data['return_summ_card'];
 		$data['summ'] = $data['sale_summ'] - $data['return_summ'];
-		$data['balance_close'] = $data['balance_open'] + $data['summ_cash'] + $data['staff_in'] - $data['staff_out'];
+		$data['balance_close'] = abs($data['balance_open'] + $data['summ_cash'] + $data['staff_in'] - $data['staff_out']);
 		foreach ($data as $k => $v) {
 			if (is_numeric($v)) {
 				$data[$k] = round($v, 2);
