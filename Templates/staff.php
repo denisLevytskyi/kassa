@@ -31,18 +31,19 @@
 			</a>
 		</div>
 	</section>
+    <section class="staff">
+        <div class="container">
+            <p class="staffP">
+                Balance: <?php echo $_SESSION['staff']['balance']; ?>
+            </p>
+        </div>
+    </section>
 	<section class="staff">
 		<div class="container">
 			<form action="/staff.php" class="staffForm" method="POST">
 				<input type="text" class="staffFormInp" name="staff_branch_summ" placeholder="Branch Summ" required>
 				<button type="confirm" class="staffFormBtn">Add branch!</button>
 			</form>
-			<a href="/staff.php/?staff_balance=Z" class="staffA">
-				GET Z-BALANCE!
-			</a>
-			<a href="/staff.php/?staff_balance=X" class="staffA">
-				GET X-BALANCE!
-			</a>
 		</div>
 	</section>
     <section class="staff">
@@ -52,13 +53,12 @@
                 <input type="number" step="1" class="staffFormInp" name="staff_periodical_l" placeholder="Z-id last" required>
                 <button type="confirm" class="staffFormBtn">Get periodical!</button>
             </form>
-        </div>
-    </section>
-    <section class="staff">
-        <div class="container">
-            <p class="staffP">
-                Balance: <?php echo $_SESSION['staff']['balance']; ?>
-            </p>
+            <a href="/staff.php/?staff_balance=Z" class="staffA">
+                GET Z-BALANCE!
+            </a>
+            <a href="/staff.php/?staff_balance=X" class="staffA">
+                GET X-BALANCE!
+            </a>
         </div>
     </section>
 	<section class="list">

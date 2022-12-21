@@ -62,7 +62,9 @@
 							);
 						?></a>
 						<a href="/checkList.php/?check_id=<?php echo ($v['id']); ?>" class="listWrapItemAGo">
-							To Go!
+							<nobr>
+                                To Go!
+                            </nobr>
 						</a>
 					</div>					
 				<?php } ?>
