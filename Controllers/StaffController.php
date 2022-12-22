@@ -65,20 +65,20 @@ class StaffController {
 			'sale_received_cash' => '0',
 			'sale_received_card' => '0',
 			'sale_change' => '0',
-			'sale_summ_cash' => '0',
-			'sale_summ_card' => '0',
-			'sale_summ' => '0',
-			'sale_summ_a' => '0',
-			'sale_summ_b' => '0',
-			'sale_summ_v' => '0',
-			'sale_summ_g' => '0',
-			'sale_summ_m' => '0',
-			'sale_summ_tax_a' => '0',
-			'sale_summ_tax_b' => '0',
-			'sale_summ_tax_v' => '0',
-			'sale_summ_tax_g' => '0',
-			'sale_summ_tax_m' => '0',
-			'sale_summ_tax' => '0',
+			'sale_sum_cash' => '0',
+			'sale_sum_card' => '0',
+			'sale_sum' => '0',
+			'sale_sum_a' => '0',
+			'sale_sum_b' => '0',
+			'sale_sum_v' => '0',
+			'sale_sum_g' => '0',
+			'sale_sum_m' => '0',
+			'sale_sum_tax_a' => '0',
+			'sale_sum_tax_b' => '0',
+			'sale_sum_tax_v' => '0',
+			'sale_sum_tax_g' => '0',
+			'sale_sum_tax_m' => '0',
+			'sale_sum_tax' => '0',
 			'return_id_first' => '0',
 			'return_id_last' => '0',
 			'return_timestamp_first' => time(),
@@ -87,23 +87,23 @@ class StaffController {
 			'return_received_cash' => '0',
 			'return_received_card' => '0',
 			'return_change' => '0',
-			'return_summ_cash' => '0',
-			'return_summ_card' => '0',
-			'return_summ' => '0',
-			'return_summ_a' => '0',
-			'return_summ_b' => '0',
-			'return_summ_v' => '0',
-			'return_summ_g' => '0',
-			'return_summ_m' => '0',
-			'return_summ_tax_a' => '0',
-			'return_summ_tax_b' => '0',
-			'return_summ_tax_v' => '0',
-			'return_summ_tax_g' => '0',
-			'return_summ_tax_m' => '0',
-			'return_summ_tax' => '0',
-			'summ_cash' => '0',
-			'summ_card' => '0',
-			'summ' => '0',
+			'return_sum_cash' => '0',
+			'return_sum_card' => '0',
+			'return_sum' => '0',
+			'return_sum_a' => '0',
+			'return_sum_b' => '0',
+			'return_sum_v' => '0',
+			'return_sum_g' => '0',
+			'return_sum_m' => '0',
+			'return_sum_tax_a' => '0',
+			'return_sum_tax_b' => '0',
+			'return_sum_tax_v' => '0',
+			'return_sum_tax_g' => '0',
+			'return_sum_tax_m' => '0',
+			'return_sum_tax' => '0',
+			'sum_cash' => '0',
+			'sum_card' => '0',
+			'sum' => '0',
 			'balance_open' => $this->set_z_balance_close(),
 			'balance_close' => '0'
 		);
@@ -176,41 +176,41 @@ class StaffController {
 				$data['sale_received_cash'] += $balance['sale_received_cash'];
 				$data['sale_received_card'] += $balance['sale_received_card'];
 				$data['sale_change'] += $balance['sale_change'];
-				$data['sale_summ_cash'] += $balance['sale_summ_cash'];
-				$data['sale_summ_card'] += $balance['sale_summ_card'];
-				$data['sale_summ'] += $balance['sale_summ'];
-				$data['sale_summ_a'] += $balance['sale_summ_a'];
-				$data['sale_summ_b'] += $balance['sale_summ_b'];
-				$data['sale_summ_v'] += $balance['sale_summ_v'];
-				$data['sale_summ_g'] += $balance['sale_summ_g'];
-				$data['sale_summ_m'] += $balance['sale_summ_m'];
-				$data['sale_summ_tax_a'] += $balance['sale_summ_tax_a'];
-				$data['sale_summ_tax_b'] += $balance['sale_summ_tax_b'];
-				$data['sale_summ_tax_v'] += $balance['sale_summ_tax_v'];
-				$data['sale_summ_tax_g'] += $balance['sale_summ_tax_g'];
-				$data['sale_summ_tax_m'] += $balance['sale_summ_tax_m'];
-				$data['sale_summ_tax'] += $balance['sale_summ_tax'];
+				$data['sale_sum_cash'] += $balance['sale_sum_cash'];
+				$data['sale_sum_card'] += $balance['sale_sum_card'];
+				$data['sale_sum'] += $balance['sale_sum'];
+				$data['sale_sum_a'] += $balance['sale_sum_a'];
+				$data['sale_sum_b'] += $balance['sale_sum_b'];
+				$data['sale_sum_v'] += $balance['sale_sum_v'];
+				$data['sale_sum_g'] += $balance['sale_sum_g'];
+				$data['sale_sum_m'] += $balance['sale_sum_m'];
+				$data['sale_sum_tax_a'] += $balance['sale_sum_tax_a'];
+				$data['sale_sum_tax_b'] += $balance['sale_sum_tax_b'];
+				$data['sale_sum_tax_v'] += $balance['sale_sum_tax_v'];
+				$data['sale_sum_tax_g'] += $balance['sale_sum_tax_g'];
+				$data['sale_sum_tax_m'] += $balance['sale_sum_tax_m'];
+				$data['sale_sum_tax'] += $balance['sale_sum_tax'];
 				$data['return_checks'] += $balance['return_checks'];
 				$data['return_received_cash'] += $balance['return_received_cash'];
 				$data['return_received_card'] += $balance['return_received_card'];
 				$data['return_change'] += $balance['return_change'];
-				$data['return_summ_cash'] += $balance['return_summ_cash'];
-				$data['return_summ_card'] += $balance['return_summ_card'];
-				$data['return_summ'] += $balance['return_summ'];
-				$data['return_summ_a'] += $balance['return_summ_a'];
-				$data['return_summ_b'] += $balance['return_summ_b'];
-				$data['return_summ_v'] += $balance['return_summ_v'];
-				$data['return_summ_g'] += $balance['return_summ_g'];
-				$data['return_summ_m'] += $balance['return_summ_m'];
-				$data['return_summ_tax_a'] += $balance['return_summ_tax_a'];
-				$data['return_summ_tax_b'] += $balance['return_summ_tax_b'];
-				$data['return_summ_tax_v'] += $balance['return_summ_tax_v'];
-				$data['return_summ_tax_g'] += $balance['return_summ_tax_g'];
-				$data['return_summ_tax_m'] += $balance['return_summ_tax_m'];
-				$data['return_summ_tax'] += $balance['return_summ_tax'];
-				$data['summ_cash'] += $balance['summ_cash'];
-				$data['summ_card'] += $balance['summ_card'];
-				$data['summ'] += $balance['summ'];
+				$data['return_sum_cash'] += $balance['return_sum_cash'];
+				$data['return_sum_card'] += $balance['return_sum_card'];
+				$data['return_sum'] += $balance['return_sum'];
+				$data['return_sum_a'] += $balance['return_sum_a'];
+				$data['return_sum_b'] += $balance['return_sum_b'];
+				$data['return_sum_v'] += $balance['return_sum_v'];
+				$data['return_sum_g'] += $balance['return_sum_g'];
+				$data['return_sum_m'] += $balance['return_sum_m'];
+				$data['return_sum_tax_a'] += $balance['return_sum_tax_a'];
+				$data['return_sum_tax_b'] += $balance['return_sum_tax_b'];
+				$data['return_sum_tax_v'] += $balance['return_sum_tax_v'];
+				$data['return_sum_tax_g'] += $balance['return_sum_tax_g'];
+				$data['return_sum_tax_m'] += $balance['return_sum_tax_m'];
+				$data['return_sum_tax'] += $balance['return_sum_tax'];
+				$data['sum_cash'] += $balance['sum_cash'];
+				$data['sum_card'] += $balance['sum_card'];
+				$data['sum'] += $balance['sum'];
 				$data['balance_close'] = $balance['balance_close'];
 			} else {
 				ErrorController::get_view_error(31);
@@ -252,9 +252,9 @@ class StaffController {
 		$data = $this->get_balance_fields();
 		foreach ($b_data as $k => $v) {
 			if ($v['type'] == 'СЛУЖБОВЕ ВИЛУЧЕННЯ') {
-				$data['staff_out'] += $v['summ'];
+				$data['staff_out'] += $v['sum'];
 			} elseif ($v['type'] == 'СЛУЖБОВЕ ВНЕСЕННЯ') {
-				$data['staff_in'] += $v['summ'];
+				$data['staff_in'] += $v['sum'];
 			}
 		}
 		foreach ($c_data as $k => $v) {
@@ -279,17 +279,17 @@ class StaffController {
 				$data['sale_received_cash'] += $v['received_cash'];
 				$data['sale_received_card'] += $v['received_card'];
 				$data['sale_change'] += $v['change'];
-				$data['sale_summ'] += $v['summ'];
-				$data['sale_summ_a'] += $v['summ_a'];
-				$data['sale_summ_b'] += $v['summ_b'];
-				$data['sale_summ_v'] += $v['summ_v'];
-				$data['sale_summ_g'] += $v['summ_g'];
-				$data['sale_summ_m'] += $v['summ_m'];
-				$data['sale_summ_tax_a'] += $v['summ_tax_a'];
-				$data['sale_summ_tax_b'] += $v['summ_tax_b'];
-				$data['sale_summ_tax_v'] += $v['summ_tax_v'];
-				$data['sale_summ_tax_g'] += $v['summ_tax_g'];
-				$data['sale_summ_tax_m'] += $v['summ_tax_m'];
+				$data['sale_sum'] += $v['sum'];
+				$data['sale_sum_a'] += $v['sum_a'];
+				$data['sale_sum_b'] += $v['sum_b'];
+				$data['sale_sum_v'] += $v['sum_v'];
+				$data['sale_sum_g'] += $v['sum_g'];
+				$data['sale_sum_m'] += $v['sum_m'];
+				$data['sale_sum_tax_a'] += $v['sum_tax_a'];
+				$data['sale_sum_tax_b'] += $v['sum_tax_b'];
+				$data['sale_sum_tax_v'] += $v['sum_tax_v'];
+				$data['sale_sum_tax_g'] += $v['sum_tax_g'];
+				$data['sale_sum_tax_m'] += $v['sum_tax_m'];
 			} elseif ($v['type'] == 'ВИДАТКОВИЙ ЧЕК') {
 				if ($gate2 == 0) {
 					$data['return_id_first'] = $v['id'];
@@ -302,41 +302,41 @@ class StaffController {
 				$data['return_received_cash'] += $v['received_cash'];
 				$data['return_received_card'] += $v['received_card'];
 				$data['return_change'] += $v['change'];
-				$data['return_summ'] += $v['summ'];
-				$data['return_summ_a'] += $v['summ_a'];
-				$data['return_summ_b'] += $v['summ_b'];
-				$data['return_summ_v'] += $v['summ_v'];
-				$data['return_summ_g'] += $v['summ_g'];
-				$data['return_summ_m'] += $v['summ_m'];
-				$data['return_summ_tax_a'] += $v['summ_tax_a'];
-				$data['return_summ_tax_b'] += $v['summ_tax_b'];
-				$data['return_summ_tax_v'] += $v['summ_tax_v'];
-				$data['return_summ_tax_g'] += $v['summ_tax_g'];
-				$data['return_summ_tax_m'] += $v['summ_tax_m'];
+				$data['return_sum'] += $v['sum'];
+				$data['return_sum_a'] += $v['sum_a'];
+				$data['return_sum_b'] += $v['sum_b'];
+				$data['return_sum_v'] += $v['sum_v'];
+				$data['return_sum_g'] += $v['sum_g'];
+				$data['return_sum_m'] += $v['sum_m'];
+				$data['return_sum_tax_a'] += $v['sum_tax_a'];
+				$data['return_sum_tax_b'] += $v['sum_tax_b'];
+				$data['return_sum_tax_v'] += $v['sum_tax_v'];
+				$data['return_sum_tax_g'] += $v['sum_tax_g'];
+				$data['return_sum_tax_m'] += $v['sum_tax_m'];
 			}
 		}
-		$data['sale_summ_cash'] = $data['sale_received_cash'] - $data['sale_change'];
-		$data['sale_summ_card'] = $data['sale_received_card'];
-		$data['sale_summ_tax'] = (
-			$data['sale_summ_tax_a'] +
-			$data['sale_summ_tax_b'] +
-			$data['sale_summ_tax_v'] +
-			$data['sale_summ_tax_g'] +
-			$data['sale_summ_tax_m']
+		$data['sale_sum_cash'] = $data['sale_received_cash'] - $data['sale_change'];
+		$data['sale_sum_card'] = $data['sale_received_card'];
+		$data['sale_sum_tax'] = (
+			$data['sale_sum_tax_a'] +
+			$data['sale_sum_tax_b'] +
+			$data['sale_sum_tax_v'] +
+			$data['sale_sum_tax_g'] +
+			$data['sale_sum_tax_m']
 		);
-		$data['return_summ_cash'] = $data['return_received_cash'] - $data['return_change'];
-		$data['return_summ_card'] = $data['return_received_card'];
-		$data['return_summ_tax'] = (
-			$data['return_summ_tax_a'] +
-			$data['return_summ_tax_b'] +
-			$data['return_summ_tax_v'] +
-			$data['return_summ_tax_g'] +
-			$data['return_summ_tax_m']
+		$data['return_sum_cash'] = $data['return_received_cash'] - $data['return_change'];
+		$data['return_sum_card'] = $data['return_received_card'];
+		$data['return_sum_tax'] = (
+			$data['return_sum_tax_a'] +
+			$data['return_sum_tax_b'] +
+			$data['return_sum_tax_v'] +
+			$data['return_sum_tax_g'] +
+			$data['return_sum_tax_m']
 		);
-		$data['summ_cash'] = $data['sale_summ_cash'] - $data['return_summ_cash'];
-		$data['summ_card'] = $data['sale_summ_card'] - $data['return_summ_card'];
-		$data['summ'] = $data['sale_summ'] - $data['return_summ'];
-		$data['balance_close'] = abs($data['balance_open'] + $data['summ_cash'] + $data['staff_in'] - $data['staff_out']);
+		$data['sum_cash'] = $data['sale_sum_cash'] - $data['return_sum_cash'];
+		$data['sum_card'] = $data['sale_sum_card'] - $data['return_sum_card'];
+		$data['sum'] = $data['sale_sum'] - $data['return_sum'];
+		$data['balance_close'] = abs($data['balance_open'] + $data['sum_cash'] + $data['staff_in'] - $data['staff_out']);
 		foreach ($data as $k => $v) {
 			if (is_numeric($v)) {
 				$data[$k] = round($v, 2);
@@ -357,9 +357,9 @@ class StaffController {
 	}
 	
 	protected function set_branch () {
-		$summ = $_POST['staff_branch_summ'];
+		$sum = $_POST['staff_branch_sum'];
 		$data = $this->set_balance_data();
-		$rezult = $data['balance_close'] + $summ;
+		$rezult = $data['balance_close'] + $sum;
 		if ($rezult >= 0 and $rezult < 100000) {
 			$this->set_branch_registration();
 		}
@@ -372,14 +372,14 @@ class StaffController {
 		$auth_name = $_SESSION['auth']['name'];
 		$time = time();
 		$type = "НУЛЬОВИЙ ЧЕК";
-		$summ = round($_POST['staff_branch_summ'], 2);
-		if ($summ < 0) {
-			$summ = -$summ;
+		$sum = round($_POST['staff_branch_sum'], 2);
+		if ($sum < 0) {
+			$sum = -$sum;
 			$type = 'СЛУЖБОВЕ ВИЛУЧЕННЯ';
-		} elseif ($summ > 0) {
+		} elseif ($sum > 0) {
 			$type = 'СЛУЖБОВЕ ВНЕСЕННЯ';
 		}
-		if ( ($model->get_branch_registration($z_id, $auth_id, $auth_name, $time, $type, $summ)) ) {
+		if ( ($model->get_branch_registration($z_id, $auth_id, $auth_name, $time, $type, $sum)) ) {
 			$branch = $model->get_branch('timestamp', $time);
 			$branch_id = $branch['id'];
 			header("Location: /branch.php/?branch_id=$branch_id");
@@ -426,7 +426,7 @@ class StaffController {
 				'timestamp' => '0',
 				'time' => '0',
 				'type' => '0',
-				'summ' => '0'
+				'sum' => '0'
 			);
 			$_SESSION['staff']['branches'][] = $branch;
 		}
@@ -444,13 +444,13 @@ class StaffController {
 				'auth_name' => 'NAME',
 				'timestamp' => '0',
 				'time' => '0',
-				'summ' => '0'
+				'sum' => '0'
 			);
 			$_SESSION['staff']['balances'][] = $balance;
 		}
 	}
 
-	protected function set_balance_summ () {
+	protected function set_balance_sum () {
 		$data = $this->set_balance_data();
 		$_SESSION['staff']['balance'] = $data['balance_close'];
 	}
@@ -458,7 +458,7 @@ class StaffController {
 	public function get_staff_check () {
 		if (empty($_SESSION['staff'])) {
 			$_SESSION['staff'] = array();
-		} elseif (isset($_POST['staff_branch_summ']) and is_numeric($_POST['staff_branch_summ'])) {
+		} elseif (isset($_POST['staff_branch_sum']) and is_numeric($_POST['staff_branch_sum'])) {
 			$this->set_branch();
 		} elseif (isset($_POST['staff_periodical_f']) and $_POST['staff_periodical_f'] <= $_POST['staff_periodical_l']) {
 			$this->set_periodical();
@@ -467,7 +467,7 @@ class StaffController {
 		}
 		$this->set_balances();
 		$this->set_branches();
-		$this->set_balance_summ();
+		$this->set_balance_sum();
 		$this->view_staff();
 	}
 }

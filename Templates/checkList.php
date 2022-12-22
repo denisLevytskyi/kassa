@@ -34,7 +34,7 @@
 	<section class="search">
 		<div class="container">
 			<form action="/check.php" class="searchForm" method="GET">
-				<input type="text" class="searchFormInp" name="check_data" placeholder="ID or Summ" required>
+				<input type="text" class="searchFormInp" name="check_data" placeholder="ID or Sum" required>
 				<button type="confirm" class="searchFormBtn">Serch!</button>
 			</form>
 		</div>
@@ -55,16 +55,14 @@
 							echo($v['time'] .
 								' № => ' . $v['id'] .
 								' Z-bal => ' . $v['z_id'] .
-								' Summ => ' . $v['summ'] .
+								' Sum => ' . $v['sum'] .
 								' Type => ' . $v['type'] .
 								' added by => ' . $v['auth_id'] .
 								' ' . $v['auth_name']
 							);
 						?></a>
 						<a href="/checkList.php/?check_id=<?php echo ($v['id']); ?>" class="listWrapItemAGo">
-							<nobr>
-                                To Go!
-                            </nobr>
+							<nobr>To Go!</nobr>
 						</a>
 					</div>					
 				<?php } ?>

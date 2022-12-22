@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>
-		<?php session_start(); echo ($_SESSION['unika']['summ']	. ' | ' . $_SESSION['auth']['name']); ?>
+		<?php session_start(); echo ($_SESSION['unika']['sum']	. ' | ' . $_SESSION['auth']['name']); ?>
 	</title>
 	<link rel="stylesheet" href="/Styles/unika.css">
 </head>
@@ -18,9 +18,9 @@
 				<input autofocus type="text" class="headerFirstFormInp" name="unika_add" placeholder="Article or Code" required>
 				<button type="confirm" class="headerFirstFormBtn">+</button>
 			</form>
-			<div class="headerFirstSumm">
-				<p class="headerFirstSummP">
-					<?php echo ($_SESSION['unika']['summ']); ?>
+			<div class="headerFirstSum">
+				<p class="headerFirstSumP">
+					<?php echo ($_SESSION['unika']['sum']); ?>
 				</p>
 			</div>
 		</div>
@@ -47,7 +47,7 @@
 			</div>
 			<div class="headerSecondHead">
 				<h2 class="headerSecondHeadH2">
-					Summ
+					Sum
 				</h2>
 			</div>
 			<div class="headerSecondHead">
@@ -58,8 +58,12 @@
 		</div>
 	</header>
 	<section class="list">
-		<?php foreach ($_SESSION['unika']['list'] as $k => $v) { ?>
-			<div class="listWrap">
+		<?php foreach ($_SESSION['unika']['list'] as $k => $v) {
+			$type = null;
+			if ($v['group'] == 'М+А') {
+				$type = 'excise';
+			} ?>
+			<div class="listWrap <?php echo $type; ?>">
 				<div class="listWrapFirst">
 					<?php echo ($k + 1); ?>
 				</div>
@@ -80,7 +84,7 @@
 					</form>
 				</div>
 				<div class="listWrapElse">
-					<?php echo ($v['summ']); ?>
+					<?php echo ($v['sum']); ?>
 				</div>
 				<div class="listWrapElse">
 					<a href="/unika.php?unika_del=<?php echo($k); ?>" class="listWrapElseA">

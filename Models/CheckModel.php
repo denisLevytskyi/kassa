@@ -29,7 +29,7 @@ class CheckModel {
 	public function get_all_checks () {
 		$checks = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT id, z_id, auth_id, auth_name, `timestamp`, type, summ FROM checks ORDER BY id DESC";
+		$request = "SELECT id, z_id, auth_id, auth_name, `timestamp`, type, sum FROM checks ORDER BY id DESC";
 		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
@@ -48,17 +48,17 @@ class CheckModel {
 		$i6 = $data['received_cash'];
 		$i7 = $data['received_card'];
 		$i8 = $data['change'];
-		$i9 = $data['summ'];
-		$i10 = $data['summ_a'];
-		$i11 = $data['summ_b'];
-		$i12 = $data['summ_v'];
-		$i13 = $data['summ_g'];
-		$i14 = $data['summ_m'];
-		$i15 = $data['summ_tax_a'];
-		$i16 = $data['summ_tax_b'];
-		$i17 = $data['summ_tax_v'];
-		$i18 = $data['summ_tax_g'];
-		$i19 = $data['summ_tax_m'];
+		$i9 = $data['sum'];
+		$i10 = $data['sum_a'];
+		$i11 = $data['sum_b'];
+		$i12 = $data['sum_v'];
+		$i13 = $data['sum_g'];
+		$i14 = $data['sum_m'];
+		$i15 = $data['sum_tax_a'];
+		$i16 = $data['sum_tax_b'];
+		$i17 = $data['sum_tax_v'];
+		$i18 = $data['sum_tax_g'];
+		$i19 = $data['sum_tax_m'];
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO checks (
 			z_id,
@@ -70,17 +70,17 @@ class CheckModel {
 			received_cash,
 			received_card,
 			`change`,
-			summ,
-			summ_a,
-			summ_b,
-			summ_v,
-			summ_g,
-			summ_m,
-			summ_tax_a,
-			summ_tax_b,
-			summ_tax_v,
-			summ_tax_g,
-			summ_tax_m
+			sum,
+			sum_a,
+			sum_b,
+			sum_v,
+			sum_g,
+			sum_m,
+			sum_tax_a,
+			sum_tax_b,
+			sum_tax_v,
+			sum_tax_g,
+			sum_tax_m
 			)
 			VALUES
 			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19')";

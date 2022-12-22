@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-body, div, p, input, button, form, span, a, ul, li, xmp, pre {
+body, div, p, input, button, form, span, a, ul, li, pre {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
@@ -79,7 +79,7 @@ body {
 	font-weight: bold;
 }
 
-.footerSumm {
+.footerSum {
 	text-align: right;
 	font-weight: bold;
 	font-size: 17px;

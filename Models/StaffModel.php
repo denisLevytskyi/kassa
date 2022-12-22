@@ -64,7 +64,7 @@ class StaffModel extends CheckModel {
 	public function get_all_balances () {
 		$balances = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT id, auth_id, auth_name, `timestamp`, summ FROM balances ORDER BY id DESC";
+		$request = "SELECT id, auth_id, auth_name, `timestamp`, sum FROM balances ORDER BY id DESC";
 		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
@@ -92,20 +92,20 @@ class StaffModel extends CheckModel {
 		$i15 = $data['sale_received_cash'];
 		$i16 = $data['sale_received_card'];
 		$i17 = $data['sale_change'];
-		$i18 = $data['sale_summ_cash'];
-		$i19 = $data['sale_summ_card'];
-		$i20 = $data['sale_summ'];
-		$i21 = $data['sale_summ_a'];
-		$i22 = $data['sale_summ_b'];
-		$i23 = $data['sale_summ_v'];
-		$i24 = $data['sale_summ_g'];
-		$i25 = $data['sale_summ_m'];
-		$i26 = $data['sale_summ_tax_a'];
-		$i27 = $data['sale_summ_tax_b'];
-		$i28 = $data['sale_summ_tax_v'];
-		$i29 = $data['sale_summ_tax_g'];
-		$i30 = $data['sale_summ_tax_m'];
-		$i31 = $data['sale_summ_tax'];
+		$i18 = $data['sale_sum_cash'];
+		$i19 = $data['sale_sum_card'];
+		$i20 = $data['sale_sum'];
+		$i21 = $data['sale_sum_a'];
+		$i22 = $data['sale_sum_b'];
+		$i23 = $data['sale_sum_v'];
+		$i24 = $data['sale_sum_g'];
+		$i25 = $data['sale_sum_m'];
+		$i26 = $data['sale_sum_tax_a'];
+		$i27 = $data['sale_sum_tax_b'];
+		$i28 = $data['sale_sum_tax_v'];
+		$i29 = $data['sale_sum_tax_g'];
+		$i30 = $data['sale_sum_tax_m'];
+		$i31 = $data['sale_sum_tax'];
 		$i32 = $data['return_id_first'];
 		$i33 = $data['return_id_last'];
 		$i34 = $data['return_timestamp_first'];
@@ -114,23 +114,23 @@ class StaffModel extends CheckModel {
 		$i37 = $data['return_received_cash'];
 		$i38 = $data['return_received_card'];
 		$i39 = $data['return_change'];
-		$i40 = $data['return_summ_cash'];
-		$i41 = $data['return_summ_card'];
-		$i42 = $data['return_summ'];
-		$i43 = $data['return_summ_a'];
-		$i44 = $data['return_summ_b'];
-		$i45 = $data['return_summ_v'];
-		$i46 = $data['return_summ_g'];
-		$i47 = $data['return_summ_m'];
-		$i48 = $data['return_summ_tax_a'];
-		$i49 = $data['return_summ_tax_b'];
-		$i50 = $data['return_summ_tax_v'];
-		$i51 = $data['return_summ_tax_g'];
-		$i52 = $data['return_summ_tax_m'];
-		$i53 = $data['return_summ_tax'];
-		$i54 = $data['summ_cash'];
-		$i55 = $data['summ_card'];
-		$i56 = $data['summ'];
+		$i40 = $data['return_sum_cash'];
+		$i41 = $data['return_sum_card'];
+		$i42 = $data['return_sum'];
+		$i43 = $data['return_sum_a'];
+		$i44 = $data['return_sum_b'];
+		$i45 = $data['return_sum_v'];
+		$i46 = $data['return_sum_g'];
+		$i47 = $data['return_sum_m'];
+		$i48 = $data['return_sum_tax_a'];
+		$i49 = $data['return_sum_tax_b'];
+		$i50 = $data['return_sum_tax_v'];
+		$i51 = $data['return_sum_tax_g'];
+		$i52 = $data['return_sum_tax_m'];
+		$i53 = $data['return_sum_tax'];
+		$i54 = $data['sum_cash'];
+		$i55 = $data['sum_card'];
+		$i56 = $data['sum'];
 		$i57 = $data['balance_open'];
 		$i58 = $data['balance_close'];
 		$connection = Logics\Connection::get_connection();
@@ -153,20 +153,20 @@ class StaffModel extends CheckModel {
 			sale_received_cash,
 			sale_received_card,
 			sale_change,
-			sale_summ_cash,
-			sale_summ_card,
-			sale_summ,
-			sale_summ_a,
-			sale_summ_b,
-			sale_summ_v,
-			sale_summ_g,
-			sale_summ_m,
-			sale_summ_tax_a,
-			sale_summ_tax_b,
-			sale_summ_tax_v,
-			sale_summ_tax_g,
-			sale_summ_tax_m,
-			sale_summ_tax,
+			sale_sum_cash,
+			sale_sum_card,
+			sale_sum,
+			sale_sum_a,
+			sale_sum_b,
+			sale_sum_v,
+			sale_sum_g,
+			sale_sum_m,
+			sale_sum_tax_a,
+			sale_sum_tax_b,
+			sale_sum_tax_v,
+			sale_sum_tax_g,
+			sale_sum_tax_m,
+			sale_sum_tax,
 			return_id_first,
 			return_id_last,
 			return_timestamp_first,
@@ -175,23 +175,23 @@ class StaffModel extends CheckModel {
 			return_received_cash,
 			return_received_card,
 			return_change,
-			return_summ_cash,
-			return_summ_card,
-			return_summ,
-			return_summ_a,
-			return_summ_b,
-			return_summ_v,
-			return_summ_g,
-			return_summ_m,
-			return_summ_tax_a,
-			return_summ_tax_b,
-			return_summ_tax_v,
-			return_summ_tax_g,
-			return_summ_tax_m,
-			return_summ_tax,
-			summ_cash,
-			summ_card,
-			summ,
+			return_sum_cash,
+			return_sum_card,
+			return_sum,
+			return_sum_a,
+			return_sum_b,
+			return_sum_v,
+			return_sum_g,
+			return_sum_m,
+			return_sum_tax_a,
+			return_sum_tax_b,
+			return_sum_tax_v,
+			return_sum_tax_g,
+			return_sum_tax_m,
+			return_sum_tax,
+			sum_cash,
+			sum_card,
+			sum,
 			balance_open,
 			balance_close)
 			VALUES
@@ -199,7 +199,7 @@ class StaffModel extends CheckModel {
 		return mysqli_query($connection, $request);
 	}
 
-	public function get_branch_registration ($z_id, $auth_id, $auth_name, $time, $type, $summ) {
+	public function get_branch_registration ($z_id, $auth_id, $auth_name, $time, $type, $sum) {
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO branches (
 			z_id,
@@ -207,8 +207,8 @@ class StaffModel extends CheckModel {
 			auth_name,
 			`timestamp`,
 			`type`,
-			summ) VALUES (
-			'$z_id', '$auth_id', '$auth_name', '$time', '$type', '$summ'
+			sum) VALUES (
+			'$z_id', '$auth_id', '$auth_name', '$time', '$type', '$sum'
 		)";
 		return mysqli_query($connection, $request);
 	}

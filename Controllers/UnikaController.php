@@ -9,14 +9,14 @@ class UnikaController extends StaffController {
 		$view->view_unika();
 	}
 
-	protected function set_summ () {
-		$summ = '0.00';
+	protected function set_sum () {
+		$sum = '0.00';
 		if (!empty($_SESSION['unika']['list'])) {
 			foreach ($_SESSION['unika']['list'] as $k => $v) {
-				$summ = $summ + $v['summ'];
+				$sum = $sum + $v['sum'];
 			}
 		}
-		$_SESSION['unika']['summ'] = $summ;
+		$_SESSION['unika']['sum'] = $sum;
 	}
 
 	protected function change_amount () {
@@ -24,7 +24,7 @@ class UnikaController extends StaffController {
 		$key = $_POST['unika_amount_key'];
 		$price = $_SESSION['unika']['list'][$key]['price'];
 		$_SESSION['unika']['list'][$key]['amount'] = $val;
-		$_SESSION['unika']['list'][$key]['summ'] = round($val * $price, 2);
+		$_SESSION['unika']['list'][$key]['sum'] = round($val * $price, 2);
 		header('Location: /unika.php');
 	}
 
@@ -36,38 +36,38 @@ class UnikaController extends StaffController {
 
 	protected function set_tax_data () {
 		$data = array(
-			'summ_a' => '0',
-			'summ_b' => '0',
-			'summ_v' => '0',
-			'summ_g' => '0',
-			'summ_m' => '0',
-			'summ_tax_a' => '0',
-			'summ_tax_b' => '0',
-			'summ_tax_v' => '0',
-			'summ_tax_g' => '0',
-			'summ_tax_m' => '0'
+			'sum_a' => '0',
+			'sum_b' => '0',
+			'sum_v' => '0',
+			'sum_g' => '0',
+			'sum_m' => '0',
+			'sum_tax_a' => '0',
+			'sum_tax_b' => '0',
+			'sum_tax_v' => '0',
+			'sum_tax_g' => '0',
+			'sum_tax_m' => '0'
 		);
 		$list = $_SESSION['unika']['list'];
 		foreach ($list as $k => $v) {
 			if ($v['group'] == 'А') {
-				$data['summ_a'] += $v['summ'];
-				$data['summ_tax_a'] += $v['summ'] * 20 / 120;
+				$data['sum_a'] += $v['sum'];
+				$data['sum_tax_a'] += $v['sum'] * 20 / 120;
 			} elseif ($v['group'] == 'Б') {
-				$data['summ_b'] += $v['summ'];
-				$data['summ_tax_b'] += $v['summ'] * 14 / 114;
+				$data['sum_b'] += $v['sum'];
+				$data['sum_tax_b'] += $v['sum'] * 14 / 114;
 			} elseif ($v['group'] == 'В') {
-				$data['summ_v'] += $v['summ'];
-				$data['summ_tax_v'] += $v['summ'] * 7 / 107;
+				$data['sum_v'] += $v['sum'];
+				$data['sum_tax_v'] += $v['sum'] * 7 / 107;
 			} elseif ($v['group'] == 'Г') {
-				$data['summ_g'] += $v['summ'];
-				$data['summ_tax_g'] += $v['summ'] * 0 / 100;
+				$data['sum_g'] += $v['sum'];
+				$data['sum_tax_g'] += $v['sum'] * 0 / 100;
 			} elseif ($v['group'] == 'М+А') {
-				$summ_m = $v['summ'];
-				$summ_tax_m = $v['summ'] * 5 / 105;
-				$data['summ_m'] += $summ_m;
-				$data['summ_tax_m'] += $summ_tax_m;
-				$data['summ_a'] += $summ_m - $summ_tax_m;
-				$data['summ_tax_a'] += ($summ_m - $summ_tax_m) * 20 / 120;
+				$sum_m = $v['sum'];
+				$sum_tax_m = $v['sum'] * 5 / 105;
+				$data['sum_m'] += $sum_m;
+				$data['sum_tax_m'] += $sum_tax_m;
+				$data['sum_a'] += $sum_m - $sum_tax_m;
+				$data['sum_tax_a'] += ($sum_m - $sum_tax_m) * 20 / 120;
 			}
 		}
 		return $data;
@@ -75,14 +75,14 @@ class UnikaController extends StaffController {
 	
 	protected function set_check_type () {
 		$cash = $_POST['unika_cash'];
-		$summ = $_SESSION['unika']['summ'];
+		$sum = $_SESSION['unika']['sum'];
 		$count = count($_SESSION['unika']['list']);
 		$data = $this->set_balance_data();
 		$rezult = $data['balance_close'] - $cash;
 		if ($count == 0) {
 			return;
 		}
-		if ($summ == 0 or isset($_POST['unika_null'])) {
+		if ($sum == 0 or isset($_POST['unika_null'])) {
 			return 'АНУЛЬОВАНО';
 		} elseif ($rezult >= 0 and isset($_POST['unika_return'])) {
 			return 'ВИДАТКОВИЙ ЧЕК';
@@ -106,34 +106,34 @@ class UnikaController extends StaffController {
 			'received_cash' => $_POST['unika_cash'],
 			'received_card' => '0',
 			'change' => '0',
-			'summ' => $_SESSION['unika']['summ'],
-			'summ_a' => $tax_data['summ_a'],
-			'summ_b' => $tax_data['summ_b'],
-			'summ_v' => $tax_data['summ_v'],
-			'summ_g' => $tax_data['summ_g'],
-			'summ_m' => $tax_data['summ_m'],
-			'summ_tax_a' => $tax_data['summ_tax_a'],
-			'summ_tax_b' => $tax_data['summ_tax_b'],
-			'summ_tax_v' => $tax_data['summ_tax_v'],
-			'summ_tax_g' => $tax_data['summ_tax_g'],
-			'summ_tax_m' => $tax_data['summ_tax_m']
+			'sum' => $_SESSION['unika']['sum'],
+			'sum_a' => $tax_data['sum_a'],
+			'sum_b' => $tax_data['sum_b'],
+			'sum_v' => $tax_data['sum_v'],
+			'sum_g' => $tax_data['sum_g'],
+			'sum_m' => $tax_data['sum_m'],
+			'sum_tax_a' => $tax_data['sum_tax_a'],
+			'sum_tax_b' => $tax_data['sum_tax_b'],
+			'sum_tax_v' => $tax_data['sum_tax_v'],
+			'sum_tax_g' => $tax_data['sum_tax_g'],
+			'sum_tax_m' => $tax_data['sum_tax_m']
 		);
 		if ($_POST['unika_pay'] == 'card') {
-			$data['received_card'] = $data['summ'] - $data['received_cash'];
+			$data['received_card'] = $data['sum'] - $data['received_cash'];
 		} else {
 			$data['received_card'] = 0;
 		}
 		if ($data['received_card'] < 0) {
 			$data['received_card'] = 0;
 		}
-		$data['change'] = $data['summ'] - $data['received_cash'] - $data['received_card'];
+		$data['change'] = $data['sum'] - $data['received_cash'] - $data['received_card'];
 		$change = -$data['change'];
 		foreach ($data as $k => $v) {
 			if (is_numeric($v)) {
 				$data[$k] = abs(round($v, 2));
 			}
 		}
-		if ($change >= 0 and $data['summ'] >= 0 and isset($data['type'])) {
+		if ($change >= 0 and $data['sum'] >= 0 and isset($data['type'])) {
 			$model = new Models\CheckModel();
 			$rezult = $model->get_check_registration($data);
 		}
@@ -158,7 +158,7 @@ class UnikaController extends StaffController {
 				$_SESSION['unika']['list'][$k]['price'] = round(
 					$_SESSION['unika']['list'][$k]['price'] * (100 - $sale) / 100, 2
 				);
-				$_SESSION['unika']['list'][$k]['summ'] = round(
+				$_SESSION['unika']['list'][$k]['sum'] = round(
 					$_SESSION['unika']['list'][$k]['price'] * $_SESSION['unika']['list'][$k]['amount'], 2
 				);
 				return;
@@ -200,7 +200,7 @@ class UnikaController extends StaffController {
 		}
 		if ( ($product = $model->get_product($search_p, $code)) ) {
 			$product['amount'] = $amount;
-			$product['summ'] = round($product['price'] * $amount, 2);
+			$product['sum'] = round($product['price'] * $amount, 2);
 			$_SESSION['unika']['list'][] = $product;
 		}
 		header('Location: /unika.php');
@@ -222,7 +222,7 @@ class UnikaController extends StaffController {
 		} elseif (isset($_POST['unika_cash']) and is_numeric($_POST['unika_cash'])) {
 			$this->set_check();
 		}
-		$this->set_summ();
+		$this->set_sum();
 		$this->view_unika();
 	}
 }

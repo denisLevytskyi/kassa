@@ -16,7 +16,7 @@ class CheckController {
 	protected function set_check_by_data () {
 		$model = new Models\CheckModel();
 		$code = $_GET['check_data'];
-		$search_p = 'summ';
+		$search_p = 'sum';
 		if ($code[0] == '*') {
 			$search_p = 'id';
 			$code = trim($code, '*');

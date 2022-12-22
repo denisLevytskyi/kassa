@@ -40,7 +40,7 @@
 		<?php foreach ($_SESSION['check']['main'] as $k => $v) { ?>
 			<div class="mainItem">
 				<p class="mainItemP">
-					<?php echo ($v['price'] . ' X ' . $v['amount'] . ' = ' . $v['summ']) . ' ' . $v['group']; ?>
+					<?php echo ($v['price'] . ' X ' . $v['amount'] . ' = ' . $v['sum']) . ' ' . $v['group']; ?>
 				</p>
 				<p class="mainItemP mainItemName">
 					<?php echo ($v['name']); ?>
@@ -55,26 +55,26 @@
 		<?php } ?>
 	</section>
 	<footer class="footer">
-		<div class="footerSumm">
-			<p class="footerSummP">
-				<?php echo ('ВСЬОГО: ' . $_SESSION['check']['summ'] . ' грн'); ?>
+		<div class="footerSum">
+			<p class="footerSumP">
+				<?php echo ('ВСЬОГО: ' . $_SESSION['check']['sum'] . ' грн'); ?>
 			</p>
 		</div>
 		<div class="footerTax">
-			<p class="footerTaxP c<?php echo ($_SESSION['check']['summ_a']) ?>">
-				<?php echo ('ОБІГ A: .... ' . $_SESSION['check']['summ_a'] . ' ПДВ 20% = ' . $_SESSION['check']['summ_tax_a']); ?>
+			<p class="footerTaxP c<?php echo ($_SESSION['check']['sum_a']) ?>">
+				<?php echo ('ОБІГ A: .... ' . $_SESSION['check']['sum_a'] . ' ПДВ 20% = ' . $_SESSION['check']['sum_tax_a']); ?>
 			</p>
-			<p class="footerTaxP c<?php echo ($_SESSION['check']['summ_b']) ?>">
-				<?php echo ('ОБІГ Б: .... ' . $_SESSION['check']['summ_b'] . ' ПДВ 14% = ' . $_SESSION['check']['summ_tax_b']); ?>
+			<p class="footerTaxP c<?php echo ($_SESSION['check']['sum_b']) ?>">
+				<?php echo ('ОБІГ Б: .... ' . $_SESSION['check']['sum_b'] . ' ПДВ 14% = ' . $_SESSION['check']['sum_tax_b']); ?>
 			</p>
-			<p class="footerTaxP c<?php echo ($_SESSION['check']['summ_v']) ?>">
-				<?php echo ('ОБІГ В: .... ' . $_SESSION['check']['summ_v'] . ' ПДВ 07% = ' . $_SESSION['check']['summ_tax_v']); ?>
+			<p class="footerTaxP c<?php echo ($_SESSION['check']['sum_v']) ?>">
+				<?php echo ('ОБІГ В: .... ' . $_SESSION['check']['sum_v'] . ' ПДВ 07% = ' . $_SESSION['check']['sum_tax_v']); ?>
 			</p>
-			<p class="footerTaxP c<?php echo ($_SESSION['check']['summ_g']) ?>">
-				<?php echo ('ОБІГ Г: .... ' . $_SESSION['check']['summ_g'] . ' ПДВ 00% = ' . $_SESSION['check']['summ_tax_g']); ?>
+			<p class="footerTaxP c<?php echo ($_SESSION['check']['sum_g']) ?>">
+				<?php echo ('ОБІГ Г: .... ' . $_SESSION['check']['sum_g'] . ' ПДВ 00% = ' . $_SESSION['check']['sum_tax_g']); ?>
 			</p>
-			<p class="footerTaxP c<?php echo ($_SESSION['check']['summ_m']) ?>">
-				<?php echo ('ОБІГ М: ... ' . $_SESSION['check']['summ_m'] . ' Ак/З 05% = ' . $_SESSION['check']['summ_tax_m']); ?>
+			<p class="footerTaxP c<?php echo ($_SESSION['check']['sum_m']) ?>">
+				<?php echo ('ОБІГ М: ... ' . $_SESSION['check']['sum_m'] . ' Ак/З 05% = ' . $_SESSION['check']['sum_tax_m']); ?>
 			</p>
 		</div>
 		<br>

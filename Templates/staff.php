@@ -41,7 +41,7 @@
 	<section class="staff">
 		<div class="container">
 			<form action="/staff.php" class="staffForm" method="POST">
-				<input type="text" class="staffFormInp" name="staff_branch_summ" placeholder="Branch Summ" required>
+				<input type="text" class="staffFormInp" name="staff_branch_sum" value="-<?php echo $_SESSION['staff']['balance']; ?>" required>
 				<button type="confirm" class="staffFormBtn">Add branch!</button>
 			</form>
 		</div>
@@ -77,7 +77,7 @@
 							echo($v['time'] .
 								' № => ' . $v['id'] .
 								' Z-bal => ' . $v['z_id'] .
-								' Summ => ' . $v['summ'] .
+								' Sum => ' . $v['sum'] .
 								' Type => ' . $v['type'] .
 								' added by => ' . $v['auth_id'] .
 								' ' . $v['auth_name']
@@ -97,7 +97,7 @@
 						<a href="/balance.php/?balance_id=<?php echo ($v['id']); ?>" class="listWrapItemA"><?php
 							echo($v['time'] .
 								' № => ' . $v['id'] .
-								' Summ => ' . $v['summ'] .
+								' Sum => ' . $v['sum'] .
 								' added by => ' . $v['auth_id'] .
 								' ' . $v['auth_name']);
 						?></a>
