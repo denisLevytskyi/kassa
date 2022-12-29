@@ -41,15 +41,15 @@
 	</section>
 	<section class="list">
 		<div class="container">
-            <a class="listA" href="/">Go Home!</a>
+			<a class="listA" href="/">Go Home!</a>
 			<div class="listWrap">
 				<?php foreach ($_SESSION['check_list'] as $k => $v) {
-                    $type = null;
-                    if ($v['type'] == 'АНУЛЬОВАНО') {
-                        $type = 'null';
-                    } elseif ($v['type'] == 'ВИДАТКОВИЙ ЧЕК') {
-                        $type = 'return';
-                    } ?>
+					$type = null;
+					if ($v['type'] == 'АНУЛЬОВАНО') {
+						$type = 'null';
+					} elseif ($v['type'] == 'ВИДАТКОВИЙ ЧЕК') {
+						$type = 'return';
+					} ?>
 					<div class="listWrapItem <?php echo $type; ?>">
 						<a href="/check.php/?check_id=<?php echo ($v['id']); ?>" class="listWrapItemA"><?php
 							echo($v['time'] .

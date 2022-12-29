@@ -14,20 +14,17 @@ class EditAuthController {
 		$login = $_POST['edit_auth_login'];
 		$password = $_POST['edit_auth_password_1'];
 		$name = $_POST['edit_auth_name'];
+		$role = $_SESSION['auth']['role'];
 		$model = new Models\AuthModel();
-		if ( ($model->get_chenges($id, $login, $password, $name)) ) {
+		if ( ($model->get_chenges($id, $login, $password, $name, $role)) ) {
 			header('Location: /');
 		} else {
 			ErrorController::get_view_error(9);
 		}
 	}
 
-	protected function set_login_by_id () {
-		$model = new Models\AuthModel();
-		$id = $_SESSION['auth']['id'];
-		if ( ($login = $model->get_user_data('id', $id, 'id', $id, 'login')) ) {
-			$_SESSION['auth']['login'] = $login;
-		} else {
+	protected function set_login_check () {
+		if (empty($_SESSION['auth']['login'])) {
 			ErrorController::get_view_error(7);
 		}
 	}
@@ -46,7 +43,7 @@ class EditAuthController {
 		if (isset($_GET['auth_delete'])) {
 			$this->set_delete();
 		} elseif (empty($_POST['edit_auth_1'])) {
-			$this->set_login_by_id();
+			$this->set_login_check();
 			$this->view_edit_auth();
 		} elseif ($_POST['edit_auth_password_1'] == $_POST['edit_auth_password_2']) {
 			$this->set_changes();

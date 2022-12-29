@@ -77,4 +77,8 @@ class View {
 	public function view_ksef () {
 		require_once "Templates/ksef.php";
 	}
+
+	public function view_admin () {
+		require_once "Templates/admin.php";
+	}
 }

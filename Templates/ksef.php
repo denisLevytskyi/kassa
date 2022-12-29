@@ -33,7 +33,7 @@
 </section>
 <section class="list">
 	<div class="container">
-        <a class="listA" href="/">Go Home!</a>
+		<a class="listA" href="/">Go Home!</a>
 		<div class="listWrap">
 			<?php foreach ($_SESSION['ksef'] as $k => $v) {
 				$type = null;
@@ -45,11 +45,11 @@
 					$type = 'branch';
 				} elseif ($v[11] == 'P') {
 					$type = 'periodical';
-                } ?>
+				} ?>
 				<div class="listWrapItem <?php echo $type; ?>">
 					<a href="/Ksef/<?php echo $v; ?>" class="listWrapItemA">
 						<?php echo $v; ?>
-                    </a>
+					</a>
 				</div>
 			<?php } ?>
 		</div>

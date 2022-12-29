@@ -111,6 +111,8 @@ class StaffController {
 	}
 
 	protected function set_periodical () {
+		$admin = new AdminController();
+		$admin->get_admin_check(4);
 		$data = $this->set_periodical_data();
 		session_start();
 		$_SESSION['balance'] = $data;

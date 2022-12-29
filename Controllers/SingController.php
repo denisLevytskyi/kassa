@@ -30,9 +30,9 @@ class SingController {
 		$password = $_POST['sing_password_1'];
 		$name = $_POST['sing_name'];
 		$model = new Models\AuthModel();
-		if ( ($id = $model->get_user_sing($login, $password, $name)) ) {
+		if ( ($data = $model->get_user_sing($login, $password, $name)) ) {
 			session_start();
-			$_SESSION['auth']['id'] = $id;
+			$_SESSION['auth']['id'] = $data['id'];
 			header('Location: /');
 		} else {
 			ErrorController::get_view_error(5);

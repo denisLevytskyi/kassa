@@ -112,10 +112,10 @@
 				<input type="checkbox" name="unika_return">
 				<p class="footerFormWrapP">RETURN</p>
 			</div>
-            <div class="footerFormWrap">
-                <input type="checkbox" name="unika_null">
-                <p class="footerFormWrapP">NULL</p>
-            </div>
+			<div class="footerFormWrap">
+				<input type="checkbox" name="unika_null">
+				<p class="footerFormWrapP">NULL</p>
+			</div>
 			<button type="confirm" class="footerFormBtn">PAY</button>
 		</form>
 	</footer>

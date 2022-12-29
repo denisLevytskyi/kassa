@@ -7,6 +7,7 @@ $_SESSION
 		['id']
 		['name']
 		['login']
+		['role']
 **
 	['product']
 		['id']
@@ -200,6 +201,14 @@ $_SESSION
 **
 	['ksef']
 		[(key)]
+**
+	['admin']
+		[(key)]
+			['id']
+			['login']
+			['password']
+			['name']
+			['role']
 $_COOKIE
 	['auth_id']
 $_GET

@@ -1,0 +1,37 @@
+.list .container, .search .container {
+	background: white;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.listWrapItem {
+	margin: 10px 5px;
+}
+
+.listA {
+	display: block;
+	margin-top: 15px;
+	color: blue;
+}
+
+.listWrapItemForm {
+	display: flex;
+	background: grey;
+	border-radius: 5px;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	padding: 5px;
+}
+
+.listWrapItemFormInp {
+	margin: 0;
+	padding: 5px 10px;
+	border: 0.5px solid darkgrey;
+}
+
+.listWrapItemFormBtn {
+	padding: 5px;
+	border: 0.5px solid darkgrey;
+	font-weight: normal;
+}

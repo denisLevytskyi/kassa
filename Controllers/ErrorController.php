@@ -28,8 +28,8 @@ class ErrorController {
 			6 => 'LOGIN: No name for this id!',
 			7 => 'EDIT AUTH: No login for this id!',
 			8 => "EDIT AUTH: New passwords didn't match!",
-			9 => "EDIT AYTH: Problems with update data!",
-			10 => "EDIT AYTH: Problems with deleting data!",
+			9 => "EDIT AUTH: Problems with update data!",
+			10 => "EDIT AUTH: Problems with deleting data!",
 			11 => "ADD PRODUCT: Problems with data entry!",
 			12 => "PRODUCT LIST: List is empty!",
 			13 => "RESET: Problems with reseting password",
@@ -50,7 +50,10 @@ class ErrorController {
 			28 => "BALANCE: Balance not found!",
 			29 => "STAFF: Problems with data entry! (BALANCE)",
 			30 => "KSEF: List is empty!",
-			31 => "STAFF: The entered data is incorrect! (PERIODICAL SETTER)"
+			31 => "STAFF: The entered data is incorrect! (PERIODICAL SETTER)",
+			32 => "ADMIN: Problems with data!",
+			33 => "ADMIN: Problems with update data!",
+			34 => "ADMIN: Not enough rights!"
 		);
 		session_start();
 		$_SESSION['error']['n'] = $n;

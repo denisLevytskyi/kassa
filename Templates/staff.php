@@ -31,13 +31,13 @@
 			</a>
 		</div>
 	</section>
-    <section class="staff">
-        <div class="container">
-            <p class="staffP">
-                Balance: <?php echo $_SESSION['staff']['balance']; ?>
-            </p>
-        </div>
-    </section>
+	<section class="staff">
+		<div class="container">
+			<p class="staffP">
+				Balance: <?php echo $_SESSION['staff']['balance']; ?>
+			</p>
+		</div>
+	</section>
 	<section class="staff">
 		<div class="container">
 			<form action="/staff.php" class="staffForm" method="POST">
@@ -46,24 +46,24 @@
 			</form>
 		</div>
 	</section>
-    <section class="staff">
-        <div class="container">
-            <form action="/staff.php" class="staffForm" method="POST">
-                <input type="number" step="1" class="staffFormInp" name="staff_periodical_f" placeholder="Z-id first" required>
-                <input type="number" step="1" class="staffFormInp" name="staff_periodical_l" placeholder="Z-id last" required>
-                <button type="confirm" class="staffFormBtn">Get periodical!</button>
-            </form>
-            <a href="/staff.php/?staff_balance=Z" class="staffA">
-                GET Z-BALANCE!
-            </a>
-            <a href="/staff.php/?staff_balance=X" class="staffA">
-                GET X-BALANCE!
-            </a>
-        </div>
-    </section>
+	<section class="staff">
+		<div class="container">
+			<form action="/staff.php" class="staffForm" method="POST">
+				<input type="number" step="1" class="staffFormInp" name="staff_periodical_f" placeholder="Z-id first" required>
+				<input type="number" step="1" class="staffFormInp" name="staff_periodical_l" placeholder="Z-id last" required>
+				<button type="confirm" class="staffFormBtn">Get periodical!</button>
+			</form>
+			<a href="/staff.php/?staff_balance=Z" class="staffA">
+				GET Z-BALANCE!
+			</a>
+			<a href="/staff.php/?staff_balance=X" class="staffA">
+				GET X-BALANCE!
+			</a>
+		</div>
+	</section>
 	<section class="list">
 		<div class="container">
-            <a class="listA" href="/">Go Home!</a>
+			<a class="listA" href="/">Go Home!</a>
 			<div class="listWrap">
 				<?php foreach ($_SESSION['staff']['branches'] as $k => $v) {
 					$type = null;
