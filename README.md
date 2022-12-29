@@ -224,6 +224,12 @@ $_GET
 	['branch_id']
 	['balance_id']
 $_POST
+	['admin_id']
+	['admin_login']
+	['admin_password']
+	['admin_name']
+	['admin_role']
+**
 	['add_product_art']
 	['add_product_code']
 	['add_product_name']
