@@ -257,14 +257,14 @@ $_POST
 **
 	['reset_login']
 **
-	['sing_name']
-	['sing_login']
-	['sing_password_1']
-	['sing_password_2']
-	['sing_pin_1']
-	['sing_pin_2']
-	['sing_1']
-	['sing_2']
+	['sign_name']
+	['sign_login']
+	['sign_password_1']
+	['sign_password_2']
+	['sign_pin_1']
+	['sign_pin_2']
+	['sign_1']
+	['sign_2']
 **
 	['price_setter_article']
 	['price_setter_price']

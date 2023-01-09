@@ -3,34 +3,34 @@ namespace Controllers;
 use Views;
 use Models;
 
-class SingController {
-	protected function view_sing1 () {
+class SignController {
+	protected function view_sign1 () {
 		$view = new Views\View();
-		$view->view_sing1();
+		$view->view_sign1();
 	}
 
-	protected function view_sing2 () {
+	protected function view_sign2 () {
 		$view = new Views\View();
-		$view->view_sing2();
+		$view->view_sign2();
 	}
 
 	protected function send_pin () {
 		// $pin = rand(1000, 9999);
 		$pin = 1;
-		$text = 'Dear ' . $_POST['sing_name'] .', this is your PIN for registration: ' . $pin;
-		$mail1_to = $_POST['sing_login'];
+		$text = 'Dear ' . $_POST['sign_name'] .', this is your PIN for registration: ' . $pin;
+		$mail1_to = $_POST['sign_login'];
 		$headers="From: LVZ <lvz@lvz.ua>\nReply-to:lvz@lvz.ua\nContent-Type: text/html; charset=\"utf-8\"\n";
 		mail($mail1_to, 'Registration on the portal LVZ', $text, $headers);
 		session_start();
-		$_SESSION['sing_pin_1'] = $pin;
+		$_SESSION['sign_pin_1'] = $pin;
 	}
 
-	protected function set_sing () {
-		$login = $_POST['sing_login'];
-		$password = $_POST['sing_password_1'];
-		$name = $_POST['sing_name'];
+	protected function set_sign () {
+		$login = $_POST['sign_login'];
+		$password = $_POST['sign_password_1'];
+		$name = $_POST['sign_name'];
 		$model = new Models\AuthModel();
-		if ( ($data = $model->get_user_sing($login, $password, $name)) ) {
+		if ( ($data = $model->get_user_sign($login, $password, $name)) ) {
 			session_start();
 			$_SESSION['auth']['id'] = $data['id'];
 			header('Location: /');
@@ -40,31 +40,31 @@ class SingController {
 	}
 
 	protected function get_check_pin1 () {
-		if ($_POST['sing_pin_1'] == $_SESSION['sing_pin_1']) {
+		if ($_POST['sign_pin_1'] == $_SESSION['sign_pin_1']) {
 			$this->get_check_pin2();
-			unset($_SESSION['sing_pin_1']);
+			unset($_SESSION['sign_pin_1']);
 		} else {
 			ErrorController::get_view_error(3);
 		}
 	}
 
 	protected function get_check_pin2 () {
-		if ($_POST['sing_pin_2'] == '1') {
-			$this->set_sing();
+		if ($_POST['sign_pin_2'] == '1') {
+			$this->set_sign();
 		} else {
 			ErrorController::get_view_error(4);
 		}
 	}
 
-	public function get_sing_check () {
-		if (isset($_POST['sing_2'])) {
+	public function get_sign_check () {
+		if (isset($_POST['sign_2'])) {
 			$this->get_check_pin1();
 			exit;
-		} elseif (empty($_POST['sing_1'])) {
-			$this->view_sing1();
-		} elseif ($_POST['sing_password_1'] == $_POST['sing_password_2']) {
+		} elseif (empty($_POST['sign_1'])) {
+			$this->view_sign1();
+		} elseif ($_POST['sign_password_1'] == $_POST['sign_password_2']) {
 			$this->send_pin();
-			$this->view_sing2();
+			$this->view_sign2();
 		} else {
 			ErrorController::get_view_error(2);
 		}

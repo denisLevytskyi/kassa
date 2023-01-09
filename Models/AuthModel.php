@@ -25,7 +25,7 @@ class AuthModel {
 		return $users;
 	}
 
-	public function get_user_sing ($login, $password, $name, $role = '1') {
+	public function get_user_sign ($login, $password, $name, $role = '1') {
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO users (login, password, name, role) VALUES ('$login', '$password', '$name', '$role')";
 		$rezult = mysqli_query($connection, $request);

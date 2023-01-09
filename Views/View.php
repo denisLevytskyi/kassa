@@ -14,12 +14,12 @@ class View {
 		require_once "Templates/error.php";
 	}
 
-	public function view_sing1 () {
-		require_once "Templates/sing1.php";
+	public function view_sign1 () {
+		require_once "Templates/sign1.php";
 	}
 
-	public function view_sing2 () {
-		require_once "Templates/sing2.php";
+	public function view_sign2 () {
+		require_once "Templates/sign2.php";
 	}
 
 	public function view_edit_auth () {
