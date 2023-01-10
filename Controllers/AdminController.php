@@ -14,6 +14,7 @@ class AdminController {
 		$check_role = $role;
 		if ($user_role < $check_role) {
 			ErrorController::get_view_error(34);
+			die();
 		}
 	}
 

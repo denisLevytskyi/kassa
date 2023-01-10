@@ -84,6 +84,8 @@ class UnikaController extends StaffController {
 		} elseif ($sum == 0 or isset($_POST['unika_null'])) {
 			return 'АНУЛЬОВАНО';
 		} elseif ($rezult >= 0 and isset($_POST['unika_return'])) {
+			$admin = new AdminController();
+			$admin->get_admin_check(4);
 			return 'ВИДАТКОВИЙ ЧЕК';
 		} elseif ($cash <= 50000 and empty($_POST['unika_return'])) {
 			return 'ФІСКАЛЬНИЙ ЧЕК';
