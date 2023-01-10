@@ -38,8 +38,10 @@
 				<?php foreach ($_SESSION['admin'] as $k => $v) { ?>
 					<div class="listWrapItem">
 						<form action="/admin.php" class="listWrapItemForm" method="POST">
-							<p>
+							<p class="listWrapItemFormP">
 								ID: <?php echo ($v['id']); ?>
+								<br>
+								R: <?php echo ($v['role']); ?>
 							</p>
 							<input type="text" style="display: none;" name="admin_id" value="<?php echo ($v['id']); ?>" required>
 							<input type="text" class="listWrapItemFormInp" name="admin_login" value="<?php echo ($v['login']); ?>" required>

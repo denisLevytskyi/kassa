@@ -79,14 +79,13 @@ class UnikaController extends StaffController {
 		$count = count($_SESSION['unika']['list']);
 		$data = $this->set_balance_data();
 		$rezult = $data['balance_close'] - $cash;
-		if ($count == 0) {
-			return;
-		}
-		if ($sum == 0 or isset($_POST['unika_null'])) {
+		if ($count == 0 or $sum < 0) {
+			return null;
+		} elseif ($sum == 0 or isset($_POST['unika_null'])) {
 			return 'АНУЛЬОВАНО';
 		} elseif ($rezult >= 0 and isset($_POST['unika_return'])) {
 			return 'ВИДАТКОВИЙ ЧЕК';
-		} elseif ($cash < 100000 and empty($_POST['unika_return'])) {
+		} elseif ($cash <= 50000 and empty($_POST['unika_return'])) {
 			return 'ФІСКАЛЬНИЙ ЧЕК';
 		} else {
 			return null;
@@ -133,7 +132,7 @@ class UnikaController extends StaffController {
 				$data[$k] = abs(round($v, 2));
 			}
 		}
-		if ($change >= 0 and $data['sum'] >= 0 and isset($data['type'])) {
+		if ($change >= 0 and isset($data['type'])) {
 			$model = new Models\CheckModel();
 			$rezult = $model->get_check_registration($data);
 		}

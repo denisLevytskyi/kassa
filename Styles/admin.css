@@ -24,6 +24,10 @@
 	padding: 5px;
 }
 
+.listWrapItemFormP {
+	width: 70px;
+}
+
 .listWrapItemFormInp {
 	margin: 0;
 	padding: 5px 10px;

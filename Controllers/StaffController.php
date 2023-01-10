@@ -362,7 +362,7 @@ class StaffController {
 		$sum = $_POST['staff_branch_sum'];
 		$data = $this->set_balance_data();
 		$rezult = $data['balance_close'] + $sum;
-		if ($rezult >= 0 and $rezult < 100000) {
+		if ($rezult >= 0 and ($rezult <= 100000 or $sum <= 0)) {
 			$this->set_branch_registration();
 		}
 	}
