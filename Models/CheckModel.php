@@ -6,8 +6,8 @@ class CheckModel {
 	public function get_check ($search_p, $search_v) {
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT * FROM checks WHERE $search_p= '$search_v'";
-		$rezult = mysqli_query($connection, $request) or header('Location: /');
-		if ( ($record = mysqli_fetch_assoc($rezult)) ) {
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		if ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['main'] = unserialize($record['body']);
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
 			return $record;
@@ -18,8 +18,8 @@ class CheckModel {
 		$checks = array();
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT * FROM checks WHERE z_id= '$z_id'";
-		$rezult = mysqli_query($connection, $request) or header('Location: /');
-		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
 			$checks[] = $record;
 		}
@@ -30,8 +30,8 @@ class CheckModel {
 		$checks = array();
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT id, z_id, auth_id, auth_name, `timestamp`, type, sum FROM checks ORDER BY id DESC";
-		$rezult = mysqli_query($connection, $request) or header('Location: /');
-		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
 			$checks[] = $record;
 		}

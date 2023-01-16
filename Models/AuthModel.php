@@ -6,8 +6,8 @@ class AuthModel {
 	public function get_user_data ($search_p, $search_v, $select_p, $select_v) {
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT * FROM users WHERE $search_p='$search_v'";
-		$rezult = mysqli_query($connection, $request) or header('Location: /');
-		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			if ($record[$select_p] == $select_v) {
 				return $record;
 			}
@@ -18,8 +18,8 @@ class AuthModel {
 		$users = array();
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT id, login, password, name, role FROM users ORDER BY id ASC";
-		$rezult = mysqli_query($connection, $request) or header('Location: /');
-		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$users[] = $record;
 		}
 		return $users;
@@ -28,8 +28,8 @@ class AuthModel {
 	public function get_user_sign ($login, $password, $name, $role = '1') {
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO users (login, password, name, role) VALUES ('$login', '$password', '$name', '$role')";
-		$rezult = mysqli_query($connection, $request);
-		if ( $rezult == 1 ) {
+		$result = mysqli_query($connection, $request);
+		if ( $result == 1 ) {
 			return $this->get_user_data('login', $login, 'password', $password);
 		}
 	}
@@ -43,7 +43,7 @@ class AuthModel {
 	public function get_delete ($id) {
 		$connection = Logics\Connection::get_connection();
 		$request = "DELETE FROM users WHERE id = '$id'";
-		$rezult = mysqli_query($connection, $request);
+		$result = mysqli_query($connection, $request);
 		return mysqli_query($connection, $request);
 	}
 

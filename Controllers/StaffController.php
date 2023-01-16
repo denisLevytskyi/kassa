@@ -29,8 +29,8 @@ class StaffController {
 	
 	protected function set_z_balance_close () {
 		$model = new Models\StaffModel();
-		if ( ($rezult = $model->get_last_z_data()) ) {
-			return $rezult['balance_close'];
+		if ( ($result = $model->get_last_z_data()) ) {
+			return $result['balance_close'];
 		} else {
 			return 0;
 		}
@@ -38,8 +38,8 @@ class StaffController {
 
 	protected function set_z_id () {
 		$model = new Models\StaffModel();
-		if ( ($rezult = $model->get_last_z_data()) ) {
-			return $rezult['id'] + 1;
+		if ( ($result = $model->get_last_z_data()) ) {
+			return $result['id'] + 1;
 		} else {
 			return 1;
 		}
@@ -360,8 +360,8 @@ class StaffController {
 	protected function set_branch () {
 		$sum = $_POST['staff_branch_sum'];
 		$data = $this->set_balance_data();
-		$rezult = $data['balance_close'] + $sum;
-		if ($rezult >= 0 and ($rezult <= 100000 or $sum <= 0)) {
+		$result = $data['balance_close'] + $sum;
+		if ($result >= 0 and ($result <= 100000 or $sum <= 0)) {
 			$this->set_branch_registration();
 		}
 	}

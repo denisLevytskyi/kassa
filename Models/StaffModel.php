@@ -6,15 +6,15 @@ class StaffModel extends CheckModel {
 	public function get_last_z_data () {
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT id, balance_close FROM balances ORDER BY id DESC";
-		$rezult = mysqli_query($connection, $request) or header('Location: /');
-		return mysqli_fetch_assoc($rezult);
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		return mysqli_fetch_assoc($result);
 	}
 	
 	public function get_branch ($search_p, $search_v) {
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT * FROM branches WHERE $search_p= '$search_v'";
-		$rezult = mysqli_query($connection, $request) or header('Location: /');
-		if ( ($record = mysqli_fetch_assoc($rezult)) ) {
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		if ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
 			return $record;
 		}
@@ -23,8 +23,8 @@ class StaffModel extends CheckModel {
 	public function get_balance ($search_p, $search_v) {
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT * FROM balances WHERE $search_p= '$search_v'";
-		$rezult = mysqli_query($connection, $request) or header('Location: /');
-		if ( ($record = mysqli_fetch_assoc($rezult)) ) {
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		if ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
 			$record['null_time_first'] = date("y-m-d H:i:s", $record['null_timestamp_first']);
 			$record['null_time_last'] = date("y-m-d H:i:s", $record['null_timestamp_last']);
@@ -41,8 +41,8 @@ class StaffModel extends CheckModel {
 		$branches = array();
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT * FROM branches WHERE z_id= '$z_id'";
-		$rezult = mysqli_query($connection, $request) or header('Location: /');
-		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
 			$branches[] = $record;
 		}
@@ -53,8 +53,8 @@ class StaffModel extends CheckModel {
 		$branches = array();
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT * FROM branches ORDER BY id DESC";
-		$rezult = mysqli_query($connection, $request) or header('Location: /');
-		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
 			$branches[] = $record;
 		}
@@ -65,8 +65,8 @@ class StaffModel extends CheckModel {
 		$balances = array();
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT id, auth_id, auth_name, `timestamp`, sum FROM balances ORDER BY id DESC";
-		$rezult = mysqli_query($connection, $request) or header('Location: /');
-		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
 			$balances[] = $record;
 		}

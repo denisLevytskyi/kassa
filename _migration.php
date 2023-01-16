@@ -4,7 +4,7 @@ include 'Logics/Autoload.php';
 $f_connection = Logics\Connection::get_first_connection();
 $bd = Logics\Connection::bd;
 $request0 = "CREATE DATABASE `$bd`";
-$rezult0 = mysqli_query($f_connection, $request0);
+$result0 = mysqli_query($f_connection, $request0);
 
 $connection = Logics\Connection::get_connection();
 $request1 = "CREATE TABLE `users` (
@@ -131,25 +131,25 @@ $request6 = "CREATE TABLE `balances` (
 	`balance_close` VARCHAR(50) DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
-$rezult1 = mysqli_query($connection, $request1);
-$rezult2 = mysqli_query($connection, $request2);
-$rezult3 = mysqli_query($connection, $request3);
-$rezult4 = mysqli_query($connection, $request4);
-$rezult5 = mysqli_query($connection, $request5);
-$rezult6 = mysqli_query($connection, $request6);
+$result1 = mysqli_query($connection, $request1);
+$result2 = mysqli_query($connection, $request2);
+$result3 = mysqli_query($connection, $request3);
+$result4 = mysqli_query($connection, $request4);
+$result5 = mysqli_query($connection, $request5);
+$result6 = mysqli_query($connection, $request6);
 
 echo "<pre>";
 echo "===== DATA BASE ===============================<br>";
-var_dump($rezult0);
+var_dump($result0);
 echo "<br><br>===== USERS TABLE =============================<br>";
-var_dump($rezult1);
+var_dump($result1);
 echo "<br><br>===== PRODUCTS TABLE ==========================<br>";
-var_dump($rezult2);
+var_dump($result2);
 echo "<br><br>===== PRICES TABLE ============================<br>";
-var_dump($rezult3);
+var_dump($result3);
 echo "<br><br>===== CHECKS TABLE ============================<br>";
-var_dump($rezult4);
+var_dump($result4);
 echo "<br><br>===== BRANCHES TABLE ==========================<br>";
-var_dump($rezult5);
+var_dump($result5);
 echo "<br><br>===== Z-BALANCE TABLE =========================<br>";
-var_dump($rezult6);
+var_dump($result6);

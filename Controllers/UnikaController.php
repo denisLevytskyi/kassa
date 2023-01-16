@@ -78,12 +78,12 @@ class UnikaController extends StaffController {
 		$sum = $_SESSION['unika']['sum'];
 		$count = count($_SESSION['unika']['list']);
 		$data = $this->set_balance_data();
-		$rezult = $data['balance_close'] - $cash;
+		$result = $data['balance_close'] - $cash;
 		if ($count == 0 or $sum < 0) {
 			return null;
 		} elseif ($sum == 0 or isset($_POST['unika_null'])) {
 			return 'АНУЛЬОВАНО';
-		} elseif ($rezult >= 0 and isset($_POST['unika_return'])) {
+		} elseif ($result >= 0 and isset($_POST['unika_return'])) {
 			$admin = new AdminController();
 			$admin->get_admin_check(4);
 			return 'ВИДАТКОВИЙ ЧЕК';
