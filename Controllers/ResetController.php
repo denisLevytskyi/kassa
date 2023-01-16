@@ -28,9 +28,19 @@ class ResetController {
 		mail($mail1_to, 'Reset password on the portal LVZ', $text, $headers);
 	}
 
+	protected function get_email_check () {
+		$login = $_POST['reset_login'];
+		$model = new Models\AuthModel();
+		if ( ($model->get_user_data('login', $login, 'login', $login)) ) {
+			$this->get_new_password();
+		} else {
+			ErrorController::get_view_error(36);
+		}
+	}
+
 	public function get_reset_check () {
 		if (isset($_POST['reset_login'])) {
-			$this->get_new_password();
+			$this->get_email_check();
 		} else {
 			$this->view_reset();
 		}

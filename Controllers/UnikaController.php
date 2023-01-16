@@ -136,13 +136,12 @@ class UnikaController extends StaffController {
 		}
 		if ($change >= 0 and isset($data['type'])) {
 			$model = new Models\CheckModel();
-			$rezult = $model->get_check_registration($data);
-		}
-		if ($rezult) {
-			unset($_SESSION['unika']);
-			$check = $model->get_check('timestamp', $data['timestamp']);
-			$check_id = $check['id'];
-			header("Location: /check.php/?check_id=$check_id");
+			if ( ($model->get_check_registration($data)) ) {
+				unset($_SESSION['unika']);
+				$check = $model->get_check('timestamp', $data['timestamp']);
+				$check_id = $check['id'];
+				header("Location: /check.php/?check_id=$check_id");
+			}
 		}
 	}
 

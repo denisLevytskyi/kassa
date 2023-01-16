@@ -53,7 +53,9 @@ class ErrorController {
 			31 => "STAFF: The entered data is incorrect! (PERIODICAL SETTER)",
 			32 => "ADMIN: Problems with data!",
 			33 => "ADMIN: Problems with update data!",
-			34 => "ADMIN: Not enough rights!"
+			34 => "ADMIN: Not enough rights!",
+			35 => "SIGN: This email is registered!",
+			36 => "SIGN: This email is not registered!"
 		);
 		session_start();
 		$_SESSION['error']['n'] = $n;

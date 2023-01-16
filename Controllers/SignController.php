@@ -14,6 +14,16 @@ class SignController {
 		$view->view_sign2();
 	}
 
+	protected function get_email_check () {
+		$login = $_POST['sign_login'];
+		$model = new Models\AuthModel();
+		if ( ($model->get_user_data('login', $login, 'login', $login)) ) {
+			ErrorController::get_view_error(35);
+		} else {
+			$this->send_pin();
+		}
+	}
+
 	protected function send_pin () {
 		// $pin = rand(1000, 9999);
 		$pin = 1;
@@ -63,7 +73,7 @@ class SignController {
 		} elseif (empty($_POST['sign_1'])) {
 			$this->view_sign1();
 		} elseif ($_POST['sign_password_1'] == $_POST['sign_password_2']) {
-			$this->send_pin();
+			$this->get_email_check();
 			$this->view_sign2();
 		} else {
 			ErrorController::get_view_error(2);
