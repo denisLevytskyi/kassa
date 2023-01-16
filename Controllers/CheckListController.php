@@ -21,7 +21,7 @@ class CheckListController {
 		}
 	}
 
-	protected function set_cheks () {
+	protected function set_checks () {
 		$model = new Models\CheckModel();
 		if ( ($checks = $model->get_all_checks()) ) {
 			session_start();
@@ -35,7 +35,7 @@ class CheckListController {
 		if (isset($_GET['check_id'])) {
 			$this->set_check_by_id();
 		} else {
-			$this->set_cheks();
+			$this->set_checks();
 			$this->view_check_list();
 		}
 	}

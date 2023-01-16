@@ -3,7 +3,7 @@ namespace Models;
 use Logics;
 
 class KsefModel {
-	public function get_document_registrarion ($name) {
+	public function get_document_registration ($name) {
 		if (!is_file($name)) {
 			$content = ob_get_contents();
 			file_put_contents($name, $content);

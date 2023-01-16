@@ -32,7 +32,7 @@
 				</select>
 				<input type="file" class="addProductFormInp" name="add_product_foto">
 				<input type="text" style="display: none;" name="add_product_1" value="1" required>
-				<button type="confirm" class="addProductFormBtn">Add!</button>
+				<button type="submit" class="addProductFormBtn">Add!</button>
 				<a class="addProductFormA" href="/">Go home!</a>
 			</form>
 		</div>

@@ -34,7 +34,7 @@ class AuthModel {
 		}
 	}
 
-	public function get_chenges ($id, $login, $password, $name, $role) {
+	public function get_changes ($id, $login, $password, $name, $role) {
 		$connection = Logics\Connection::get_connection();
 		$request = "UPDATE users SET login = '$login', password = '$password', name = '$name', role = '$role' WHERE id = '$id'";
 		return mysqli_query($connection, $request);

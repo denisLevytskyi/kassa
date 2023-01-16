@@ -25,7 +25,7 @@
 					<input type="checkbox" class="loginFormRemCheck" name="login_remember" checked>
 					<p>Remember Me!</p>
 				</div>
-				<button type="confirm" class="loginFormBtn">Login In!</button>
+				<button type="submit" class="loginFormBtn">Login In!</button>
 				<a class="loginFormA" href="/sign.php">Sign Up</a>
 				<a class="loginFormA" href="/reset.php">Reset Password</a>
 			</form>

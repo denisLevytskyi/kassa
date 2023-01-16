@@ -18,14 +18,14 @@ class AdminController {
 		}
 	}
 
-	protected function set_chandes () {
+	protected function set_changes () {
 		$id = $_POST['admin_id'];
 		$login = $_POST['admin_login'];
 		$password = $_POST['admin_password'];
 		$name = $_POST['admin_name'];
 		$role = $_POST['admin_role'];
 		$model = new Models\AuthModel();
-		if ( ($model->get_chenges($id, $login, $password, $name, $role)) ) {
+		if ( ($model->get_changes($id, $login, $password, $name, $role)) ) {
 			header('Location: /admin.php');
 		} else {
 			ErrorController::get_view_error(33);
@@ -47,7 +47,7 @@ class AdminController {
 			$this->get_root_check ($role);
 		}
 		if (isset($_POST['admin_id'])) {
-			$this->set_chandes();
+			$this->set_changes();
 		} elseif ($_SERVER['PHP_SELF'] == '/admin.php') {
 			$this->set_users();
 			$this->view_admin();

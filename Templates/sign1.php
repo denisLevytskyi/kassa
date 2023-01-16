@@ -24,7 +24,7 @@
 				<input type="password" class="signFormInp" name="sign_password_1" placeholder="PASSWORD" required>
 				<input type="password" class="signFormInp" name="sign_password_2" placeholder="PASSWORD" required>
 				<input type="text" style="display: none;" name="sign_1" value="1" required>
-				<button type="confirm" class="signFormBtn">Sign Up!</button>
+				<button type="submit" class="signFormBtn">Sign Up!</button>
 			</form>
 		</div>
 	</section>

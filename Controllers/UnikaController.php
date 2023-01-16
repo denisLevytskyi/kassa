@@ -96,7 +96,6 @@ class UnikaController extends StaffController {
 
 	protected function set_check () {
 		$tax_data = $this->set_tax_data();
-		$rezult = false;
 		$data = array(
 			'z_id' => $this->set_z_id(),
 			'auth_id' => $_SESSION['auth']['id'],

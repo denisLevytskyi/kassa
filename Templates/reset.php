@@ -20,7 +20,7 @@
 		<div class="container">
 			<form action="/reset.php" class="resetForm" method="POST" enctype="application/x-www-form-urlencoded">
 				<input type="text" class="resetFormInp" name="reset_login" placeholder="Login (Email)" required>
-				<button type="confirm" class="resetFormBtn">Reset!</button>
+				<button type="submit" class="resetFormBtn">Reset!</button>
 				<a class="resetFormA" href="/">Go Home!</a>
 			</form>
 		</div>

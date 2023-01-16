@@ -16,7 +16,7 @@ class EditAuthController {
 		$name = $_POST['edit_auth_name'];
 		$role = $_SESSION['auth']['role'];
 		$model = new Models\AuthModel();
-		if ( ($model->get_chenges($id, $login, $password, $name, $role)) ) {
+		if ( ($model->get_changes($id, $login, $password, $name, $role)) ) {
 			header('Location: /');
 		} else {
 			ErrorController::get_view_error(9);

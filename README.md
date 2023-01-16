@@ -1,6 +1,6 @@
 This project was made thanks to the support and love of my beloved and the best Sun. I love you Vika, thank you for believing in me <3!
 
-=== KEYS OF SUPERGLOBAL ARRAYS ===
+=== KEYS OF SUPER-GLOBAL ARRAYS ===
 
 $_SESSION
 	['auth']

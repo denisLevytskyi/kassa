@@ -21,7 +21,7 @@
 			<form action="/priceSetter.php" class="priceSetterForm" method="POST" enctype="application/x-www-form-urlencoded">
 				<input autofocus type="text" class="priceSetterFormInp" name="price_setter_article" placeholder="Product Article" required>
 				<input type="text" class="priceSetterFormInp" name="price_setter_price" placeholder="Price" required>
-				<button type="confirm" class="priceSetterFormBtn">Set Price!</button>
+				<button type="submit" class="priceSetterFormBtn">Set Price!</button>
 				<a class="priceSetterFormA" href="/">Go Home!</a>
 			</form>
 		</div>

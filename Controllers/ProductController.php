@@ -16,7 +16,7 @@ class ProductController {
 		$name = $_POST['edit_product_name'];
 		$desk = $_POST['edit_product_desc'];
 		$model = new Models\ProductModel();
-		if ( ($model->get_chenges($id, $art, $code, $name, $desk)) ) {
+		if ( ($model->get_changes($id, $art, $code, $name, $desk)) ) {
 			header('Location: /productList.php');
 		} else {
 			ErrorController::get_view_error(16);

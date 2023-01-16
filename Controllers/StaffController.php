@@ -15,7 +15,7 @@ class StaffController {
 		$view = new Views\View();
 		$view->view_balance();
 		$model = new Models\KsefModel();
-		$model->get_document_registrarion($data);
+		$model->get_document_registration($data);
 	}
 
 	protected function view_periodical () {
@@ -24,7 +24,7 @@ class StaffController {
 		$view = new Views\View();
 		$view->view_balance();
 		$model = new Models\KsefModel();
-		$model->get_document_registrarion($data);
+		$model->get_document_registration($data);
 	}
 	
 	protected function set_z_balance_close () {
@@ -46,7 +46,7 @@ class StaffController {
 	}
 
 	protected function get_balance_fields () {
-		$data = array(
+		return array(
 			'auth_id' => $_SESSION['auth']['id'],
 			'auth_name' => $_SESSION['auth']['name'],
 			'timestamp' => time(),
@@ -107,7 +107,6 @@ class StaffController {
 			'balance_open' => $this->set_z_balance_close(),
 			'balance_close' => '0'
 		);
-		return $data;
 	}
 
 	protected function set_periodical () {
@@ -395,10 +394,9 @@ class StaffController {
 		if ( ($checks = $model->get_checks_by_z_id($z_id)) ) {
 			return $checks;
 		} else {
-			$checks = array(array(
+			return array(array(
 				'type' => null
 			));
-			return $checks;
 		}
 	}
 	
@@ -407,10 +405,9 @@ class StaffController {
 		if ( ($branches = $model->get_branches_by_z_id($z_id)) ) {
 			return $branches;
 		} else {
-			$branches = array(array(
+			return array(array(
 				'type' => null
 			));
-			return $branches;
 		}
 	}
 

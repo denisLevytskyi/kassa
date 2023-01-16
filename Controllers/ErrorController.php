@@ -32,7 +32,7 @@ class ErrorController {
 			10 => "EDIT AUTH: Problems with deleting data!",
 			11 => "ADD PRODUCT: Problems with data entry!",
 			12 => "PRODUCT LIST: List is empty!",
-			13 => "RESET: Problems with reseting password",
+			13 => "RESET: Problems with reset password",
 			14 => "PRODUCT: Product not selected!",
 			15 => "ADD PRODUCT: Problems with data entry!",
 			16 => "PRODUCT: Problems with changing product!",

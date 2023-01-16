@@ -6,7 +6,7 @@ class ProductModel extends PriceModel {
 	public function get_all_products () {
 		$products = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT id, article, name, foto FROM products ORDER BY article ASC";
+		$request = "SELECT id, article, name, foto FROM products ORDER BY article";
 		$rezult = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($rezult)) ) {
 			$products[] = $record;
@@ -26,7 +26,7 @@ class ProductModel extends PriceModel {
 		}
 	}
 
-	public function get_chenges($id, $art, $code, $name, $desk) {
+	public function get_changes($id, $art, $code, $name, $desk) {
 		$connection = Logics\Connection::get_connection();
 		$request = "UPDATE products SET article = '$art', code = '$code', name = '$name', description = '$desk' WHERE id = '$id'";
 		return mysqli_query($connection, $request);

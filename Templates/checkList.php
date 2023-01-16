@@ -35,7 +35,7 @@
 		<div class="container">
 			<form action="/check.php" class="searchForm" method="GET">
 				<input type="text" class="searchFormInp" name="check_data" placeholder="ID or Sum" required>
-				<button type="confirm" class="searchFormBtn">Serch!</button>
+				<button type="submit" class="searchFormBtn">Search!</button>
 			</form>
 		</div>
 	</section>

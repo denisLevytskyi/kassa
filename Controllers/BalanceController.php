@@ -10,7 +10,7 @@ class BalanceController {
 		$view = new Views\View();
 		$view->view_balance();
 		$model = new Models\KsefModel();
-		$model->get_document_registrarion($data);
+		$model->get_document_registration($data);
 	}
 
 	protected function set_balance_by_id () {

@@ -42,7 +42,7 @@
 				</p>
 				<textarea name="edit_product_desc" rows="7" class="productFormInp" required><?php echo($v['description']);?></textarea>
 				<input type="text" style="display: none;" name="edit_product_1" value="1" required>
-				<button type="confirm" class="productFormBtn">Edit!</button>
+				<button type="submit" class="productFormBtn">Edit!</button>
 				<a class="productFormA" href="/product.php/?product_delete=1">Delete product!</a>
 				<a class="productFormA" href="/productList.php">Go Back!</a>
 			</form>

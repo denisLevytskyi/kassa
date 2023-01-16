@@ -16,7 +16,7 @@
 			</a>
 			<form action="/unika.php" class="headerFirstForm" method="POST">
 				<input autofocus type="text" class="headerFirstFormInp" name="unika_add" placeholder="Article or Code" required>
-				<button type="confirm" class="headerFirstFormBtn">+</button>
+				<button type="submit" class="headerFirstFormBtn">+</button>
 			</form>
 			<div class="headerFirstSum">
 				<p class="headerFirstSumP">
@@ -80,7 +80,7 @@
 					<form action="/unika.php" class="listWrapElseForm" method="POST">
 						<input type="text" class="listWrapElseFormInp" name="unika_amount_val" value="<?php echo ($v['amount']); ?>" required>
 						<input type="text" style="display: none;" name="unika_amount_key" value="<?php echo ($k); ?>" required>
-						<button type="confirm" style="display: none;">+</button>
+						<button type="submit" style="display: none;">+</button>
 					</form>
 				</div>
 				<div class="listWrapElse">
@@ -116,7 +116,7 @@
 				<input type="checkbox" name="unika_null">
 				<p class="footerFormWrapP">NULL</p>
 			</div>
-			<button type="confirm" class="footerFormBtn">PAY</button>
+			<button type="submit" class="footerFormBtn">PAY</button>
 		</form>
 	</footer>
 </body>

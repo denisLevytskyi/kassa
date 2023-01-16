@@ -55,7 +55,7 @@
 								<option value="4">Senior cashier</option>
 								<option value="100">Admin</option>
 							</select>
-							<button type="confirm" class="listWrapItemFormBtn">
+							<button type="submit" class="listWrapItemFormBtn">
 								Upgrade!
 							</button>
 						</form>
