@@ -22,7 +22,7 @@ $request2 = "CREATE TABLE `products` (
 	`code` VARCHAR(100) DEFAULT NULL,
 	`name` VARCHAR(100) DEFAULT NULL,
 	`description` VARCHAR(100) DEFAULT NULL,
-	`foto` VARCHAR(300) DEFAULT NULL,
+	`photo` VARCHAR(300) DEFAULT NULL,
 	`auth_id` INT DEFAULT NULL,
 	PRIMARY KEY (`id`)
 )";

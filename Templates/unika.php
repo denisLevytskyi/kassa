@@ -68,7 +68,7 @@
 					<?php echo ($k + 1); ?>
 				</div>
 				<div class="listWrapName">
-					<img src="<?php echo ($v['foto']); ?>" class="listWrapNameImg">
+					<img src="<?php echo ($v['photo']); ?>" class="listWrapNameImg">
 					<p class="listWrapNameP">
 						<?php echo ($v['article'] . ' ' . $v['name']); ?>
 					</p>

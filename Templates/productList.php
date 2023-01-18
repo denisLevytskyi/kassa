@@ -45,7 +45,7 @@
 			<div class="listWrap">
 				<?php foreach ($_SESSION['product_list'] as $k => $v) { ?>
 					<div class="listWrapItem">
-						<img src="<?php echo ($v['foto']); ?>" alt="" class="listWrapItemImg">
+						<img src="<?php echo ($v['photo']); ?>" alt="" class="listWrapItemImg">
 						<a href="/product.php/?product_id=<?php echo ($v['id']); ?>" class="listWrapItemA">
 							<?php echo ($v['article'] . ' ' . $v['name']); ?>
 						</a>

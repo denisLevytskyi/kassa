@@ -42,7 +42,7 @@ class EditAuthController {
 	public function get_edit_auth_check () {
 		if (isset($_GET['auth_delete'])) {
 			$this->set_delete();
-		} elseif (empty($_POST['edit_auth_1'])) {
+		} elseif (empty($_POST['edit_auth_id'])) {
 			$this->set_login_check();
 			$this->view_edit_auth();
 		} elseif ($_POST['edit_auth_password_1'] == $_POST['edit_auth_password_2']) {

@@ -9,14 +9,26 @@ class ProductController {
 		$view->view_product();
 	}
 
+	protected function set_move_photo ($file) {
+		$new_name_short = "/Materials/" . time() . $file['name'];
+		$new_name = $_SERVER['DOCUMENT_ROOT'] . $new_name_short;
+		move_uploaded_file($file['tmp_name'], $new_name);
+		return $new_name_short;
+	}
+
 	protected function set_changes_product () {
-		$id = $_SESSION['product']['id'];
+		$id = $_POST['edit_product_id'];
 		$art = $_POST['edit_product_art'];
 		$code = $_POST['edit_product_code'];
 		$name = $_POST['edit_product_name'];
 		$desk = $_POST['edit_product_desc'];
+		$photo = $_POST['edit_product_old_photo'];
 		$model = new Models\ProductModel();
-		if ( ($model->get_changes($id, $art, $code, $name, $desk)) ) {
+		if ( (is_uploaded_file($_FILES['edit_product_photo']['tmp_name'])) ) {
+			$file = $_FILES['edit_product_photo'];
+			$photo = $this->set_move_photo($file);
+		}
+		if ( ($model->get_changes($id, $art, $code, $name, $desk, $photo)) ) {
 			header('Location: /productList.php');
 		} else {
 			ErrorController::get_view_error(16);
@@ -63,7 +75,7 @@ class ProductController {
 	public function get_product () {
 		if (isset($_GET['product_delete'])) {
 			$this->set_delete();
-		} elseif (isset($_POST['edit_product_1'])) {
+		} elseif (isset($_POST['edit_product_id'])) {
 			$this->set_changes_product();
 		} elseif (isset($_GET['product_id'])) {
 			$this->set_product_by_id();

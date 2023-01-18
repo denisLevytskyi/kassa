@@ -6,7 +6,7 @@ class ProductModel extends PriceModel {
 	public function get_all_products () {
 		$products = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT id, article, name, foto FROM products ORDER BY article";
+		$request = "SELECT id, article, name, photo FROM products ORDER BY article";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$products[] = $record;
@@ -26,15 +26,15 @@ class ProductModel extends PriceModel {
 		}
 	}
 
-	public function get_changes($id, $art, $code, $name, $desk) {
+	public function get_changes($id, $art, $code, $name, $desk, $photo) {
 		$connection = Logics\Connection::get_connection();
-		$request = "UPDATE products SET article = '$art', code = '$code', name = '$name', description = '$desk' WHERE id = '$id'";
+		$request = "UPDATE products SET article = '$art', code = '$code', name = '$name', description = '$desk', photo = '$photo' WHERE id = '$id'";
 		return mysqli_query($connection, $request);
 	}
 
-	public function get_product_registration ($group, $art, $code, $name, $desk, $foto, $id) {
+	public function get_product_registration ($group, $art, $code, $name, $desk, $photo, $id) {
 		$connection = Logics\Connection::get_connection();
-		$request = "INSERT INTO products (`group`, article, code, name, description, foto, auth_id) VALUES ('$group', '$art', '$code', '$name', '$desk', '$foto', '$id')";
+		$request = "INSERT INTO products (`group`, article, code, name, description, photo, auth_id) VALUES ('$group', '$art', '$code', '$name', '$desk', '$photo', '$id')";
 		return mysqli_query($connection, $request);
 	}
 

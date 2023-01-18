@@ -24,7 +24,6 @@
 				<input type="text" class="signFormInp" name="edit_auth_login" value="<?php echo($_SESSION['auth']['login']);?>">
 				<input type="password" class="editAuthFormInp" name="edit_auth_password_1" placeholder="NEW PASSWORD" required>
 				<input type="password" class="editAuthFormInp" name="edit_auth_password_2" placeholder="NEW PASSWORD" required>
-				<input type="text" style="display: none;" name="edit_auth_1" value="1" required>
 				<button type="submit" class="editAuthFormBtn">Edit!</button>
 				<a class="editAuthFormA" href="/editAuth.php/?auth_delete=1">Delete profile!</a>
 				<a class="editAuthFormA" href="/">Go Home!</a>
