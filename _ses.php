@@ -1,5 +1,5 @@
 <?php
 echo '<pre>';
 session_start();
-var_dump($_SESSION);
-var_dump($_COOKIE);
+print_r($_SESSION);
+print_r($_COOKIE);
