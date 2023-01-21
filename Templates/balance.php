@@ -12,26 +12,26 @@
 			<img src="/Materials/main_logo.png" class="headerAImg">
 		</a>
 		<p class="headerP">
-			<?php echo $_SESSION['check']['organization_name']; ?>
+			<?php echo $_SESSION['balance']['organization_name']; ?>
 		</p>
 		<p class="headerP">
-			<?php echo $_SESSION['check']['store_name']; ?>
+			<?php echo $_SESSION['balance']['store_name']; ?>
 		</p>
 		<p class="headerP">
-			<?php echo $_SESSION['check']['store_address']; ?>
+			<?php echo $_SESSION['balance']['store_address']; ?>
 		</p>
 		<div class="headerProps">
 			<p class="headerPropsP">
-				ФН <?php echo $_SESSION['check']['num_fiskal']; ?>
+				ФН <?php echo $_SESSION['balance']['num_fiskal']; ?>
 			</p>
 			<p class="headerPropsP">
-				ІД <?php echo $_SESSION['check']['num_id']; ?>
+				ІД <?php echo $_SESSION['balance']['num_id']; ?>
 			</p>
 			<p class="headerPropsP">
-				ЗН <?php echo $_SESSION['check']['num_factory']; ?>
+				ЗН <?php echo $_SESSION['balance']['num_factory']; ?>
 			</p>
 			<p class="headerPropsP">
-				ПН <?php echo $_SESSION['check']['num_tax']; ?>
+				ПН <?php echo $_SESSION['balance']['num_tax']; ?>
 			</p>
 		</div>
 		<div class="headerInfo">
@@ -46,7 +46,7 @@
 				Д/Ч: <?php echo $_SESSION['balance']['time']; ?>
 			</p>
 			<p class="headerInfoP">
-				КАСА: <?php echo $_SESSION['check']['store_kass']; ?>
+				КАСА: <?php echo $_SESSION['balance']['store_kass']; ?>
 			</p>
 		</div>
 	</header>
