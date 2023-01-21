@@ -43,7 +43,6 @@ class AuthModel {
 	public function get_delete ($id) {
 		$connection = Logics\Connection::get_connection();
 		$request = "DELETE FROM users WHERE id = '$id'";
-		$result = mysqli_query($connection, $request);
 		return mysqli_query($connection, $request);
 	}
 

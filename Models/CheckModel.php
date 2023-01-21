@@ -43,30 +43,46 @@ class CheckModel {
 		$i1 = $data['auth_id'];
 		$i2 = $data['auth_name'];
 		$i3 = $data['timestamp'];
-		$i4 = $data['type'];
-		$i5 = $data['body'];
-		$i6 = $data['received_cash'];
-		$i7 = $data['received_card'];
-		$i8 = $data['change'];
-		$i9 = $data['sum'];
-		$i10 = $data['sum_a'];
-		$i11 = $data['sum_b'];
-		$i12 = $data['sum_v'];
-		$i13 = $data['sum_g'];
-		$i14 = $data['sum_m'];
-		$i15 = $data['sum_tax_a'];
-		$i16 = $data['sum_tax_b'];
-		$i17 = $data['sum_tax_v'];
-		$i18 = $data['sum_tax_g'];
-		$i19 = $data['sum_tax_m'];
+		$i4 = $data['organization_name'];
+		$i5 = $data['store_name'];
+		$i6 = $data['store_address'];
+		$i7 = $data['store_kass'];
+		$i8 = $data['num_fiskal'];
+		$i9 = $data['num_factory'];
+		$i10 = $data['num_id'];
+		$i11 = $data['num_tax'];
+		$i12 = $data['type'];
+		$i13 = $data['body'];
+		$i14 = $data['received_cash'];
+		$i15 = $data['received_card'];
+		$i16 = $data['change'];
+		$i17 = $data['sum'];
+		$i18 = $data['sum_a'];
+		$i19 = $data['sum_b'];
+		$i20 = $data['sum_v'];
+		$i21 = $data['sum_g'];
+		$i22 = $data['sum_m'];
+		$i23 = $data['sum_tax_a'];
+		$i24 = $data['sum_tax_b'];
+		$i25 = $data['sum_tax_v'];
+		$i26 = $data['sum_tax_g'];
+		$i27 = $data['sum_tax_m'];
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO checks (
 			z_id,
 			auth_id,
 			auth_name,
 			`timestamp`,
+			organization_name,
+			store_name,
+			store_address,    
+			store_kass,  
+			num_fiskal,      
+			num_factory,
+			num_id,  
+			num_tax,
 			type,
-			body,
+			`body`,
 			received_cash,
 			received_card,
 			`change`,
@@ -83,7 +99,7 @@ class CheckModel {
 			sum_tax_m
 			)
 			VALUES
-			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19')";
+			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27')";
 		return mysqli_query($connection, $request);
 	}
 }

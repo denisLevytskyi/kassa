@@ -57,6 +57,19 @@ body {
 	width: 40px;
 }
 
+.headerProps {
+	margin-top: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	text-align: left;
+}
+
+.headerPropsP {
+	width: 40%;
+}
+
 .headerInfo {
 	margin: 10px 0;
 }

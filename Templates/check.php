@@ -12,14 +12,28 @@
 			<img src="/Materials/main_logo.png" class="headerAImg">
 		</a>
 		<p class="headerP">
-			ТОВ "LVZ"
+			<?php echo $_SESSION['check']['organization_name']; ?>
 		</p>
 		<p class="headerP">
-			Магазин "LVZ STORE"
+			<?php echo $_SESSION['check']['store_name']; ?>
 		</p>
 		<p class="headerP">
-			Україна, Волинська обл., м. Луцьк,<br>пр. Волі, буд. 22
+			<?php echo $_SESSION['check']['store_address']; ?>
 		</p>
+		<div class="headerProps">
+			<p class="headerPropsP">
+				ФН <?php echo $_SESSION['check']['num_fiskal']; ?>
+			</p>
+			<p class="headerPropsP">
+				ІД <?php echo $_SESSION['check']['num_id']; ?>
+			</p>
+			<p class="headerPropsP">
+				ЗН <?php echo $_SESSION['check']['num_factory']; ?>
+			</p>
+			<p class="headerPropsP">
+				ПН <?php echo $_SESSION['check']['num_tax']; ?>
+			</p>
+		</div>
 		<div class="headerInfo">
 			<p class="headerInfoNum">
 				ЧЕК № <?php echo $_SESSION['check']['id']; ?>
@@ -30,6 +44,9 @@
 			</p>
 			<p class="headerInfoP">
 				Д/Ч: <?php echo $_SESSION['check']['time']; ?>
+			</p>
+			<p class="headerInfoP">
+				КАСА: <?php echo $_SESSION['check']['store_kass']; ?>
 			</p>
 			<p class="headerInfoP">
 				Z-ЗВІТ: <?php echo $_SESSION['check']['z_id']; ?>

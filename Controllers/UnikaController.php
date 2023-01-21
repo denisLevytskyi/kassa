@@ -95,12 +95,21 @@ class UnikaController extends StaffController {
 	}
 
 	protected function set_check () {
+		$props = PropsController::get_data();
 		$tax_data = $this->set_tax_data();
 		$data = array(
 			'z_id' => $this->set_z_id(),
 			'auth_id' => $_SESSION['auth']['id'],
 			'auth_name' =>  $_SESSION['auth']['name'],
 			'timestamp' => time(),
+			'organization_name' => $props['organization_name'],
+			'store_name' => $props['store_name'],
+			'store_address' => $props['store_address'],
+			'store_kass' => $props['store_kass'],
+			'num_fiskal' => $props['num_fiskal'],
+			'num_factory' => $props['num_factory'],
+			'num_id' => $props['num_id'],
+			'num_tax' => $props['num_tax'],
 			'type' => $this->set_check_type(),
 			'body' => serialize($_SESSION['unika']['list']),
 			'received_cash' => $_POST['unika_cash'],

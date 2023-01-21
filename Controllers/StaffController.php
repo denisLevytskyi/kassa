@@ -46,10 +46,19 @@ class StaffController {
 	}
 
 	protected function get_balance_fields () {
+		$props = PropsController::get_data();
 		return array(
 			'auth_id' => $_SESSION['auth']['id'],
 			'auth_name' => $_SESSION['auth']['name'],
 			'timestamp' => time(),
+			'organization_name' => $props['organization_name'],
+			'store_name' => $props['store_name'],
+			'store_address' => $props['store_address'],
+			'store_kass' => $props['store_kass'],
+			'num_fiskal' => $props['num_fiskal'],
+			'num_factory' => $props['num_factory'],
+			'num_id' => $props['num_id'],
+			'num_tax' => $props['num_tax'],
 			'staff_in' => '0',
 			'staff_out' => '0',
 			'null_id_first' => '0',
@@ -367,21 +376,32 @@ class StaffController {
 	}
 
 	protected function set_branch_registration () {
+		$props = PropsController::get_data();
+		$data = array(
+			'z_id' => $this->set_z_id(),
+			'auth_id' => $_SESSION['auth']['id'],
+			'auth_name' => $_SESSION['auth']['name'],
+			'timestamp' => time(),
+			'organization_name' => $props['organization_name'],
+			'store_name' => $props['store_name'],
+			'store_address' => $props['store_address'],
+			'store_kass' => $props['store_kass'],
+			'num_fiskal' => $props['num_fiskal'],
+			'num_factory' => $props['num_factory'],
+			'num_id' => $props['num_id'],
+			'num_tax' => $props['num_tax'],
+			'type' => "НУЛЬОВИЙ ЧЕК",
+			'sum' => round($_POST['staff_branch_sum'], 2)
+		);
 		$model = new Models\StaffModel();
-		$z_id = $this->set_z_id();
-		$auth_id = $_SESSION['auth']['id'];
-		$auth_name = $_SESSION['auth']['name'];
-		$time = time();
-		$type = "НУЛЬОВИЙ ЧЕК";
-		$sum = round($_POST['staff_branch_sum'], 2);
-		if ($sum < 0) {
-			$sum = -$sum;
-			$type = 'СЛУЖБОВЕ ВИЛУЧЕННЯ';
-		} elseif ($sum > 0) {
-			$type = 'СЛУЖБОВЕ ВНЕСЕННЯ';
+		if ($data['sum'] < 0) {
+			$data['sum'] = -$data['sum'];
+			$data['type'] = 'СЛУЖБОВЕ ВИЛУЧЕННЯ';
+		} elseif ($data['sum'] > 0) {
+			$data['type'] = 'СЛУЖБОВЕ ВНЕСЕННЯ';
 		}
-		if ( ($model->get_branch_registration($z_id, $auth_id, $auth_name, $time, $type, $sum)) ) {
-			$branch = $model->get_branch('timestamp', $time);
+		if ( ($model->get_branch_registration($data)) ) {
+			$branch = $model->get_branch('timestamp', $data['timestamp']);
 			$branch_id = $branch['id'];
 			header("Location: /branch.php/?branch_id=$branch_id");
 		} else {

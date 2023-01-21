@@ -77,67 +77,83 @@ class StaffModel extends CheckModel {
 		$i0 = $data['auth_id'];
 		$i1 = $data['auth_name'];
 		$i2 = $data['timestamp'];
-		$i3 = $data['staff_in'];
-		$i4 = $data['staff_out'];
-		$i5 = $data['null_id_first'];
-		$i6 = $data['null_id_last'];
-		$i7 = $data['null_timestamp_first'];
-		$i8 = $data['null_timestamp_last'];
-		$i9 = $data['null_checks'];
-		$i10 = $data['sale_id_first'];
-		$i11 = $data['sale_id_last'];
-		$i12 = $data['sale_timestamp_first'];
-		$i13 = $data['sale_timestamp_last'];
-		$i14 = $data['sale_checks'];
-		$i15 = $data['sale_received_cash'];
-		$i16 = $data['sale_received_card'];
-		$i17 = $data['sale_change'];
-		$i18 = $data['sale_sum_cash'];
-		$i19 = $data['sale_sum_card'];
-		$i20 = $data['sale_sum'];
-		$i21 = $data['sale_sum_a'];
-		$i22 = $data['sale_sum_b'];
-		$i23 = $data['sale_sum_v'];
-		$i24 = $data['sale_sum_g'];
-		$i25 = $data['sale_sum_m'];
-		$i26 = $data['sale_sum_tax_a'];
-		$i27 = $data['sale_sum_tax_b'];
-		$i28 = $data['sale_sum_tax_v'];
-		$i29 = $data['sale_sum_tax_g'];
-		$i30 = $data['sale_sum_tax_m'];
-		$i31 = $data['sale_sum_tax'];
-		$i32 = $data['return_id_first'];
-		$i33 = $data['return_id_last'];
-		$i34 = $data['return_timestamp_first'];
-		$i35 = $data['return_timestamp_last'];
-		$i36 = $data['return_checks'];
-		$i37 = $data['return_received_cash'];
-		$i38 = $data['return_received_card'];
-		$i39 = $data['return_change'];
-		$i40 = $data['return_sum_cash'];
-		$i41 = $data['return_sum_card'];
-		$i42 = $data['return_sum'];
-		$i43 = $data['return_sum_a'];
-		$i44 = $data['return_sum_b'];
-		$i45 = $data['return_sum_v'];
-		$i46 = $data['return_sum_g'];
-		$i47 = $data['return_sum_m'];
-		$i48 = $data['return_sum_tax_a'];
-		$i49 = $data['return_sum_tax_b'];
-		$i50 = $data['return_sum_tax_v'];
-		$i51 = $data['return_sum_tax_g'];
-		$i52 = $data['return_sum_tax_m'];
-		$i53 = $data['return_sum_tax'];
-		$i54 = $data['sum_cash'];
-		$i55 = $data['sum_card'];
-		$i56 = $data['sum'];
-		$i57 = $data['balance_open'];
-		$i58 = $data['balance_close'];
+		$i3 = $data['organization_name'];
+		$i4 = $data['store_name'];
+		$i5 = $data['store_address'];
+		$i6 = $data['store_kass'];
+		$i7 = $data['num_fiskal'];
+		$i8 = $data['num_factory'];
+		$i9 = $data['num_id'];
+		$i10 = $data['num_tax'];
+		$i11 = $data['staff_in'];
+		$i12 = $data['staff_out'];
+		$i13 = $data['null_id_first'];
+		$i14 = $data['null_id_last'];
+		$i15 = $data['null_timestamp_first'];
+		$i16 = $data['null_timestamp_last'];
+		$i17 = $data['null_checks'];
+		$i18 = $data['sale_id_first'];
+		$i19 = $data['sale_id_last'];
+		$i20 = $data['sale_timestamp_first'];
+		$i21 = $data['sale_timestamp_last'];
+		$i22 = $data['sale_checks'];
+		$i23 = $data['sale_received_cash'];
+		$i24 = $data['sale_received_card'];
+		$i25 = $data['sale_change'];
+		$i26 = $data['sale_sum_cash'];
+		$i27 = $data['sale_sum_card'];
+		$i28 = $data['sale_sum'];
+		$i29 = $data['sale_sum_a'];
+		$i30 = $data['sale_sum_b'];
+		$i31 = $data['sale_sum_v'];
+		$i32 = $data['sale_sum_g'];
+		$i33 = $data['sale_sum_m'];
+		$i34 = $data['sale_sum_tax_a'];
+		$i35 = $data['sale_sum_tax_b'];
+		$i36 = $data['sale_sum_tax_v'];
+		$i37 = $data['sale_sum_tax_g'];
+		$i38 = $data['sale_sum_tax_m'];
+		$i39 = $data['sale_sum_tax'];
+		$i40 = $data['return_id_first'];
+		$i41 = $data['return_id_last'];
+		$i42 = $data['return_timestamp_first'];
+		$i43 = $data['return_timestamp_last'];
+		$i44 = $data['return_checks'];
+		$i45 = $data['return_received_cash'];
+		$i46 = $data['return_received_card'];
+		$i47 = $data['return_change'];
+		$i48 = $data['return_sum_cash'];
+		$i49 = $data['return_sum_card'];
+		$i50 = $data['return_sum'];
+		$i51 = $data['return_sum_a'];
+		$i52 = $data['return_sum_b'];
+		$i53 = $data['return_sum_v'];
+		$i54 = $data['return_sum_g'];
+		$i55 = $data['return_sum_m'];
+		$i56 = $data['return_sum_tax_a'];
+		$i57 = $data['return_sum_tax_b'];
+		$i58 = $data['return_sum_tax_v'];
+		$i59 = $data['return_sum_tax_g'];
+		$i60 = $data['return_sum_tax_m'];
+		$i61 = $data['return_sum_tax'];
+		$i62 = $data['sum_cash'];
+		$i63 = $data['sum_card'];
+		$i64 = $data['sum'];
+		$i65 = $data['balance_open'];
+		$i66 = $data['balance_close'];
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO balances (
 			auth_id,
 			auth_name,
 			`timestamp`,
+			organization_name,
+			store_name,
+			store_address,    
+			store_kass,  
+			num_fiskal,      
+			num_factory,
+			num_id,  
+			num_tax,
 			staff_in,
 			staff_out,
 			null_id_first,
@@ -195,21 +211,42 @@ class StaffModel extends CheckModel {
 			balance_open,
 			balance_close)
 			VALUES
-			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27', '$i28', '$i29', '$i30', '$i31', '$i32', '$i33', '$i34', '$i35', '$i36', '$i37', '$i38', '$i39', '$i40', '$i41', '$i42', '$i43', '$i44', '$i45', '$i46', '$i47', '$i48', '$i49', '$i50', '$i51', '$i52', '$i53', '$i54', '$i55', '$i56', '$i57', '$i58')";
+			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27', '$i28', '$i29', '$i30', '$i31', '$i32', '$i33', '$i34', '$i35', '$i36', '$i37', '$i38', '$i39', '$i40', '$i41', '$i42', '$i43', '$i44', '$i45', '$i46', '$i47', '$i48', '$i49', '$i50', '$i51', '$i52', '$i53', '$i54', '$i55', '$i56', '$i57', '$i58', '$i59', '$i60', '$i61', '$i62', '$i63', '$i64', '$i65', '$i66')";
 		return mysqli_query($connection, $request);
 	}
 
-	public function get_branch_registration ($z_id, $auth_id, $auth_name, $time, $type, $sum) {
+	public function get_branch_registration ($data) {
+		$i0 = $data['z_id'];
+		$i1 = $data['auth_id'];
+		$i2 = $data['auth_name'];
+		$i3 = $data['timestamp'];
+		$i4 = $data['organization_name'];
+		$i5 = $data['store_name'];
+		$i6 = $data['store_address'];
+		$i7 = $data['store_kass'];
+		$i8 = $data['num_fiskal'];
+		$i9 = $data['num_factory'];
+		$i10 = $data['num_id'];
+		$i11 = $data['num_tax'];
+		$i12 = $data['type'];
+		$i13 = $data['sum'];
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO branches (
 			z_id,
 			auth_id,
 			auth_name,
 			`timestamp`,
+			organization_name,
+			store_name,
+			store_address,    
+			store_kass,  
+			num_fiskal,      
+			num_factory,
+			num_id,  
+			num_tax,
 			`type`,
-			sum) VALUES (
-			'$z_id', '$auth_id', '$auth_name', '$time', '$type', '$sum'
-		)";
+			`sum`) VALUES
+			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13')";
 		return mysqli_query($connection, $request);
 	}
 }
