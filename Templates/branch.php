@@ -46,10 +46,10 @@
 				Д/Ч: <?php echo $_SESSION['branch']['time']; ?>
 			</p>
 			<p class="headerInfoP">
-				Z-ЗВІТ: <?php echo $_SESSION['branch']['z_id']; ?>
+				КАСА: <?php echo $_SESSION['branch']['store_kass']; ?>
 			</p>
 			<p class="headerInfoP">
-				КАСА: <?php echo $_SESSION['branch']['store_kass']; ?>
+				Z-ЗВІТ: <?php echo $_SESSION['branch']['z_id']; ?>
 			</p>
 		</div>
 	</header>
@@ -79,7 +79,7 @@
 			?></p>
 		</div>
 		<p class="footerFiskal">
-			= = = = = НЕФІСКАЛЬНИЙ ЧЕК = = = = =
+			= = = = = СЛУЖБОВИЙ ЧЕК = = = = =
 		</p>
 		<p class="footerP">
 			UNIKA Fiskal

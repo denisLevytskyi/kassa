@@ -262,12 +262,10 @@
 			<?php } ?>
 		</div>
 		<p class="footerFiskal"><?php
-			if ($_SESSION['balance']['type'] == "Z") {
+			if ($_SESSION['balance']['type'] == "Z" or $_SESSION['balance']['type'] == "ПЕРІОДИЧНИЙ<br>Z") {
 				echo '= = = = = ФІСКАЛЬНИЙ ЧЕК = = = = =';
-			} elseif ($_SESSION['balance']['type'] == "ПЕРІОДИЧНИЙ<br>Z") {
-				echo '= = = = = ПЕРІОДИЧНИЙ ЗВІТ = = = = =';
 			} else {
-				echo '= = = = = НЕФІСКАЛЬНИЙ ЧЕК = = = = =';
+				echo '= = = = = СЛУЖБОВИЙ ЧЕК = = = = =';
 			}
 		?></p>
 		<p class="footerP">
