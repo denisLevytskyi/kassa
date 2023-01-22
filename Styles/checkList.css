@@ -38,9 +38,25 @@
 	color: black;
 }
 
+.listBtn {
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.listBtnP {
+	width: 90px;
+	color: white;
+	background: black;
+	border-radius: 100px;
+	padding: 3px;
+	cursor: pointer;
+	text-align: center;
+}
+
 .listA {
 	display: block;
-	margin-top: 15px;
 	color: blue;
 }
 

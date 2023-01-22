@@ -33,7 +33,18 @@
 	</section>
 	<section class="list">
 		<div class="container">
-			<div class="listWrap">
+			<div class="listBtn">
+				<p class="listBtnP deactivate" id="previous">
+					Previous
+				</p>
+				<p class="listBtnP deactivate" id="next">
+					Next
+				</p>
+				<p class="listBtnP deactivate" id="all">
+					All
+				</p>
+			</div>
+			<div class="listWrap" id="listWrap">
 				<?php foreach ($_SESSION['price_list'] as $k => $v) { ?>
 					<div class="listWrapItem">
 						<p class="listWrapItemP"><?php
@@ -50,5 +61,6 @@
 			<a class="listA" href="/">Go Home!</a>
 		</div>
 	</section>
+	<script src="/Scripts/list.js"></script>
 </body>
 </html>

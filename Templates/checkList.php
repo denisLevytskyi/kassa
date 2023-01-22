@@ -41,8 +41,18 @@
 	</section>
 	<section class="list">
 		<div class="container">
-			<a class="listA" href="/">Go Home!</a>
-			<div class="listWrap">
+			<div class="listBtn">
+				<p class="listBtnP deactivate" id="previous">
+					Previous
+				</p>
+				<p class="listBtnP deactivate" id="next">
+					Next
+				</p>
+				<p class="listBtnP deactivate" id="all">
+					All
+				</p>
+			</div>
+			<div class="listWrap" id="listWrap">
 				<?php foreach ($_SESSION['check_list'] as $k => $v) {
 					$type = null;
 					if ($v['type'] == 'АНУЛЬОВАНО') {
@@ -70,5 +80,6 @@
 			<a class="listA" href="/">Go Home!</a>
 		</div>
 	</section>
+	<script src="/Scripts/list.js"></script>
 </body>
 </html>

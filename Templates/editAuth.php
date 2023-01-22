@@ -32,5 +32,3 @@
 	</section>
 </body>
 </html>
-
-

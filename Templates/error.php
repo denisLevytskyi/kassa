@@ -32,7 +32,3 @@
 	</section>
 </body>
 </html>
-
-
-	
-	

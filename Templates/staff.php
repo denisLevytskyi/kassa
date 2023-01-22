@@ -63,8 +63,18 @@
 	</section>
 	<section class="list">
 		<div class="container">
-			<a class="listA" href="/">Go Home!</a>
-			<div class="listWrap">
+			<div class="listBtn">
+				<p class="listBtnP deactivate" id="previous">
+					Previous
+				</p>
+				<p class="listBtnP deactivate" id="next">
+					Next
+				</p>
+				<p class="listBtnP deactivate" id="all">
+					All
+				</p>
+			</div>
+			<div class="listWrap" id="listWrap">
 				<?php foreach ($_SESSION['staff']['branches'] as $k => $v) {
 					$type = null;
 					if ($v['type'] == 'НУЛЬОВИЙ ЧЕК') {
@@ -91,7 +101,18 @@
 	</section>
 	<section class="list">
 		<div class="container">
-			<div class="listWrap">
+			<div class="listBtn">
+				<p class="listBtnP deactivate" id="previous2">
+					Previous
+				</p>
+				<p class="listBtnP deactivate" id="next2">
+					Next
+				</p>
+				<p class="listBtnP deactivate" id="all2">
+					All
+				</p>
+			</div>
+			<div class="listWrap" id="listWrap2">
 				<?php foreach ($_SESSION['staff']['balances'] as $k => $v) { ?>
 					<div class="listWrapItem">
 						<a href="/balance.php/?balance_id=<?php echo ($v['id']); ?>" class="listWrapItemA"><?php
@@ -107,5 +128,7 @@
 			<a class="listA" href="/">Go Home!</a>
 		</div>
 	</section>
+	<script src="/Scripts/list.js"></script>
+	<script src="/Scripts/list2.js"></script>
 </body>
 </html>
