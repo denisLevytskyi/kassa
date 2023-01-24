@@ -82,10 +82,6 @@ section {
 	margin: 25px auto;
 }
 
-.active {
-	display: block;
-}
-
 .deactivate {
 	display: none;
 }

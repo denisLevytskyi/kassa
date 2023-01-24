@@ -129,6 +129,8 @@
 		</div>
 	</section>
 	<script src="/Scripts/list.js"></script>
-	<script src="/Scripts/list2.js"></script>
+	<script>
+		list_function('2');
+	</script>
 </body>
 </html>
