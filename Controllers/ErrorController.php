@@ -56,7 +56,8 @@ class ErrorController {
 			34 => "ADMIN: Not enough rights!",
 			35 => "SIGN: This email is registered!",
 			36 => "SIGN: This email is not registered!",
-			37 => "UNIKA: Work shift lasts more than 24 hours!"
+			37 => "UNIKA: Work shift lasts more than 24 hours!",
+			38 => "STAFF: Tax props was changed! (PERIODICAL SETTER)"
 		);
 		session_start();
 		$_SESSION['error']['n'] = $n;

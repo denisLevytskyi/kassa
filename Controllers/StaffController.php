@@ -140,14 +140,31 @@ class StaffController {
 	protected function set_periodical_data () {
 		$model = new Models\StaffModel();
 		$index = $_POST['staff_periodical_f'];
+		$id_first = $_POST['staff_periodical_f'];
 		$id_last = $_POST['staff_periodical_l'];
 		$data = $this->get_balance_fields();
+		$error = FALSE;
 		$gate0 = 0;
 		$gate1 = 0;
 		$gate2 = 0;
 		$gate3 = 0;
 		while ($index <= $id_last) {
 			if ( ($balance = $model->get_balance('id', $index)) ) {
+				if ($id_first != $index and $data['organization_name'] != $balance['organization_name']) {
+					$error = TRUE;
+				} elseif ($id_first != $index and $data['store_name'] != $balance['store_name']) {
+					$error = TRUE;
+				} elseif ($id_first != $index and $data['store_address'] != $balance['store_address']) {
+					$error = TRUE;
+				} elseif ($id_first != $index and $data['num_fiskal'] != $balance['num_fiskal']) {
+					$error = TRUE;
+				} elseif ($id_first != $index and $data['num_factory'] != $balance['num_factory']) {
+					$error = TRUE;
+				} elseif ($id_first != $index and $data['num_id'] != $balance['num_id']) {
+					$error = TRUE;
+				} elseif ($id_first != $index and $data['num_tax'] != $balance['num_tax']) {
+					$error = TRUE;
+				}
 				if ($gate0 == 0 and $balance['null_id_first'] != '0') {
 					$data['null_id_first'] = $balance['null_id_first'];
 					$data['null_timestamp_first'] = $balance['null_timestamp_first'];
@@ -179,6 +196,14 @@ class StaffController {
 					$data['return_id_last'] = $balance['return_id_last'];
 					$data['return_timestamp_last'] = $balance['return_timestamp_last'];
 				}
+				$data['organization_name'] = $balance['organization_name'];
+				$data['store_name'] = $balance['store_name'];
+				$data['store_address'] = $balance['store_address'];
+				$data['store_kass'] = $balance['store_kass'];
+				$data['num_fiskal'] = $balance['num_fiskal'];
+				$data['num_factory'] = $balance['num_factory'];
+				$data['num_id'] = $balance['num_id'];
+				$data['num_tax'] = $balance['num_tax'];
 				$data['staff_in'] += $balance['staff_in'];
 				$data['staff_out'] += $balance['staff_out'];
 				$data['null_checks'] += $balance['null_checks'];
@@ -224,6 +249,10 @@ class StaffController {
 				$data['balance_close'] = $balance['balance_close'];
 			} else {
 				ErrorController::get_view_error(31);
+				die();
+			}
+			if ($error) {
+				ErrorController::get_view_error(38);
 				die();
 			}
 			$index++;
