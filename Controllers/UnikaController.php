@@ -72,14 +72,30 @@ class UnikaController extends StaffController {
 		}
 		return $data;
 	}
+
+	protected function get_time_check ($data) {
+		if (time() - $data['null_timestamp_first'] > 86400) {
+			ErrorController::get_view_error(37);
+			return FALSE;
+		} elseif (time() - $data['sale_timestamp_first'] > 86400) {
+			ErrorController::get_view_error(37);
+			return FALSE;
+		} elseif (time() - $data['return_timestamp_first'] > 86400) {
+			ErrorController::get_view_error(37);
+			return FALSE;
+		} else {
+			return TRUE;
+		}
+	}
 	
 	protected function set_check_type () {
 		$cash = $_POST['unika_cash'];
 		$sum = $_SESSION['unika']['sum'];
 		$count = count($_SESSION['unika']['list']);
 		$data = $this->set_balance_data();
+		$time_check = $this->get_time_check($data);
 		$result = $data['balance_close'] - $cash;
-		if ($count == 0 or $sum < 0) {
+		if ($count == 0 or $sum < 0 or !$time_check) {
 			return null;
 		} elseif ($sum == 0 or isset($_POST['unika_null'])) {
 			return 'АНУЛЬОВАНО';

@@ -1,9 +1,9 @@
-const list_function = (name_index = '') => {
+const list_function = (name_index = '', step_index = 10) => {
     const list = document.getElementById('listWrap' + name_index).children;
     const previous = document.getElementById('previous' + name_index);
     const next = document.getElementById('next' + name_index);
     const all = document.getElementById('all' + name_index);
-    const step = 10;
+    const step = step_index;
 
     let index = step;
 

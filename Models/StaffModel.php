@@ -52,7 +52,7 @@ class StaffModel extends CheckModel {
 	public function get_all_branches () {
 		$branches = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM branches ORDER BY id DESC";
+		$request = "SELECT id, z_id, auth_id, auth_name, `timestamp`, `type`, `sum` FROM branches ORDER BY id DESC";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
@@ -64,7 +64,7 @@ class StaffModel extends CheckModel {
 	public function get_all_balances () {
 		$balances = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT id, auth_id, auth_name, `timestamp`, sum FROM balances ORDER BY id DESC";
+		$request = "SELECT id, auth_id, auth_name, `timestamp`, `sum` FROM balances ORDER BY id DESC";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);

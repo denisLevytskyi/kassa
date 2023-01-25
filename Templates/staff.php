@@ -130,7 +130,7 @@
 	</section>
 	<script src="/Scripts/list.js"></script>
 	<script>
-		list_function('2');
+		list_function('2', 15);
 	</script>
 </body>
 </html>

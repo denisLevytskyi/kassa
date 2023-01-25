@@ -82,6 +82,23 @@ section {
 	margin: 25px auto;
 }
 
+.listBtn {
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.listBtnP {
+	width: 90px;
+	color: white;
+	background: black;
+	border-radius: 100px;
+	padding: 3px;
+	cursor: pointer;
+	text-align: center;
+}
+
 .deactivate {
-	display: none;
+	display: none !important;
 }
