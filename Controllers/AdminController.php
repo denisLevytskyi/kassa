@@ -9,9 +9,11 @@ class AdminController {
 		$view->view_admin();
 	}
 
-	protected function get_root_check ($role) {
-		$user_role = $_SESSION['auth']['role'];
-		$check_role = $role;
+	protected function get_root_check ($check_role) {
+		$user_role = 0;
+		if (isset($_SESSION['auth']['role'])) {
+			$user_role = $_SESSION['auth']['role'];
+		}
 		if ($user_role < $check_role) {
 			ErrorController::get_view_error(34);
 			die();
