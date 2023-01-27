@@ -261,6 +261,11 @@
 				</p>
 			<?php } ?>
 		</div>
+		<?php if ($_SESSION['balance']['type'] == "Z") { ?>
+			<div class="footerCode">
+				<img src="/qr.php?data=<?php echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>" alt="qr" class="footerCodeImg">
+			</div>
+		<?php } ?>
 		<p class="footerFiskal"><?php
 			if ($_SESSION['balance']['type'] == "Z" or $_SESSION['balance']['type'] == "ПЕРІОДИЧНИЙ<br>Z") {
 				echo '= = = = = ФІСКАЛЬНИЙ ЧЕК = = = = =';

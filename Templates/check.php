@@ -106,6 +106,9 @@
 				<?php echo ('РЕШТА: ........................... ' . $_SESSION['check']['change'] . ' грн'); ?>
 			</p>
 		</div>
+		<div class="footerCode">
+			<img src="/qr.php?data=<?php echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>" alt="qr" class="footerCodeImg">
+		</div>
 		<p class="footerFiskal">
 			= = = = = <?php echo $_SESSION['check']['type']; ?> = = = = =
 		</p>
