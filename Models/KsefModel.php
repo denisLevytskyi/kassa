@@ -7,6 +7,7 @@ class KsefModel {
 		if (!is_file($name)) {
 			$content = ob_get_contents();
 			file_put_contents($name, $content);
+			file_put_contents('Ksef/===CONTROL_TAPE===.html', $content, FILE_APPEND);
 		}
 	}
 
