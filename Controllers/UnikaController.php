@@ -76,15 +76,21 @@ class UnikaController extends StaffController {
 	protected function set_round () {
 		$sum = $_SESSION['unika']['sum'];
 		$round_sum = round($sum, 1);
+		$group = FALSE;
 		if ($_POST['unika_cash'] != 0 and $sum != $round_sum) {
 			$round = round(($round_sum - $sum) * 100, 0);
-			$name = $round > 0 ? '+' : '-';
+			$name = $round > 0 ? 'НАДБАВКА' : 'ЗНИЖКА';
+			foreach ($_SESSION['unika']['list'] as $k => $v) {
+				if ($v['sum'] >= -$round / 100) {
+					$group = $v['group'];
+				}
+			}
 			$_SESSION['unika']['list']['round'] = [
 				'id' => 0,
-				'group' => '#',
+				'group' => $group,
 				'article' => '-',
 				'code' => '-',
-				'name' => '= = = ЗАОКРУГЛЕННЯ ' . $name . ' = = =',
+				'name' => '= = = ' . $name . ' = = =',
 				'description' => '-',
 				'photo' => '',
 				'auth_id' => 0,
@@ -93,6 +99,9 @@ class UnikaController extends StaffController {
 				'sum' => 0.01 * $round
 			];
 			$this->set_sum();
+			if (!$group) {
+				$_SESSION['unika']['list'] = [];
+			}
 		}
 	}
 
@@ -256,8 +265,10 @@ class UnikaController extends StaffController {
 
 	public function get_unika () {
 		if (empty($_SESSION['unika']['list'])) {
-			$_SESSION['unika'] = array();
-			$_SESSION['unika']['list'] = array();
+			$_SESSION['unika'] = [
+				'sum' => 0,
+				'list' => []
+			];
 		}
 		if (isset($_POST['unika_add'])) {
 			$this->add_product();
