@@ -1,3 +1,8 @@
+<?php
+function form ($num) {
+	return number_format($num, 2, '.', ' ');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,22 +64,22 @@
 				<?php echo $_SESSION['branch']['type']; ?>
 			</p>
 			<p class="mainItemP">
-				СУМА: <?php echo ($_SESSION['branch']['sum'] . ' грн'); ?>
+				СУМА: <?php echo form($_SESSION['branch']['sum']) . ' грн'; ?>
 			</p>
 		</div>
 	</section>
 	<footer class="footer">
 		<div class="footerSum">
 			<p class="footerSumP">
-				<?php echo ('ВСЬОГО: ' . $_SESSION['branch']['sum'] . ' грн'); ?>
+				<?php echo 'ВСЬОГО: ' . form($_SESSION['branch']['sum']) . ' грн'; ?>
 			</p>
 		</div>
 		<div class="footerNum">
 			<p class="footerNumP"><?php
 				if ($_SESSION['branch']['type'] == "СЛУЖБОВЕ ВНЕСЕННЯ") {
-					echo ('ОТРИМАНО ГОТІВКОЮ: .... ' . $_SESSION['branch']['sum'] . ' грн');
+					echo 'ОТРИМАНО ГОТІВКОЮ: .... ' . form($_SESSION['branch']['sum']) . ' грн';
 				} else {
-					echo ('ВИДАНО ГОТІВКОЮ: .... ' . $_SESSION['branch']['sum'] . ' грн');
+					echo 'ВИДАНО ГОТІВКОЮ: .... ' . form($_SESSION['branch']['sum']) . ' грн';
 				}
 			?></p>
 		</div>

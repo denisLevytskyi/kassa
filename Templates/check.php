@@ -1,3 +1,8 @@
+<?php
+function form ($num) {
+	return number_format($num, 2, '.', ' ');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,16 +62,16 @@
 		<?php foreach ($_SESSION['check']['main'] as $k => $v) { ?>
 			<div class="mainItem">
 				<p class="mainItemP">
-					<?php echo ($v['price'] . ' X ' . $v['amount'] . ' = ' . $v['sum']) . ' ' . $v['group']; ?>
+					<?php echo form($v['price']) . ' X ' . $v['amount'] . ' = ' . form($v['sum']) . ' ' . $v['group']; ?>
 				</p>
 				<p class="mainItemP mainItemName">
-					<?php echo ($v['name']); ?>
+					<?php echo $v['name']; ?>
 				</p>
 				<p class="mainItemP">
-					<?php echo ('Ш/К: ' . $v['code']); ?>
+					<?php echo 'Ш/К: ' . $v['code']; ?>
 				</p>
 				<p class="mainItemP">
-					<?php echo ('АРТИКУЛ: ' . $v['article']); ?>
+					<?php echo 'АРТИКУЛ: ' . $v['article']; ?>
 				</p>
 			</div>					
 		<?php } ?>
@@ -74,36 +79,36 @@
 	<footer class="footer">
 		<div class="footerSum">
 			<p class="footerSumP">
-				<?php echo ('ВСЬОГО: ' . $_SESSION['check']['sum'] . ' грн'); ?>
+				<?php echo 'ВСЬОГО: ' . form($_SESSION['check']['sum']) . ' грн'; ?>
 			</p>
 		</div>
 		<div class="footerTax">
 			<p class="footerTaxP c<?php echo ($_SESSION['check']['sum_a']) ?>">
-				<?php echo ('ОБІГ A: .... ' . $_SESSION['check']['sum_a'] . ' ПДВ 20% = ' . $_SESSION['check']['sum_tax_a']); ?>
+				<?php echo 'ОБІГ A: .... ' . form($_SESSION['check']['sum_a']) . ' ПДВ 20% = ' . form($_SESSION['check']['sum_tax_a']); ?>
 			</p>
 			<p class="footerTaxP c<?php echo ($_SESSION['check']['sum_b']) ?>">
-				<?php echo ('ОБІГ Б: .... ' . $_SESSION['check']['sum_b'] . ' ПДВ 14% = ' . $_SESSION['check']['sum_tax_b']); ?>
+				<?php echo 'ОБІГ Б: .... ' . form($_SESSION['check']['sum_b']) . ' ПДВ 14% = ' . form($_SESSION['check']['sum_tax_b']); ?>
 			</p>
 			<p class="footerTaxP c<?php echo ($_SESSION['check']['sum_v']) ?>">
-				<?php echo ('ОБІГ В: .... ' . $_SESSION['check']['sum_v'] . ' ПДВ 07% = ' . $_SESSION['check']['sum_tax_v']); ?>
+				<?php echo 'ОБІГ В: .... ' . form($_SESSION['check']['sum_v']) . ' ПДВ 07% = ' . form($_SESSION['check']['sum_tax_v']); ?>
 			</p>
 			<p class="footerTaxP c<?php echo ($_SESSION['check']['sum_g']) ?>">
-				<?php echo ('ОБІГ Г: .... ' . $_SESSION['check']['sum_g'] . ' ПДВ 00% = ' . $_SESSION['check']['sum_tax_g']); ?>
+				<?php echo 'ОБІГ Г: .... ' . form($_SESSION['check']['sum_g']) . ' ПДВ 00% = ' . form($_SESSION['check']['sum_tax_g']); ?>
 			</p>
 			<p class="footerTaxP c<?php echo ($_SESSION['check']['sum_m']) ?>">
-				<?php echo ('ОБІГ М: ... ' . $_SESSION['check']['sum_m'] . ' Ак/З 05% = ' . $_SESSION['check']['sum_tax_m']); ?>
+				<?php echo 'ОБІГ М: ... ' . form($_SESSION['check']['sum_m']) . ' Ак/З 05% = ' . form($_SESSION['check']['sum_tax_m']); ?>
 			</p>
 		</div>
 		<br>
 		<div class="footerNum">
 			<p class="footerNumP">
-				<?php echo ('ГОТІВКОЮ: ..................... ' . $_SESSION['check']['received_cash'] . ' грн'); ?>
+				<?php echo 'ГОТІВКОЮ: ..................... ' . form($_SESSION['check']['received_cash']) . ' грн'; ?>
 			</p>
 			<p class="footerNumP">
-				<?php echo ('КАРТКОЮ: ..................... ' . $_SESSION['check']['received_card'] . ' грн'); ?>
+				<?php echo 'КАРТКОЮ: ..................... ' . form($_SESSION['check']['received_card']) . ' грн'; ?>
 			</p>
 			<p class="footerNumP">
-				<?php echo ('РЕШТА: ........................... ' . $_SESSION['check']['change'] . ' грн'); ?>
+				<?php echo 'РЕШТА: ........................... ' . form($_SESSION['check']['change']) . ' грн'; ?>
 			</p>
 		</div>
 		<div class="footerCode">
