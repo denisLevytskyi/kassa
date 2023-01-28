@@ -73,6 +73,29 @@ class UnikaController extends StaffController {
 		return $data;
 	}
 
+	protected function set_round () {
+		$sum = $_SESSION['unika']['sum'];
+		$round_sum = round($sum, 1);
+		if ($_POST['unika_cash'] != 0 and $sum != $round_sum) {
+			$round = round(($round_sum - $sum) * 100, 0);
+			$name = $round > 0 ? '+' : '-';
+			$_SESSION['unika']['list']['round'] = [
+				'id' => 0,
+				'group' => '#',
+				'article' => '-',
+				'code' => '-',
+				'name' => '= = = ЗАОКРУГЛЕННЯ ' . $name . ' = = =',
+				'description' => '-',
+				'photo' => '',
+				'auth_id' => 0,
+				'price' => 0.01,
+				'amount' => $round,
+				'sum' => 0.01 * $round
+			];
+			$this->set_sum();
+		}
+	}
+
 	protected function get_time_check ($data) {
 		if (time() - $data['null_timestamp_first'] > 86400) {
 			ErrorController::get_view_error(37);
@@ -111,6 +134,7 @@ class UnikaController extends StaffController {
 	}
 
 	protected function set_check () {
+		$this->set_round();
 		$props = PropsController::get_data();
 		$tax_data = $this->set_tax_data();
 		$data = array(
@@ -128,7 +152,7 @@ class UnikaController extends StaffController {
 			'num_tax' => $props['num_tax'],
 			'type' => $this->set_check_type(),
 			'body' => serialize($_SESSION['unika']['list']),
-			'received_cash' => $_POST['unika_cash'],
+			'received_cash' => round($_POST['unika_cash'], 1),
 			'received_card' => '0',
 			'change' => '0',
 			'sum' => $_SESSION['unika']['sum'],
@@ -231,10 +255,8 @@ class UnikaController extends StaffController {
 	}
 
 	public function get_unika () {
-		if (empty($_SESSION['unika'])) {
-			$_SESSION['unika'] = array();
-		}
 		if (empty($_SESSION['unika']['list'])) {
+			$_SESSION['unika'] = array();
 			$_SESSION['unika']['list'] = array();
 		}
 		if (isset($_POST['unika_add'])) {
@@ -246,6 +268,7 @@ class UnikaController extends StaffController {
 		} elseif (isset($_POST['unika_cash']) and is_numeric($_POST['unika_cash'])) {
 			$this->set_check();
 		}
+		unset($_SESSION['unika']['list']['round']);
 		$this->set_sum();
 		$this->view_unika();
 	}
