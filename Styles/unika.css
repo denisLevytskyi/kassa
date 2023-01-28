@@ -157,6 +157,8 @@ button:hover {
 
 .listWrapNameImg {
 	height: 50px;
+	width: 50px;
+	object-fit: cover;
 	display: inline;
 	margin-right: 10px;
 }

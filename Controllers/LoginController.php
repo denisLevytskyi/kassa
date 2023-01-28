@@ -61,6 +61,7 @@ class LoginController {
 		}
 		if (empty($_SESSION['auth']['id'])) {
 			header('Location: /');
+			die();
 		}
 	}
 
