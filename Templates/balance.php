@@ -50,9 +50,6 @@ function form ($num) {
 			<p class="headerInfoP">
 				Д/Ч: <?php echo $_SESSION['balance']['time']; ?>
 			</p>
-			<p class="headerInfoP">
-				КАСА: <?php echo $_SESSION['balance']['store_kass']; ?>
-			</p>
 		</div>
 	</header>
 	<section class="main">
@@ -230,28 +227,28 @@ function form ($num) {
 	<footer class="footer">
 		<div class="footerSum">
 			<p class="footerSumP">
-				<?php echo ('ВСЬОГО: ' . form($_SESSION['balance']['sum']) . ' грн'); ?>
+				<?php echo 'ВСЬОГО: ' . form($_SESSION['balance']['sum']) . ' грн'; ?>
 			</p>
 		</div>
 		<div class="footerNum">
 			<p class="footerNumP">
-				<?php echo ('З НИХ ГОТІВКОЮ: ... ' . form($_SESSION['balance']['sum_cash']) . ' грн'); ?>
+				<?php echo 'З НИХ ГОТІВКОЮ: ... ' . form($_SESSION['balance']['sum_cash']) . ' грн'; ?>
 			</p>
 			<p class="footerNumP">
-				<?php echo ('З НИХ КАРТКОЮ: .... ' . form($_SESSION['balance']['sum_card']) . ' грн'); ?>
+				<?php echo 'З НИХ КАРТКОЮ: .... ' . form($_SESSION['balance']['sum_card']) . ' грн'; ?>
 			</p>
 			<br>
 			<p class="footerNumP">
-				<?php echo ('ПОЧАТКОВИЙ ЗАЛИШОК: ... ' . form($_SESSION['balance']['balance_open']) . ' грн'); ?>
+				<?php echo 'ПОЧАТКОВИЙ ЗАЛИШОК: ... ' . form($_SESSION['balance']['balance_open']) . ' грн'; ?>
 			</p>
 			<p class="footerNumP">
-				<?php echo ('СЛУЖБОВЕ ВНЕСЕННЯ: ....... ' . form($_SESSION['balance']['staff_in']) . ' грн'); ?>
+				<?php echo 'СЛУЖБОВЕ ВНЕСЕННЯ: ....... ' . form($_SESSION['balance']['staff_in']) . ' грн'; ?>
 			</p>
 			<p class="footerNumP">
-				<?php echo ('СЛУЖБОВЕ ВИЛУЧЕННЯ: .... ' . form($_SESSION['balance']['staff_out']) . ' грн'); ?>
+				<?php echo 'СЛУЖБОВЕ ВИЛУЧЕННЯ: .... ' . form($_SESSION['balance']['staff_out']) . ' грн'; ?>
 			</p>
 			<p class="footerNumP">
-				<?php echo ('КІНЦЕВИЙ ЗАЛИШОК: .......... ' . form($_SESSION['balance']['balance_close']) . ' грн'); ?>
+				<?php echo 'КІНЦЕВИЙ ЗАЛИШОК: .......... ' . form($_SESSION['balance']['balance_close']) . ' грн'; ?>
 			</p>
 			<?php if ($_SESSION['balance']['type'] == "Z") { ?>
 				<br>
