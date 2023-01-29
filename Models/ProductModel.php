@@ -16,7 +16,7 @@ class ProductModel extends PriceModel {
 
 	public function get_product ($search_p, $search_v) {
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM products WHERE $search_p= '$search_v'";
+		$request = "SELECT * FROM products WHERE $search_p LIKE '%$search_v%'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		if ( ($record = mysqli_fetch_assoc($result)) ) {
 			$art = $record['article'];
