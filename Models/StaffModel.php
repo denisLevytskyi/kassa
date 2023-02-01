@@ -15,7 +15,7 @@ class StaffModel extends CheckModel {
 		$request = "SELECT * FROM branches WHERE $search_p= '$search_v'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		if ( ($record = mysqli_fetch_assoc($result)) ) {
-			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
+			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
 			return $record;
 		}
 	}
@@ -25,13 +25,13 @@ class StaffModel extends CheckModel {
 		$request = "SELECT * FROM balances WHERE $search_p= '$search_v'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		if ( ($record = mysqli_fetch_assoc($result)) ) {
-			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
-			$record['null_time_first'] = date("y-m-d H:i:s", $record['null_timestamp_first']);
-			$record['null_time_last'] = date("y-m-d H:i:s", $record['null_timestamp_last']);
-			$record['sale_time_first'] = date("y-m-d H:i:s", $record['sale_timestamp_first']);
-			$record['sale_time_last'] = date("y-m-d H:i:s", $record['sale_timestamp_last']);
-			$record['return_time_first'] = date("y-m-d H:i:s", $record['return_timestamp_first']);
-			$record['return_time_last'] = date("y-m-d H:i:s", $record['return_timestamp_last']);
+			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
+			$record['null_time_first'] = date("d-m-Y H:i:s", $record['null_timestamp_first']);
+			$record['null_time_last'] = date("d-m-Y H:i:s", $record['null_timestamp_last']);
+			$record['sale_time_first'] = date("d-m-Y H:i:s", $record['sale_timestamp_first']);
+			$record['sale_time_last'] = date("d-m-Y H:i:s", $record['sale_timestamp_last']);
+			$record['return_time_first'] = date("d-m-Y H:i:s", $record['return_timestamp_first']);
+			$record['return_time_last'] = date("d-m-Y H:i:s", $record['return_timestamp_last']);
 			$record['type'] = 'Z';
 			return $record;
 		}
@@ -43,13 +43,13 @@ class StaffModel extends CheckModel {
 		$request = "SELECT * FROM balances WHERE `$search_p` >= '$first' AND `$search_p` <= '$last'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
-			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
-			$record['null_time_first'] = date("y-m-d H:i:s", $record['null_timestamp_first']);
-			$record['null_time_last'] = date("y-m-d H:i:s", $record['null_timestamp_last']);
-			$record['sale_time_first'] = date("y-m-d H:i:s", $record['sale_timestamp_first']);
-			$record['sale_time_last'] = date("y-m-d H:i:s", $record['sale_timestamp_last']);
-			$record['return_time_first'] = date("y-m-d H:i:s", $record['return_timestamp_first']);
-			$record['return_time_last'] = date("y-m-d H:i:s", $record['return_timestamp_last']);
+			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
+			$record['null_time_first'] = date("d-m-Y H:i:s", $record['null_timestamp_first']);
+			$record['null_time_last'] = date("d-m-Y H:i:s", $record['null_timestamp_last']);
+			$record['sale_time_first'] = date("d-m-Y H:i:s", $record['sale_timestamp_first']);
+			$record['sale_time_last'] = date("d-m-Y H:i:s", $record['sale_timestamp_last']);
+			$record['return_time_first'] = date("d-m-Y H:i:s", $record['return_timestamp_first']);
+			$record['return_time_last'] = date("d-m-Y H:i:s", $record['return_timestamp_last']);
 			$balances[] = $record;
 		}
 		return $balances;
@@ -61,7 +61,7 @@ class StaffModel extends CheckModel {
 		$request = "SELECT * FROM branches WHERE z_id= '$z_id'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
-			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
+			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
 			$branches[] = $record;
 		}
 		return $branches;
@@ -73,7 +73,7 @@ class StaffModel extends CheckModel {
 		$request = "SELECT id, z_id, auth_id, auth_name, `timestamp`, `type`, `sum` FROM branches ORDER BY id DESC";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
-			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
+			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
 			$branches[] = $record;
 		}
 		return $branches;
@@ -85,7 +85,7 @@ class StaffModel extends CheckModel {
 		$request = "SELECT id, auth_id, auth_name, `timestamp`, `sum` FROM balances ORDER BY id DESC";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
-			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
+			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
 			$balances[] = $record;
 		}
 		return $balances;

@@ -125,13 +125,13 @@ class StaffController {
 		session_start();
 		$_SESSION['balance'] = $data;
 		$_SESSION['balance']['type'] = 'ПЕРІОДИЧНИЙ<br>Z';
-		$_SESSION['balance']['time'] = date("y-m-d H:i:s", $data['timestamp']);
-		$_SESSION['balance']['null_time_first'] = date("y-m-d H:i:s", $data['null_timestamp_first']);
-		$_SESSION['balance']['null_time_last'] = date("y-m-d H:i:s", $data['null_timestamp_last']);
-		$_SESSION['balance']['sale_time_first'] = date("y-m-d H:i:s", $data['sale_timestamp_first']);
-		$_SESSION['balance']['sale_time_last'] = date("y-m-d H:i:s", $data['sale_timestamp_last']);
-		$_SESSION['balance']['return_time_first'] = date("y-m-d H:i:s", $data['return_timestamp_first']);
-		$_SESSION['balance']['return_time_last'] = date("y-m-d H:i:s", $data['return_timestamp_last']);
+		$_SESSION['balance']['time'] = date("d-m-Y H:i:s", $data['timestamp']);
+		$_SESSION['balance']['null_time_first'] = date("d-m-Y H:i:s", $data['null_timestamp_first']);
+		$_SESSION['balance']['null_time_last'] = date("d-m-Y H:i:s", $data['null_timestamp_last']);
+		$_SESSION['balance']['sale_time_first'] = date("d-m-Y H:i:s", $data['sale_timestamp_first']);
+		$_SESSION['balance']['sale_time_last'] = date("d-m-Y H:i:s", $data['sale_timestamp_last']);
+		$_SESSION['balance']['return_time_first'] = date("d-m-Y H:i:s", $data['return_timestamp_first']);
+		$_SESSION['balance']['return_time_last'] = date("d-m-Y H:i:s", $data['return_timestamp_last']);
 		$this->view_periodical();
 		exit();
 	}
@@ -275,13 +275,13 @@ class StaffController {
 			$_SESSION['balance'] = $data;
 			$_SESSION['balance']['id'] = $this->set_z_id();
 			$_SESSION['balance']['type'] = $_GET['staff_balance'];
-			$_SESSION['balance']['time'] = date("y-m-d H:i:s", $data['timestamp']);
-			$_SESSION['balance']['null_time_first'] = date("y-m-d H:i:s", $data['null_timestamp_first']);
-			$_SESSION['balance']['null_time_last'] = date("y-m-d H:i:s", $data['null_timestamp_last']);
-			$_SESSION['balance']['sale_time_first'] = date("y-m-d H:i:s", $data['sale_timestamp_first']);
-			$_SESSION['balance']['sale_time_last'] = date("y-m-d H:i:s", $data['sale_timestamp_last']);
-			$_SESSION['balance']['return_time_first'] = date("y-m-d H:i:s", $data['return_timestamp_first']);
-			$_SESSION['balance']['return_time_last'] = date("y-m-d H:i:s", $data['return_timestamp_last']);
+			$_SESSION['balance']['time'] = date("d-m-Y H:i:s", $data['timestamp']);
+			$_SESSION['balance']['null_time_first'] = date("d-m-Y H:i:s", $data['null_timestamp_first']);
+			$_SESSION['balance']['null_time_last'] = date("d-m-Y H:i:s", $data['null_timestamp_last']);
+			$_SESSION['balance']['sale_time_first'] = date("d-m-Y H:i:s", $data['sale_timestamp_first']);
+			$_SESSION['balance']['sale_time_last'] = date("d-m-Y H:i:s", $data['sale_timestamp_last']);
+			$_SESSION['balance']['return_time_first'] = date("d-m-Y H:i:s", $data['return_timestamp_first']);
+			$_SESSION['balance']['return_time_last'] = date("d-m-Y H:i:s", $data['return_timestamp_last']);
 			$this->view_balance();
 			exit();
 		} elseif ($_GET['staff_balance'] == 'Z') {

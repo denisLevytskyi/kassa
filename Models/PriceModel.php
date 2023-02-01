@@ -10,7 +10,7 @@ class PriceModel {
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['price'] = $record['price'] / 100;
-			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
+			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
 			$prices[] = $record;
 		}
 		return $prices;

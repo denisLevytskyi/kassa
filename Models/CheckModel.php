@@ -9,7 +9,7 @@ class CheckModel {
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		if ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['main'] = unserialize($record['body']);
-			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
+			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
 			return $record;
 		}
 	}
@@ -20,7 +20,7 @@ class CheckModel {
 		$request = "SELECT * FROM checks WHERE z_id= '$z_id'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
-			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
+			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
 			$checks[] = $record;
 		}
 		return $checks;
@@ -32,7 +32,7 @@ class CheckModel {
 		$request = "SELECT id, z_id, auth_id, auth_name, `timestamp`, type, sum FROM checks ORDER BY id DESC";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
-			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
+			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
 			$checks[] = $record;
 		}
 		return $checks;
