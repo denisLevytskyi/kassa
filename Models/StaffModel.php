@@ -5,7 +5,7 @@ use Logics;
 class StaffModel extends CheckModel {
 	public function get_last_z_data () {
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT id, balance_close FROM balances ORDER BY id DESC";
+		$request = "SELECT id, balance_close FROM balances ORDER BY id DESC LIMIT 1";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		return mysqli_fetch_assoc($result);
 	}
@@ -35,6 +35,24 @@ class StaffModel extends CheckModel {
 			$record['type'] = 'Z';
 			return $record;
 		}
+	}
+
+	public function get_balances_by_data ($search_p, $first, $last) {
+		$balances = array();
+		$connection = Logics\Connection::get_connection();
+		$request = "SELECT * FROM balances WHERE `$search_p` >= '$first' AND `$search_p` <= '$last'";
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		while ( ($record = mysqli_fetch_assoc($result)) ) {
+			$record['time'] = date("y-m-d H:i:s", $record['timestamp']);
+			$record['null_time_first'] = date("y-m-d H:i:s", $record['null_timestamp_first']);
+			$record['null_time_last'] = date("y-m-d H:i:s", $record['null_timestamp_last']);
+			$record['sale_time_first'] = date("y-m-d H:i:s", $record['sale_timestamp_first']);
+			$record['sale_time_last'] = date("y-m-d H:i:s", $record['sale_timestamp_last']);
+			$record['return_time_first'] = date("y-m-d H:i:s", $record['return_timestamp_first']);
+			$record['return_time_last'] = date("y-m-d H:i:s", $record['return_timestamp_last']);
+			$balances[] = $record;
+		}
+		return $balances;
 	}
 	
 	public function get_branches_by_z_id ($z_id) {

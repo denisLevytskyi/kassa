@@ -124,7 +124,6 @@ class StaffController {
 		$data = $this->set_periodical_data();
 		session_start();
 		$_SESSION['balance'] = $data;
-		$_SESSION['balance']['id'] = $_POST['staff_periodical_f'] . '-' . $_POST['staff_periodical_l'];
 		$_SESSION['balance']['type'] = 'ПЕРІОДИЧНИЙ<br>Z';
 		$_SESSION['balance']['time'] = date("y-m-d H:i:s", $data['timestamp']);
 		$_SESSION['balance']['null_time_first'] = date("y-m-d H:i:s", $data['null_timestamp_first']);
@@ -138,124 +137,133 @@ class StaffController {
 	}
 
 	protected function set_periodical_data () {
-		$model = new Models\StaffModel();
-		$index = $_POST['staff_periodical_f'];
-		$id_first = $_POST['staff_periodical_f'];
-		$id_last = $_POST['staff_periodical_l'];
 		$data = $this->get_balance_fields();
 		$error = FALSE;
 		$gate0 = 0;
 		$gate1 = 0;
 		$gate2 = 0;
 		$gate3 = 0;
-		while ($index <= $id_last) {
-			if ( ($balance = $model->get_balance('id', $index)) ) {
-				if ($id_first != $index and $data['organization_name'] != $balance['organization_name']) {
-					$error = TRUE;
-				} elseif ($id_first != $index and $data['store_name'] != $balance['store_name']) {
-					$error = TRUE;
-				} elseif ($id_first != $index and $data['store_address'] != $balance['store_address']) {
-					$error = TRUE;
-				} elseif ($id_first != $index and $data['num_fiskal'] != $balance['num_fiskal']) {
-					$error = TRUE;
-				} elseif ($id_first != $index and $data['num_factory'] != $balance['num_factory']) {
-					$error = TRUE;
-				} elseif ($id_first != $index and $data['num_id'] != $balance['num_id']) {
-					$error = TRUE;
-				} elseif ($id_first != $index and $data['num_tax'] != $balance['num_tax']) {
-					$error = TRUE;
-				}
-				if ($gate0 == 0 and $balance['null_id_first'] != '0') {
-					$data['null_id_first'] = $balance['null_id_first'];
-					$data['null_timestamp_first'] = $balance['null_timestamp_first'];
-					$gate0 = 1;
-				}
-				if ($gate1 == 0 and $balance['sale_id_first'] != '0') {
-					$data['sale_id_first'] = $balance['sale_id_first'];
-					$data['sale_timestamp_first'] = $balance['sale_timestamp_first'];
-					$gate1 = 1;
-				}
-				if ($gate2 == 0 and $balance['return_id_first'] != '0') {
-					$data['return_id_first'] = $balance['return_id_first'];
-					$data['return_timestamp_first'] = $balance['return_timestamp_first'];
-					$gate2 = 1;
-				}
-				if ($gate3 == 0) {
-					$data['balance_open'] = $balance['balance_open'];
-					$gate3 = 1;
-				}
-				if ($balance['null_id_last'] != '0') {
-					$data['null_id_last'] = $balance['null_id_last'];
-					$data['null_timestamp_last'] = $balance['null_timestamp_last'];
-				}
-				if ($balance['sale_id_last'] != '0') {
-					$data['sale_id_last'] = $balance['sale_id_last'];
-					$data['sale_timestamp_last'] = $balance['sale_timestamp_last'];
-				}
-				if ($balance['return_id_last'] != '0') {
-					$data['return_id_last'] = $balance['return_id_last'];
-					$data['return_timestamp_last'] = $balance['return_timestamp_last'];
-				}
-				$data['organization_name'] = $balance['organization_name'];
-				$data['store_name'] = $balance['store_name'];
-				$data['store_address'] = $balance['store_address'];
-				$data['store_kass'] = $balance['store_kass'];
-				$data['num_fiskal'] = $balance['num_fiskal'];
-				$data['num_factory'] = $balance['num_factory'];
-				$data['num_id'] = $balance['num_id'];
-				$data['num_tax'] = $balance['num_tax'];
-				$data['staff_in'] += $balance['staff_in'];
-				$data['staff_out'] += $balance['staff_out'];
-				$data['null_checks'] += $balance['null_checks'];
-				$data['sale_checks'] += $balance['sale_checks'];
-				$data['sale_received_cash'] += $balance['sale_received_cash'];
-				$data['sale_received_card'] += $balance['sale_received_card'];
-				$data['sale_change'] += $balance['sale_change'];
-				$data['sale_sum_cash'] += $balance['sale_sum_cash'];
-				$data['sale_sum_card'] += $balance['sale_sum_card'];
-				$data['sale_sum'] += $balance['sale_sum'];
-				$data['sale_sum_a'] += $balance['sale_sum_a'];
-				$data['sale_sum_b'] += $balance['sale_sum_b'];
-				$data['sale_sum_v'] += $balance['sale_sum_v'];
-				$data['sale_sum_g'] += $balance['sale_sum_g'];
-				$data['sale_sum_m'] += $balance['sale_sum_m'];
-				$data['sale_sum_tax_a'] += $balance['sale_sum_tax_a'];
-				$data['sale_sum_tax_b'] += $balance['sale_sum_tax_b'];
-				$data['sale_sum_tax_v'] += $balance['sale_sum_tax_v'];
-				$data['sale_sum_tax_g'] += $balance['sale_sum_tax_g'];
-				$data['sale_sum_tax_m'] += $balance['sale_sum_tax_m'];
-				$data['sale_sum_tax'] += $balance['sale_sum_tax'];
-				$data['return_checks'] += $balance['return_checks'];
-				$data['return_received_cash'] += $balance['return_received_cash'];
-				$data['return_received_card'] += $balance['return_received_card'];
-				$data['return_change'] += $balance['return_change'];
-				$data['return_sum_cash'] += $balance['return_sum_cash'];
-				$data['return_sum_card'] += $balance['return_sum_card'];
-				$data['return_sum'] += $balance['return_sum'];
-				$data['return_sum_a'] += $balance['return_sum_a'];
-				$data['return_sum_b'] += $balance['return_sum_b'];
-				$data['return_sum_v'] += $balance['return_sum_v'];
-				$data['return_sum_g'] += $balance['return_sum_g'];
-				$data['return_sum_m'] += $balance['return_sum_m'];
-				$data['return_sum_tax_a'] += $balance['return_sum_tax_a'];
-				$data['return_sum_tax_b'] += $balance['return_sum_tax_b'];
-				$data['return_sum_tax_v'] += $balance['return_sum_tax_v'];
-				$data['return_sum_tax_g'] += $balance['return_sum_tax_g'];
-				$data['return_sum_tax_m'] += $balance['return_sum_tax_m'];
-				$data['return_sum_tax'] += $balance['return_sum_tax'];
-				$data['sum_cash'] += $balance['sum_cash'];
-				$data['sum_card'] += $balance['sum_card'];
-				$data['sum'] += $balance['sum'];
-				$data['balance_close'] = $balance['balance_close'];
-			} else {
-				ErrorController::get_view_error(31);
-				die();
+		if (strtotime($_POST['staff_periodical_f'])) {
+			$first = strtotime($_POST['staff_periodical_f']);
+			$last = strtotime($_POST['staff_periodical_l']) + 86400;
+			$search = 'timestamp';
+		} else {
+			$first = $_POST['staff_periodical_f'];
+			$last = $_POST['staff_periodical_l'];
+			$search = 'id';
+		}
+		$model = new Models\StaffModel();
+		$balances = $model->get_balances_by_data($search, $first, $last);
+		if (empty($balances)) {
+			ErrorController::get_view_error(31);
+			die();
+		} else {
+			$z_id_first = $balances[array_key_first($balances)]['id'];
+			$z_id_last = $balances[array_key_last($balances)]['id'];
+			$data['id'] = $z_id_first . '-' . $z_id_last;
+		}
+		foreach ($balances as $k => $v) {
+			if ($z_id_first != $v['id'] and $data['organization_name'] != $v['organization_name']) {
+				$error = TRUE;
+			} elseif ($z_id_first != $v['id'] and $data['store_name'] != $v['store_name']) {
+				$error = TRUE;
+			} elseif ($z_id_first != $v['id'] and $data['store_address'] != $v['store_address']) {
+				$error = TRUE;
+			} elseif ($z_id_first != $v['id'] and $data['num_fiskal'] != $v['num_fiskal']) {
+				$error = TRUE;
+			} elseif ($z_id_first != $v['id'] and $data['num_factory'] != $v['num_factory']) {
+				$error = TRUE;
+			} elseif ($z_id_first != $v['id'] and $data['num_id'] != $v['num_id']) {
+				$error = TRUE;
+			} elseif ($z_id_first != $v['id'] and $data['num_tax'] != $v['num_tax']) {
+				$error = TRUE;
 			}
-			if ($error) {
-				ErrorController::get_view_error(38);
-				die();
+			if ($gate0 == 0 and $v['null_id_first'] != '0') {
+				$data['null_id_first'] = $v['null_id_first'];
+				$data['null_timestamp_first'] = $v['null_timestamp_first'];
+				$gate0 = 1;
 			}
-			$index++;
+			if ($gate1 == 0 and $v['sale_id_first'] != '0') {
+				$data['sale_id_first'] = $v['sale_id_first'];
+				$data['sale_timestamp_first'] = $v['sale_timestamp_first'];
+				$gate1 = 1;
+			}
+			if ($gate2 == 0 and $v['return_id_first'] != '0') {
+				$data['return_id_first'] = $v['return_id_first'];
+				$data['return_timestamp_first'] = $v['return_timestamp_first'];
+				$gate2 = 1;
+			}
+			if ($gate3 == 0) {
+				$data['balance_open'] = $v['balance_open'];
+				$gate3 = 1;
+			}
+			if ($v['null_id_last'] != '0') {
+				$data['null_id_last'] = $v['null_id_last'];
+				$data['null_timestamp_last'] = $v['null_timestamp_last'];
+			}
+			if ($v['sale_id_last'] != '0') {
+				$data['sale_id_last'] = $v['sale_id_last'];
+				$data['sale_timestamp_last'] = $v['sale_timestamp_last'];
+			}
+			if ($v['return_id_last'] != '0') {
+				$data['return_id_last'] = $v['return_id_last'];
+				$data['return_timestamp_last'] = $v['return_timestamp_last'];
+			}
+			$data['organization_name'] = $v['organization_name'];
+			$data['store_name'] = $v['store_name'];
+			$data['store_address'] = $v['store_address'];
+			$data['store_kass'] = $v['store_kass'];
+			$data['num_fiskal'] = $v['num_fiskal'];
+			$data['num_factory'] = $v['num_factory'];
+			$data['num_id'] = $v['num_id'];
+			$data['num_tax'] = $v['num_tax'];
+			$data['staff_in'] += $v['staff_in'];
+			$data['staff_out'] += $v['staff_out'];
+			$data['null_checks'] += $v['null_checks'];
+			$data['sale_checks'] += $v['sale_checks'];
+			$data['sale_received_cash'] += $v['sale_received_cash'];
+			$data['sale_received_card'] += $v['sale_received_card'];
+			$data['sale_change'] += $v['sale_change'];
+			$data['sale_sum_cash'] += $v['sale_sum_cash'];
+			$data['sale_sum_card'] += $v['sale_sum_card'];
+			$data['sale_sum'] += $v['sale_sum'];
+			$data['sale_sum_a'] += $v['sale_sum_a'];
+			$data['sale_sum_b'] += $v['sale_sum_b'];
+			$data['sale_sum_v'] += $v['sale_sum_v'];
+			$data['sale_sum_g'] += $v['sale_sum_g'];
+			$data['sale_sum_m'] += $v['sale_sum_m'];
+			$data['sale_sum_tax_a'] += $v['sale_sum_tax_a'];
+			$data['sale_sum_tax_b'] += $v['sale_sum_tax_b'];
+			$data['sale_sum_tax_v'] += $v['sale_sum_tax_v'];
+			$data['sale_sum_tax_g'] += $v['sale_sum_tax_g'];
+			$data['sale_sum_tax_m'] += $v['sale_sum_tax_m'];
+			$data['sale_sum_tax'] += $v['sale_sum_tax'];
+			$data['return_checks'] += $v['return_checks'];
+			$data['return_received_cash'] += $v['return_received_cash'];
+			$data['return_received_card'] += $v['return_received_card'];
+			$data['return_change'] += $v['return_change'];
+			$data['return_sum_cash'] += $v['return_sum_cash'];
+			$data['return_sum_card'] += $v['return_sum_card'];
+			$data['return_sum'] += $v['return_sum'];
+			$data['return_sum_a'] += $v['return_sum_a'];
+			$data['return_sum_b'] += $v['return_sum_b'];
+			$data['return_sum_v'] += $v['return_sum_v'];
+			$data['return_sum_g'] += $v['return_sum_g'];
+			$data['return_sum_m'] += $v['return_sum_m'];
+			$data['return_sum_tax_a'] += $v['return_sum_tax_a'];
+			$data['return_sum_tax_b'] += $v['return_sum_tax_b'];
+			$data['return_sum_tax_v'] += $v['return_sum_tax_v'];
+			$data['return_sum_tax_g'] += $v['return_sum_tax_g'];
+			$data['return_sum_tax_m'] += $v['return_sum_tax_m'];
+			$data['return_sum_tax'] += $v['return_sum_tax'];
+			$data['sum_cash'] += $v['sum_cash'];
+			$data['sum_card'] += $v['sum_card'];
+			$data['sum'] += $v['sum'];
+			$data['balance_close'] = $v['balance_close'];
+		}
+		if ($error) {
+			ErrorController::get_view_error(38);
+			die();
 		}
 		return $data;
 	}
