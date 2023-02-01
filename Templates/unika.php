@@ -1,3 +1,8 @@
+<?php
+function form ($num) {
+	return number_format($num, 2, '.', ' ');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +25,7 @@
 			</form>
 			<div class="headerFirstSum">
 				<p class="headerFirstSumP">
-					<?php echo ($_SESSION['unika']['sum']); ?>
+					<?php echo (form($_SESSION['unika']['sum'])); ?>
 				</p>
 			</div>
 		</div>
@@ -74,7 +79,7 @@
 					</p>
 				</div>
 				<div class="listWrapElse">
-					<?php echo ($v['price']); ?>
+					<?php echo (form($v['price'])); ?>
 				</div>
 				<div class="listWrapElse">
 					<form action="/unika.php" class="listWrapElseForm" method="POST">
@@ -84,7 +89,7 @@
 					</form>
 				</div>
 				<div class="listWrapElse">
-					<?php echo ($v['sum']); ?>
+					<?php echo (form($v['sum'])); ?>
 				</div>
 				<div class="listWrapElse">
 					<a href="/unika.php?unika_del=<?php echo($k); ?>" class="listWrapElseA">
