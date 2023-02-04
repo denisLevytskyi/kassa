@@ -1,3 +1,8 @@
+<?php
+function form ($num) {
+	return number_format($num, 2, '.', ' ');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +28,7 @@
 				<img src="<?php echo ($v['photo']); ?>" alt="" class="productFormImg">
 				<pre class="productFormP">Create User with ID: <?php echo($v['auth_id']);?></pre>
 				<pre class="productFormP">Product ID: <?php echo($v['id']);?></pre>
-				<pre class="productFormP">Price: <?php echo($v['price']);?></pre>
+				<pre class="productFormP">Price: <?php echo(form($v['price']));?></pre>
 				<pre class="productFormP">Tax group: <?php echo($v['group']);?></pre>
 				<input type="text" style="display: none;" name="edit_product_id" value="<?php echo($v['id']);?>" required>
 				<p class="productFormP">

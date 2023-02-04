@@ -1,3 +1,8 @@
+<?php
+function form ($num) {
+	return number_format($num, 2, '.', ' ');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +55,7 @@
 						<p class="listWrapItemP"><?php
 							echo ($v['time'] .
 								' № => ' . $v['id'] .
-								' Price => ' . $v['price'] .
+								' Price => ' . form($v['price']) .
 								' Article => ' . $v['article'] .
 								' added by => ' . $v['auth_id']
 							);

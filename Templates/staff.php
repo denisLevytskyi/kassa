@@ -1,3 +1,8 @@
+<?php
+function form ($num) {
+	return number_format($num, 2, '.', ' ');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,7 +101,7 @@
 							echo($v['time'] .
 								' № => ' . $v['id'] .
 								' Z-bal => ' . $v['z_id'] .
-								' Sum => ' . $v['sum'] .
+								' Sum => ' . form($v['sum']) .
 								' Type => ' . $v['type'] .
 								' added by => ' . $v['auth_id'] .
 								' ' . $v['auth_name']
@@ -127,7 +132,7 @@
 						<a href="/balance.php/?balance_id=<?php echo ($v['id']); ?>" class="listWrapItemA"><?php
 							echo($v['time'] .
 								' № => ' . $v['id'] .
-								' Sum => ' . $v['sum'] .
+								' Sum => ' . form($v['sum']) .
 								' added by => ' . $v['auth_id'] .
 								' ' . $v['auth_name']);
 						?></a>
