@@ -59,62 +59,62 @@ class StaffController {
 			'num_factory' => $props['num_factory'],
 			'num_id' => $props['num_id'],
 			'num_tax' => $props['num_tax'],
-			'staff_in' => '0',
-			'staff_out' => '0',
-			'null_id_first' => '0',
-			'null_id_last' => '0',
+			'staff_in' => 0,
+			'staff_out' => 0,
+			'null_id_first' => 0,
+			'null_id_last' => 0,
 			'null_timestamp_first' => time(),
 			'null_timestamp_last' => time(),
-			'null_checks' => '0',
-			'sale_id_first' => '0',
-			'sale_id_last' => '0',
+			'null_checks' => 0,
+			'sale_id_first' => 0,
+			'sale_id_last' => 0,
 			'sale_timestamp_first' => time(),
 			'sale_timestamp_last' => time(),
-			'sale_checks' => '0',
-			'sale_received_cash' => '0',
-			'sale_received_card' => '0',
-			'sale_change' => '0',
-			'sale_sum_cash' => '0',
-			'sale_sum_card' => '0',
-			'sale_sum' => '0',
-			'sale_sum_a' => '0',
-			'sale_sum_b' => '0',
-			'sale_sum_v' => '0',
-			'sale_sum_g' => '0',
-			'sale_sum_m' => '0',
-			'sale_sum_tax_a' => '0',
-			'sale_sum_tax_b' => '0',
-			'sale_sum_tax_v' => '0',
-			'sale_sum_tax_g' => '0',
-			'sale_sum_tax_m' => '0',
-			'sale_sum_tax' => '0',
-			'return_id_first' => '0',
-			'return_id_last' => '0',
+			'sale_checks' => 0,
+			'sale_received_cash' => 0,
+			'sale_received_card' => 0,
+			'sale_change' => 0,
+			'sale_sum_cash' => 0,
+			'sale_sum_card' => 0,
+			'sale_sum' => 0,
+			'sale_sum_a' => 0,
+			'sale_sum_b' => 0,
+			'sale_sum_v' => 0,
+			'sale_sum_g' => 0,
+			'sale_sum_m' => 0,
+			'sale_sum_tax_a' => 0,
+			'sale_sum_tax_b' => 0,
+			'sale_sum_tax_v' => 0,
+			'sale_sum_tax_g' => 0,
+			'sale_sum_tax_m' => 0,
+			'sale_sum_tax' => 0,
+			'return_id_first' => 0,
+			'return_id_last' => 0,
 			'return_timestamp_first' => time(),
 			'return_timestamp_last' => time(),
-			'return_checks' => '0',
-			'return_received_cash' => '0',
-			'return_received_card' => '0',
-			'return_change' => '0',
-			'return_sum_cash' => '0',
-			'return_sum_card' => '0',
-			'return_sum' => '0',
-			'return_sum_a' => '0',
-			'return_sum_b' => '0',
-			'return_sum_v' => '0',
-			'return_sum_g' => '0',
-			'return_sum_m' => '0',
-			'return_sum_tax_a' => '0',
-			'return_sum_tax_b' => '0',
-			'return_sum_tax_v' => '0',
-			'return_sum_tax_g' => '0',
-			'return_sum_tax_m' => '0',
-			'return_sum_tax' => '0',
-			'sum_cash' => '0',
-			'sum_card' => '0',
-			'sum' => '0',
+			'return_checks' => 0,
+			'return_received_cash' => 0,
+			'return_received_card' => 0,
+			'return_change' => 0,
+			'return_sum_cash' => 0,
+			'return_sum_card' => 0,
+			'return_sum' => 0,
+			'return_sum_a' => 0,
+			'return_sum_b' => 0,
+			'return_sum_v' => 0,
+			'return_sum_g' => 0,
+			'return_sum_m' => 0,
+			'return_sum_tax_a' => 0,
+			'return_sum_tax_b' => 0,
+			'return_sum_tax_v' => 0,
+			'return_sum_tax_g' => 0,
+			'return_sum_tax_m' => 0,
+			'return_sum_tax' => 0,
+			'sum_cash' => 0,
+			'sum_card' => 0,
+			'sum' => 0,
 			'balance_open' => $this->set_z_balance_close(),
-			'balance_close' => '0'
+			'balance_close' => 0
 		);
 	}
 
@@ -178,17 +178,17 @@ class StaffController {
 			} elseif ($z_id_first != $v['id'] and $data['num_tax'] != $v['num_tax']) {
 				$error = TRUE;
 			}
-			if ($gate0 == 0 and $v['null_id_first'] != '0') {
+			if ($gate0 == 0 and $v['null_id_first'] != 0) {
 				$data['null_id_first'] = $v['null_id_first'];
 				$data['null_timestamp_first'] = $v['null_timestamp_first'];
 				$gate0 = 1;
 			}
-			if ($gate1 == 0 and $v['sale_id_first'] != '0') {
+			if ($gate1 == 0 and $v['sale_id_first'] != 0) {
 				$data['sale_id_first'] = $v['sale_id_first'];
 				$data['sale_timestamp_first'] = $v['sale_timestamp_first'];
 				$gate1 = 1;
 			}
-			if ($gate2 == 0 and $v['return_id_first'] != '0') {
+			if ($gate2 == 0 and $v['return_id_first'] != 0) {
 				$data['return_id_first'] = $v['return_id_first'];
 				$data['return_timestamp_first'] = $v['return_timestamp_first'];
 				$gate2 = 1;
@@ -197,15 +197,15 @@ class StaffController {
 				$data['balance_open'] = $v['balance_open'];
 				$gate3 = 1;
 			}
-			if ($v['null_id_last'] != '0') {
+			if ($v['null_id_last'] != 0) {
 				$data['null_id_last'] = $v['null_id_last'];
 				$data['null_timestamp_last'] = $v['null_timestamp_last'];
 			}
-			if ($v['sale_id_last'] != '0') {
+			if ($v['sale_id_last'] != 0) {
 				$data['sale_id_last'] = $v['sale_id_last'];
 				$data['sale_timestamp_last'] = $v['sale_timestamp_last'];
 			}
-			if ($v['return_id_last'] != '0') {
+			if ($v['return_id_last'] != 0) {
 				$data['return_id_last'] = $v['return_id_last'];
 				$data['return_timestamp_last'] = $v['return_timestamp_last'];
 			}
@@ -480,14 +480,14 @@ class StaffController {
 		} else {
 			$_SESSION['staff']['branches'] = array();
 			$branch = array(
-				'id' => '0',
-				'z_id' => '0',
+				'id' => 0,
+				'z_id' => 0,
 				'auth_id' => 'ID',
 				'auth_name' => 'NAME',
-				'timestamp' => '0',
-				'time' => '0',
-				'type' => '0',
-				'sum' => '0'
+				'timestamp' => 0,
+				'time' => 0,
+				'type' => 0,
+				'sum' => 0
 			);
 			$_SESSION['staff']['branches'][] = $branch;
 		}
@@ -500,12 +500,12 @@ class StaffController {
 		} else {
 			$_SESSION['staff']['balances'] = array();
 			$balance = array (
-				'id' => '0',
+				'id' => 0,
 				'auth_id' => 'ID',
 				'auth_name' => 'NAME',
-				'timestamp' => '0',
-				'time' => '0',
-				'sum' => '0'
+				'timestamp' => 0,
+				'time' => 0,
+				'sum' => 0
 			);
 			$_SESSION['staff']['balances'][] = $balance;
 		}

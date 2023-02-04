@@ -36,16 +36,16 @@ class UnikaController extends StaffController {
 
 	protected function set_tax_data () {
 		$data = array(
-			'sum_a' => '0',
-			'sum_b' => '0',
-			'sum_v' => '0',
-			'sum_g' => '0',
-			'sum_m' => '0',
-			'sum_tax_a' => '0',
-			'sum_tax_b' => '0',
-			'sum_tax_v' => '0',
-			'sum_tax_g' => '0',
-			'sum_tax_m' => '0'
+			'sum_a' => 0,
+			'sum_b' => 0,
+			'sum_v' => 0,
+			'sum_g' => 0,
+			'sum_m' => 0,
+			'sum_tax_a' => 0,
+			'sum_tax_b' => 0,
+			'sum_tax_v' => 0,
+			'sum_tax_g' => 0,
+			'sum_tax_m' => 0
 		);
 		$list = $_SESSION['unika']['list'];
 		foreach ($list as $k => $v) {
@@ -162,8 +162,8 @@ class UnikaController extends StaffController {
 			'type' => $this->set_check_type(),
 			'body' => serialize($_SESSION['unika']['list']),
 			'received_cash' => round($_POST['unika_cash'], 1),
-			'received_card' => '0',
-			'change' => '0',
+			'received_card' => 0,
+			'change' => 0,
 			'sum' => $_SESSION['unika']['sum'],
 			'sum_a' => $tax_data['sum_a'],
 			'sum_b' => $tax_data['sum_b'],
