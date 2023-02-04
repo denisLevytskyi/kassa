@@ -6,7 +6,7 @@ use Models;
 class PriceSetterController {
 	protected function view_price_setter () {
 		$view = new Views\View();
-		$view->view_price_setter();
+		$view->view_template('priceSetter');
 	}
 
 	protected function set_new_price () {

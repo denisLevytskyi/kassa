@@ -6,7 +6,7 @@ use Models;
 class AddProductController {
 	protected function view_add_product () {
 		$view = new Views\View();
-		$view->view_add_product();
+		$view->view_template('addProduct');
 	}
 
 	protected function set_move_photo ($file) {

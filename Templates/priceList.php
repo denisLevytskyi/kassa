@@ -53,12 +53,11 @@ function form ($num) {
 				<?php foreach ($_SESSION['price_list'] as $k => $v) { ?>
 					<div class="listWrapItem">
 						<p class="listWrapItemP"><?php
-							echo ($v['time'] .
+							echo $v['time'] .
 								' № => ' . $v['id'] .
 								' Price => ' . form($v['price']) .
 								' Article => ' . $v['article'] .
-								' added by => ' . $v['auth_id']
-							);
+								' added by => ' . $v['auth_id'];
 						?></p>
 					</div>					
 				<?php } ?>

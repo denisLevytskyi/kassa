@@ -66,17 +66,16 @@ function form ($num) {
 						$type = 'return';
 					} ?>
 					<div class="listWrapItem <?php echo $type; ?>">
-						<a href="/check.php/?check_id=<?php echo ($v['id']); ?>" class="listWrapItemA"><?php
-							echo ($v['time'] .
+						<a href="/check.php/?check_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
+							echo $v['time'] .
 								' № => ' . $v['id'] .
 								' Z-bal => ' . $v['z_id'] .
 								' Sum => ' . form($v['sum']) .
 								' Type => ' . $v['type'] .
 								' added by => ' . $v['auth_id'] .
-								' ' . $v['auth_name']
-							);
+								' ' . $v['auth_name'];
 						?></a>
-						<a href="/checkList.php/?check_id=<?php echo ($v['id']); ?>" class="listWrapItemAGo">
+						<a href="/checkList.php/?check_id=<?php echo $v['id']; ?>" class="listWrapItemAGo">
 							<nobr>To Go!</nobr>
 						</a>
 					</div>					

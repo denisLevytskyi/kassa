@@ -6,7 +6,7 @@ use Models;
 class CheckListController {
 	protected function view_check_list () {
 		$view = new Views\View();
-		$view->view_check_list();
+		$view->view_template('checkList');
 	}
 
 	protected function set_check_by_id () {

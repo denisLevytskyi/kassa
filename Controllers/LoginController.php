@@ -6,12 +6,12 @@ use Models;
 class LoginController {
 	protected function view_login () {
 		$view = new Views\View();
-		$view->view_login();
+		$view->view_template('login');
 	}
 
 	protected function view_main () {
 		$view = new Views\View();
-		$view->view_main();
+		$view->view_template('main');
 	}
 
 	protected function set_id ($remember = false) {

@@ -6,7 +6,7 @@ use Models;
 class KsefController {
 	protected function view_ksef () {
 		$view = new Views\View();
-		$view->view_ksef();
+		$view->view_template('ksef');
 	}
 
 	protected function set_ksef_list () {

@@ -8,7 +8,7 @@ class BalanceController {
 		ob_start();
 		$data = 'Ksef/' . $_SESSION['balance']['timestamp'] . '_Z-balance_№_' . $_SESSION['balance']['id'] . '.html';
 		$view = new Views\View();
-		$view->view_balance();
+		$view->view_template('balance');
 		$model = new Models\KsefModel();
 		$model->get_document_registration($data);
 	}

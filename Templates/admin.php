@@ -39,14 +39,14 @@
 					<div class="listWrapItem">
 						<form action="/admin.php" class="listWrapItemForm" method="POST">
 							<p class="listWrapItemFormP">
-								ID: <?php echo ($v['id']); ?>
+								ID: <?php echo $v['id']; ?>
 								<br>
-								R: <?php echo ($v['role']); ?>
+								R: <?php echo $v['role']; ?>
 							</p>
-							<input type="text" style="display: none;" name="admin_id" value="<?php echo ($v['id']); ?>" required>
-							<input type="text" class="listWrapItemFormInp" name="admin_login" value="<?php echo ($v['login']); ?>" required>
-							<input type="text" class="listWrapItemFormInp" name="admin_password" value="<?php echo ($v['password']); ?>" required>
-							<input type="text" class="listWrapItemFormInp" name="admin_name" value="<?php echo ($v['name']); ?>" required>
+							<input type="text" style="display: none;" name="admin_id" value="<?php echo $v['id']; ?>" required>
+							<input type="text" class="listWrapItemFormInp" name="admin_login" value="<?php echo $v['login']; ?>" required>
+							<input type="text" class="listWrapItemFormInp" name="admin_password" value="<?php echo $v['password']; ?>" required>
+							<input type="text" class="listWrapItemFormInp" name="admin_name" value="<?php echo $v['name']; ?>" required>
 							<select class="listWrapItemFormInp" name="admin_role" required>
 								<option value="1">ROLE</option>
 								<option value="1">User</option>

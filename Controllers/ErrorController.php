@@ -6,7 +6,7 @@ use Models;
 class ErrorController {
 	protected function view_error () {
 		$view = new Views\View();
-		$view->view_error();
+		$view->view_template('error');
 	}
 
 	public function get_error_check () {

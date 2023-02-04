@@ -6,7 +6,7 @@ use Models;
 class AdminController {
 	protected function view_admin () {
 		$view = new Views\View();
-		$view->view_admin();
+		$view->view_template('admin');
 	}
 
 	protected function get_root_check ($check_role) {

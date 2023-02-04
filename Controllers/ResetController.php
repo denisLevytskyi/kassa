@@ -6,7 +6,7 @@ use Models;
 class ResetController {
 	protected function view_reset () {
 		$view = new Views\View();
-		$view->view_reset();
+		$view->view_template('reset');
 	}
 
 	protected function set_reset ($password) {

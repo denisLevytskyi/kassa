@@ -6,12 +6,12 @@ use Models;
 class SignController {
 	protected function view_sign1 () {
 		$view = new Views\View();
-		$view->view_sign1();
+		$view->view_template('sign1');
 	}
 
 	protected function view_sign2 () {
 		$view = new Views\View();
-		$view->view_sign2();
+		$view->view_template('sign2');
 	}
 
 	protected function get_email_check () {

@@ -97,15 +97,14 @@ function form ($num) {
 						$type = 'out';
 					} ?>
 					<div class="listWrapItem <?php echo $type; ?>">
-						<a href="/branch.php/?branch_id=<?php echo ($v['id']); ?>" class="listWrapItemA"><?php
-							echo($v['time'] .
+						<a href="/branch.php/?branch_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
+							echo $v['time'] .
 								' № => ' . $v['id'] .
 								' Z-bal => ' . $v['z_id'] .
 								' Sum => ' . form($v['sum']) .
 								' Type => ' . $v['type'] .
 								' added by => ' . $v['auth_id'] .
-								' ' . $v['auth_name']
-							);
+								' ' . $v['auth_name'];
 						?></a>
 					</div>					
 				<?php } ?>
@@ -129,12 +128,12 @@ function form ($num) {
 			<div class="listWrap" id="listWrap2">
 				<?php foreach ($_SESSION['staff']['balances'] as $k => $v) { ?>
 					<div class="listWrapItem">
-						<a href="/balance.php/?balance_id=<?php echo ($v['id']); ?>" class="listWrapItemA"><?php
-							echo($v['time'] .
+						<a href="/balance.php/?balance_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
+							echo $v['time'] .
 								' № => ' . $v['id'] .
 								' Sum => ' . form($v['sum']) .
 								' added by => ' . $v['auth_id'] .
-								' ' . $v['auth_name']);
+								' ' . $v['auth_name'];
 						?></a>
 					</div>					
 				<?php } ?>

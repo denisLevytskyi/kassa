@@ -9,7 +9,7 @@ function form ($num) {
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>
-		<?php session_start(); echo ($_SESSION['unika']['sum']	. ' | ' . $_SESSION['auth']['name']); ?>
+		<?php session_start(); echo $_SESSION['unika']['sum']	. ' | ' . $_SESSION['auth']['name']; ?>
 	</title>
 	<link rel="stylesheet" href="/Styles/unika.css">
 </head>
@@ -25,7 +25,7 @@ function form ($num) {
 			</form>
 			<div class="headerFirstSum">
 				<p class="headerFirstSumP">
-					<?php echo (form($_SESSION['unika']['sum'])); ?>
+					<?php echo form($_SESSION['unika']['sum']); ?>
 				</p>
 			</div>
 		</div>
@@ -70,29 +70,29 @@ function form ($num) {
 			} ?>
 			<div class="listWrap <?php echo $type; ?>">
 				<div class="listWrapFirst">
-					<?php echo ($k + 1); ?>
+					<?php echo $k + 1; ?>
 				</div>
 				<div class="listWrapName">
-					<img src="<?php echo ($v['photo']); ?>" class="listWrapNameImg">
+					<img src="<?php echo $v['photo']; ?>" class="listWrapNameImg">
 					<p class="listWrapNameP">
-						<?php echo ($v['article'] . ' ' . $v['name']); ?>
+						<?php echo $v['article'] . ' ' . $v['name']; ?>
 					</p>
 				</div>
 				<div class="listWrapElse">
-					<?php echo (form($v['price'])); ?>
+					<?php echo form($v['price']); ?>
 				</div>
 				<div class="listWrapElse">
 					<form action="/unika.php" class="listWrapElseForm" method="POST">
-						<input type="text" class="listWrapElseFormInp" name="unika_amount_val" value="<?php echo ($v['amount']); ?>" required>
-						<input type="text" style="display: none;" name="unika_amount_key" value="<?php echo ($k); ?>" required>
+						<input type="text" class="listWrapElseFormInp" name="unika_amount_val" value="<?php echo $v['amount']; ?>" required>
+						<input type="text" style="display: none;" name="unika_amount_key" value="<?php echo $k; ?>" required>
 						<button type="submit" style="display: none;">+</button>
 					</form>
 				</div>
 				<div class="listWrapElse">
-					<?php echo (form($v['sum'])); ?>
+					<?php echo form($v['sum']); ?>
 				</div>
 				<div class="listWrapElse">
-					<a href="/unika.php?unika_del=<?php echo($k); ?>" class="listWrapElseA">
+					<a href="/unika.php?unika_del=<?php echo $k; ?>" class="listWrapElseA">
 						DELETE
 					</a>
 				</div>

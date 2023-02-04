@@ -8,7 +8,7 @@ class BranchController {
 		ob_start();
 		$data = 'Ksef/' . $_SESSION['branch']['timestamp'] . '_Branch_№_' . $_SESSION['branch']['id'] . '.html';
 		$view = new Views\View();
-		$view->view_branch();
+		$view->view_template('branch');
 		$model = new Models\KsefModel();
 		$model->get_document_registration($data);
 	}

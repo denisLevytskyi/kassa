@@ -6,7 +6,7 @@ use Models;
 class UnikaController extends StaffController {
 	protected function view_unika () {
 		$view = new Views\View();
-		$view->view_unika();
+		$view->view_template('unika');
 	}
 
 	protected function set_sum () {

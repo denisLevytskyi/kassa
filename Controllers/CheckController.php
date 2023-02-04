@@ -8,7 +8,7 @@ class CheckController {
 		ob_start();
 		$data = 'Ksef/' . $_SESSION['check']['timestamp'] . '_Check_№_' . $_SESSION['check']['id'] . '.html';
 		$view = new Views\View();
-		$view->view_check();
+		$view->view_template('check');
 		$model = new Models\KsefModel();
 		$model->get_document_registration($data);
 	}

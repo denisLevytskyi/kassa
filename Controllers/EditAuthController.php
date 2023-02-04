@@ -6,7 +6,7 @@ use Models;
 class EditAuthController {
 	protected function view_edit_auth () {
 		$view = new Views\View();
-		$view->view_edit_auth();
+		$view->view_template('editAuth');
 	}
 
 	protected function set_changes () {

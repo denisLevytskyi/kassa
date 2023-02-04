@@ -6,7 +6,7 @@ use Models;
 class PriceListController {
 	protected function view_price_list () {
 		$view = new Views\View();
-		$view->view_price_list();
+		$view->view_template('priceList');
 	}
 
 	protected function set_prices () {
