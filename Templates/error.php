@@ -5,11 +5,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>ERROR!</title>
 	<link rel="stylesheet" href="/Styles/main.css">
+	<link rel="stylesheet" href="/Styles/mainPage.css">
 	<link rel="stylesheet" href="/Styles/error.css">
 </head>
 <body>
 	<header class="header">
-		<div class="container typicalContainer">
+		<div class="container">
 			<div class="headerWrap">
 				<img src="/Materials/main_logo.png" class="headerWrapImg">
 				<p class="headerWrapP">[LVZ] Error page</p>
