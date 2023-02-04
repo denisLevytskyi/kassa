@@ -14,10 +14,10 @@ class CheckModel {
 		}
 	}
 	
-	public function get_checks_by_z_id ($z_id) {
+	public function get_checks ($search_p, $search_v) {
 		$checks = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM checks WHERE z_id= '$z_id'";
+		$request = "SELECT * FROM checks WHERE $search_p= '$search_v'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);

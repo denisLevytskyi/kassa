@@ -3,6 +3,17 @@ namespace Models;
 use Logics;
 
 class PriceModel {
+	public function get_price ($search_p, $search_v) {
+		$connection = Logics\Connection::get_connection();
+		$request = "SELECT price FROM prices WHERE $search_p= '$search_v' ORDER BY id DESC";
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		if ( ($record = mysqli_fetch_assoc($result)) ) {
+			return ($record['price'] / 100);
+		} else {
+			return 0;
+		}
+	}
+
 	public function get_all_prices () {
 		$prices = array();
 		$connection = Logics\Connection::get_connection();
@@ -14,17 +25,6 @@ class PriceModel {
 			$prices[] = $record;
 		}
 		return $prices;
-	}
-
-	public function get_price ($art) {
-		$connection = Logics\Connection::get_connection();
-		$request = "SELECT price FROM prices WHERE article = '$art' ORDER BY id DESC";
-		$result = mysqli_query($connection, $request) or header('Location: /');
-		if ( ($record = mysqli_fetch_assoc($result)) ) {
-			return ($record['price'] / 100);
-		} else {
-			return 0;
-		}
 	}
 
 	public function get_price_registration ($art, $price, $time, $id) {

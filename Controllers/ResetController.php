@@ -31,7 +31,7 @@ class ResetController {
 	protected function get_email_check () {
 		$login = $_POST['reset_login'];
 		$model = new Models\AuthModel();
-		if ( ($model->get_user_data('login', $login, 'login', $login)) ) {
+		if ( ($model->get_user('login', $login, 'login', $login)) ) {
 			$this->get_new_password();
 		} else {
 			ErrorController::get_view_error(36);

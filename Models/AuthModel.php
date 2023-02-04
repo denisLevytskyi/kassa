@@ -3,14 +3,12 @@ namespace Models;
 use Logics;
 
 class AuthModel {
-	public function get_user_data ($search_p, $search_v, $select_p, $select_v) {
+	public function get_user ($search_p, $search_v, $search_p2, $search_v2) {
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM users WHERE $search_p='$search_v'";
+		$request = "SELECT * FROM users WHERE $search_p='$search_v' AND $search_p2='$search_v2'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
-		while ( ($record = mysqli_fetch_assoc($result)) ) {
-			if ($record[$select_p] == $select_v) {
-				return $record;
-			}
+		if ( ($record = mysqli_fetch_assoc($result)) ) {
+			return $record;
 		}
 	}
 
@@ -29,7 +27,7 @@ class AuthModel {
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO users (login, password, name, role) VALUES ('$login', '$password', '$name', '$role')";
 		if (mysqli_query($connection, $request)) {
-			return $this->get_user_data('login', $login, 'password', $password);
+			return $this->get_user('login', $login, 'password', $password);
 		}
 	}
 

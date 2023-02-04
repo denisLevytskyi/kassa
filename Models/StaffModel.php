@@ -37,7 +37,7 @@ class StaffModel extends CheckModel {
 		}
 	}
 
-	public function get_balances_by_data ($search_p, $first, $last) {
+	public function get_balances ($search_p, $first, $last) {
 		$balances = array();
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT * FROM balances WHERE `$search_p` >= '$first' AND `$search_p` <= '$last'";
@@ -55,10 +55,10 @@ class StaffModel extends CheckModel {
 		return $balances;
 	}
 	
-	public function get_branches_by_z_id ($z_id) {
+	public function get_branches ($search_p, $search_v) {
 		$branches = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM branches WHERE z_id= '$z_id'";
+		$request = "SELECT * FROM branches WHERE $search_p= '$search_v'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
@@ -89,6 +89,41 @@ class StaffModel extends CheckModel {
 			$balances[] = $record;
 		}
 		return $balances;
+	}
+
+	public function get_branch_registration ($data) {
+		$i0 = $data['z_id'];
+		$i1 = $data['auth_id'];
+		$i2 = $data['auth_name'];
+		$i3 = $data['timestamp'];
+		$i4 = $data['organization_name'];
+		$i5 = $data['store_name'];
+		$i6 = $data['store_address'];
+		$i7 = $data['store_kass'];
+		$i8 = $data['num_fiskal'];
+		$i9 = $data['num_factory'];
+		$i10 = $data['num_id'];
+		$i11 = $data['num_tax'];
+		$i12 = $data['type'];
+		$i13 = $data['sum'];
+		$connection = Logics\Connection::get_connection();
+		$request = "INSERT INTO branches (
+			z_id,
+			auth_id,
+			auth_name,
+			`timestamp`,
+			organization_name,
+			store_name,
+			store_address,    
+			store_kass,  
+			num_fiskal,      
+			num_factory,
+			num_id,  
+			num_tax,
+			`type`,
+			`sum`) VALUES
+			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13')";
+		return mysqli_query($connection, $request);
 	}
 
 	public function get_balance_registration ($data) {
@@ -230,41 +265,6 @@ class StaffModel extends CheckModel {
 			balance_close)
 			VALUES
 			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27', '$i28', '$i29', '$i30', '$i31', '$i32', '$i33', '$i34', '$i35', '$i36', '$i37', '$i38', '$i39', '$i40', '$i41', '$i42', '$i43', '$i44', '$i45', '$i46', '$i47', '$i48', '$i49', '$i50', '$i51', '$i52', '$i53', '$i54', '$i55', '$i56', '$i57', '$i58', '$i59', '$i60', '$i61', '$i62', '$i63', '$i64', '$i65', '$i66')";
-		return mysqli_query($connection, $request);
-	}
-
-	public function get_branch_registration ($data) {
-		$i0 = $data['z_id'];
-		$i1 = $data['auth_id'];
-		$i2 = $data['auth_name'];
-		$i3 = $data['timestamp'];
-		$i4 = $data['organization_name'];
-		$i5 = $data['store_name'];
-		$i6 = $data['store_address'];
-		$i7 = $data['store_kass'];
-		$i8 = $data['num_fiskal'];
-		$i9 = $data['num_factory'];
-		$i10 = $data['num_id'];
-		$i11 = $data['num_tax'];
-		$i12 = $data['type'];
-		$i13 = $data['sum'];
-		$connection = Logics\Connection::get_connection();
-		$request = "INSERT INTO branches (
-			z_id,
-			auth_id,
-			auth_name,
-			`timestamp`,
-			organization_name,
-			store_name,
-			store_address,    
-			store_kass,  
-			num_fiskal,      
-			num_factory,
-			num_id,  
-			num_tax,
-			`type`,
-			`sum`) VALUES
-			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13')";
 		return mysqli_query($connection, $request);
 	}
 }

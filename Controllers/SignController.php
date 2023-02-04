@@ -17,7 +17,7 @@ class SignController {
 	protected function get_email_check () {
 		$login = $_POST['sign_login'];
 		$model = new Models\AuthModel();
-		if ( ($model->get_user_data('login', $login, 'login', $login)) ) {
+		if ( ($model->get_user('login', $login, 'login', $login)) ) {
 			ErrorController::get_view_error(35);
 		} else {
 			$this->send_pin();

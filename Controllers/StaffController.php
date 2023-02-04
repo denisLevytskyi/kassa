@@ -153,7 +153,7 @@ class StaffController {
 			$search = 'id';
 		}
 		$model = new Models\StaffModel();
-		$balances = $model->get_balances_by_data($search, $first, $last);
+		$balances = $model->get_balances($search, $first, $last);
 		if (empty($balances)) {
 			ErrorController::get_view_error(31);
 			die();
@@ -448,7 +448,7 @@ class StaffController {
 	
 	protected function set_checks_by_z_id ($z_id) {
 		$model = new Models\CheckModel();
-		if ( ($checks = $model->get_checks_by_z_id($z_id)) ) {
+		if ( ($checks = $model->get_checks('z_id', $z_id)) ) {
 			return $checks;
 		} else {
 			return array(array(
@@ -456,16 +456,21 @@ class StaffController {
 			));
 		}
 	}
-	
+
 	protected function set_branches_by_z_id ($z_id) {
 		$model = new Models\StaffModel();
-		if ( ($branches = $model->get_branches_by_z_id($z_id)) ) {
+		if ( ($branches = $model->get_branches('z_id', $z_id)) ) {
 			return $branches;
 		} else {
 			return array(array(
 				'type' => null
 			));
 		}
+	}
+
+	protected function set_balance_sum () {
+		$data = $this->set_balance_data();
+		$_SESSION['staff']['balance'] = $data['balance_close'];
 	}
 
 	protected function set_branches () {
@@ -504,11 +509,6 @@ class StaffController {
 			);
 			$_SESSION['staff']['balances'][] = $balance;
 		}
-	}
-
-	protected function set_balance_sum () {
-		$data = $this->set_balance_data();
-		$_SESSION['staff']['balance'] = $data['balance_close'];
 	}
 
 	public function get_staff_check () {
