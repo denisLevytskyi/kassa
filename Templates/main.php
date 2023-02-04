@@ -17,7 +17,7 @@
 		</div>
 	</header>
 	<section class="auth">
-		<div class="container">
+		<div class="container typicalContainer">
 			<p class="authP">
 				ID: <?php echo $_SESSION['auth']['id']; ?>
 				Name: <?php echo $_SESSION['auth']['name']; ?>
@@ -31,7 +31,7 @@
 		</div>
 	</section>
 	<section class="links">
-		<div class="container">
+		<div class="container typicalContainer">
 			<h1 class="linksH1">
 				Available actions:
 			</h1>

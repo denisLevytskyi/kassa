@@ -23,7 +23,7 @@ function form ($num) {
 		</div>
 	</header>
 	<section class="auth">
-		<div class="container">
+		<div class="container typicalContainer">
 			<p class="authP">
 				ID: <?php echo $_SESSION['auth']['id']; ?>
 				Name: <?php echo $_SESSION['auth']['name']; ?>
@@ -37,7 +37,7 @@ function form ($num) {
 		</div>
 	</section>
 	<section class="list">
-		<div class="container">
+		<div class="container typicalContainer">
 			<div class="listBtn">
 				<p class="listBtnP deactivate" id="previous">
 					Previous

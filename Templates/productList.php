@@ -18,7 +18,7 @@
 		</div>
 	</header>
 	<section class="auth">
-		<div class="container">
+		<div class="container typicalContainer">
 			<p class="authP">
 				ID: <?php echo $_SESSION['auth']['id']; ?>
 				Name: <?php echo $_SESSION['auth']['name']; ?>
@@ -32,7 +32,7 @@
 		</div>
 	</section>
 	<section class="search">
-		<div class="container">
+		<div class="container typicalContainer">
 			<form action="/product.php" class="searchForm" method="GET">
 				<input type="text" class="searchFormInp" name="product_code" placeholder="Article or Code" required>
 				<button type="submit" class="searchFormBtn">Search!</button>
@@ -40,7 +40,7 @@
 		</div>
 	</section>
 	<section class="list">
-		<div class="container">
+		<div class="container typicalContainer">
 			<div class="listBtn">
 				<p class="listBtnP deactivate" id="previous">
 					Previous

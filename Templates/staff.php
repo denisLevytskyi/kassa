@@ -23,7 +23,7 @@ function form ($num) {
 		</div>
 	</header>
 	<section class="auth">
-		<div class="container">
+		<div class="container typicalContainer">
 			<p class="authP">
 				ID: <?php echo $_SESSION['auth']['id']; ?>
 				Name: <?php echo $_SESSION['auth']['name']; ?>
@@ -37,14 +37,14 @@ function form ($num) {
 		</div>
 	</section>
 	<section class="staff">
-		<div class="container">
+		<div class="container typicalContainer">
 			<p class="staffP">
 				Balance: <?php echo $_SESSION['staff']['balance']; ?>
 			</p>
 		</div>
 	</section>
 	<section class="staff">
-		<div class="container">
+		<div class="container typicalContainer">
 			<form action="/staff.php" class="staffForm" method="POST">
 				<input type="text" class="staffFormInp" name="staff_branch_sum" value="-<?php echo $_SESSION['staff']['balance']; ?>" required>
 				<button type="submit" class="staffFormBtn">Add branch!</button>
@@ -52,7 +52,7 @@ function form ($num) {
 		</div>
 	</section>
 	<section class="staff">
-		<div class="container">
+		<div class="container typicalContainer">
 			<form action="/staff.php" class="staffForm" method="POST">
 				<input type="date" class="staffFormInp" name="staff_periodical_f" required>
 				<input type="date" class="staffFormInp" name="staff_periodical_l" required>
@@ -61,7 +61,7 @@ function form ($num) {
 		</div>
 	</section>
 	<section class="staff">
-		<div class="container">
+		<div class="container typicalContainer">
 			<form action="/staff.php" class="staffForm" method="POST">
 				<input type="number" step="1" class="staffFormInp" name="staff_periodical_f" placeholder="Z-id first" required>
 				<input type="number" step="1" class="staffFormInp" name="staff_periodical_l" placeholder="Z-id last" required>
@@ -76,7 +76,7 @@ function form ($num) {
 		</div>
 	</section>
 	<section class="list">
-		<div class="container">
+		<div class="container typicalContainer">
 			<div class="listBtn">
 				<p class="listBtnP deactivate" id="previous">
 					Previous
@@ -113,7 +113,7 @@ function form ($num) {
 		</div>
 	</section>
 	<section class="list">
-		<div class="container">
+		<div class="container typicalContainer">
 			<div class="listBtn">
 				<p class="listBtnP deactivate" id="previous2">
 					Previous

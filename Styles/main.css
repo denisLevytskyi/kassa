@@ -5,7 +5,7 @@
 }
 */
 
-div, p, input, button, form, span, a, ul, li, pre {
+div, p, input, button, form, span, a, ul, li, pre, * {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
@@ -15,12 +15,13 @@ body, button {
 	font-family: 'Roboto', sans-serif;
 	padding: 0;
 	margin: 0;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 	font-weight: bold;
+	font-size: 22px;
 }
 
 ul, li {
@@ -30,7 +31,7 @@ ul, li {
 a { 
 	text-decoration: none;
 	color: inherit;
-	font-size: 18px;
+	font-size: 17px;
 }
 
 button {
@@ -38,22 +39,24 @@ button {
 	background: yellow;
 	font-weight: bold;
 	text-align: center;
-	padding: 10px 0;
+	padding: 7px 0;
 	border: 2px solid black;
-	border-radius: 10px;
+	border-radius: 5px;
 	cursor: pointer;
 }
 
 button:hover {
-	background: blue;
+	background: palegreen;
+	transition-duration: 1s;
 }
 
 input, textarea, select {
 	display: block;
 	font-weight: bold;
-	padding: 10px 10px;
+	font-size: 14px;
+	padding: 7px;
 	border: 2px solid black;
-	border-radius: 10px;
+	border-radius: 5px;
 	cursor: pointer;
 	margin-bottom: 10px;
 }
@@ -94,9 +97,16 @@ section {
 	color: white;
 	background: black;
 	border-radius: 100px;
+	border: 2px solid black;
 	padding: 3px;
 	cursor: pointer;
 	text-align: center;
+}
+
+.listBtnP:hover {
+	background: palegreen;
+	transition-duration: 1s;
+	color: black;
 }
 
 .deactivate {

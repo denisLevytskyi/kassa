@@ -1,13 +1,7 @@
-.list .container, .staff .container {
-	background: white;
-	padding: 10px;
-	border-radius: 10px;
-}
-
 .staffForm {
 	display: flex;
 	justify-content: left;
-	align-items: center;
+	align-items: flex-end;
 	flex-wrap: wrap;
 }
 
@@ -36,4 +30,5 @@
 
 .null {
 	color: grey;
+	text-decoration: line-through;
 }

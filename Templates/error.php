@@ -9,7 +9,7 @@
 </head>
 <body>
 	<header class="header">
-		<div class="container">
+		<div class="container typicalContainer">
 			<div class="headerWrap">
 				<img src="/Materials/main_logo.png" class="headerWrapImg">
 				<p class="headerWrapP">[LVZ] Error page</p>
@@ -17,7 +17,7 @@
 		</div>
 	</header>
 	<section class="error">
-		<div class="container">
+		<div class="container typicalContainer">
 			<h1 class="errorH1">
 				ERROR!
 			</h1>

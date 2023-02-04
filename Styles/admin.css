@@ -1,11 +1,17 @@
-.list .container, .search .container {
-	background: white;
-	padding: 10px;
-	border-radius: 10px;
+.listWrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
 
 .listWrapItem {
 	margin: 10px 5px;
+	padding: 5px;
+	background: black;
+	border-radius: 5px;
+	width: 250px;
+	max-width: 95%;
 }
 
 .listA {
@@ -15,26 +21,30 @@
 
 .listWrapItemForm {
 	display: flex;
-	background: grey;
-	border-radius: 5px;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: space-around;
-	flex-wrap: wrap;
-	padding: 5px;
+	flex-direction: column;
+}
+
+.listWrapItemP {
+	color: white;
+	margin-bottom: 10px;
 }
 
 .listWrapItemFormP {
-	width: 70px;
+	color: white;
+	font-size: 15px;
 }
 
 .listWrapItemFormInp {
-	margin: 0;
-	padding: 5px 10px;
+	padding: 5px;
 	border: 0.5px solid darkgrey;
+	margin-bottom: 5px;
+	width: 100%;
 }
 
 .listWrapItemFormBtn {
-	padding: 5px;
-	border: 0.5px solid darkgrey;
-	font-weight: normal;
+	padding: 2px 15px;
+	margin-left: auto;
+	border-radius: 100px;
 }

@@ -18,7 +18,7 @@
 		</div>
 	</header>
 	<section class="auth">
-		<div class="container">
+		<div class="container typicalContainer">
 			<p class="authP">
 				ID: <?php echo $_SESSION['auth']['id']; ?>
 				Name: <?php echo $_SESSION['auth']['name']; ?>
@@ -32,28 +32,39 @@
 		</div>
 	</section>
 	<section class="list">
-		<div class="container">
+		<div class="container typicalContainer">
 			<a class="listA" href="/">Go Home!</a>
 			<div class="listWrap">
 				<?php foreach ($_SESSION['admin'] as $k => $v) { ?>
 					<div class="listWrapItem">
+						<p class="listWrapItemP">
+							ID: <?php echo $v['id']; ?>
+							|
+							Role: <?php echo $v['role']; ?>
+						</p>
 						<form action="/admin.php" class="listWrapItemForm" method="POST">
-							<p class="listWrapItemFormP">
-								ID: <?php echo $v['id']; ?>
-								<br>
-								R: <?php echo $v['role']; ?>
-							</p>
 							<input type="text" style="display: none;" name="admin_id" value="<?php echo $v['id']; ?>" required>
+							<p class="listWrapItemFormP">
+								Login:
+							</p>
 							<input type="text" class="listWrapItemFormInp" name="admin_login" value="<?php echo $v['login']; ?>" required>
+							<p class="listWrapItemFormP">
+								Password:
+							</p>
 							<input type="text" class="listWrapItemFormInp" name="admin_password" value="<?php echo $v['password']; ?>" required>
+							<p class="listWrapItemFormP">
+								Name:
+							</p>
 							<input type="text" class="listWrapItemFormInp" name="admin_name" value="<?php echo $v['name']; ?>" required>
+							<p class="listWrapItemFormP">
+								Role:
+							</p>
 							<select class="listWrapItemFormInp" name="admin_role" required>
-								<option value="1">ROLE</option>
-								<option value="1">User</option>
-								<option value="2">Salesman</option>
-								<option value="3">Cashier</option>
-								<option value="4">Senior cashier</option>
-								<option value="100">Admin</option>
+								<option value="1" <?php echo $v['role'] == 1 ? 'selected' : ''; ?>>User</option>
+								<option value="2" <?php echo $v['role'] == 2 ? 'selected' : ''; ?>>Salesman</option>
+								<option value="3" <?php echo $v['role'] == 3 ? 'selected' : ''; ?>>Cashier</option>
+								<option value="4" <?php echo $v['role'] == 4 ? 'selected' : ''; ?>>Senior cashier</option>
+								<option value="100" <?php echo $v['role'] == 100 ? 'selected' : ''; ?>>Admin</option>
 							</select>
 							<button type="submit" class="listWrapItemFormBtn">
 								Upgrade!

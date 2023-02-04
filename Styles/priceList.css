@@ -1,9 +1,3 @@
-.list .container, .search .container {
-	background: white;
-	padding: 10px;
-	border-radius: 10px;
-}
-
 .listWrapItem {
 	margin: 10px 5px;
 }
