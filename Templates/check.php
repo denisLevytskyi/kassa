@@ -108,10 +108,10 @@ function form ($num) {
 				<?php echo 'РЕШТА: ........................... ' . form($_SESSION['check']['change']) . ' грн'; ?>
 			</p>
 			<p class="footerNumP">
-				<?php echo 'ГОТІВКОЮ: ..................... ' . form(abs($_SESSION['check']['received_cash'] - $_SESSION['check']['change'])) . ' грн'; ?>
+				<?php echo 'ГОТІВКОЮ: ..................... ' . form($_SESSION['check']['sum_cash']) . ' грн'; ?>
 			</p>
 			<p class="footerNumP c<?php echo $_SESSION['check']['received_card']; ?>">
-				<?php echo 'КАРТКОЮ: ...................... ' . form($_SESSION['check']['received_card']) . ' грн'; ?>
+				<?php echo 'КАРТКОЮ: ...................... ' . form($_SESSION['check']['sum_card']) . ' грн'; ?>
 			</p>
 		</div>
 		<div class="footerCode">

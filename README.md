@@ -71,6 +71,8 @@ $_SESSION
 		['received_cash']
 		['received_card']
 		['change']
+		['sum_cash']
+		['sum_card']
 		['sum']
 		['sum_a']
 		['sum_b']

@@ -326,6 +326,8 @@ class StaffController {
 				$data['sale_received_cash'] += $v['received_cash'];
 				$data['sale_received_card'] += $v['received_card'];
 				$data['sale_change'] += $v['change'];
+				$data['sale_sum_cash'] += $v['sum_cash'];
+				$data['sale_sum_card'] += $v['sum_card'];
 				$data['sale_sum'] += $v['sum'];
 				$data['sale_sum_a'] += $v['sum_a'];
 				$data['sale_sum_b'] += $v['sum_b'];
@@ -349,6 +351,8 @@ class StaffController {
 				$data['return_received_cash'] += $v['received_cash'];
 				$data['return_received_card'] += $v['received_card'];
 				$data['return_change'] += $v['change'];
+				$data['return_sum_cash'] += $v['return_cash'];
+				$data['return_sum_card'] += $v['return_card'];
 				$data['return_sum'] += $v['sum'];
 				$data['return_sum_a'] += $v['sum_a'];
 				$data['return_sum_b'] += $v['sum_b'];
@@ -362,8 +366,6 @@ class StaffController {
 				$data['return_sum_tax_m'] += $v['sum_tax_m'];
 			}
 		}
-		$data['sale_sum_cash'] = $data['sale_received_cash'] - $data['sale_change'];
-		$data['sale_sum_card'] = $data['sale_received_card'];
 		$data['sale_sum_tax'] = (
 			$data['sale_sum_tax_a'] +
 			$data['sale_sum_tax_b'] +
@@ -371,8 +373,6 @@ class StaffController {
 			$data['sale_sum_tax_g'] +
 			$data['sale_sum_tax_m']
 		);
-		$data['return_sum_cash'] = $data['return_received_cash'] - $data['return_change'];
-		$data['return_sum_card'] = $data['return_received_card'];
 		$data['return_sum_tax'] = (
 			$data['return_sum_tax_a'] +
 			$data['return_sum_tax_b'] +

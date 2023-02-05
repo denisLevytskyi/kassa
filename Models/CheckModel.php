@@ -56,17 +56,19 @@ class CheckModel {
 		$i14 = $data['received_cash'];
 		$i15 = $data['received_card'];
 		$i16 = $data['change'];
-		$i17 = $data['sum'];
-		$i18 = $data['sum_a'];
-		$i19 = $data['sum_b'];
-		$i20 = $data['sum_v'];
-		$i21 = $data['sum_g'];
-		$i22 = $data['sum_m'];
-		$i23 = $data['sum_tax_a'];
-		$i24 = $data['sum_tax_b'];
-		$i25 = $data['sum_tax_v'];
-		$i26 = $data['sum_tax_g'];
-		$i27 = $data['sum_tax_m'];
+		$i17 = $data['sum_cash'];
+		$i18 = $data['sum_card'];
+		$i19 = $data['sum'];
+		$i20 = $data['sum_a'];
+		$i21 = $data['sum_b'];
+		$i22 = $data['sum_v'];
+		$i23 = $data['sum_g'];
+		$i24 = $data['sum_m'];
+		$i25 = $data['sum_tax_a'];
+		$i26 = $data['sum_tax_b'];
+		$i27 = $data['sum_tax_v'];
+		$i28 = $data['sum_tax_g'];
+		$i29 = $data['sum_tax_m'];
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO checks (
 			z_id,
@@ -86,6 +88,8 @@ class CheckModel {
 			received_cash,
 			received_card,
 			`change`,
+			sum_cash,
+			sum_card,
 			sum,
 			sum_a,
 			sum_b,
@@ -99,7 +103,7 @@ class CheckModel {
 			sum_tax_m
 			)
 			VALUES
-			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27')";
+			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27', '$i28', '$i29')";
 		return mysqli_query($connection, $request);
 	}
 }

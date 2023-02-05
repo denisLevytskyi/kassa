@@ -90,8 +90,8 @@ class UnikaController extends StaffController {
 				'group' => $group,
 				'article' => '-',
 				'code' => '-',
-				'name' => '= = = ' . $name . ' = = =',
-				'description' => '-',
+				'name' => $name,
+				'description' => '',
 				'photo' => '',
 				'auth_id' => 0,
 				'price' => 0.01,
@@ -164,6 +164,8 @@ class UnikaController extends StaffController {
 			'received_cash' => round($_POST['unika_cash'], 1),
 			'received_card' => 0,
 			'change' => 0,
+			'sum_cash' => 0,
+			'sum_card' => 0,
 			'sum' => $_SESSION['unika']['sum'],
 			'sum_a' => $tax_data['sum_a'],
 			'sum_b' => $tax_data['sum_b'],
@@ -178,14 +180,14 @@ class UnikaController extends StaffController {
 		);
 		if ($_POST['unika_pay'] == 'card') {
 			$data['received_card'] = $data['sum'] - $data['received_cash'];
-		} else {
-			$data['received_card'] = 0;
 		}
 		if ($data['received_card'] < 0) {
 			$data['received_card'] = 0;
 		}
-		$data['change'] = $data['sum'] - $data['received_cash'] - $data['received_card'];
-		$change = -$data['change'];
+		$data['change'] = -$data['sum'] + $data['received_cash'] + $data['received_card'];
+		$data['sum_cash'] = $data['received_cash'] - $data['change'];
+		$data['sum_card'] = $data['received_card'];
+		$change = $data['change'];
 		foreach ($data as $k => $v) {
 			if (is_numeric($v)) {
 				$data[$k] = abs(round($v, 2));

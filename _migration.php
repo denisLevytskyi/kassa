@@ -53,6 +53,8 @@ $request4 = "CREATE TABLE `checks` (
 	`received_cash` VARCHAR(50) DEFAULT NULL,
 	`received_card` VARCHAR(50) DEFAULT NULL,
 	`change` VARCHAR(50) DEFAULT NULL,
+	`sum_cash` VARCHAR(50) DEFAULT NULL,
+	`sum_card` VARCHAR(50) DEFAULT NULL,
 	`sum` VARCHAR(50) DEFAULT NULL,
 	`sum_a` VARCHAR(50) DEFAULT NULL,
 	`sum_b` VARCHAR(50) DEFAULT NULL,
