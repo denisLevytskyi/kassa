@@ -26,7 +26,7 @@ class ErrorController {
 			4 => "SIGN: PIN of Administrator does not match!",
 			5 => "SIGN: Problems with data entry!",
 			6 => 'LOGIN: No name for this id!',
-			7 => 'EDIT AUTH: No login for this id!',
+			7 => 'EDIT AUTH: Invalid data for this id!',
 			8 => "EDIT AUTH: New passwords didn't match!",
 			9 => "EDIT AUTH: Problems with update data!",
 			10 => "EDIT AUTH: Problems with deleting data!",

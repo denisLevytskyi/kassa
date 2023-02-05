@@ -23,8 +23,16 @@ class EditAuthController {
 		}
 	}
 
-	protected function set_login_check () {
-		if (empty($_SESSION['auth']['login'])) {
+	protected function set_data_check () {
+		$error = FALSE;
+		if (empty($_SESSION['auth']['name'])) {
+			$error = TRUE;
+		} elseif (empty($_SESSION['auth']['login'])) {
+			$error = TRUE;
+		} elseif (empty($_SESSION['auth']['role'])) {
+			$error = TRUE;
+		}
+		if ($error) {
 			ErrorController::get_view_error(7);
 		}
 	}
@@ -43,7 +51,7 @@ class EditAuthController {
 		if (isset($_GET['auth_delete'])) {
 			$this->set_delete();
 		} elseif (empty($_POST['edit_auth_id'])) {
-			$this->set_login_check();
+			$this->set_data_check();
 			$this->view_edit_auth();
 		} elseif ($_POST['edit_auth_password_1'] == $_POST['edit_auth_password_2']) {
 			$this->set_changes();
