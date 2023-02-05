@@ -39,7 +39,7 @@ function form ($num) {
 	<section class="staff">
 		<div class="container typicalContainer">
 			<p class="staffP">
-				Balance: <?php echo $_SESSION['staff']['balance']; ?>
+				Balance: <?php echo form($_SESSION['staff']['balance']); ?>
 			</p>
 		</div>
 	</section>
