@@ -19,19 +19,41 @@ class UnikaController extends StaffController {
 		$_SESSION['unika']['sum'] = $sum;
 	}
 
-	protected function change_amount () {
-		$val = abs(round($_POST['unika_amount_val'], 3));
-		$key = $_POST['unika_amount_key'];
-		$price = $_SESSION['unika']['list'][$key]['price'];
-		$_SESSION['unika']['list'][$key]['amount'] = $val;
-		$_SESSION['unika']['list'][$key]['sum'] = round($val * $price, 2);
-		header('Location: /unika.php');
+	protected function get_time_check ($data) {
+		if (time() - $data['null_timestamp_first'] > 86400) {
+			ErrorController::get_view_error(37);
+			return FALSE;
+		} elseif (time() - $data['sale_timestamp_first'] > 86400) {
+			ErrorController::get_view_error(37);
+			return FALSE;
+		} elseif (time() - $data['return_timestamp_first'] > 86400) {
+			ErrorController::get_view_error(37);
+			return FALSE;
+		} else {
+			return TRUE;
+		}
 	}
-
-	protected function del_product () {
-		$key = $_GET['unika_del'];
-		unset($_SESSION['unika']['list'][$key]);
-		header('Location: /unika.php');
+	
+	protected function set_check_type () {
+		$cash = $_POST['unika_cash'];
+		$sum = $_SESSION['unika']['sum'];
+		$count = count($_SESSION['unika']['list']);
+		$data = $this->set_balance_data();
+		$time_check = $this->get_time_check($data);
+		$result = $data['balance_close'] - $cash;
+		if ($count == 0 or $sum < 0 or !$time_check) {
+			return null;
+		} elseif ($sum == 0 or isset($_POST['unika_null'])) {
+			return 'АНУЛЬОВАНО';
+		} elseif ($result >= 0 and isset($_POST['unika_return'])) {
+			$admin = new AdminController();
+			$admin->get_admin_check(4);
+			return 'ВИДАТКОВИЙ ЧЕК';
+		} elseif ($cash <= 50000 and empty($_POST['unika_return'])) {
+			return 'ФІСКАЛЬНИЙ ЧЕК';
+		} else {
+			return null;
+		}
 	}
 
 	protected function set_tax_data () {
@@ -105,43 +127,6 @@ class UnikaController extends StaffController {
 		}
 	}
 
-	protected function get_time_check ($data) {
-		if (time() - $data['null_timestamp_first'] > 86400) {
-			ErrorController::get_view_error(37);
-			return FALSE;
-		} elseif (time() - $data['sale_timestamp_first'] > 86400) {
-			ErrorController::get_view_error(37);
-			return FALSE;
-		} elseif (time() - $data['return_timestamp_first'] > 86400) {
-			ErrorController::get_view_error(37);
-			return FALSE;
-		} else {
-			return TRUE;
-		}
-	}
-	
-	protected function set_check_type () {
-		$cash = $_POST['unika_cash'];
-		$sum = $_SESSION['unika']['sum'];
-		$count = count($_SESSION['unika']['list']);
-		$data = $this->set_balance_data();
-		$time_check = $this->get_time_check($data);
-		$result = $data['balance_close'] - $cash;
-		if ($count == 0 or $sum < 0 or !$time_check) {
-			return null;
-		} elseif ($sum == 0 or isset($_POST['unika_null'])) {
-			return 'АНУЛЬОВАНО';
-		} elseif ($result >= 0 and isset($_POST['unika_return'])) {
-			$admin = new AdminController();
-			$admin->get_admin_check(4);
-			return 'ВИДАТКОВИЙ ЧЕК';
-		} elseif ($cash <= 50000 and empty($_POST['unika_return'])) {
-			return 'ФІСКАЛЬНИЙ ЧЕК';
-		} else {
-			return null;
-		}
-	}
-
 	protected function set_check () {
 		$this->set_round();
 		$props = PropsController::get_data();
@@ -204,6 +189,29 @@ class UnikaController extends StaffController {
 		}
 	}
 
+	protected function change_amount () {
+		$val = abs(round($_POST['unika_amount_val'], 3));
+		$key = $_POST['unika_amount_key'];
+		$price = $_SESSION['unika']['list'][$key]['price'];
+		$_SESSION['unika']['list'][$key]['amount'] = $val;
+		$_SESSION['unika']['list'][$key]['sum'] = round($val * $price, 2);
+		header('Location: /unika.php');
+	}
+
+	protected function del_product () {
+		$key = $_GET['unika_del'];
+		unset($_SESSION['unika']['list'][$key]);
+		header('Location: /unika.php');
+	}
+
+	protected function set_mark ($code) {
+		$mark = trim($code, '!');
+		$key = array_key_last($_SESSION['unika']['list']);
+		if ($key !== null) {
+			$_SESSION['unika']['list'][$key]['name'] .= '<br>А/М: ' . $mark;
+		}
+	}
+
 	protected function set_sale ($code) {
 		$sale = mb_substr($code, 1, 2);
 		$article = mb_substr($code, 3);
@@ -222,14 +230,6 @@ class UnikaController extends StaffController {
 				);
 				return;
 			}
-		}
-	}
-
-	protected function set_mark ($code) {
-		$mark = trim($code, '!');
-		$key = array_key_last($_SESSION['unika']['list']);
-		if ($key !== null) {
-			$_SESSION['unika']['list'][$key]['name'] .= '<br>А/М: ' . $mark;
 		}
 	}
 
