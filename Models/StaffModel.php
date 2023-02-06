@@ -114,9 +114,9 @@ class StaffModel extends CheckModel {
 			`timestamp`,
 			organization_name,
 			store_name,
-			store_address,    
+			store_address,	
 			store_kass,  
-			num_fiskal,      
+			num_fiskal,	  
 			num_factory,
 			num_id,  
 			num_tax,
@@ -156,44 +156,48 @@ class StaffModel extends CheckModel {
 		$i26 = $data['sale_sum_cash'];
 		$i27 = $data['sale_sum_card'];
 		$i28 = $data['sale_sum'];
-		$i29 = $data['sale_sum_a'];
-		$i30 = $data['sale_sum_b'];
-		$i31 = $data['sale_sum_v'];
-		$i32 = $data['sale_sum_g'];
-		$i33 = $data['sale_sum_m'];
-		$i34 = $data['sale_sum_tax_a'];
-		$i35 = $data['sale_sum_tax_b'];
-		$i36 = $data['sale_sum_tax_v'];
-		$i37 = $data['sale_sum_tax_g'];
-		$i38 = $data['sale_sum_tax_m'];
-		$i39 = $data['sale_sum_tax'];
-		$i40 = $data['return_id_first'];
-		$i41 = $data['return_id_last'];
-		$i42 = $data['return_timestamp_first'];
-		$i43 = $data['return_timestamp_last'];
-		$i44 = $data['return_checks'];
-		$i45 = $data['return_received_cash'];
-		$i46 = $data['return_received_card'];
-		$i47 = $data['return_change'];
-		$i48 = $data['return_sum_cash'];
-		$i49 = $data['return_sum_card'];
-		$i50 = $data['return_sum'];
-		$i51 = $data['return_sum_a'];
-		$i52 = $data['return_sum_b'];
-		$i53 = $data['return_sum_v'];
-		$i54 = $data['return_sum_g'];
-		$i55 = $data['return_sum_m'];
-		$i56 = $data['return_sum_tax_a'];
-		$i57 = $data['return_sum_tax_b'];
-		$i58 = $data['return_sum_tax_v'];
-		$i59 = $data['return_sum_tax_g'];
-		$i60 = $data['return_sum_tax_m'];
-		$i61 = $data['return_sum_tax'];
-		$i62 = $data['sum_cash'];
-		$i63 = $data['sum_card'];
-		$i64 = $data['sum'];
-		$i65 = $data['balance_open'];
-		$i66 = $data['balance_close'];
+		$i29 = $data['sale_round_plus'];
+		$i30 = $data['sale_round_minus'];
+		$i31 = $data['sale_sum_a'];
+		$i32 = $data['sale_sum_b'];
+		$i33 = $data['sale_sum_v'];
+		$i34 = $data['sale_sum_g'];
+		$i35 = $data['sale_sum_m'];
+		$i36 = $data['sale_sum_tax_a'];
+		$i37 = $data['sale_sum_tax_b'];
+		$i38 = $data['sale_sum_tax_v'];
+		$i39 = $data['sale_sum_tax_g'];
+		$i40 = $data['sale_sum_tax_m'];
+		$i41 = $data['sale_sum_tax'];
+		$i42 = $data['return_id_first'];
+		$i43 = $data['return_id_last'];
+		$i44 = $data['return_timestamp_first'];
+		$i45 = $data['return_timestamp_last'];
+		$i46 = $data['return_checks'];
+		$i47 = $data['return_received_cash'];
+		$i48 = $data['return_received_card'];
+		$i49 = $data['return_change'];
+		$i50 = $data['return_sum_cash'];
+		$i51 = $data['return_sum_card'];
+		$i52 = $data['return_sum'];
+		$i53 = $data['return_round_plus'];
+		$i54 = $data['return_round_minus'];
+		$i55 = $data['return_sum_a'];
+		$i56 = $data['return_sum_b'];
+		$i57 = $data['return_sum_v'];
+		$i58 = $data['return_sum_g'];
+		$i59 = $data['return_sum_m'];
+		$i60 = $data['return_sum_tax_a'];
+		$i61 = $data['return_sum_tax_b'];
+		$i62 = $data['return_sum_tax_v'];
+		$i63 = $data['return_sum_tax_g'];
+		$i64 = $data['return_sum_tax_m'];
+		$i65 = $data['return_sum_tax'];
+		$i66 = $data['sum_cash'];
+		$i67 = $data['sum_card'];
+		$i68 = $data['sum'];
+		$i69 = $data['balance_open'];
+		$i70 = $data['balance_close'];
 		$connection = Logics\Connection::get_connection();
 		$request = "INSERT INTO balances (
 			auth_id,
@@ -201,9 +205,9 @@ class StaffModel extends CheckModel {
 			`timestamp`,
 			organization_name,
 			store_name,
-			store_address,    
+			store_address,	
 			store_kass,  
-			num_fiskal,      
+			num_fiskal,	  
 			num_factory,
 			num_id,  
 			num_tax,
@@ -225,6 +229,8 @@ class StaffModel extends CheckModel {
 			sale_sum_cash,
 			sale_sum_card,
 			sale_sum,
+			sale_round_plus,
+			sale_round_minus,
 			sale_sum_a,
 			sale_sum_b,
 			sale_sum_v,
@@ -247,6 +253,8 @@ class StaffModel extends CheckModel {
 			return_sum_cash,
 			return_sum_card,
 			return_sum,
+			return_round_plus,
+			return_round_minus,
 			return_sum_a,
 			return_sum_b,
 			return_sum_v,
@@ -264,7 +272,7 @@ class StaffModel extends CheckModel {
 			balance_open,
 			balance_close)
 			VALUES
-			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27', '$i28', '$i29', '$i30', '$i31', '$i32', '$i33', '$i34', '$i35', '$i36', '$i37', '$i38', '$i39', '$i40', '$i41', '$i42', '$i43', '$i44', '$i45', '$i46', '$i47', '$i48', '$i49', '$i50', '$i51', '$i52', '$i53', '$i54', '$i55', '$i56', '$i57', '$i58', '$i59', '$i60', '$i61', '$i62', '$i63', '$i64', '$i65', '$i66')";
+			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27', '$i28', '$i29', '$i30', '$i31', '$i32', '$i33', '$i34', '$i35', '$i36', '$i37', '$i38', '$i39', '$i40', '$i41', '$i42', '$i43', '$i44', '$i45', '$i46', '$i47', '$i48', '$i49', '$i50', '$i51', '$i52', '$i53', '$i54', '$i55', '$i56', '$i57', '$i58', '$i59', '$i60', '$i61', '$i62', '$i63', '$i64', '$i65', '$i66', '$i67', '$i68', '$i69', '$i70')";
 		return mysqli_query($connection, $request);
 	}
 }

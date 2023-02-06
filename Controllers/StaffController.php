@@ -79,6 +79,8 @@ class StaffController {
 			'sale_sum_cash' => 0,
 			'sale_sum_card' => 0,
 			'sale_sum' => 0,
+			'sale_round_plus' => 0,
+			'sale_round_minus' => 0,
 			'sale_sum_a' => 0,
 			'sale_sum_b' => 0,
 			'sale_sum_v' => 0,
@@ -101,6 +103,8 @@ class StaffController {
 			'return_sum_cash' => 0,
 			'return_sum_card' => 0,
 			'return_sum' => 0,
+			'return_round_plus' => 0,
+			'return_round_minus' => 0,
 			'return_sum_a' => 0,
 			'return_sum_b' => 0,
 			'return_sum_v' => 0,
@@ -182,6 +186,13 @@ class StaffController {
 					$data['sale_timestamp_first'] = $v['timestamp'];
 					$gate1 = 1;
 				}
+				if (isset($v['main']['round'])) {
+					if ($v['main']['round']['sum'] > 0) {
+						$data['sale_round_plus'] += $v['main']['round']['sum'];
+					} else {
+						$data['sale_round_minus'] += -$v['main']['round']['sum'];
+					}
+				}
 				$data['sale_id_last'] = $v['id'];
 				$data['sale_timestamp_last'] = $v['timestamp'];
 				$data['sale_checks'] += 1;
@@ -207,14 +218,21 @@ class StaffController {
 					$data['return_timestamp_first'] = $v['timestamp'];
 					$gate2 = 1;
 				}
+				if (isset($v['main']['round'])) {
+					if ($v['main']['round']['sum'] > 0) {
+						$data['return_round_plus'] += $v['main']['round']['sum'];
+					} else {
+						$data['return_round_minus'] += -$v['main']['round']['sum'];
+					}
+				}
 				$data['return_id_last'] = $v['id'];
 				$data['return_timestamp_last'] = $v['timestamp'];
 				$data['return_checks'] += 1;
 				$data['return_received_cash'] += $v['received_cash'];
 				$data['return_received_card'] += $v['received_card'];
 				$data['return_change'] += $v['change'];
-				$data['return_sum_cash'] += $v['return_cash'];
-				$data['return_sum_card'] += $v['return_card'];
+				$data['return_sum_cash'] += $v['sum_cash'];
+				$data['return_sum_card'] += $v['sum_card'];
 				$data['return_sum'] += $v['sum'];
 				$data['return_sum_a'] += $v['sum_a'];
 				$data['return_sum_b'] += $v['sum_b'];
@@ -366,6 +384,8 @@ class StaffController {
 			$data['sale_sum_cash'] += $v['sale_sum_cash'];
 			$data['sale_sum_card'] += $v['sale_sum_card'];
 			$data['sale_sum'] += $v['sale_sum'];
+			$data['sale_round_plus'] += $v['sale_round_plus'];
+			$data['sale_round_minus'] += $v['sale_round_minus'];
 			$data['sale_sum_a'] += $v['sale_sum_a'];
 			$data['sale_sum_b'] += $v['sale_sum_b'];
 			$data['sale_sum_v'] += $v['sale_sum_v'];
@@ -384,6 +404,8 @@ class StaffController {
 			$data['return_sum_cash'] += $v['return_sum_cash'];
 			$data['return_sum_card'] += $v['return_sum_card'];
 			$data['return_sum'] += $v['return_sum'];
+			$data['return_round_plus'] += $v['return_round_plus'];
+			$data['return_round_minus'] += $v['return_round_minus'];
 			$data['return_sum_a'] += $v['return_sum_a'];
 			$data['return_sum_b'] += $v['return_sum_b'];
 			$data['return_sum_v'] += $v['return_sum_v'];

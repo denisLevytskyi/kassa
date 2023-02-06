@@ -20,6 +20,7 @@ class CheckModel {
 		$request = "SELECT * FROM checks WHERE $search_p= '$search_v'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
+			$record['main'] = unserialize($record['body']);
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
 			$checks[] = $record;
 		}
@@ -77,9 +78,9 @@ class CheckModel {
 			`timestamp`,
 			organization_name,
 			store_name,
-			store_address,    
+			store_address,	
 			store_kass,  
-			num_fiskal,      
+			num_fiskal,	  
 			num_factory,
 			num_id,  
 			num_tax,

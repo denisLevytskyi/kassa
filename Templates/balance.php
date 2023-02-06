@@ -114,6 +114,16 @@ function form ($num) {
 			</p>
 			<br>
 			<p class="mainItemP">
+				ЗАОКРУГЛЕННЯ:
+			</p>
+			<p class="mainItemP">
+				НАДБАВКА : ........... <?php echo form($_SESSION['balance']['sale_round_plus']); ?> грн
+			</p>
+			<p class="mainItemP">
+				ЗНИЖКА : ............... <?php echo form($_SESSION['balance']['sale_round_minus']); ?> грн
+			</p>
+			<br>
+			<p class="mainItemP">
 				ОБІГ А: ..................... <?php echo form($_SESSION['balance']['sale_sum_a']); ?> грн
 			</p>
 			<p class="mainItemP">
@@ -186,6 +196,16 @@ function form ($num) {
 			</p>
 			<p class="mainItemP">
 				СУМА : ..................... <?php echo form($_SESSION['balance']['return_sum']); ?> грн
+			</p>
+			<br>
+			<p class="mainItemP">
+				ЗАОКРУГЛЕННЯ:
+			</p>
+			<p class="mainItemP">
+				НАДБАВКА : ........... <?php echo form($_SESSION['balance']['return_round_plus']); ?> грн
+			</p>
+			<p class="mainItemP">
+				ЗНИЖКА : ............... <?php echo form($_SESSION['balance']['return_round_minus']); ?> грн
 			</p>
 			<br>
 			<p class="mainItemP">
