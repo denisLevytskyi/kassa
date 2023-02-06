@@ -94,6 +94,9 @@ function form ($num) {
 				Чеків: <?php echo $_SESSION['balance']['sale_checks']; ?>
 			</p>
 			<br>
+			<p class="mainItemP mainItemName">
+				ПІДСУМКИ РО:
+			</p>
 			<p class="mainItemP">
 				Готівкою: ................ <?php echo form($_SESSION['balance']['sale_received_cash']); ?> грн
 			</p>
@@ -113,8 +116,8 @@ function form ($num) {
 				СУМА : ..................... <?php echo form($_SESSION['balance']['sale_sum']); ?> грн
 			</p>
 			<br>
-			<p class="mainItemP">
-				ЗАОКРУГЛЕННЯ:
+			<p class="mainItemP mainItemName">
+				В Т.Ч. ЗАОКРУГЛЕННЯ:
 			</p>
 			<p class="mainItemP">
 				НАДБАВКА : ........... <?php echo form($_SESSION['balance']['sale_round_plus']); ?> грн
@@ -123,6 +126,9 @@ function form ($num) {
 				ЗНИЖКА : ............... <?php echo form($_SESSION['balance']['sale_round_minus']); ?> грн
 			</p>
 			<br>
+			<p class="mainItemP mainItemName">
+				ОБІГИ:
+			</p>
 			<p class="mainItemP">
 				ОБІГ А: ..................... <?php echo form($_SESSION['balance']['sale_sum_a']); ?> грн
 			</p>
@@ -139,6 +145,9 @@ function form ($num) {
 				ОБІГ М: .................... <?php echo form($_SESSION['balance']['sale_sum_m']); ?> грн
 			</p>
 			<br>
+			<p class="mainItemP mainItemName">
+				ПОДАТКИ:
+			</p>
 			<p class="mainItemP">
 				ПДВ А 20%: ............. <?php echo form($_SESSION['balance']['sale_sum_tax_a']); ?> грн
 			</p>
@@ -179,6 +188,9 @@ function form ($num) {
 				Чеків: <?php echo $_SESSION['balance']['return_checks']; ?>
 			</p>
 			<br>
+			<p class="mainItemP mainItemName">
+				ПІДСУМКИ РО:
+			</p>
 			<p class="mainItemP">
 				Готівкою: ................ <?php echo form($_SESSION['balance']['return_received_cash']); ?> грн
 			</p>
@@ -198,8 +210,8 @@ function form ($num) {
 				СУМА : ..................... <?php echo form($_SESSION['balance']['return_sum']); ?> грн
 			</p>
 			<br>
-			<p class="mainItemP">
-				ЗАОКРУГЛЕННЯ:
+			<p class="mainItemP mainItemName">
+				В Т.Ч. ЗАОКРУГЛЕННЯ:
 			</p>
 			<p class="mainItemP">
 				НАДБАВКА : ........... <?php echo form($_SESSION['balance']['return_round_plus']); ?> грн
@@ -208,6 +220,9 @@ function form ($num) {
 				ЗНИЖКА : ............... <?php echo form($_SESSION['balance']['return_round_minus']); ?> грн
 			</p>
 			<br>
+			<p class="mainItemP mainItemName">
+				ОБІГИ:
+			</p>
 			<p class="mainItemP">
 				ОБІГ А: ..................... <?php echo form($_SESSION['balance']['return_sum_a']); ?> грн
 			</p>
@@ -224,6 +239,9 @@ function form ($num) {
 				ОБІГ М: .................... <?php echo form($_SESSION['balance']['return_sum_m']); ?> грн
 			</p>
 			<br>
+			<p class="mainItemP mainItemName">
+				ПОДАТКИ:
+			</p>
 			<p class="mainItemP">
 				ПДВ А 20%: ............. <?php echo form($_SESSION['balance']['return_sum_tax_a']); ?> грн
 			</p>
