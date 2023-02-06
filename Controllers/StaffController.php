@@ -119,11 +119,11 @@ class StaffController {
 			'balance_close' => 0
 		);
 	}
-
-	protected function set_branches_by_z_id ($z_id) {
-		$model = new Models\StaffModel();
-		if ( ($branches = $model->get_branches('z_id', $z_id)) ) {
-			return $branches;
+	
+	protected function set_checks_by_z_id ($z_id) {
+		$model = new Models\CheckModel();
+		if ( ($checks = $model->get_checks('z_id', $z_id)) ) {
+			return $checks;
 		} else {
 			return array(array(
 				'type' => null
@@ -131,10 +131,10 @@ class StaffController {
 		}
 	}
 	
-	protected function set_checks_by_z_id ($z_id) {
-		$model = new Models\CheckModel();
-		if ( ($checks = $model->get_checks('z_id', $z_id)) ) {
-			return $checks;
+	protected function set_branches_by_z_id ($z_id) {
+		$model = new Models\StaffModel();
+		if ( ($branches = $model->get_branches('z_id', $z_id)) ) {
+			return $branches;
 		} else {
 			return array(array(
 				'type' => null

@@ -100,10 +100,10 @@ class UnikaController extends StaffController {
 		$round_sum = round($sum, 1);
 		$group = FALSE;
 		if ($_POST['unika_cash'] != 0 and $sum != $round_sum) {
-			$round = round(($round_sum - $sum) * 100, 0);
+			$round = round($round_sum - $sum, 2);
 			$name = $round > 0 ? 'НАДБАВКА' : 'ЗНИЖКА';
 			foreach ($_SESSION['unika']['list'] as $k => $v) {
-				if ($v['sum'] >= -$round / 100) {
+				if ($v['sum'] >= -$round) {
 					$group = $v['group'];
 				}
 			}
@@ -116,9 +116,9 @@ class UnikaController extends StaffController {
 				'description' => '',
 				'photo' => '',
 				'auth_id' => 0,
-				'price' => 0.01,
+				'price' => 1,
 				'amount' => $round,
-				'sum' => 0.01 * $round
+				'sum' => $round
 			];
 			$this->set_sum();
 			if (!$group) {
