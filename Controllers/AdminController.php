@@ -9,14 +9,13 @@ class AdminController {
 		$view->view_template('admin');
 	}
 
-	protected function get_root_check ($check_role) {
-		$user_role = 0;
-		if (isset($_SESSION['auth']['role'])) {
-			$user_role = $_SESSION['auth']['role'];
-		}
-		if ($user_role < $check_role) {
-			ErrorController::get_view_error(34);
-			die();
+	protected function set_users () {
+		$model = new Models\AuthModel();
+		if ( ($users = $model->get_all_users()) ) {
+			session_start();
+			$_SESSION['admin'] = $users;
+		} else {
+			ErrorController::get_view_error(32);
 		}
 	}
 
@@ -34,13 +33,14 @@ class AdminController {
 		}
 	}
 
-	protected function set_users () {
-		$model = new Models\AuthModel();
-		if ( ($users = $model->get_all_users()) ) {
-			session_start();
-			$_SESSION['admin'] = $users;
-		} else {
-			ErrorController::get_view_error(32);
+	protected function get_root_check ($check_role) {
+		$user_role = 0;
+		if (isset($_SESSION['auth']['role'])) {
+			$user_role = $_SESSION['auth']['role'];
+		}
+		if ($user_role < $check_role) {
+			ErrorController::get_view_error(34);
+			die();
 		}
 	}
 

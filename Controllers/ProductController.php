@@ -9,6 +9,33 @@ class ProductController {
 		$view->view_template('product');
 	}
 
+	protected function set_product_by_code () {
+		$model = new Models\ProductModel();
+		$code = $_GET['product_code'];
+		$search_p = 'code';
+		if ($code[0] == '*') {
+			$search_p = 'article';
+			$code = trim($code, '*');
+		}
+		if ( ($product = $model->get_product($search_p, $code)) ) {
+			session_start();
+			$_SESSION['product'] = $product;
+		} else {
+			ErrorController::get_view_error(18);
+		}
+	}
+
+	protected function set_product_by_id () {
+		$model = new Models\ProductModel();
+		$id = $_GET['product_id'];
+		if ( ($product = $model->get_product('id', $id)) ) {
+			session_start();
+			$_SESSION['product'] = $product;
+		} else {
+			ErrorController::get_view_error(18);
+		}
+	}
+
 	protected function set_move_photo ($file) {
 		$new_name_short = "/Materials/" . time() . $file['name'];
 		$new_name = $_SERVER['DOCUMENT_ROOT'] . $new_name_short;
@@ -32,33 +59,6 @@ class ProductController {
 			header('Location: /productList.php');
 		} else {
 			ErrorController::get_view_error(16);
-		}
-	}
-
-	protected function set_product_by_id () {
-		$model = new Models\ProductModel();
-		$id = $_GET['product_id'];
-		if ( ($product = $model->get_product('id', $id)) ) {
-			session_start();
-			$_SESSION['product'] = $product;
-		} else {
-			ErrorController::get_view_error(18);
-		}
-	}
-
-	protected function set_product_by_code () {
-		$model = new Models\ProductModel();
-		$code = $_GET['product_code'];
-		$search_p = 'code';
-		if ($code[0] == '*') {
-			$search_p = 'article';
-			$code = trim($code, '*');
-		}
-		if ( ($product = $model->get_product($search_p, $code)) ) {
-			session_start();
-			$_SESSION['product'] = $product;
-		} else {
-			ErrorController::get_view_error(18);
 		}
 	}
 

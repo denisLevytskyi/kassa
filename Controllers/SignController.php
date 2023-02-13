@@ -14,16 +14,6 @@ class SignController {
 		$view->view_template('sign2');
 	}
 
-	protected function get_email_check () {
-		$login = $_POST['sign_login'];
-		$model = new Models\AuthModel();
-		if ( ($model->get_user('login', $login, 'login', $login)) ) {
-			ErrorController::get_view_error(35);
-		} else {
-			$this->send_pin();
-		}
-	}
-
 	protected function send_pin () {
 		// $pin = rand(1000, 9999);
 		$pin = 1;
@@ -33,6 +23,16 @@ class SignController {
 		mail($mail1_to, 'Registration on the portal LVZ', $text, $headers);
 		session_start();
 		$_SESSION['sign_pin_1'] = $pin;
+	}
+
+	protected function get_email_check () {
+		$login = $_POST['sign_login'];
+		$model = new Models\AuthModel();
+		if ( ($model->get_user('login', $login, 'login', $login)) ) {
+			ErrorController::get_view_error(35);
+		} else {
+			$this->send_pin();
+		}
 	}
 
 	protected function set_sign () {
@@ -49,20 +49,20 @@ class SignController {
 		}
 	}
 
+	protected function get_check_pin2 () {
+		if ($_POST['sign_pin_2'] == '1') {
+			$this->set_sign();
+		} else {
+			ErrorController::get_view_error(4);
+		}
+	}
+
 	protected function get_check_pin1 () {
 		if ($_POST['sign_pin_1'] == $_SESSION['sign_pin_1']) {
 			$this->get_check_pin2();
 			unset($_SESSION['sign_pin_1']);
 		} else {
 			ErrorController::get_view_error(3);
-		}
-	}
-
-	protected function get_check_pin2 () {
-		if ($_POST['sign_pin_2'] == '1') {
-			$this->set_sign();
-		} else {
-			ErrorController::get_view_error(4);
 		}
 	}
 
