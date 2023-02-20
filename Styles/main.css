@@ -18,6 +18,10 @@ body, button {
 	font-size: 18px;
 }
 
+body {
+	background: grey;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 	font-weight: bold;
@@ -43,6 +47,7 @@ button {
 	border: 2px solid black;
 	border-radius: 5px;
 	cursor: pointer;
+	transition-duration: 1s;
 }
 
 button:hover {
@@ -101,6 +106,7 @@ section {
 	padding: 3px;
 	cursor: pointer;
 	text-align: center;
+	transition-duration: 1s;
 }
 
 .listBtnP:hover {

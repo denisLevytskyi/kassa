@@ -27,6 +27,10 @@ a {
 	font-size: 18px;
 }
 
+button {
+	transition-duration: 1s;
+}
+
 button:hover {
 	background: blue;
 	color: white;
@@ -45,6 +49,7 @@ button:hover {
 .headerFirstAImg {
 	height: 60px;
 	background: white;
+	transition-duration: 1s;
 }
 
 .headerFirstAImg:hover {

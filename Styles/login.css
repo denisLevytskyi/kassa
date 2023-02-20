@@ -1,7 +1,3 @@
-body {
-	background: grey;
-}
-
 .loginForm {
 	display: flex;
 	flex-direction: column;

@@ -1,7 +1,3 @@
-body {
-	background: grey;
-}
-
 .signForm {
 	display: flex;
 	flex-direction: column;

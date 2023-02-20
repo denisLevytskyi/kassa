@@ -1,7 +1,3 @@
-body {
-	background: grey;
-}
-
 .resetForm {
 	display: flex;
 	flex-direction: column;

@@ -25,11 +25,13 @@
 	color: white;
 	padding: 1px 5px;
 	border-radius: 100px;
+	transition-duration: 1s;
 }
 
 .listWrapItemAGo:hover {
 	background: yellow;
 	color: black;
+	transition-duration: 1s;
 }
 
 .listA {
