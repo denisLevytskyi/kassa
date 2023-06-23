@@ -7,6 +7,11 @@ class Connection {
 	const password = '';
 	const bd = 'product_manager';
 
+	const base_factor = TRUE;
+	const base_list = array(
+		'http://localhost'
+	);
+
 	public static function get_connection () {
 		return mysqli_connect(
 			self::host,

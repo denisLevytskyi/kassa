@@ -63,6 +63,9 @@
 				<a href="/ksef.php" class="linksWrapperA">
 					KSEF
 				</a>
+				<a href="/base.php" class="linksWrapperA">
+					Base Panel
+				</a>
 			</div>
 		</div>
 	</section>

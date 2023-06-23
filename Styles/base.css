@@ -1,0 +1,34 @@
+.baseForm {
+	display: flex;
+	justify-content: left;
+	align-items: flex-end;
+	flex-wrap: wrap;
+}
+
+.baseForm * {
+	margin: 1px 5px;
+	max-width: 90%;
+}
+
+.baseFormBtn {
+	width: 150px;
+	padding: 2px;
+}
+
+.listWrapItem {
+	margin: 10px 5px;
+}
+
+.listA, .baseA {
+	display: block;
+	color: blue;
+}
+
+.out {
+	color: red;
+}
+
+.null {
+	color: grey;
+	text-decoration: line-through;
+}

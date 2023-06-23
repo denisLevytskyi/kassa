@@ -7,9 +7,7 @@ class AuthModel {
 		$connection = Logics\Connection::get_connection();
 		$request = "SELECT * FROM users WHERE $search_p='$search_v' AND $search_p2='$search_v2'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
-		if ( ($record = mysqli_fetch_assoc($result)) ) {
-			return $record;
-		}
+		return mysqli_fetch_assoc($result);
 	}
 
 	public function get_all_users () {
