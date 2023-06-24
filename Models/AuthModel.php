@@ -13,7 +13,7 @@ class AuthModel {
 	public function get_all_users () {
 		$users = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT id, login, password, name, role FROM users ORDER BY id ASC";
+		$request = "SELECT * FROM users ORDER BY id ASC";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$users[] = $record;

@@ -41,7 +41,9 @@ function form ($num) {
 				<a href="/base.php/?base_get=1" class="baseA">
 					GET DOCUMENTS!
 				</a>
-
+				<a href="/base.php/?base_set=1" class="baseA">
+					SET DOCUMENTS!
+				</a>
 			</div>
 		</section>
 		<section class="list">
@@ -58,7 +60,7 @@ function form ($num) {
 					</p>
 				</div>
 				<div class="listWrap" id="listWrap">
-					<?php foreach ($_SESSION['staff']['branches'] as $k => $v) {
+					<?php foreach ($_SESSION['base']['branches'] as $k => $v) {
 						$type = null;
 						if ($v['type'] == 'НУЛЬОВИЙ ЧЕК') {
 							$type = 'null';
@@ -69,6 +71,8 @@ function form ($num) {
 							<a href="/branch.php/?branch_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
 								echo $v['time'] .
 									' № => ' . $v['id'] .
+									' Kass => ' . $v['store_kass'] .
+									' № => ' . $v['i_id'] .
 									' Z-bal => ' . $v['z_id'] .
 									' Sum => ' . form($v['sum']) .
 									' Type => ' . $v['type'] .
@@ -110,9 +114,49 @@ function form ($num) {
 				<a class="listA" href="/">Go Home!</a>
 			</div>
 		</section>
+		<section class="list">
+			<div class="container typicalContainer">
+				<div class="listBtn">
+					<p class="listBtnP deactivate" id="previous3">
+						Previous
+					</p>
+					<p class="listBtnP deactivate" id="next3">
+						Next
+					</p>
+					<p class="listBtnP deactivate" id="all3">
+						All
+					</p>
+				</div>
+				<div class="listWrap" id="listWrap3">
+					<?php foreach ($_SESSION['base']['checks'] as $k => $v) {
+						$type = null;
+						if ($v['type'] == 'АНУЛЬОВАНО') {
+							$type = 'null';
+						} elseif ($v['type'] == 'ВИДАТКОВИЙ ЧЕК') {
+							$type = 'return';
+						} ?>
+						<div class="listWrapItem <?php echo $type; ?>">
+							<a href="/check.php/?check_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
+								echo $v['time'] .
+										' № => ' . $v['id'] .
+										' Kass => ' . $v['store_kass'] .
+										' № => ' . $v['i_id'] .
+										' Z-bal => ' . $v['z_id'] .
+										' Sum => ' . form($v['sum']) .
+										' Type => ' . $v['type'] .
+										' added by => ' . $v['auth_id'] .
+										' ' . $v['auth_name'];
+								?></a>
+						</div>
+					<?php } ?>
+				</div>
+				<a class="listA" href="/">Go Home!</a>
+			</div>
+		</section>
 		<script src="/Scripts/list.js"></script>
 		<script>
             list_function('2', 15);
+			list_function('3', 30);
 		</script>
 	</body>
 </html>

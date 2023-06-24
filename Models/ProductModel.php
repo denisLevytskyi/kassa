@@ -13,10 +13,10 @@ class ProductModel extends PriceModel {
 		}
 	}
 
-	public function get_all_products () {
+	public function get_all_products ($all = FALSE) {
 		$products = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT id, article, name, photo FROM products ORDER BY article";
+		$request = $all ? "SELECT * FROM products ORDER BY article" : "SELECT id, article, name, photo FROM products ORDER BY article";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$products[] = $record;

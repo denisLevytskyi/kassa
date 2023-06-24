@@ -6,8 +6,14 @@ $bd = Logics\Connection::bd;
 $request0 = "CREATE DATABASE `$bd`";
 $result0 = mysqli_query($f_connection, $request0);
 
+$f_base_connection = Logics\Connection::get_first_base_connection();
+$base_bd = Logics\Connection::base_bd;
+$request1 = "CREATE DATABASE `$base_bd`";
+$result1 = mysqli_query($f_base_connection, $request1);
+
 $connection = Logics\Connection::get_connection();
-$request1 = "CREATE TABLE `users` (
+$base_connection = Logics\Connection::get_base_connection();
+$request2 = "CREATE TABLE `users` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`login` VARCHAR(50) DEFAULT NULL,
 	`password` VARCHAR(50) DEFAULT NULL,
@@ -15,7 +21,7 @@ $request1 = "CREATE TABLE `users` (
 	`role` VARCHAR(50) DEFAULT NULL,
 	PRIMARY KEY (`id`)
 )";
-$request2 = "CREATE TABLE `products` (
+$request3 = "CREATE TABLE `products` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`group` VARCHAR(50) DEFAULT NULL,
 	`article` VARCHAR(50) DEFAULT NULL,
@@ -26,7 +32,7 @@ $request2 = "CREATE TABLE `products` (
 	`auth_id` INT DEFAULT NULL,
 	PRIMARY KEY (`id`)
 )";
-$request3 = "CREATE TABLE `prices` (
+$request4 = "CREATE TABLE `prices` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`article` VARCHAR(50) DEFAULT NULL,
 	`price` INT(50) DEFAULT NULL,
@@ -34,7 +40,7 @@ $request3 = "CREATE TABLE `prices` (
 	`auth_id` INT DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
-$request4 = "CREATE TABLE `checks` (
+$request5 = "CREATE TABLE `checks` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`z_id` INT DEFAULT NULL,
 	`auth_id` INT DEFAULT NULL,
@@ -69,7 +75,7 @@ $request4 = "CREATE TABLE `checks` (
 	`base_factor` INT DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
-$request5 = "CREATE TABLE `branches` (
+$request6 = "CREATE TABLE `branches` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`z_id` INT DEFAULT NULL,
 	`auth_id` INT DEFAULT NULL,
@@ -88,7 +94,7 @@ $request5 = "CREATE TABLE `branches` (
 	`base_factor` INT DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
-$request6 = "CREATE TABLE `balances` (
+$request7 = "CREATE TABLE `balances` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`auth_id` INT DEFAULT NULL,
 	`auth_name` VARCHAR(50) DEFAULT NULL,
@@ -164,7 +170,7 @@ $request6 = "CREATE TABLE `balances` (
 	`base_factor` INT DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
-$request7 = "CREATE TABLE `baseChecks` (
+$request8 = "CREATE TABLE `base_checks` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`i_id` INT DEFAULT NULL,
 	`z_id` INT DEFAULT NULL,
@@ -199,7 +205,7 @@ $request7 = "CREATE TABLE `baseChecks` (
 	`sum_tax_m` VARCHAR(50) DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
-$request8 = "CREATE TABLE `baseBranches` (
+$request9 = "CREATE TABLE `base_branches` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`i_id` INT DEFAULT NULL,
 	`z_id` INT DEFAULT NULL,
@@ -218,7 +224,7 @@ $request8 = "CREATE TABLE `baseBranches` (
 	`sum` VARCHAR(50) DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
-$request9 = "CREATE TABLE `baseBalances` (
+$request10 = "CREATE TABLE `base_balances` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`i_id` INT DEFAULT NULL,
 	`auth_id` INT DEFAULT NULL,
@@ -294,34 +300,36 @@ $request9 = "CREATE TABLE `baseBalances` (
 	`balance_close` VARCHAR(50) DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
-$result1 = mysqli_query($connection, $request1);
 $result2 = mysqli_query($connection, $request2);
 $result3 = mysqli_query($connection, $request3);
 $result4 = mysqli_query($connection, $request4);
 $result5 = mysqli_query($connection, $request5);
 $result6 = mysqli_query($connection, $request6);
 $result7 = mysqli_query($connection, $request7);
-$result8 = mysqli_query($connection, $request8);
-$result9 = mysqli_query($connection, $request9);
+$result8 = mysqli_query($base_connection, $request8);
+$result9 = mysqli_query($base_connection, $request9);
+$result10 = mysqli_query($base_connection, $request10);
 
 echo "<pre>";
 echo "===== DATA BASE ===============================<br>";
 var_dump($result0);
-echo "<br><br>===== USERS TABLE =============================<br>";
+echo "===== CENTRAL DATA BASE =======================<br>";
 var_dump($result1);
-echo "<br><br>===== PRODUCTS TABLE ==========================<br>";
+echo "<br><br>===== USERS TABLE =============================<br>";
 var_dump($result2);
-echo "<br><br>===== PRICES TABLE ============================<br>";
+echo "<br><br>===== PRODUCTS TABLE ==========================<br>";
 var_dump($result3);
-echo "<br><br>===== CHECKS TABLE ============================<br>";
+echo "<br><br>===== PRICES TABLE ============================<br>";
 var_dump($result4);
-echo "<br><br>===== BRANCHES TABLE ==========================<br>";
+echo "<br><br>===== CHECKS TABLE ============================<br>";
 var_dump($result5);
-echo "<br><br>===== Z-BALANCE TABLE =========================<br>";
+echo "<br><br>===== BRANCHES TABLE ==========================<br>";
 var_dump($result6);
-echo "<br><br>===== BASE CHECKS TABLE =======================<br>";
+echo "<br><br>===== Z-BALANCE TABLE =========================<br>";
 var_dump($result7);
-echo "<br><br>===== BASE BRANCHES TABLE =====================<br>";
+echo "<br><br>===== BASE CHECKS TABLE =======================<br>";
 var_dump($result8);
-echo "<br><br>===== BASE Z-BALANCE TABLE ====================<br>";
+echo "<br><br>===== BASE BRANCHES TABLE =====================<br>";
 var_dump($result9);
+echo "<br><br>===== BASE Z-BALANCE TABLE ====================<br>";
+var_dump($result10);

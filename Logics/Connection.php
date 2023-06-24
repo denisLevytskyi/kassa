@@ -12,6 +12,11 @@ class Connection {
 		'http://localhost'
 	);
 
+	const base_host = 'localhost';
+	const base_user = 'root';
+	const base_password = '';
+	const base_bd = 'product_manager';
+
 	public static function get_connection () {
 		return mysqli_connect(
 			self::host,
@@ -26,6 +31,23 @@ class Connection {
 			self::host,
 			self::user,
 			self::password
+		);
+	}
+
+	public static function get_base_connection () {
+		return mysqli_connect(
+			self::base_host,
+			self::base_user,
+			self::base_password,
+			self::base_bd
+		);
+	}
+
+	public static function get_first_base_connection () {
+		return mysqli_connect(
+			self::base_host,
+			self::base_user,
+			self::base_password
 		);
 	}
 }
