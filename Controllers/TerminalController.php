@@ -40,9 +40,9 @@ class TerminalController {
 		$model1 = new Models\CheckModel();
 		$model2 = new Models\StaffModel();
 		$model3 = new Models\StaffModel();
-		$checks = $model->get_checks('base_factor', 0);
-		$branches = $model->get_branches('base_factor', 0);
-		$balances = $model->get_balances('base_factor', 0, 0);
+		$checks = $model1->get_checks('base_factor', 0);
+		$branches = $model2->get_branches('base_factor', 0);
+		$balances = $model3->get_balances('base_factor', 0, 0);
 		$data = array (
 			'checks' => $checks,
 			'branches' => $branches,
