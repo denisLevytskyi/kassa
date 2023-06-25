@@ -24,6 +24,7 @@ class BaseController {
 					'auth_name' => 'NAME',
 					'timestamp' => 0,
 					'time' => 0,
+					'store_kass' => 0,
 					'type' => 0,
 					'sum' => 0
 			);
@@ -45,6 +46,7 @@ class BaseController {
 					'auth_name' => 'NAME',
 					'timestamp' => 0,
 					'time' => 0,
+					'store_kass' => 0,
 					'type' => 0,
 					'sum' => 0
 			);
@@ -52,7 +54,7 @@ class BaseController {
 		}
 	}
 
-	protected function set_setting_request ($host) {
+	protected function send_setting_request ($host) {
 		$model1 = new Models\AuthModel();
 		$model2 = new Models\ProductModel();
 		$model3 = new Models\PriceModel();
@@ -80,7 +82,7 @@ class BaseController {
 	protected function set_docs_by_host () {
 		$host_list = Connection::base_list;
 		foreach ($host_list as $k => $v) {
-			$this->set_setting_request($v);
+			$this->send_setting_request($v);
 		}
 	}
 
@@ -103,7 +105,6 @@ class BaseController {
 	}
 
 	protected function set_docs_registration ($type, $host, $data) {
-		$data = unserialize($data);
 		$model = new Models\BaseModel();
 		foreach ($data as $k => $v) {
 			$result = FALSE;
@@ -120,39 +121,35 @@ class BaseController {
 		}
 	}
 
-	protected function set_getting_request ($type, $host) {
+	protected function get_docs ($host, $data) {
+		$data = unserialize($data);
+		foreach ($data as $k => $v) {
+			$this->set_docs_registration($k, $host, $v);
+		}
+	}
+
+	protected function send_getting_request ($host) {
 		$data = array(
 			'terminal_key' => 1,
 			'terminal_code' => 1,
-			'terminal_data' => $type
+			'terminal_data' => ''
 		);
 		$model = new Models\MoonModel();
 		if ( ($result = $model->get_request($host, $data)) ) {
-			$this->set_docs_registration($type, $host, $result);
+			$this->get_docs($host, $result);	
 		}
 	}
 
-	protected function get_docs_by_host ($type) {
+	protected function get_docs_by_host () {
 		$host_list = Connection::base_list;
 		foreach ($host_list as $k => $v) {
-			$this->set_getting_request($type, $v);
-		}
-	}
-
-	protected function get_docs_by_type () {
-		$type_list = array(
-			'checks',
-			'branches',
-			'balances'
-		);
-		foreach ($type_list as $k => $v) {
-			$this->get_docs_by_host($v);
+			$this->send_getting_request($v);
 		}
 	}
 
 	public function get_base_check () {
 		if (isset($_GET['base_get'])) {
-			$this->get_docs_by_type();
+			$this->get_docs_by_host();
 		} elseif (isset($_GET['base_set'])) {
 			$this->set_docs_by_host();
 		}
