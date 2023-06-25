@@ -10,6 +10,7 @@ class CheckModel {
 		if ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['main'] = unserialize($record['body']);
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
+			unset($record['base_factor']);
 			return $record;
 		}
 	}

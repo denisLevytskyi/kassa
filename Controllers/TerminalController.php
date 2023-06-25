@@ -5,19 +5,24 @@ use Models;
 
 class TerminalController {
 	protected function set_refresh_data ($type, $data) {
+		$result = FALSE;
 		foreach ($data as $k => $v) {
 			if ($type == 'users') {
 				$model = new Models\AuthModel();
-				$model->get_user_sign($v['login'], $v['password'], $v['name'], $v['role']);
+				$result = $model->get_user_sign($v['login'], $v['password'], $v['name'], $v['role']);
 			} elseif ($type == 'products') {
 				$model = new Models\ProductModel();
-				$model->get_product_registration($v['group'], $v['article'], $v['code'], $v['name'], $v['description'], $v['photo'], $v['auth_id']);
+				$result = $model->get_product_registration($v['group'], $v['article'], $v['code'], $v['name'], $v['description'], $v['photo'], $v['auth_id']);
 			} elseif ($type == 'prices') {
 				$model = new Models\PriceModel();
-				$model->get_price_registration($v['article'], $v['price'] * 100, $v['timestamp'], $v['auth_id']);
+				$result = $model->get_price_registration($v['article'], $v['price'] * 100, $v['timestamp'], $v['auth_id']);
 			}
 		}
-		echo '+';
+		if ($result) {
+			echo "$type => +++ ";
+		} else {
+			echo "$type => --- ";
+		}
 	}
 
 	protected function get_refresh ($data) {
@@ -33,6 +38,8 @@ class TerminalController {
 		$model = new Models\MoonModel();
 		if ( ($model->get_factor_update($type, $id)) ) {
 			echo 1;
+		} else {
+			echo 0;
 		}
 	}
 

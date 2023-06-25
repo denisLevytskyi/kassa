@@ -57,7 +57,9 @@ class ErrorController {
 			35 => "SIGN: This email is registered!",
 			36 => "SIGN: This email is not registered!",
 			37 => "UNIKA: Work shift lasts more than 24 hours!",
-			38 => "STAFF: Tax props was changed! (PERIODICAL SETTER)"
+			38 => "STAFF: Tax props was changed! (PERIODICAL SETTER)",
+			39 => "BASE: No base root!",
+			40 => "BASE: Wrong document request!"
 		);
 		session_start();
 		$_SESSION['error']['n'] = $n;

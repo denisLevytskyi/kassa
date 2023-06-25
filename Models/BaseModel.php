@@ -86,6 +86,19 @@ class BaseModel {
 		return $checks;
 	}
 
+	public function get_base_check ($search_p, $search_v) {
+		$connection = Logics\Connection::get_base_connection();
+		$request = "SELECT * FROM base_checks WHERE $search_p= '$search_v'";
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		if ( ($record = mysqli_fetch_assoc($result)) ) {
+			$record['id'] = $record['i_id'];
+			$record['main'] = unserialize($record['body']);
+			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
+			unset($record['i_id']);
+			return $record;
+		}
+	}
+
 	public function get_base_branch_registration ($data) {
 		$id = $data['id'];
 		$i0 = $data['z_id'];
@@ -135,6 +148,18 @@ class BaseModel {
 			$branches[] = $record;
 		}
 		return $branches;
+	}
+
+	public function get_base_branch ($search_p, $search_v) {
+		$connection = Logics\Connection::get_base_connection();
+		$request = "SELECT * FROM base_branches WHERE $search_p= '$search_v'";
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		if ( ($record = mysqli_fetch_assoc($result)) ) {
+			$record['id'] = $record['i_id'];
+			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
+			unset($record['i_id']);
+			return $record;
+		}
 	}
 
 	public function get_base_balance_registration ($data) {
@@ -288,5 +313,36 @@ class BaseModel {
 			VALUES
 			('$id', '$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27', '$i28', '$i29', '$i30', '$i31', '$i32', '$i33', '$i34', '$i35', '$i36', '$i37', '$i38', '$i39', '$i40', '$i41', '$i42', '$i43', '$i44', '$i45', '$i46', '$i47', '$i48', '$i49', '$i50', '$i51', '$i52', '$i53', '$i54', '$i55', '$i56', '$i57', '$i58', '$i59', '$i60', '$i61', '$i62', '$i63', '$i64', '$i65', '$i66', '$i67', '$i68', '$i69', '$i70')";
 		return mysqli_query($connection, $request);
+	}
+
+	public function get_all_base_balances () {
+		$balances = array();
+		$connection = Logics\Connection::get_base_connection();
+		$request = "SELECT id, i_id, auth_id, auth_name, `timestamp`, store_kass, `sum` FROM base_balances ORDER BY id DESC";
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		while ( ($record = mysqli_fetch_assoc($result)) ) {
+			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
+			$balances[] = $record;
+		}
+		return $balances;
+	}
+
+	public function get_base_balance ($search_p, $search_v) {
+		$connection = Logics\Connection::get_base_connection();
+		$request = "SELECT * FROM base_balances WHERE $search_p= '$search_v'";
+		$result = mysqli_query($connection, $request) or header('Location: /');
+		if ( ($record = mysqli_fetch_assoc($result)) ) {
+			$record['id'] = $record['i_id'];
+			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
+			$record['null_time_first'] = date("d-m-Y H:i:s", $record['null_timestamp_first']);
+			$record['null_time_last'] = date("d-m-Y H:i:s", $record['null_timestamp_last']);
+			$record['sale_time_first'] = date("d-m-Y H:i:s", $record['sale_timestamp_first']);
+			$record['sale_time_last'] = date("d-m-Y H:i:s", $record['sale_timestamp_last']);
+			$record['return_time_first'] = date("d-m-Y H:i:s", $record['return_timestamp_first']);
+			$record['return_time_last'] = date("d-m-Y H:i:s", $record['return_timestamp_last']);
+			$record['type'] = 'Z';
+			unset($record['i_id']);
+			return $record;
+		}
 	}
 }

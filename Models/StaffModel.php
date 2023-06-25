@@ -16,6 +16,7 @@ class StaffModel extends CheckModel {
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		if ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
+			unset($record['base_factor']);
 			return $record;
 		}
 	}
@@ -33,6 +34,7 @@ class StaffModel extends CheckModel {
 			$record['return_time_first'] = date("d-m-Y H:i:s", $record['return_timestamp_first']);
 			$record['return_time_last'] = date("d-m-Y H:i:s", $record['return_timestamp_last']);
 			$record['type'] = 'Z';
+			unset($record['base_factor']);
 			return $record;
 		}
 	}

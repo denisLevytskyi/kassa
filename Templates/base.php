@@ -68,7 +68,7 @@ function form ($num) {
 							$type = 'out';
 						} ?>
 						<div class="listWrapItem <?php echo $type; ?>">
-							<a href="/branch.php/?branch_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
+							<a href="/base.php/?base_view=branch&base_view_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
 								echo $v['time'] .
 									' № => ' . $v['id'] .
 									' Kass => ' . $v['store_kass'] .
@@ -99,11 +99,13 @@ function form ($num) {
 					</p>
 				</div>
 				<div class="listWrap" id="listWrap2">
-					<?php foreach ($_SESSION['staff']['balances'] as $k => $v) { ?>
+					<?php foreach ($_SESSION['base']['balances'] as $k => $v) { ?>
 						<div class="listWrapItem">
-							<a href="/balance.php/?balance_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
+							<a href="/base.php/?base_view=balance&base_view_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
 								echo $v['time'] .
 									' № => ' . $v['id'] .
+									' Kass => ' . $v['store_kass'] .
+									' № => ' . $v['i_id'] .
 									' Sum => ' . form($v['sum']) .
 									' added by => ' . $v['auth_id'] .
 									' ' . $v['auth_name'];
@@ -136,7 +138,7 @@ function form ($num) {
 							$type = 'return';
 						} ?>
 						<div class="listWrapItem <?php echo $type; ?>">
-							<a href="/check.php/?check_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
+							<a href="/base.php/?base_view=check&base_view_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
 								echo $v['time'] .
 										' № => ' . $v['id'] .
 										' Kass => ' . $v['store_kass'] .

@@ -7,15 +7,17 @@ class Connection {
 	const password = '';
 	const bd = 'product_manager';
 
-	const base_factor = TRUE;
-	const base_list = array(
-		'http://localhost'
-	);
-
 	const base_host = 'localhost';
 	const base_user = 'root';
 	const base_password = '';
 	const base_bd = 'product_manager';
+
+	const base_factor = TRUE;
+	const base_url = 'http://localhost';
+	const base_list = array(
+		'http://localhost',
+		'http://test'
+	);
 
 	public static function get_connection () {
 		return mysqli_connect(

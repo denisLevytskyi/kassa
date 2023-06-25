@@ -10,6 +10,21 @@ class BaseController {
 		$view->view_template('base');
 	}
 
+	protected function view_check () {
+		$view = new Views\View();
+		$view->view_template('check');
+	}
+
+	protected function view_branch () {
+		$view = new Views\View();
+		$view->view_template('branch');
+	}
+
+	protected function view_balance () {
+		$view = new Views\View();
+		$view->view_template('balance');
+	}
+
 	protected function set_checks() {
 		$model = new Models\BaseModel();
 		if ( ($checks = $model->get_all_base_checks()) ) {
@@ -29,6 +44,25 @@ class BaseController {
 					'sum' => 0
 			);
 			$_SESSION['base']['checks'][] = $checks;
+		}
+	}
+
+	protected function set_balances () {
+		$model = new Models\BaseModel();
+		if ( ($balances = $model->get_all_base_balances()) ) {
+			$_SESSION['base']['balances'] = $balances;
+		} else {
+			$_SESSION['base']['balances'] = array();
+			$balance = array (
+					'id' => 0,
+					'auth_id' => 'ID',
+					'auth_name' => 'NAME',
+					'timestamp' => 0,
+					'time' => 0,
+					'store_kass' => 0,
+					'sum' => 0
+			);
+			$_SESSION['base']['balances'][] = $balance;
 		}
 	}
 
@@ -52,6 +86,40 @@ class BaseController {
 			);
 			$_SESSION['base']['branches'][] = $branch;
 		}
+	}
+
+	protected function set_view_doc ($type, $id) {
+		$error = FALSE;
+		$model = new Models\BaseModel();
+		session_start();
+		if ($type == 'check') {
+			if ( ($check = $model->get_base_check('id', $id)) ) {
+				$_SESSION['check'] = $check;
+				$this->view_check();
+			} else {
+				$error = TRUE;
+			}
+		} elseif ($type == 'branch') {
+			if ( ($branch = $model->get_base_branch('id', $id)) ) {
+				$_SESSION['branch'] = $branch;
+				$this->view_branch();
+			} else {
+				$error = TRUE;
+			}
+		} elseif ($type == 'balance') {
+			if ( ($balance = $model->get_base_balance('id', $id)) ) {
+				$_SESSION['balance'] = $balance;
+				$this->view_balance();
+			} else {
+				$error = TRUE;
+			}
+		} else {
+			$error = TRUE;
+		}
+		if ($error) {
+			ErrorController::get_view_error(40);
+		}
+		die();
 	}
 
 	protected function send_setting_request ($host) {
@@ -81,8 +149,11 @@ class BaseController {
 
 	protected function set_docs_by_host () {
 		$host_list = Connection::base_list;
+		$self = Connection::base_url;
 		foreach ($host_list as $k => $v) {
-			$this->send_setting_request($v);
+			if ($self != $v) {
+				$this->send_setting_request($v);
+			}
 		}
 	}
 
@@ -100,6 +171,10 @@ class BaseController {
 		if ($result == 1) { ?>
 			<script>
 				console.log('<?php echo "$host => $type => #$id OK"; ?>');
+			</script>
+		<?php } elseif ($result == 0) { ?>
+			<script>
+				console.log('<?php echo "$host => $type => #$id FALL"; ?>');
 			</script>
 		<?php }
 	}
@@ -148,12 +223,17 @@ class BaseController {
 	}
 
 	public function get_base_check () {
-		if (isset($_GET['base_get'])) {
+		if (!Connection::base_factor) {
+			ErrorController::get_view_error(39);
+		} elseif (isset($_GET['base_get'])) {
 			$this->get_docs_by_host();
 		} elseif (isset($_GET['base_set'])) {
 			$this->set_docs_by_host();
+		} elseif (isset($_GET['base_view']) and isset($_GET['base_view_id'])) {
+			$this->set_view_doc($_GET['base_view'], $_GET['base_view_id']);
 		}
 		$this->set_branches();
+		$this->set_balances();
 		$this->set_checks();
 		$this->view_base();
 	}
