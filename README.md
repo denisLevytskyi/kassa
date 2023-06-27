@@ -292,6 +292,8 @@ $_GET
 	['base_set']
 	['base_view']
 	['base_view_id']
+	['base_cancel']
+	['base_truncate']
 $_POST
 	['admin_id']
 	['admin_login']

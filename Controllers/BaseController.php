@@ -55,6 +55,7 @@ class BaseController {
 			$_SESSION['base']['balances'] = array();
 			$balance = array (
 					'id' => 0,
+					'i_id' => 0,
 					'auth_id' => 'ID',
 					'auth_name' => 'NAME',
 					'timestamp' => 0,
@@ -122,6 +123,50 @@ class BaseController {
 		die();
 	}
 
+	protected function set_truncate_base () {
+		$admin = new AdminController();
+		$admin->get_admin_check(100);
+		$result = array();
+		$model = new Models\MoonModel();
+		$result['checks'] = $model->get_truncate('base_checks', TRUE);
+		$result['branches'] = $model->get_truncate('base_branches', TRUE);
+		$result['balances'] = $model->get_truncate('base_balances', TRUE);
+		foreach ($result as $k => $v) {
+			if ($v) { ?>
+				<script>
+					console.log('<?php echo "TRUNCATE BASE: $k => +++ "; ?>');
+				</script>
+			<?php } elseif ($result == 0) { ?>
+				<script>
+					console.log('<?php echo "TRUNCATE BASE: $k => --- "; ?>');
+				</script>
+			<?php }
+		}
+	}
+
+	protected function send_chanel_request ($host) {
+		$data = array(
+				'terminal_key' => 1,
+				'terminal_code' => 4,
+				'terminal_data' => ''
+		);
+		$model = new Models\MoonModel();
+		if ( ($result = $model->get_request($host, $data)) ) { ?>
+			<script>
+				console.log('<?php echo "CANCEL DOCUMENTS: $host => $result"; ?>');
+			</script>
+		<?php }
+	}
+
+	protected function set_chanel_by_host () {
+		$admin = new AdminController();
+		$admin->get_admin_check(100);
+		$host_list = Connection::base_list;
+		foreach ($host_list as $k => $v) {
+			$this->send_chanel_request($v);
+		}
+	}
+
 	protected function send_setting_request ($host) {
 		$model1 = new Models\AuthModel();
 		$model2 = new Models\ProductModel();
@@ -141,11 +186,10 @@ class BaseController {
 		$model = new Models\MoonModel();
 		if ( ($result = $model->get_request($host, $data)) ) { ?>
 			<script>
-				console.log('<?php echo "$host => $result"; ?>');
+				console.log('<?php echo "SET DOCUMENTS: $host => $result"; ?>');
 			</script>
 		<?php }
 	}
-
 
 	protected function set_docs_by_host () {
 		$host_list = Connection::base_list;
@@ -157,7 +201,7 @@ class BaseController {
 		}
 	}
 
-	protected function send_answer ($type, $host, $id) {
+	protected function send_getting_answer ($type, $host, $id) {
 		$data = array(
 			'terminal_key' => 1,
 			'terminal_code' => 2,
@@ -170,11 +214,11 @@ class BaseController {
 		$result = $model->get_request($host, $data);
 		if ($result == 1) { ?>
 			<script>
-				console.log('<?php echo "$host => $type => #$id OK"; ?>');
+				console.log('<?php echo "GET DOCUMENT: $host => $type => #$id OK"; ?>');
 			</script>
 		<?php } elseif ($result == 0) { ?>
 			<script>
-				console.log('<?php echo "$host => $type => #$id FALL"; ?>');
+				console.log('<?php echo "GET DOCUMENT: $host => $type => #$id FAIL"; ?>');
 			</script>
 		<?php }
 	}
@@ -191,7 +235,7 @@ class BaseController {
 				$result = $model->get_base_balance_registration($v);
 			}
 			if ($result) {
-				$this->send_answer($type, $host, $v['id']);
+				$this->send_getting_answer($type, $host, $v['id']);
 			}
 		}
 	}
@@ -229,6 +273,10 @@ class BaseController {
 			$this->get_docs_by_host();
 		} elseif (isset($_GET['base_set'])) {
 			$this->set_docs_by_host();
+		} elseif (isset($_GET['base_cancel'])) {
+			$this->set_chanel_by_host();
+		} elseif (isset($_GET['base_truncate'])) {
+			$this->set_truncate_base();
 		} elseif (isset($_GET['base_view']) and isset($_GET['base_view_id'])) {
 			$this->set_view_doc($_GET['base_view'], $_GET['base_view_id']);
 		}

@@ -22,8 +22,15 @@ class MoonModel {
 		return mysqli_query($connection, $request);
 	}
 
-	public function get_truncate ($table) {
+	public function get_factor_delete ($table) {
 		$connection = Logics\Connection::get_connection();
+		$bd = Logics\Connection::bd;
+		$request = "UPDATE $table SET base_factor = 0";
+		return mysqli_query($connection, $request);
+	}
+
+	public function get_truncate ($table, $base_factor = FALSE) {
+		$connection = $base_factor ? Logics\Connection::get_base_connection() : Logics\Connection::get_connection();
 		$bd = Logics\Connection::bd;
 		$request = "TRUNCATE `$bd`.`$table`";
 		return mysqli_query($connection, $request);

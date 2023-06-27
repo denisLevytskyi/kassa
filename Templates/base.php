@@ -44,6 +44,12 @@ function form ($num) {
 				<a href="/base.php/?base_set=1" class="baseA">
 					SET DOCUMENTS!
 				</a>
+				<a href="/base.php/?base_cancel=1" class="baseA">
+					CANCEL DOCUMENTS!
+				</a>
+				<a href="/base.php/?base_truncate=1" class="baseA">
+					DROP BASE!
+				</a>
 			</div>
 		</section>
 		<section class="list">
