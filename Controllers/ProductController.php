@@ -40,7 +40,7 @@ class ProductController {
 		$new_name_short = "/Materials/" . time() . $file['name'];
 		$new_name = $_SERVER['DOCUMENT_ROOT'] . $new_name_short;
 		move_uploaded_file($file['tmp_name'], $new_name);
-		return 'http://' . $_SERVER['HTTP_HOST'] . '/' . $new_name_short;
+		return 'http://' . $_SERVER['HTTP_HOST'] . $new_name_short;
 	}
 
 	protected function set_changes_product () {
