@@ -77,7 +77,7 @@ class BaseModel {
 	public function get_all_base_checks () {
 		$checks = array();
 		$connection = Logics\Connection::get_base_connection();
-		$request = "SELECT id, i_id, z_id, auth_id, auth_name, `timestamp`, store_kass, type, sum FROM base_checks ORDER BY id DESC";
+		$request = "SELECT id, i_id, z_id, auth_id, auth_name, `timestamp`, store_kass, type, sum FROM base_checks ORDER BY `timestamp` DESC";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
@@ -141,7 +141,7 @@ class BaseModel {
 	public function get_all_base_branches () {
 		$branches = array();
 		$connection = Logics\Connection::get_base_connection();
-		$request = "SELECT id, i_id, z_id, auth_id, auth_name, `timestamp`, store_kass, `type`, `sum` FROM base_branches ORDER BY id DESC";
+		$request = "SELECT id, i_id, z_id, auth_id, auth_name, `timestamp`, store_kass, `type`, `sum` FROM base_branches ORDER BY `timestamp` DESC";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
@@ -318,7 +318,7 @@ class BaseModel {
 	public function get_all_base_balances () {
 		$balances = array();
 		$connection = Logics\Connection::get_base_connection();
-		$request = "SELECT id, i_id, auth_id, auth_name, `timestamp`, store_kass, `sum` FROM base_balances ORDER BY id DESC";
+		$request = "SELECT id, i_id, auth_id, auth_name, `timestamp`, store_kass, `sum` FROM base_balances ORDER BY `timestamp` DESC";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);

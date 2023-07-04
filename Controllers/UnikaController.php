@@ -10,13 +10,13 @@ class UnikaController extends StaffController {
 	}
 
 	protected function set_sum () {
-		$sum = '0.00';
+		$sum = 0;
 		if (!empty($_SESSION['unika']['list'])) {
 			foreach ($_SESSION['unika']['list'] as $k => $v) {
 				$sum = $sum + $v['sum'];
 			}
 		}
-		$_SESSION['unika']['sum'] = $sum;
+		$_SESSION['unika']['sum'] = round($sum, 2);
 	}
 
 	protected function get_time_check ($data) {
@@ -103,7 +103,7 @@ class UnikaController extends StaffController {
 			$round = round($round_sum - $sum, 2);
 			$name = $round > 0 ? 'НАДБАВКА' : 'ЗНИЖКА';
 			foreach ($_SESSION['unika']['list'] as $k => $v) {
-				if ($v['sum'] >= -$round) {
+				if ($v['sum'] >= -$round and (!$v['delete'] or !isset($v['delete']))) {
 					$group = $v['group'];
 				}
 			}
