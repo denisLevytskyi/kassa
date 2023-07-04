@@ -103,7 +103,7 @@ class UnikaController extends StaffController {
 			$round = round($round_sum - $sum, 2);
 			$name = $round > 0 ? 'НАДБАВКА' : 'ЗНИЖКА';
 			foreach ($_SESSION['unika']['list'] as $k => $v) {
-				if ($v['sum'] >= -$round and (!$v['delete'] or !isset($v['delete']))) {
+				if ($v['sum'] >= -$round and (!isset($v['delete']) or !$v['delete'])) {
 					$group = $v['group'];
 				}
 			}
