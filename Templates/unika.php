@@ -68,7 +68,7 @@ function form ($num) {
 			if ($v['group'] == 'М+А') {
 				$type = 'excise';
 			}
-			if ($v['delete']) {
+			if (isset($v['delete']) and $v['delete']) {
 				$type = 'delete';
 			}?>
 			<div class="listWrap <?php echo $type; ?>">
