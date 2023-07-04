@@ -51,6 +51,7 @@ $_SESSION
 				['price']
 				['amount']
 				['sum']
+				['delete']
 **
 	['check']
 		['id']
@@ -98,6 +99,7 @@ $_SESSION
 			['price']
 			['amount']
 			['sum']
+			['delete']
 **
 	['check_list']
 		[(key)]
@@ -273,7 +275,13 @@ $_SESSION
 				['type']
 				['sum']
 				['time']
-		
+**
+	['scoreboard]
+		['name']
+		['price']
+		['amount']
+		['sum']
+		['check_sum']
 $_COOKIE
 	['auth_id']
 $_GET

@@ -66,6 +66,9 @@
 				<a href="/base.php" class="linksWrapperA">
 					Base Panel
 				</a>
+				<a href="/customerScoreboard.php" class="linksWrapperA">
+					Scoreboard
+				</a>
 			</div>
 		</div>
 	</section>

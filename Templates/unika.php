@@ -9,7 +9,7 @@ function form ($num) {
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>
-		<?php session_start(); echo $_SESSION['unika']['sum']	. ' | ' . $_SESSION['auth']['name']; ?>
+		<?php session_start(); echo form($_SESSION['unika']['sum'])	. ' | ' . $_SESSION['auth']['name']; ?>
 	</title>
 	<link rel="stylesheet" href="/Styles/unika.css">
 </head>
