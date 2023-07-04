@@ -67,7 +67,10 @@ function form ($num) {
 			$type = null;
 			if ($v['group'] == 'М+А') {
 				$type = 'excise';
-			} ?>
+			}
+			if ($v['delete']) {
+				$type = 'delete';
+			}?>
 			<div class="listWrap <?php echo $type; ?>">
 				<div class="listWrapFirst">
 					<?php echo $k + 1; ?>

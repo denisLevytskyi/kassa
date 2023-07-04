@@ -200,7 +200,16 @@ class UnikaController extends StaffController {
 
 	protected function del_product () {
 		$key = $_GET['unika_del'];
-		unset($_SESSION['unika']['list'][$key]);
+		if (isset($_SESSION['unika']['list'][$key])) {
+			$product = $_SESSION['unika']['list'][$key];
+			$product['delete'] = TRUE;
+			$_SESSION['unika']['list'][] = $product;
+			$product['name'] = 'КОРЕКЦІЯ<br>' . $product['name'];
+			$product['amount'] = -$product['amount'];
+			$product['sum'] = -$product['sum'];
+			$_SESSION['unika']['list'][] = $product;
+			unset($_SESSION['unika']['list'][$key]);
+		}
 		header('Location: /unika.php');
 	}
 
@@ -260,6 +269,7 @@ class UnikaController extends StaffController {
 		if ( ($product = $model->get_product($search_p, $code)) ) {
 			$product['amount'] = $amount;
 			$product['sum'] = round($product['price'] * $amount, 2);
+			$product['delete'] = FALSE;
 			$_SESSION['unika']['list'][] = $product;
 		}
 		header('Location: /unika.php');
