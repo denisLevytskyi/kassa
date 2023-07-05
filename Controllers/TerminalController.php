@@ -41,10 +41,13 @@ class TerminalController {
 	}
 
 	protected function get_refresh_tables ($data) {
+		$data = unserialize($data);
 		foreach ($data as $k => $v) {
 			$model = new Models\MoonModel();
 			if ( ($model->get_truncate($k)) ) {
 				$this->set_refresh_data($k, $v);
+			} else {
+				echo "$k => No truncate! ";
 			}
 		}
 	}

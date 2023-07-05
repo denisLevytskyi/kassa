@@ -30,8 +30,8 @@ class MoonModel {
 	}
 
 	public function get_truncate ($table, $base_factor = FALSE) {
-		$connection = $base_factor ? Logics\Connection::get_base_connection() : Logics\Connection::get_connection();
-		$bd = Logics\Connection::bd;
+		$connection = $base_factor ? Logics\Connection::get_first_base_connection() : Logics\Connection::get_first_connection();
+		$bd = $base_factor ? Logics\Connection::base_bd : Logics\Connection::bd;
 		$request = "TRUNCATE `$bd`.`$table`";
 		return mysqli_query($connection, $request);
 	}

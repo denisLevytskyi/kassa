@@ -136,7 +136,7 @@ class BaseController {
 				<script>
 					console.log('<?php echo "TRUNCATE BASE: $k => +++ "; ?>');
 				</script>
-			<?php } elseif ($result == 0) { ?>
+			<?php } else { ?>
 				<script>
 					console.log('<?php echo "TRUNCATE BASE: $k => --- "; ?>');
 				</script>
@@ -177,11 +177,11 @@ class BaseController {
 		$data = array(
 				'terminal_key' => 1,
 				'terminal_code' => 3,
-				'terminal_data' => array(
+				'terminal_data' => serialize(array(
 						'users' => $users,
 						'products' => $products,
 						'prices' => $prices
-				)
+				))
 		);
 		$model = new Models\MoonModel();
 		if ( ($result = $model->get_request($host, $data)) ) { ?>
