@@ -4,15 +4,6 @@ use Logics;
 
 class MoonModel {
 	public function get_request ($host, $data) {
-		$request_data = http_build_query($data);
-		$opts = array(
-			'http' => array(
-				'method' => 'POST',
-				'header' => 'Content-type: application/x-www-form-urlencoded',
-				'content' => $request_data
-			)
-		);
-		$context = stream_context_create($opts);
 		if (!isset($_SESSION['moon'])) {
 			session_start();
 			$_SESSION['moon'] = array(
@@ -20,9 +11,27 @@ class MoonModel {
 				'answer' => array()
 			);
 		}
+		$opts = array(
+			'http' => array(
+				'method' => 'POST',
+				'header' => 'Content-type: application/x-www-form-urlencoded',
+				'timeout' => 600,
+				'ignore_errors' => TRUE,
+				'content' => http_build_query($data)
+			)
+		);
+		$context = stream_context_create($opts);
 		$answer = file_get_contents($host . '/terminal.php', false, $context);
-		$_SESSION['moon']['request'][] = $data;
-		$_SESSION['moon']['answer'][] = $answer;
+		$_SESSION['moon']['request'][] = array(
+			'time' => date("d-m-Y H:i:s", time()),
+			'host' => $host,
+			'data' => $data
+		);
+		$_SESSION['moon']['answer'][] = array(
+			'time' => date("d-m-Y H:i:s", time()),
+			'host' => $host,
+			'data' => $answer
+		);
 		return $answer;
 	}
 
