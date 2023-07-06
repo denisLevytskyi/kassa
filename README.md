@@ -282,6 +282,12 @@ $_SESSION
 		['amount']
 		['sum']
 		['check_sum']
+**
+	['moon']
+		['request']
+			[(key)]
+		['answer']
+			[(key)]
 $_COOKIE
 	['auth_id']
 $_GET

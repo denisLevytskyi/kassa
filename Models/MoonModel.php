@@ -13,7 +13,17 @@ class MoonModel {
 			)
 		);
 		$context = stream_context_create($opts);
-		return file_get_contents($host . '/terminal.php', false, $context);
+		if (!isset($_SESSION['moon'])) {
+			session_start();
+			$_SESSION['moon'] = array(
+				'request' => array(),
+				'answer' => array()
+			);
+		}
+		$answer = file_get_contents($host . '/terminal.php', false, $context);
+		$_SESSION['moon']['request'][] = $data;
+		$_SESSION['moon']['answer'][] = $answer;
+		return $answer;
 	}
 
 	public function get_factor_update ($table, $id) {
