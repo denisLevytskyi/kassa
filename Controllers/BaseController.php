@@ -126,23 +126,19 @@ class BaseController {
 	protected function set_truncate_base () {
 		$admin = new AdminController();
 		$admin->get_admin_check(100);
-		$result = array();
 		$model = new Models\MoonModel();
+		$result = array();
+		$result_string = '';
 		$result['checks'] = $model->get_truncate('base_checks', TRUE);
 		$result['branches'] = $model->get_truncate('base_branches', TRUE);
 		$result['balances'] = $model->get_truncate('base_balances', TRUE);
 		foreach ($result as $k => $v) {
-			if ($v) { ?>
-				<script>
-					console.log('<?php echo "TRUNCATE BASE: $k => +++ "; ?>');
-				</script>
-			<?php } else { ?>
-				<script>
-					console.log('<?php echo "TRUNCATE BASE: $k => --- "; ?>');
-				</script>
-			<?php }
-		}
-	}
+			$result_string .= "\\n	$k => " . ($v ? "OK" : "FAIL");
+		} ?>
+		<script>
+			console.log('<?php echo "TRUNCATE BASE: $result_string"; ?>');
+		</script>
+	<?php }
 
 	protected function send_chanel_request ($host) {
 		$data = array(
@@ -211,14 +207,9 @@ class BaseController {
 			]
 		);
 		$model = new Models\MoonModel();
-		$result = $model->get_request($host, $data);
-		if ($result == 1) { ?>
+		if ( ($result = $model->get_request($host, $data)) ) { ?>
 			<script>
-				console.log('<?php echo "GET DOCUMENT: $host => $type => #$id OK"; ?>');
-			</script>
-		<?php } elseif ($result == 0) { ?>
-			<script>
-				console.log('<?php echo "GET DOCUMENT: $host => $type => #$id FAIL"; ?>');
+				console.log('<?php echo "GET DOCUMENTS: $host => $result"; ?>');
 			</script>
 		<?php }
 	}

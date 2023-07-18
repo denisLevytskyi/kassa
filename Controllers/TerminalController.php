@@ -12,9 +12,9 @@ class TerminalController {
 		$result['balances'] = $model->get_factor_delete('balances');
 		foreach ($result as $k => $v) {
 			if ($v) {
-				echo "$k => +++ ";
+				echo "\\n	$k => OK ";
 			} else {
-				echo "$k => --- ";
+				echo "\\n	$k => FAIL ";
 			}
 		}
 	}
@@ -32,11 +32,11 @@ class TerminalController {
 				$model = new Models\PriceModel();
 				$result = $model->get_price_registration($v['article'], $v['price'] * 100, $v['timestamp'], $v['auth_id']);
 			}
-		}
-		if ($result) {
-			echo "$type => +++ ";
-		} else {
-			echo "$type => --- ";
+			if ($result) {
+				echo "\\n	$type => #$k OK";
+			} else {
+				echo "\\n	$type => #$k FAIL";
+			}
 		}
 	}
 
@@ -47,7 +47,7 @@ class TerminalController {
 			if ( ($model->get_truncate($k)) ) {
 				$this->set_refresh_data($k, $v);
 			} else {
-				echo "$k => No truncate! ";
+				echo "\\n	$k => No truncate!";
 			}
 		}
 	}
@@ -55,9 +55,9 @@ class TerminalController {
 	protected function get_update_factor ($type, $id) {
 		$model = new Models\MoonModel();
 		if ( ($model->get_factor_update($type, $id)) ) {
-			echo 1;
+			echo "$type => #$id OK";
 		} else {
-			echo 0;
+			echo "$type => #$id FAIL";
 		}
 	}
 
