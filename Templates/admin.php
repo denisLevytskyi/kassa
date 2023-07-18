@@ -64,7 +64,8 @@
 								<option value="2" <?php echo $v['role'] == 2 ? 'selected' : ''; ?>>Salesman</option>
 								<option value="3" <?php echo $v['role'] == 3 ? 'selected' : ''; ?>>Cashier</option>
 								<option value="4" <?php echo $v['role'] == 4 ? 'selected' : ''; ?>>Senior cashier</option>
-								<option value="100" <?php echo $v['role'] == 100 ? 'selected' : ''; ?>>Admin</option>
+								<option value="10" <?php echo $v['role'] == 10 ? 'selected' : ''; ?>>Admin</option>
+								<option value="99" <?php echo $v['role'] == 99 ? 'selected' : ''; ?>>Super Admin</option>
 							</select>
 							<button type="submit" class="listWrapItemFormBtn">
 								Upgrade!

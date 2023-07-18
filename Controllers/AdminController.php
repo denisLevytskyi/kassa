@@ -46,7 +46,7 @@ class AdminController {
 
 	public function get_admin_check ($role = null) {
 		if ($role != null) {
-			$this->get_root_check ($role);
+			$this->get_root_check($role);
 		}
 		if (isset($_POST['admin_id'])) {
 			$this->set_changes();

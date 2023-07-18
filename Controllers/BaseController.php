@@ -125,7 +125,7 @@ class BaseController {
 
 	protected function set_truncate_base () {
 		$admin = new AdminController();
-		$admin->get_admin_check(100);
+		$admin->get_admin_check(11);
 		$model = new Models\MoonModel();
 		$result = array();
 		$result_string = '';
@@ -156,7 +156,7 @@ class BaseController {
 
 	protected function set_chanel_by_host () {
 		$admin = new AdminController();
-		$admin->get_admin_check(100);
+		$admin->get_admin_check(11);
 		$host_list = Connection::base_list;
 		foreach ($host_list as $k => $v) {
 			$this->send_chanel_request($v);
