@@ -27,269 +27,46 @@ class StaffController {
 		$model->get_document_registration($data);
 	}
 
-	protected function set_balance_registration ($data) {
-		$model = new Models\StaffModel();
-		if ( ($model->get_balance_registration($data)) ) {
-			$balance = $model->get_balance('timestamp', $data['timestamp']);
-			$balance_id = $balance['id'];
-			header("Location: /balance.php/?balance_id=$balance_id");
-		} else {
-			ErrorController::get_view_error(29);
-		}
-	}
-
-	protected function set_z_balance_close () {
-		$model = new Models\StaffModel();
-		if ( ($result = $model->get_last_z_data()) ) {
-			return $result['balance_close'];
-		} else {
-			return 0;
-		}
-	}
-
-	protected function get_balance_fields () {
-		$props = PropsController::get_data();
-		return array(
-			'auth_id' => $_SESSION['auth']['id'],
-			'auth_name' => $_SESSION['auth']['name'],
-			'timestamp' => time(),
-			'organization_name' => $props['organization_name'],
-			'store_name' => $props['store_name'],
-			'store_address' => $props['store_address'],
-			'store_kass' => $props['store_kass'],
-			'num_fiskal' => $props['num_fiskal'],
-			'num_factory' => $props['num_factory'],
-			'num_id' => $props['num_id'],
-			'num_tax' => $props['num_tax'],
-			'staff_in' => 0,
-			'staff_out' => 0,
-			'null_id_first' => 0,
-			'null_id_last' => 0,
-			'null_timestamp_first' => time(),
-			'null_timestamp_last' => time(),
-			'null_checks' => 0,
-			'sale_id_first' => 0,
-			'sale_id_last' => 0,
-			'sale_timestamp_first' => time(),
-			'sale_timestamp_last' => time(),
-			'sale_checks' => 0,
-			'sale_received_cash' => 0,
-			'sale_received_card' => 0,
-			'sale_change' => 0,
-			'sale_sum_cash' => 0,
-			'sale_sum_card' => 0,
-			'sale_sum' => 0,
-			'sale_round_plus' => 0,
-			'sale_round_minus' => 0,
-			'sale_sum_a' => 0,
-			'sale_sum_b' => 0,
-			'sale_sum_v' => 0,
-			'sale_sum_g' => 0,
-			'sale_sum_m' => 0,
-			'sale_sum_tax_a' => 0,
-			'sale_sum_tax_b' => 0,
-			'sale_sum_tax_v' => 0,
-			'sale_sum_tax_g' => 0,
-			'sale_sum_tax_m' => 0,
-			'sale_sum_tax' => 0,
-			'return_id_first' => 0,
-			'return_id_last' => 0,
-			'return_timestamp_first' => time(),
-			'return_timestamp_last' => time(),
-			'return_checks' => 0,
-			'return_received_cash' => 0,
-			'return_received_card' => 0,
-			'return_change' => 0,
-			'return_sum_cash' => 0,
-			'return_sum_card' => 0,
-			'return_sum' => 0,
-			'return_round_plus' => 0,
-			'return_round_minus' => 0,
-			'return_sum_a' => 0,
-			'return_sum_b' => 0,
-			'return_sum_v' => 0,
-			'return_sum_g' => 0,
-			'return_sum_m' => 0,
-			'return_sum_tax_a' => 0,
-			'return_sum_tax_b' => 0,
-			'return_sum_tax_v' => 0,
-			'return_sum_tax_g' => 0,
-			'return_sum_tax_m' => 0,
-			'return_sum_tax' => 0,
-			'sum_cash' => 0,
-			'sum_card' => 0,
-			'sum' => 0,
-			'balance_open' => $this->set_z_balance_close(),
-			'balance_close' => 0
-		);
-	}
-	
-	protected function set_checks_by_z_id ($z_id) {
-		$model = new Models\CheckModel();
-		if ( ($checks = $model->get_checks('z_id', $z_id)) ) {
-			return $checks;
-		} else {
-			return array(array(
-				'type' => null
-			));
-		}
-	}
-	
-	protected function set_branches_by_z_id ($z_id) {
-		$model = new Models\StaffModel();
-		if ( ($branches = $model->get_branches('z_id', $z_id)) ) {
-			return $branches;
-		} else {
-			return array(array(
-				'type' => null
-			));
-		}
-	}
-
-	protected function set_z_id () {
-		$model = new Models\StaffModel();
-		if ( ($result = $model->get_last_z_data()) ) {
-			return $result['id'] + 1;
-		} else {
-			return 1;
-		}
-	}
-
-	protected function set_balance_data () {
-		$gate0 = 0;
-		$gate1 = 0;
-		$gate2 = 0;
-		$z_id = $this->set_z_id();
-		$b_data = $this->set_branches_by_z_id($z_id);
-		$c_data = $this->set_checks_by_z_id($z_id);
-		$data = $this->get_balance_fields();
-		foreach ($b_data as $k => $v) {
-			if ($v['type'] == 'СЛУЖБОВЕ ВИЛУЧЕННЯ') {
-				$data['staff_out'] += $v['sum'];
-			} elseif ($v['type'] == 'СЛУЖБОВЕ ВНЕСЕННЯ') {
-				$data['staff_in'] += $v['sum'];
-			}
-		}
-		foreach ($c_data as $k => $v) {
-			if ($v['type'] == 'АНУЛЬОВАНО') {
-				if ($gate0 == 0) {
-					$data['null_id_first'] = $v['id'];
-					$data['null_timestamp_first'] = $v['timestamp'];
-					$gate0 = 1;
-				}
-				$data['null_id_last'] = $v['id'];
-				$data['null_timestamp_last'] = $v['timestamp'];
-				$data['null_checks'] += 1;
-			} elseif ($v['type'] == 'ФІСКАЛЬНИЙ ЧЕК') {
-				if ($gate1 == 0) {
-					$data['sale_id_first'] = $v['id'];
-					$data['sale_timestamp_first'] = $v['timestamp'];
-					$gate1 = 1;
-				}
-				if (isset($v['main']['round'])) {
-					if ($v['main']['round']['sum'] > 0) {
-						$data['sale_round_plus'] += $v['main']['round']['sum'];
-					} else {
-						$data['sale_round_minus'] += -$v['main']['round']['sum'];
-					}
-				}
-				$data['sale_id_last'] = $v['id'];
-				$data['sale_timestamp_last'] = $v['timestamp'];
-				$data['sale_checks'] += 1;
-				$data['sale_received_cash'] += $v['received_cash'];
-				$data['sale_received_card'] += $v['received_card'];
-				$data['sale_change'] += $v['change'];
-				$data['sale_sum_cash'] += $v['sum_cash'];
-				$data['sale_sum_card'] += $v['sum_card'];
-				$data['sale_sum'] += $v['sum'];
-				$data['sale_sum_a'] += $v['sum_a'];
-				$data['sale_sum_b'] += $v['sum_b'];
-				$data['sale_sum_v'] += $v['sum_v'];
-				$data['sale_sum_g'] += $v['sum_g'];
-				$data['sale_sum_m'] += $v['sum_m'];
-				$data['sale_sum_tax_a'] += $v['sum_tax_a'];
-				$data['sale_sum_tax_b'] += $v['sum_tax_b'];
-				$data['sale_sum_tax_v'] += $v['sum_tax_v'];
-				$data['sale_sum_tax_g'] += $v['sum_tax_g'];
-				$data['sale_sum_tax_m'] += $v['sum_tax_m'];
-			} elseif ($v['type'] == 'ВИДАТКОВИЙ ЧЕК') {
-				if ($gate2 == 0) {
-					$data['return_id_first'] = $v['id'];
-					$data['return_timestamp_first'] = $v['timestamp'];
-					$gate2 = 1;
-				}
-				if (isset($v['main']['round'])) {
-					if ($v['main']['round']['sum'] > 0) {
-						$data['return_round_plus'] += $v['main']['round']['sum'];
-					} else {
-						$data['return_round_minus'] += -$v['main']['round']['sum'];
-					}
-				}
-				$data['return_id_last'] = $v['id'];
-				$data['return_timestamp_last'] = $v['timestamp'];
-				$data['return_checks'] += 1;
-				$data['return_received_cash'] += $v['received_cash'];
-				$data['return_received_card'] += $v['received_card'];
-				$data['return_change'] += $v['change'];
-				$data['return_sum_cash'] += $v['sum_cash'];
-				$data['return_sum_card'] += $v['sum_card'];
-				$data['return_sum'] += $v['sum'];
-				$data['return_sum_a'] += $v['sum_a'];
-				$data['return_sum_b'] += $v['sum_b'];
-				$data['return_sum_v'] += $v['sum_v'];
-				$data['return_sum_g'] += $v['sum_g'];
-				$data['return_sum_m'] += $v['sum_m'];
-				$data['return_sum_tax_a'] += $v['sum_tax_a'];
-				$data['return_sum_tax_b'] += $v['sum_tax_b'];
-				$data['return_sum_tax_v'] += $v['sum_tax_v'];
-				$data['return_sum_tax_g'] += $v['sum_tax_g'];
-				$data['return_sum_tax_m'] += $v['sum_tax_m'];
-			}
-		}
-		$data['sale_sum_tax'] = (
-			$data['sale_sum_tax_a'] +
-			$data['sale_sum_tax_b'] +
-			$data['sale_sum_tax_v'] +
-			$data['sale_sum_tax_g'] +
-			$data['sale_sum_tax_m']
-		);
-		$data['return_sum_tax'] = (
-			$data['return_sum_tax_a'] +
-			$data['return_sum_tax_b'] +
-			$data['return_sum_tax_v'] +
-			$data['return_sum_tax_g'] +
-			$data['return_sum_tax_m']
-		);
-		$data['sum_cash'] = $data['sale_sum_cash'] - $data['return_sum_cash'];
-		$data['sum_card'] = $data['sale_sum_card'] - $data['return_sum_card'];
-		$data['sum'] = $data['sale_sum'] - $data['return_sum'];
-		$data['balance_close'] = abs($data['balance_open'] + $data['sum_cash'] + $data['staff_in'] - $data['staff_out']);
-		foreach ($data as $k => $v) {
-			if (is_numeric($v)) {
-				$data[$k] = round($v, 2);
-			}
-		}
-		return $data;
-	}
-
-	protected function set_balance () {
+	protected function set_balance_sum () {
 		$data = $this->set_balance_data();
-		if ($_GET['staff_balance'] == 'X') {
-			session_start();
-			$_SESSION['balance'] = $data;
-			$_SESSION['balance']['id'] = $this->set_z_id();
-			$_SESSION['balance']['type'] = $_GET['staff_balance'];
-			$_SESSION['balance']['time'] = date("d-m-Y H:i:s", $data['timestamp']);
-			$_SESSION['balance']['null_time_first'] = date("d-m-Y H:i:s", $data['null_timestamp_first']);
-			$_SESSION['balance']['null_time_last'] = date("d-m-Y H:i:s", $data['null_timestamp_last']);
-			$_SESSION['balance']['sale_time_first'] = date("d-m-Y H:i:s", $data['sale_timestamp_first']);
-			$_SESSION['balance']['sale_time_last'] = date("d-m-Y H:i:s", $data['sale_timestamp_last']);
-			$_SESSION['balance']['return_time_first'] = date("d-m-Y H:i:s", $data['return_timestamp_first']);
-			$_SESSION['balance']['return_time_last'] = date("d-m-Y H:i:s", $data['return_timestamp_last']);
-			$this->view_balance();
-			exit();
-		} elseif ($_GET['staff_balance'] == 'Z') {
-			$this->set_balance_registration($data);
+		$_SESSION['staff']['balance'] = $data['balance_close'];
+	}
+
+	protected function set_balances () {
+		$model = new Models\StaffModel();
+		if ( ($balances = $model->get_all_balances()) ) {
+			$_SESSION['staff']['balances'] = $balances;
+		} else {
+			$_SESSION['staff']['balances'] = array();
+			$balance = array (
+				'id' => 0,
+				'auth_id' => 'ID',
+				'auth_name' => 'NAME',
+				'timestamp' => 0,
+				'time' => 0,
+				'sum' => 0
+			);
+			$_SESSION['staff']['balances'][] = $balance;
+		}
+	}
+
+	protected function set_branches () {
+		$model = new Models\StaffModel();
+		if ( ($branches = $model->get_all_branches()) ) {
+			$_SESSION['staff']['branches'] = $branches;
+		} else {
+			$_SESSION['staff']['branches'] = array();
+			$branch = array(
+				'id' => 0,
+				'z_id' => 0,
+				'auth_id' => 'ID',
+				'auth_name' => 'NAME',
+				'timestamp' => 0,
+				'time' => 0,
+				'type' => 0,
+				'sum' => 0
+			);
+			$_SESSION['staff']['branches'][] = $branch;
 		}
 	}
 
@@ -447,6 +224,38 @@ class StaffController {
 		exit();
 	}
 
+	protected function set_balance_registration ($data) {
+		$model = new Models\StaffModel();
+		if ( ($model->get_balance_registration($data)) ) {
+			$balance = $model->get_balance('timestamp', $data['timestamp']);
+			$balance_id = $balance['id'];
+			header("Location: /balance.php/?balance_id=$balance_id");
+		} else {
+			ErrorController::get_view_error(29);
+		}
+	}
+
+	protected function set_balance () {
+		$data = $this->set_balance_data();
+		if ($_GET['staff_balance'] == 'X') {
+			session_start();
+			$_SESSION['balance'] = $data;
+			$_SESSION['balance']['id'] = $this->set_z_id();
+			$_SESSION['balance']['type'] = $_GET['staff_balance'];
+			$_SESSION['balance']['time'] = date("d-m-Y H:i:s", $data['timestamp']);
+			$_SESSION['balance']['null_time_first'] = date("d-m-Y H:i:s", $data['null_timestamp_first']);
+			$_SESSION['balance']['null_time_last'] = date("d-m-Y H:i:s", $data['null_timestamp_last']);
+			$_SESSION['balance']['sale_time_first'] = date("d-m-Y H:i:s", $data['sale_timestamp_first']);
+			$_SESSION['balance']['sale_time_last'] = date("d-m-Y H:i:s", $data['sale_timestamp_last']);
+			$_SESSION['balance']['return_time_first'] = date("d-m-Y H:i:s", $data['return_timestamp_first']);
+			$_SESSION['balance']['return_time_last'] = date("d-m-Y H:i:s", $data['return_timestamp_last']);
+			$this->view_balance();
+			exit();
+		} elseif ($_GET['staff_balance'] == 'Z') {
+			$this->set_balance_registration($data);
+		}
+	}
+
 	protected function set_branch_registration () {
 		$props = PropsController::get_data();
 		$data = array(
@@ -481,6 +290,240 @@ class StaffController {
 		}
 	}
 
+	protected function set_z_balance_close () {
+		$model = new Models\StaffModel();
+		if ( ($result = $model->get_last_z_data()) ) {
+			return $result['balance_close'];
+		} else {
+			return 0;
+		}
+	}
+
+	protected function get_balance_fields () {
+		$props = PropsController::get_data();
+		return array(
+			'auth_id' => $_SESSION['auth']['id'],
+			'auth_name' => $_SESSION['auth']['name'],
+			'timestamp' => time(),
+			'organization_name' => $props['organization_name'],
+			'store_name' => $props['store_name'],
+			'store_address' => $props['store_address'],
+			'store_kass' => $props['store_kass'],
+			'num_fiskal' => $props['num_fiskal'],
+			'num_factory' => $props['num_factory'],
+			'num_id' => $props['num_id'],
+			'num_tax' => $props['num_tax'],
+			'staff_in' => 0,
+			'staff_out' => 0,
+			'null_id_first' => 0,
+			'null_id_last' => 0,
+			'null_timestamp_first' => time(),
+			'null_timestamp_last' => time(),
+			'null_checks' => 0,
+			'sale_id_first' => 0,
+			'sale_id_last' => 0,
+			'sale_timestamp_first' => time(),
+			'sale_timestamp_last' => time(),
+			'sale_checks' => 0,
+			'sale_received_cash' => 0,
+			'sale_received_card' => 0,
+			'sale_change' => 0,
+			'sale_sum_cash' => 0,
+			'sale_sum_card' => 0,
+			'sale_sum' => 0,
+			'sale_round_plus' => 0,
+			'sale_round_minus' => 0,
+			'sale_sum_a' => 0,
+			'sale_sum_b' => 0,
+			'sale_sum_v' => 0,
+			'sale_sum_g' => 0,
+			'sale_sum_m' => 0,
+			'sale_sum_tax_a' => 0,
+			'sale_sum_tax_b' => 0,
+			'sale_sum_tax_v' => 0,
+			'sale_sum_tax_g' => 0,
+			'sale_sum_tax_m' => 0,
+			'sale_sum_tax' => 0,
+			'return_id_first' => 0,
+			'return_id_last' => 0,
+			'return_timestamp_first' => time(),
+			'return_timestamp_last' => time(),
+			'return_checks' => 0,
+			'return_received_cash' => 0,
+			'return_received_card' => 0,
+			'return_change' => 0,
+			'return_sum_cash' => 0,
+			'return_sum_card' => 0,
+			'return_sum' => 0,
+			'return_round_plus' => 0,
+			'return_round_minus' => 0,
+			'return_sum_a' => 0,
+			'return_sum_b' => 0,
+			'return_sum_v' => 0,
+			'return_sum_g' => 0,
+			'return_sum_m' => 0,
+			'return_sum_tax_a' => 0,
+			'return_sum_tax_b' => 0,
+			'return_sum_tax_v' => 0,
+			'return_sum_tax_g' => 0,
+			'return_sum_tax_m' => 0,
+			'return_sum_tax' => 0,
+			'sum_cash' => 0,
+			'sum_card' => 0,
+			'sum' => 0,
+			'balance_open' => $this->set_z_balance_close(),
+			'balance_close' => 0
+		);
+	}
+
+	protected function set_checks_by_z_id ($z_id) {
+		$model = new Models\CheckModel();
+		if ( ($checks = $model->get_checks('z_id', $z_id)) ) {
+			return $checks;
+		} else {
+			return array(array(
+				'type' => null
+			));
+		}
+	}
+
+	protected function set_branches_by_z_id ($z_id) {
+		$model = new Models\StaffModel();
+		if ( ($branches = $model->get_branches('z_id', $z_id)) ) {
+			return $branches;
+		} else {
+			return array(array(
+				'type' => null
+			));
+		}
+	}
+
+	protected function set_z_id () {
+		$model = new Models\StaffModel();
+		if ( ($result = $model->get_last_z_data()) ) {
+			return $result['id'] + 1;
+		} else {
+			return 1;
+		}
+	}
+
+	protected function set_balance_data () {
+		$gate0 = 0;
+		$gate1 = 0;
+		$gate2 = 0;
+		$z_id = $this->set_z_id();
+		$b_data = $this->set_branches_by_z_id($z_id);
+		$c_data = $this->set_checks_by_z_id($z_id);
+		$data = $this->get_balance_fields();
+		foreach ($b_data as $k => $v) {
+			if ($v['type'] == 'СЛУЖБОВЕ ВИЛУЧЕННЯ') {
+				$data['staff_out'] += $v['sum'];
+			} elseif ($v['type'] == 'СЛУЖБОВЕ ВНЕСЕННЯ') {
+				$data['staff_in'] += $v['sum'];
+			}
+		}
+		foreach ($c_data as $k => $v) {
+			if ($v['type'] == 'АНУЛЬОВАНО') {
+				if ($gate0 == 0) {
+					$data['null_id_first'] = $v['id'];
+					$data['null_timestamp_first'] = $v['timestamp'];
+					$gate0 = 1;
+				}
+				$data['null_id_last'] = $v['id'];
+				$data['null_timestamp_last'] = $v['timestamp'];
+				$data['null_checks'] += 1;
+			} elseif ($v['type'] == 'ФІСКАЛЬНИЙ ЧЕК') {
+				if ($gate1 == 0) {
+					$data['sale_id_first'] = $v['id'];
+					$data['sale_timestamp_first'] = $v['timestamp'];
+					$gate1 = 1;
+				}
+				if (isset($v['main']['round'])) {
+					if ($v['main']['round']['sum'] > 0) {
+						$data['sale_round_plus'] += $v['main']['round']['sum'];
+					} else {
+						$data['sale_round_minus'] += -$v['main']['round']['sum'];
+					}
+				}
+				$data['sale_id_last'] = $v['id'];
+				$data['sale_timestamp_last'] = $v['timestamp'];
+				$data['sale_checks'] += 1;
+				$data['sale_received_cash'] += $v['received_cash'];
+				$data['sale_received_card'] += $v['received_card'];
+				$data['sale_change'] += $v['change'];
+				$data['sale_sum_cash'] += $v['sum_cash'];
+				$data['sale_sum_card'] += $v['sum_card'];
+				$data['sale_sum'] += $v['sum'];
+				$data['sale_sum_a'] += $v['sum_a'];
+				$data['sale_sum_b'] += $v['sum_b'];
+				$data['sale_sum_v'] += $v['sum_v'];
+				$data['sale_sum_g'] += $v['sum_g'];
+				$data['sale_sum_m'] += $v['sum_m'];
+				$data['sale_sum_tax_a'] += $v['sum_tax_a'];
+				$data['sale_sum_tax_b'] += $v['sum_tax_b'];
+				$data['sale_sum_tax_v'] += $v['sum_tax_v'];
+				$data['sale_sum_tax_g'] += $v['sum_tax_g'];
+				$data['sale_sum_tax_m'] += $v['sum_tax_m'];
+			} elseif ($v['type'] == 'ВИДАТКОВИЙ ЧЕК') {
+				if ($gate2 == 0) {
+					$data['return_id_first'] = $v['id'];
+					$data['return_timestamp_first'] = $v['timestamp'];
+					$gate2 = 1;
+				}
+				if (isset($v['main']['round'])) {
+					if ($v['main']['round']['sum'] > 0) {
+						$data['return_round_plus'] += $v['main']['round']['sum'];
+					} else {
+						$data['return_round_minus'] += -$v['main']['round']['sum'];
+					}
+				}
+				$data['return_id_last'] = $v['id'];
+				$data['return_timestamp_last'] = $v['timestamp'];
+				$data['return_checks'] += 1;
+				$data['return_received_cash'] += $v['received_cash'];
+				$data['return_received_card'] += $v['received_card'];
+				$data['return_change'] += $v['change'];
+				$data['return_sum_cash'] += $v['sum_cash'];
+				$data['return_sum_card'] += $v['sum_card'];
+				$data['return_sum'] += $v['sum'];
+				$data['return_sum_a'] += $v['sum_a'];
+				$data['return_sum_b'] += $v['sum_b'];
+				$data['return_sum_v'] += $v['sum_v'];
+				$data['return_sum_g'] += $v['sum_g'];
+				$data['return_sum_m'] += $v['sum_m'];
+				$data['return_sum_tax_a'] += $v['sum_tax_a'];
+				$data['return_sum_tax_b'] += $v['sum_tax_b'];
+				$data['return_sum_tax_v'] += $v['sum_tax_v'];
+				$data['return_sum_tax_g'] += $v['sum_tax_g'];
+				$data['return_sum_tax_m'] += $v['sum_tax_m'];
+			}
+		}
+		$data['sale_sum_tax'] = (
+			$data['sale_sum_tax_a'] +
+			$data['sale_sum_tax_b'] +
+			$data['sale_sum_tax_v'] +
+			$data['sale_sum_tax_g'] +
+			$data['sale_sum_tax_m']
+		);
+		$data['return_sum_tax'] = (
+			$data['return_sum_tax_a'] +
+			$data['return_sum_tax_b'] +
+			$data['return_sum_tax_v'] +
+			$data['return_sum_tax_g'] +
+			$data['return_sum_tax_m']
+		);
+		$data['sum_cash'] = $data['sale_sum_cash'] - $data['return_sum_cash'];
+		$data['sum_card'] = $data['sale_sum_card'] - $data['return_sum_card'];
+		$data['sum'] = $data['sale_sum'] - $data['return_sum'];
+		$data['balance_close'] = abs($data['balance_open'] + $data['sum_cash'] + $data['staff_in'] - $data['staff_out']);
+		foreach ($data as $k => $v) {
+			if (is_numeric($v)) {
+				$data[$k] = round($v, 2);
+			}
+		}
+		return $data;
+	}
+
 	protected function set_branch () {
 		$sum = $_POST['staff_branch_sum'];
 		$data = $this->set_balance_data();
@@ -490,61 +533,18 @@ class StaffController {
 		}
 	}
 
-	protected function set_balance_sum () {
-		$data = $this->set_balance_data();
-		$_SESSION['staff']['balance'] = $data['balance_close'];
-	}
-
-	protected function set_branches () {
-		$model = new Models\StaffModel();
-		if ( ($branches = $model->get_all_branches()) ) {
-			$_SESSION['staff']['branches'] = $branches;
-		} else {
-			$_SESSION['staff']['branches'] = array();
-			$branch = array(
-				'id' => 0,
-				'z_id' => 0,
-				'auth_id' => 'ID',
-				'auth_name' => 'NAME',
-				'timestamp' => 0,
-				'time' => 0,
-				'type' => 0,
-				'sum' => 0
-			);
-			$_SESSION['staff']['branches'][] = $branch;
-		}
-	}
-
-	protected function set_balances () {
-		$model = new Models\StaffModel();
-		if ( ($balances = $model->get_all_balances()) ) {
-			$_SESSION['staff']['balances'] = $balances;
-		} else {
-			$_SESSION['staff']['balances'] = array();
-			$balance = array (
-				'id' => 0,
-				'auth_id' => 'ID',
-				'auth_name' => 'NAME',
-				'timestamp' => 0,
-				'time' => 0,
-				'sum' => 0
-			);
-			$_SESSION['staff']['balances'][] = $balance;
-		}
-	}
-
 	public function get_staff_check () {
 		if (empty($_SESSION['staff'])) {
 			$_SESSION['staff'] = array();
 		} elseif (isset($_POST['staff_branch_sum']) and is_numeric($_POST['staff_branch_sum'])) {
 			$this->set_branch();
-		} elseif (isset($_POST['staff_periodical_f']) and $_POST['staff_periodical_f'] <= $_POST['staff_periodical_l']) {
-			$this->set_periodical();
 		} elseif (isset($_GET['staff_balance'])) {
 			$this->set_balance();
+		} elseif (isset($_POST['staff_periodical_f']) and $_POST['staff_periodical_f'] <= $_POST['staff_periodical_l']) {
+			$this->set_periodical();
 		}
-		$this->set_balances();
 		$this->set_branches();
+		$this->set_balances();
 		$this->set_balance_sum();
 		$this->view_staff();
 	}

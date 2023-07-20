@@ -13,7 +13,7 @@ class UnikaController extends StaffController {
 		$sum = 0;
 		if (!empty($_SESSION['unika']['list'])) {
 			foreach ($_SESSION['unika']['list'] as $k => $v) {
-				$sum = $sum + $v['sum'];
+				$sum += $v['sum'];
 			}
 		}
 		$_SESSION['unika']['sum'] = round($sum, 2);
