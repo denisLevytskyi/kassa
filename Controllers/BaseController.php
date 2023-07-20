@@ -123,7 +123,7 @@ class BaseController {
 		die();
 	}
 
-	protected function set_truncate_base () {
+	protected function truncate_base () {
 		$admin = new AdminController();
 		$admin->get_admin_check(11);
 		$model = new Models\MoonModel();
@@ -154,7 +154,7 @@ class BaseController {
 		<?php }
 	}
 
-	protected function set_chanel_by_host () {
+	protected function chanel_docs_by_host () {
 		$admin = new AdminController();
 		$admin->get_admin_check(11);
 		$host_list = Connection::base_list;
@@ -197,7 +197,7 @@ class BaseController {
 		}
 	}
 
-	protected function send_getting_answer ($type, $host, $id) {
+	protected function send_confirm_receipt ($type, $host, $id) {
 		$data = array(
 			'terminal_key' => 1,
 			'terminal_code' => 2,
@@ -209,7 +209,7 @@ class BaseController {
 		$model = new Models\MoonModel();
 		if ( ($result = $model->get_request($host, $data)) ) { ?>
 			<script>
-				console.log('<?php echo "GET DOCUMENTS: $host => $result"; ?>');
+				console.log('<?php echo $result; ?>');
 			</script>
 		<?php }
 	}
@@ -226,12 +226,12 @@ class BaseController {
 				$result = $model->get_base_balance_registration($v);
 			}
 			if ($result) {
-				$this->send_getting_answer($type, $host, $v['id']);
+				$this->send_confirm_receipt($type, $host, $v['id']);
 			}
 		}
 	}
 
-	protected function get_docs ($host, $data) {
+	protected function get_docs_from_answer ($host, $data) {
 		$data = unserialize($data);
 		foreach ($data as $k => $v) {
 			$this->set_docs_registration($k, $host, $v);
@@ -246,13 +246,16 @@ class BaseController {
 		);
 		$model = new Models\MoonModel();
 		if ( ($result = $model->get_request($host, $data)) ) {
-			$this->get_docs($host, $result);	
+			$this->get_docs_from_answer($host, $result);
 		}
 	}
 
 	protected function get_docs_by_host () {
 		$host_list = Connection::base_list;
-		foreach ($host_list as $k => $v) {
+		foreach ($host_list as $k => $v) { ?>
+			<script>
+				console.log('<?php echo "SET DOCUMENTS: $v =>"; ?>');
+			</script> <?php
 			$this->send_getting_request($v);
 		}
 	}
@@ -265,9 +268,9 @@ class BaseController {
 		} elseif (isset($_GET['base_set'])) {
 			$this->set_docs_by_host();
 		} elseif (isset($_GET['base_cancel'])) {
-			$this->set_chanel_by_host();
+			$this->chanel_docs_by_host();
 		} elseif (isset($_GET['base_truncate'])) {
-			$this->set_truncate_base();
+			$this->truncate_base();
 		} elseif (isset($_GET['base_view']) and isset($_GET['base_view_id'])) {
 			$this->set_view_doc($_GET['base_view'], $_GET['base_view_id']);
 		}

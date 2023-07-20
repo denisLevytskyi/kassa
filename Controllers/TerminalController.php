@@ -19,7 +19,7 @@ class TerminalController {
 		}
 	}
 
-	protected function set_refresh_data ($type, $data) {
+	protected function set_new_data ($type, $data) {
 		$result = FALSE;
 		foreach ($data as $k => $v) {
 			if ($type == 'users') {
@@ -40,12 +40,12 @@ class TerminalController {
 		}
 	}
 
-	protected function get_refresh_tables ($data) {
+	protected function get_truncate_tables ($data) {
 		$data = unserialize($data);
 		foreach ($data as $k => $v) {
 			$model = new Models\MoonModel();
 			if ( ($model->get_truncate($k)) ) {
-				$this->set_refresh_data($k, $v);
+				$this->set_new_data($k, $v);
 			} else {
 				echo "\\n	$k => No truncate!";
 			}
@@ -55,13 +55,13 @@ class TerminalController {
 	protected function get_update_factor ($type, $id) {
 		$model = new Models\MoonModel();
 		if ( ($model->get_factor_update($type, $id)) ) {
-			echo "$type => #$id OK";
+			echo "	$type => #$id OK";
 		} else {
-			echo "$type => #$id FAIL";
+			echo "	$type => #$id FAIL";
 		}
 	}
 
-	protected function get_data () {
+	protected function give_docs () {
 		$model1 = new Models\CheckModel();
 		$model2 = new Models\StaffModel();
 		$checks = $model1->get_checks('base_factor', 0);
@@ -80,11 +80,11 @@ class TerminalController {
 			exit();
 		}
 		if (isset($_POST['terminal_code']) and $_POST['terminal_code'] == 1) {
-			$this->get_data();
+			$this->give_docs();
 		} elseif (isset($_POST['terminal_code']) and isset($_POST['terminal_data']) and $_POST['terminal_code'] == 2) {
 			$this->get_update_factor($_POST['terminal_data']['type'], $_POST['terminal_data']['id']);
 		} elseif (isset($_POST['terminal_code']) and isset($_POST['terminal_data']) and $_POST['terminal_code'] == 3) {
-			$this->get_refresh_tables($_POST['terminal_data']);
+			$this->get_truncate_tables($_POST['terminal_data']);
 		} elseif (isset($_POST['terminal_code']) and $_POST['terminal_code'] == 4) {
 			$this->get_delete_factor();
 		}
