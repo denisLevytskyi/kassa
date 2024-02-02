@@ -45,6 +45,7 @@ class ProductController {
 
 	protected function set_changes_product () {
 		$id = $_POST['edit_product_id'];
+		$group = $_POST['edit_product_group'];
 		$art = $_POST['edit_product_art'];
 		$code = $_POST['edit_product_code'];
 		$name = $_POST['edit_product_name'];
@@ -55,7 +56,7 @@ class ProductController {
 			$file = $_FILES['edit_product_photo'];
 			$photo = $this->set_move_photo($file);
 		}
-		if ( ($model->get_changes($id, $art, $code, $name, $desk, $photo)) ) {
+		if ( ($model->get_changes($group, $id, $art, $code, $name, $desk, $photo)) ) {
 			header('Location: /productList.php');
 		} else {
 			ErrorController::get_view_error(16);

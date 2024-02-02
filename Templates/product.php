@@ -44,6 +44,17 @@ function form ($num) {
 				</p>
 				<input type="text" class="productFormInp" name="edit_product_name" value="<?php echo $v['name'];?>" required>
 				<p class="productFormP">
+					Tax group
+				</p>
+				<select class="productFormInp" name="edit_product_group" id="list" required>
+					<option value="А" <?php echo $v['group'] == 'А' ? 'selected' : ''; ?>>А</option>
+					<option value="Б" <?php echo $v['group'] == 'Б' ? 'selected' : ''; ?>>Б</option>
+					<option value="В" <?php echo $v['group'] == 'В' ? 'selected' : ''; ?>>В</option>
+					<option value="Г" <?php echo $v['group'] == 'Г' ? 'selected' : ''; ?>>Г</option>
+					<option value="М+А" <?php echo $v['group'] == 'М+А' ? 'selected' : ''; ?>>М+А</option>
+					<option value="М+Г" <?php echo $v['group'] == 'М+Г' ? 'selected' : ''; ?>>М+Г</option>
+				</select>
+				<p class="productFormP">
 					Description
 				</p>
 				<textarea name="edit_product_desc" rows="7" class="productFormInp" required><?php echo $v['description'];?></textarea>

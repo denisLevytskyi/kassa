@@ -336,6 +336,7 @@ $_POST
 	['edit_product_art']
 	['edit_product_code']
 	['edit_product_name']
+	['edit_product_group']
 	['edit_product_desc']
 	['edit_product_photo']
 	['edit_product_old_photo']
