@@ -85,16 +85,18 @@ class UnikaController extends StaffController {
 				$data['sum_tax_g'] += $v['sum'] * 0 / 100;
 			} elseif ($v['group'] == 'М+А') {
 				$sum_m = $v['sum'];
-				$sum_tax_m = $v['sum'] * 5 / 105;
+				$sum_tax_m = $sum_m * 5 / 105;
 				$data['sum_m'] += $sum_m;
 				$data['sum_tax_m'] += $sum_tax_m;
 				$data['sum_a'] += $sum_m - $sum_tax_m;
 				$data['sum_tax_a'] += ($sum_m - $sum_tax_m) * 20 / 120;
 			} elseif ($v['group'] == 'М+Г') {
-				$data['sum_g'] += $v['sum'];
-				$data['sum_tax_g'] += $v['sum'] * 0 / 100;
-				$data['sum_m'] += $v['sum'];
-				$data['sum_tax_m'] += $v['sum'] * 5 / 105;
+				$sum_m = $v['sum'];
+				$sum_tax_m = $sum_m * 5 / 105;
+				$data['sum_m'] += $sum_m;
+				$data['sum_tax_m'] += $sum_tax_m;
+				$data['sum_g'] += $sum_m - $sum_tax_m;
+				$data['sum_tax_g'] += ($sum_m - $sum_tax_m) * 0 / 100;
 			}
 		}
 		return $data;
