@@ -169,7 +169,7 @@ class BaseController {
 		$model3 = new Models\PriceModel();
 		$users = $model1->get_all_users();
 		$products = $model2->get_all_products(TRUE);
-		$prices = $model3->get_all_prices();
+		$prices = $model3->get_all_prices(TRUE);
 		$data = array(
 				'terminal_key' => 1,
 				'terminal_code' => 3,

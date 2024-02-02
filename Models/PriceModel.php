@@ -14,10 +14,10 @@ class PriceModel {
 		}
 	}
 
-	public function get_all_prices () {
+	public function get_all_prices ($order_asc = FALSE) {
 		$prices = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM prices ORDER BY id DESC";
+		$request = "SELECT * FROM prices ORDER BY id" . ($order_asc ? ' ASC' : ' DESC');
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['price'] = $record['price'] / 100;
