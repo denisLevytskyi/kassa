@@ -65,7 +65,7 @@ function form ($num) {
 	<section class="list">
 		<?php foreach ($_SESSION['unika']['list'] as $k => $v) {
 			$type = null;
-			if ($v['group'] == 'М+А') {
+			if (str_contains($v['group'], 'М')) {
 				$type = 'excise';
 			}
 			if (isset($v['delete']) and $v['delete']) {
@@ -105,7 +105,7 @@ function form ($num) {
 	<footer class="footer">
 		<form action="/unika.php" class="footerForm" method="POST">
 			<div class="footerFormWrap">
-				<input type="text" class="footerFormWrapInp" name="unika_cash" value="0" required>
+				<input type="text" class="footerFormWrapInp" name="unika_cash" value="<?php echo form($_SESSION['unika']['sum']); ?>" required>
 				<p class="footerFormWrapP">Received</p>
 			</div>
 			<div class="footerFormWrap">
