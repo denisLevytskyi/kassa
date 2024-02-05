@@ -30,7 +30,7 @@ class ProductModel extends PriceModel {
 		return mysqli_query($connection, $request);
 	}
 
-	public function get_changes($group, $id, $art, $code, $name, $desk, $photo) {
+	public function get_changes($id, $group, $art, $code, $name, $desk, $photo) {
 		$connection = Logics\Connection::get_connection();
 		$request = "UPDATE products SET `group` = '$group', article = '$art', code = '$code', name = '$name', description = '$desk', photo = '$photo' WHERE id = '$id'";
 		return mysqli_query($connection, $request);

@@ -56,7 +56,7 @@ class ProductController {
 			$file = $_FILES['edit_product_photo'];
 			$photo = $this->set_move_photo($file);
 		}
-		if ( ($model->get_changes($group, $id, $art, $code, $name, $desk, $photo)) ) {
+		if ( ($model->get_changes($id, $group, $art, $code, $name, $desk, $photo)) ) {
 			header('Location: /productList.php');
 		} else {
 			ErrorController::get_view_error(16);
