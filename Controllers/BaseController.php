@@ -254,7 +254,7 @@ class BaseController {
 		$host_list = Connection::base_list;
 		foreach ($host_list as $k => $v) { ?>
 			<script>
-				console.log('<?php echo "SET DOCUMENTS: $v =>"; ?>');
+				console.log('<?php echo "GET DOCUMENTS: $v =>"; ?>');
 			</script> <?php
 			$this->send_getting_request($v);
 		}
