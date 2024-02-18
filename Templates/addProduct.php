@@ -21,6 +21,7 @@
 				<form action="/addProduct.php" class="addProductForm" method="POST" enctype="multipart/form-data">
 					<input type="text" class="addProductFormInp" name="add_product_art" placeholder="Article" required>
 					<input type="text" class="addProductFormInp" name="add_product_code" placeholder="Code" required>
+					<input type="text" class="addProductFormInp" name="add_product_gov_code" placeholder="УКТЗЕД">
 					<input type="text" class="addProductFormInp" name="add_product_name" placeholder="Name of product" required>
 					<input type="text" class="addProductFormInp" name="add_product_description" placeholder="Description" required>
 					<select class="addProductFormInp" name="add_product_group" id="list" required>

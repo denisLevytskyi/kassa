@@ -110,7 +110,7 @@ class UnikaController extends StaffController {
 			$round = round($round_sum - $sum, 2);
 			$name = $round > 0 ? 'НАДБАВКА' : 'ЗНИЖКА';
 			foreach ($_SESSION['unika']['list'] as $k => $v) {
-				if ($v['sum'] >= -$round and (!isset($v['delete']) or !$v['delete'])) {
+				if ($v['sum'] >= -$round and !$v['delete']) {
 					$group = $v['group'];
 				}
 			}
@@ -168,7 +168,8 @@ class UnikaController extends StaffController {
 			'sum_tax_b' => $tax_data['sum_tax_b'],
 			'sum_tax_v' => $tax_data['sum_tax_v'],
 			'sum_tax_g' => $tax_data['sum_tax_g'],
-			'sum_tax_m' => $tax_data['sum_tax_m']
+			'sum_tax_m' => $tax_data['sum_tax_m'],
+			'description' => 'ГАРНОГО ДНЯ!'
 		);
 		if ($_POST['unika_pay'] == 'card') {
 			$data['received_card'] = $data['sum'] - $data['received_cash'];
@@ -223,8 +224,9 @@ class UnikaController extends StaffController {
 	protected function set_mark ($code) {
 		$mark = trim($code, '!');
 		$key = array_key_last($_SESSION['unika']['list']);
-		if ($key !== null) {
-			$_SESSION['unika']['list'][$key]['name'] .= '<br>А/М: ' . $mark;
+		$prod_group = $_SESSION['unika']['list'][$key]['group'];
+		if ($key !== null and str_contains($prod_group, 'М')) {
+			$_SESSION['unika']['list'][$key]['mark'] .= $mark . ' ';
 		}
 	}
 
@@ -277,6 +279,7 @@ class UnikaController extends StaffController {
 			$product['amount'] = $amount;
 			$product['sum'] = round($product['price'] * $amount, 2);
 			$product['delete'] = FALSE;
+			$product['mark'] = NULL;
 			$_SESSION['unika']['list'][] = $product;
 		}
 		header('Location: /unika.php');

@@ -68,7 +68,7 @@ function form ($num) {
 			if (str_contains($v['group'], 'М')) {
 				$type = 'excise';
 			}
-			if (isset($v['delete']) and $v['delete']) {
+			if ($v['delete']) {
 				$type = 'delete';
 			}?>
 			<div class="listWrap <?php echo $type; ?>">
@@ -78,7 +78,13 @@ function form ($num) {
 				<div class="listWrapName">
 					<img src="<?php echo $v['photo']; ?>" class="listWrapNameImg">
 					<p class="listWrapNameP">
-						<?php echo $v['article'] . ' ' . $v['name']; ?>
+						<?php echo $v['article'] . ' ' . $v['name'];
+						if (!empty($v['gov_code'])) {
+							echo '<br> УКТЗЕД: ' . $v['gov_code'];
+						};
+						if (!empty($v['mark'])) {
+							echo '<br> А/М: ' . $v['mark'];
+						};?>
 					</p>
 				</div>
 				<div class="listWrapElse">

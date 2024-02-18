@@ -40,6 +40,10 @@ function form ($num) {
 				</p>
 				<input type="text" class="productFormInp" name="edit_product_code" value="<?php echo $v['code'];?>" required>
 				<p class="productFormP">
+					УКТЗЕД
+				</p>
+				<input type="text" class="productFormInp" name="edit_product_gov_code" value="<?php echo $v['gov_code'];?>">
+				<p class="productFormP">
 					Name
 				</p>
 				<input type="text" class="productFormInp" name="edit_product_name" value="<?php echo $v['name'];?>" required>
@@ -57,7 +61,7 @@ function form ($num) {
 				<p class="productFormP">
 					Description
 				</p>
-				<textarea name="edit_product_desc" rows="7" class="productFormInp" required><?php echo $v['description'];?></textarea>
+				<textarea name="edit_product_description" rows="7" class="productFormInp" required><?php echo $v['description'];?></textarea>
 				<p class="productFormP">
 					New Photo
 				</p>

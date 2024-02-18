@@ -7,9 +7,9 @@ class TerminalController {
 	protected function get_delete_factor () {
 		$result = array();
 		$model = new Models\MoonModel();
-		$result['checks'] = $model->get_factor_delete('checks');
-		$result['branches'] = $model->get_factor_delete('branches');
-		$result['balances'] = $model->get_factor_delete('balances');
+		$result['checks'] = $model->get_factor_delete('fiskal_checks');
+		$result['branches'] = $model->get_factor_delete('fiskal_branches');
+		$result['balances'] = $model->get_factor_delete('fiskal_balances');
 		foreach ($result as $k => $v) {
 			if ($v) {
 				echo "\\n	$k => OK ";
@@ -54,7 +54,7 @@ class TerminalController {
 
 	protected function get_update_factor ($type, $id) {
 		$model = new Models\MoonModel();
-		if ( ($model->get_factor_update($type, $id)) ) {
+		if ( ($model->get_factor_update('fiskal_' . $type, $id)) ) {
 			echo "	$type => #$id OK";
 		} else {
 			echo "	$type => #$id FAIL";

@@ -13,26 +13,27 @@ $result1 = mysqli_query($f_base_connection, $request1);
 
 $connection = Logics\Connection::get_connection();
 $base_connection = Logics\Connection::get_base_connection();
-$request2 = "CREATE TABLE `users` (
+$request2 = "CREATE TABLE `app_users` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`login` VARCHAR(50) DEFAULT NULL,
 	`password` VARCHAR(50) DEFAULT NULL,
 	`name` VARCHAR(50) DEFAULT NULL,
 	`role` VARCHAR(50) DEFAULT NULL,
 	PRIMARY KEY (`id`)
-)";
-$request3 = "CREATE TABLE `products` (
+);";
+$request3 = "CREATE TABLE `app_products` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`group` VARCHAR(50) DEFAULT NULL,
 	`article` VARCHAR(50) DEFAULT NULL,
 	`code` VARCHAR(50) DEFAULT NULL,
+	`gov_code` VARCHAR(50) DEFAULT NULL,
 	`name` VARCHAR(300) DEFAULT NULL,
 	`description` VARCHAR(300) DEFAULT NULL,
 	`photo` VARCHAR(300) DEFAULT NULL,
 	`auth_id` INT DEFAULT NULL,
 	PRIMARY KEY (`id`)
-)";
-$request4 = "CREATE TABLE `prices` (
+);";
+$request4 = "CREATE TABLE `app_prices` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`article` VARCHAR(50) DEFAULT NULL,
 	`price` INT(50) DEFAULT NULL,
@@ -40,7 +41,7 @@ $request4 = "CREATE TABLE `prices` (
 	`auth_id` INT DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
-$request5 = "CREATE TABLE `checks` (
+$request5 = "CREATE TABLE `fiskal_checks` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`z_id` INT DEFAULT NULL,
 	`auth_id` INT DEFAULT NULL,
@@ -72,10 +73,11 @@ $request5 = "CREATE TABLE `checks` (
 	`sum_tax_v` VARCHAR(50) DEFAULT NULL,
 	`sum_tax_g` VARCHAR(50) DEFAULT NULL,
 	`sum_tax_m` VARCHAR(50) DEFAULT NULL,
+	`description` VARCHAR(300) DEFAULT NULL,
 	`base_factor` INT DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
-$request6 = "CREATE TABLE `branches` (
+$request6 = "CREATE TABLE `fiskal_branches` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`z_id` INT DEFAULT NULL,
 	`auth_id` INT DEFAULT NULL,
@@ -94,7 +96,7 @@ $request6 = "CREATE TABLE `branches` (
 	`base_factor` INT DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
-$request7 = "CREATE TABLE `balances` (
+$request7 = "CREATE TABLE `fiskal_balances` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`auth_id` INT DEFAULT NULL,
 	`auth_name` VARCHAR(50) DEFAULT NULL,
@@ -203,6 +205,7 @@ $request8 = "CREATE TABLE `base_checks` (
 	`sum_tax_v` VARCHAR(50) DEFAULT NULL,
 	`sum_tax_g` VARCHAR(50) DEFAULT NULL,
 	`sum_tax_m` VARCHAR(50) DEFAULT NULL,
+	`description` VARCHAR(300) DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );";
 $request9 = "CREATE TABLE `base_branches` (

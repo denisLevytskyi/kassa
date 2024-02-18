@@ -5,14 +5,14 @@ use Logics;
 class StaffModel extends CheckModel {
 	public function get_last_z_data () {
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT id, balance_close FROM balances ORDER BY id DESC LIMIT 1";
+		$request = "SELECT id, balance_close FROM fiskal_balances ORDER BY id DESC LIMIT 1";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		return mysqli_fetch_assoc($result);
 	}
 	
 	public function get_branch ($search_p, $search_v) {
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM branches WHERE $search_p= '$search_v'";
+		$request = "SELECT * FROM fiskal_branches WHERE $search_p= '$search_v'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		if ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
@@ -23,7 +23,7 @@ class StaffModel extends CheckModel {
 	
 	public function get_balance ($search_p, $search_v) {
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM balances WHERE $search_p= '$search_v'";
+		$request = "SELECT * FROM fiskal_balances WHERE $search_p= '$search_v'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		if ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
@@ -42,7 +42,7 @@ class StaffModel extends CheckModel {
 	public function get_balances ($search_p, $first, $last) {
 		$balances = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM balances WHERE `$search_p` >= '$first' AND `$search_p` <= '$last'";
+		$request = "SELECT * FROM fiskal_balances WHERE `$search_p` >= '$first' AND `$search_p` <= '$last'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
@@ -60,7 +60,7 @@ class StaffModel extends CheckModel {
 	public function get_branches ($search_p, $search_v) {
 		$branches = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM branches WHERE $search_p= '$search_v'";
+		$request = "SELECT * FROM fiskal_branches WHERE $search_p= '$search_v'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
@@ -72,7 +72,7 @@ class StaffModel extends CheckModel {
 	public function get_all_branches () {
 		$branches = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT id, z_id, auth_id, auth_name, `timestamp`, `type`, `sum` FROM branches ORDER BY id DESC";
+		$request = "SELECT id, z_id, auth_id, auth_name, `timestamp`, `type`, `sum` FROM fiskal_branches ORDER BY id DESC";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
@@ -84,7 +84,7 @@ class StaffModel extends CheckModel {
 	public function get_all_balances () {
 		$balances = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT id, auth_id, auth_name, `timestamp`, `sum` FROM balances ORDER BY id DESC";
+		$request = "SELECT id, auth_id, auth_name, `timestamp`, `sum` FROM fiskal_balances ORDER BY id DESC";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
@@ -109,7 +109,7 @@ class StaffModel extends CheckModel {
 		$i12 = $data['type'];
 		$i13 = $data['sum'];
 		$connection = Logics\Connection::get_connection();
-		$request = "INSERT INTO branches (
+		$request = "INSERT INTO fiskal_branches (
 			z_id,
 			auth_id,
 			auth_name,
@@ -204,7 +204,7 @@ class StaffModel extends CheckModel {
 		$i69 = $data['balance_open'];
 		$i70 = $data['balance_close'];
 		$connection = Logics\Connection::get_connection();
-		$request = "INSERT INTO balances (
+		$request = "INSERT INTO fiskal_balances (
 			auth_id,
 			auth_name,
 			`timestamp`,

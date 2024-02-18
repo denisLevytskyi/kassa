@@ -41,7 +41,7 @@ function form ($num) {
 		</div>
 		<div class="headerInfo">
 			<p class="headerInfoNum">
-				ЧЕК № <?php echo $_SESSION['check']['id']; ?>
+				ЧЕК № <?php echo $_SESSION['check']['store_kass'] . ' / ' . $_SESSION['check']['z_id'] . ' / ' . $_SESSION['check']['id']; ?>
 			</p>
 			<p class="headerInfoP">
 				КАСИР: <?php echo $_SESSION['check']['auth_name']; ?>
@@ -73,6 +73,16 @@ function form ($num) {
 				<p class="mainItemP">
 					<?php echo 'АРТИКУЛ: ' . $v['article']; ?>
 				</p>
+				<p class="mainItemP">
+					<?php if (!empty($v['gov_code'])) {
+						echo 'УКТЗЕД: ' . $v['gov_code'];
+					};?>
+				</p>
+				<p class="mainItemP">
+					<?php if (!empty($v['gov_code'])) {
+						echo 'А/М: ' . $v['mark'];
+					};?>
+				</p>
 			</div>					
 		<?php } ?>
 	</section>
@@ -80,6 +90,14 @@ function form ($num) {
 		<div class="footerSum">
 			<p class="footerSumP">
 				<?php echo 'ВСЬОГО: ' . form($_SESSION['check']['sum']) . ' грн'; ?>
+			</p>
+		</div>
+		<div class="footerDesk">
+			<p class="footerDeskP">
+				= = = СЛУЖБОВА ІНФОРМАЦІЯ = = =
+			</p>
+			<p class="footerDeskDesk">
+				<?php echo $_SESSION['check']['description']; ?>
 			</p>
 		</div>
 		<div class="footerTax">
@@ -99,7 +117,6 @@ function form ($num) {
 				<?php echo 'ОБІГ М: ... ' . form($_SESSION['check']['sum_m']) . ' Ак/З 05% = ' . form($_SESSION['check']['sum_tax_m']); ?>
 			</p>
 		</div>
-		<br>
 		<div class="footerNum">
 			<p class="footerNumP c<?php echo $_SESSION['check']['received_cash']; ?>">
 				<?php echo 'ГОТІВКИ: ........................ ' . form($_SESSION['check']['received_cash']) . ' грн'; ?>

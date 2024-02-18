@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
 
-body, div, p, input, button, form, span, a, ul, li, pre {
+body, div, p, input, button, form, span, a, ul, li, pre, * {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
@@ -81,7 +81,7 @@ body {
 }
 
 .mainItem {
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 }
 
 .mainItemName {
@@ -98,8 +98,28 @@ body {
 	padding: 10px 0;
 }
 
+.footerDesk {
+	border-top: 1.5px dashed black;
+	border-bottom: 1.5px dashed black;
+	margin: 10px 0;
+	padding: 5px 0;
+}
+
+.footerDeskP {
+	text-align-last: justify;
+	font-weight: bold;
+}
+
+.footerTax {
+	margin: 10px 0;
+}
+
+.footerNum {
+	margin: 10px 0;
+}
+
 .footerCode {
-	margin-top: 10px;
+	margin: 10px 0;
 }
 
 .footerCodeImg {
@@ -110,6 +130,7 @@ body {
 
 .footerFiskal {
 	text-align-last: justify;
+	font-weight: bold;
 	border-top: 1.5px dashed black;
 	border-bottom: 1.5px dashed black;
 	margin: 10px 0;

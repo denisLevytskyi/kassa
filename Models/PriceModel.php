@@ -5,7 +5,7 @@ use Logics;
 class PriceModel {
 	public function get_price ($search_p, $search_v) {
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT price FROM prices WHERE $search_p= '$search_v' ORDER BY id DESC";
+		$request = "SELECT price FROM app_prices WHERE $search_p= '$search_v' ORDER BY id DESC";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		if ( ($record = mysqli_fetch_assoc($result)) ) {
 			return ($record['price'] / 100);
@@ -17,7 +17,7 @@ class PriceModel {
 	public function get_all_prices ($order_asc = FALSE) {
 		$prices = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM prices ORDER BY id" . ($order_asc ? ' ASC' : ' DESC');
+		$request = "SELECT * FROM app_prices ORDER BY id" . ($order_asc ? ' ASC' : ' DESC');
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['price'] = $record['price'] / 100;
@@ -29,7 +29,7 @@ class PriceModel {
 
 	public function get_price_registration ($art, $price, $time, $id) {
 		$connection = Logics\Connection::get_connection();
-		$request = "INSERT INTO prices (article, price, timestamp, auth_id) VALUES ('$art', '$price', '$time', '$id')";
+		$request = "INSERT INTO app_prices (article, price, timestamp, auth_id) VALUES ('$art', '$price', '$time', '$id')";
 		return mysqli_query($connection, $request);
 	}
 }

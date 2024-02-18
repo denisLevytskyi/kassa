@@ -5,11 +5,11 @@ use Logics;
 class CheckModel {
 	public function get_check ($search_p, $search_v) {
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM checks WHERE $search_p= '$search_v'";
+		$request = "SELECT * FROM fiskal_checks WHERE $search_p= '$search_v'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		if ( ($record = mysqli_fetch_assoc($result)) ) {
-			$record['main'] = unserialize($record['body']);
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
+			$record['main'] = unserialize($record['body']);
 			unset($record['base_factor']);
 			return $record;
 		}
@@ -18,11 +18,11 @@ class CheckModel {
 	public function get_checks ($search_p, $search_v) {
 		$checks = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT * FROM checks WHERE $search_p= '$search_v'";
+		$request = "SELECT * FROM fiskal_checks WHERE $search_p= '$search_v'";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
-			$record['main'] = unserialize($record['body']);
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
+			$record['main'] = unserialize($record['body']);
 			$checks[] = $record;
 		}
 		return $checks;
@@ -31,7 +31,7 @@ class CheckModel {
 	public function get_all_checks () {
 		$checks = array();
 		$connection = Logics\Connection::get_connection();
-		$request = "SELECT id, z_id, auth_id, auth_name, `timestamp`, type, sum FROM checks ORDER BY id DESC";
+		$request = "SELECT id, z_id, auth_id, auth_name, `timestamp`, type, sum FROM fiskal_checks ORDER BY id DESC";
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		while ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
@@ -71,8 +71,9 @@ class CheckModel {
 		$i27 = $data['sum_tax_v'];
 		$i28 = $data['sum_tax_g'];
 		$i29 = $data['sum_tax_m'];
+		$i30 = $data['description'];
 		$connection = Logics\Connection::get_connection();
-		$request = "INSERT INTO checks (
+		$request = "INSERT INTO fiskal_checks (
 			z_id,
 			auth_id,
 			auth_name,
@@ -103,10 +104,11 @@ class CheckModel {
 			sum_tax_v,
 			sum_tax_g,
 			sum_tax_m,
+			`description`,
 			base_factor
 			)
 			VALUES
-			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27', '$i28', '$i29', 0)";
+			('$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27', '$i28', '$i29', '$i30', 0)";
 		return mysqli_query($connection, $request);
 	}
 }

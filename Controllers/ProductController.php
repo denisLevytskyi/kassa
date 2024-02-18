@@ -44,19 +44,23 @@ class ProductController {
 	}
 
 	protected function set_changes_product () {
-		$id = $_POST['edit_product_id'];
-		$group = $_POST['edit_product_group'];
-		$art = $_POST['edit_product_art'];
-		$code = $_POST['edit_product_code'];
-		$name = $_POST['edit_product_name'];
-		$desk = $_POST['edit_product_desc'];
-		$photo = $_POST['edit_product_old_photo'];
+		$data = [
+			'id' => $_POST['edit_product_id'],
+			'group' => $_POST['edit_product_group'],
+			'article' => $_POST['edit_product_art'],
+			'code' => $_POST['edit_product_code'],
+			'gov_code' => $_POST['edit_product_gov_code'],
+			'name' => $_POST['edit_product_name'],
+			'description' => $_POST['edit_product_description'],
+			'photo' => $_POST['edit_product_old_photo'],
+			'auth_id' => $_SESSION['auth']['id']
+		];
 		$model = new Models\ProductModel();
 		if ( (is_uploaded_file($_FILES['edit_product_photo']['tmp_name'])) ) {
 			$file = $_FILES['edit_product_photo'];
-			$photo = $this->set_move_photo($file);
+			$data['photo'] = $this->set_move_photo($file);
 		}
-		if ( ($model->get_changes($id, $group, $art, $code, $name, $desk, $photo)) ) {
+		if ( ($model->get_changes($data)) ) {
 			header('Location: /productList.php');
 		} else {
 			ErrorController::get_view_error(16);

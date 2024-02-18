@@ -35,6 +35,7 @@ class BaseModel {
 		$i27 = $data['sum_tax_v'];
 		$i28 = $data['sum_tax_g'];
 		$i29 = $data['sum_tax_m'];
+		$i30 = $data['description'];
 		$connection = Logics\Connection::get_base_connection();
 		$request = "INSERT INTO base_checks (
 			i_id,
@@ -67,10 +68,11 @@ class BaseModel {
 			sum_tax_b,
 			sum_tax_v,
 			sum_tax_g,
-			sum_tax_m
+			sum_tax_m,
+			`description`
 			)
 			VALUES
-			('$id', '$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27', '$i28', '$i29')";
+			('$id', '$i0', '$i1', '$i2', '$i3', '$i4', '$i5', '$i6', '$i7', '$i8', '$i9', '$i10', '$i11', '$i12', '$i13', '$i14', '$i15', '$i16', '$i17', '$i18', '$i19', '$i20', '$i21', '$i22', '$i23', '$i24', '$i25', '$i26', '$i27', '$i28', '$i29', '$i30')";
 		return mysqli_query($connection, $request);
 	}
 
@@ -92,8 +94,8 @@ class BaseModel {
 		$result = mysqli_query($connection, $request) or header('Location: /');
 		if ( ($record = mysqli_fetch_assoc($result)) ) {
 			$record['id'] = $record['i_id'];
-			$record['main'] = unserialize($record['body']);
 			$record['time'] = date("d-m-Y H:i:s", $record['timestamp']);
+			$record['main'] = unserialize($record['body']);
 			unset($record['i_id']);
 			return $record;
 		}

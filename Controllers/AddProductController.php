@@ -17,19 +17,22 @@ class AddProductController {
 	}
 
 	protected function set_product_registration () {
-		$group = $_POST['add_product_group'];
-		$art = $_POST['add_product_art'];
-		$code = $_POST['add_product_code'];
-		$name = $_POST['add_product_name'];
-		$desk = $_POST['add_product_description'];
-		$photo = '/Materials/no_photo.png';
-		$id = $_SESSION['auth']['id'];
+		$data = [
+			'group' => $_POST['add_product_group'],
+			'article' => $_POST['add_product_art'],
+			'code' => $_POST['add_product_code'],
+			'gov_code' => $_POST['add_product_gov_code'],
+			'name' => $_POST['add_product_name'],
+			'description' => $_POST['add_product_description'],
+			'photo' => '/Materials/no_photo.png',
+			'auth_id' => $_SESSION['auth']['id']
+		];
 		$model = new Models\ProductModel();
 		if ( (is_uploaded_file($_FILES['add_product_photo']['tmp_name'])) ) {
 			$file = $_FILES['add_product_photo'];
-			$photo = $this->set_move_photo($file);
+			$data['photo'] = $this->set_move_photo($file);
 		}
-		if ( ($model->get_product_registration($group, $art, $code, $name, $desk, $photo, $id)) ) {
+		if ( ($model->get_product_registration($data)) ) {
 			header('Location: /');
 		} else {
 			ErrorController::get_view_error(11);
