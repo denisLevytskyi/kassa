@@ -27,7 +27,7 @@ class TerminalController {
 				$result = $model->get_user_sign($v['login'], $v['password'], $v['name'], $v['role']);
 			} elseif ($type == 'products') {
 				$model = new Models\ProductModel();
-				$result = $model->get_product_registration($v['group'], $v['article'], $v['code'], $v['name'], $v['description'], $v['photo'], $v['auth_id']);
+				$result = $model->get_product_registration($v);
 			} elseif ($type == 'prices') {
 				$model = new Models\PriceModel();
 				$result = $model->get_price_registration($v['article'], $v['price'] * 100, $v['timestamp'], $v['auth_id']);
@@ -44,7 +44,7 @@ class TerminalController {
 		$data = unserialize($data);
 		foreach ($data as $k => $v) {
 			$model = new Models\MoonModel();
-			if ( ($model->get_truncate($k)) ) {
+			if ( ($model->get_truncate('app_' . $k)) ) {
 				$this->set_new_data($k, $v);
 			} else {
 				echo "\\n	$k => No truncate!";
