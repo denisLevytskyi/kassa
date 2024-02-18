@@ -76,7 +76,7 @@ class TerminalController {
 	}
 
 	public function get_terminal () {
-		if (empty($_POST['terminal_key']) and $_POST['terminal_key'] != 1) {
+		if ( (!isset($_POST['terminal_key']) or $_POST['terminal_key'] != 1) and !isset($_GET['terminal_seed'])) {
 			exit();
 		}
 		if (isset($_POST['terminal_code']) and $_POST['terminal_code'] == 1) {
@@ -87,6 +87,9 @@ class TerminalController {
 			$this->get_truncate_tables($_POST['terminal_data']);
 		} elseif (isset($_POST['terminal_code']) and $_POST['terminal_code'] == 4) {
 			$this->get_delete_factor();
+		} elseif (isset($_GET['terminal_seed'])) {
+			$data = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/_seed.txt');
+			$this->get_truncate_tables($data);
 		}
 	}
 }

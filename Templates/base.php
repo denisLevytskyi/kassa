@@ -66,7 +66,7 @@ function form ($num) {
 					</p>
 				</div>
 				<div class="listWrap" id="listWrap">
-					<?php foreach ($_SESSION['base']['branches'] as $k => $v) {
+					<?php foreach ($_SESSION['base']['base_branches'] as $k => $v) {
 						$type = null;
 						if ($v['type'] == 'НУЛЬОВИЙ ЧЕК') {
 							$type = 'null';
@@ -105,7 +105,7 @@ function form ($num) {
 					</p>
 				</div>
 				<div class="listWrap" id="listWrap2">
-					<?php foreach ($_SESSION['base']['balances'] as $k => $v) { ?>
+					<?php foreach ($_SESSION['base']['base_balances'] as $k => $v) { ?>
 						<div class="listWrapItem">
 							<a href="/base.php/?base_view_type=base_balance&base_view_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
 								echo $v['time'] .
@@ -136,7 +136,7 @@ function form ($num) {
 					</p>
 				</div>
 				<div class="listWrap" id="listWrap3">
-					<?php foreach ($_SESSION['base']['checks'] as $k => $v) {
+					<?php foreach ($_SESSION['base']['base_checks'] as $k => $v) {
 						$type = null;
 						if ($v['type'] == 'АНУЛЬОВАНО') {
 							$type = 'null';

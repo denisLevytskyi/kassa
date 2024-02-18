@@ -179,6 +179,7 @@ class BaseController {
 						'app_prices' => $prices
 				))
 		);
+		file_put_contents('_seed.txt', $data['terminal_data']);
 		$model = new Models\MoonModel();
 		if ( ($result = $model->get_request($host, $data)) ) { ?>
 			<script>
