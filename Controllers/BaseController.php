@@ -25,12 +25,12 @@ class BaseController {
 		$view->view_template('balance');
 	}
 
-	protected function set_checks() {
+	protected function set_base_checks() {
 		$model = new Models\BaseModel();
 		if ( ($checks = $model->get_all_base_checks()) ) {
-			$_SESSION['base']['checks'] = $checks;
+			$_SESSION['base']['base_checks'] = $checks;
 		} else {
-			$_SESSION['base']['checks'] = array();
+			$_SESSION['base']['base_checks'] = array();
 			$checks = array (
 					'id' => 0,
 					'i_id' => 0,
@@ -43,16 +43,16 @@ class BaseController {
 					'type' => 0,
 					'sum' => 0
 			);
-			$_SESSION['base']['checks'][] = $checks;
+			$_SESSION['base']['base_checks'][] = $checks;
 		}
 	}
 
-	protected function set_balances () {
+	protected function set_base_balances () {
 		$model = new Models\BaseModel();
 		if ( ($balances = $model->get_all_base_balances()) ) {
-			$_SESSION['base']['balances'] = $balances;
+			$_SESSION['base']['base_balances'] = $balances;
 		} else {
-			$_SESSION['base']['balances'] = array();
+			$_SESSION['base']['base_balances'] = array();
 			$balance = array (
 					'id' => 0,
 					'i_id' => 0,
@@ -63,16 +63,16 @@ class BaseController {
 					'store_kass' => 0,
 					'sum' => 0
 			);
-			$_SESSION['base']['balances'][] = $balance;
+			$_SESSION['base']['base_balances'][] = $balance;
 		}
 	}
 
-	protected function set_branches() {
+	protected function set_base_branches() {
 		$model = new Models\BaseModel();
 		if ( ($branches = $model->get_all_base_branches()) ) {
-			$_SESSION['base']['branches'] = $branches;
+			$_SESSION['base']['base_branches'] = $branches;
 		} else {
-			$_SESSION['base']['branches'] = array();
+			$_SESSION['base']['base_branches'] = array();
 			$branch = array(
 					'id' => 0,
 					'i_id' => 0,
@@ -85,7 +85,7 @@ class BaseController {
 					'type' => 0,
 					'sum' => 0
 			);
-			$_SESSION['base']['branches'][] = $branch;
+			$_SESSION['base']['base_branches'][] = $branch;
 		}
 	}
 
@@ -93,21 +93,21 @@ class BaseController {
 		$error = FALSE;
 		$model = new Models\BaseModel();
 		session_start();
-		if ($type == 'check') {
+		if ($type == 'base_check') {
 			if ( ($check = $model->get_base_check('id', $id)) ) {
 				$_SESSION['check'] = $check;
 				$this->view_check();
 			} else {
 				$error = TRUE;
 			}
-		} elseif ($type == 'branch') {
+		} elseif ($type == 'base_branch') {
 			if ( ($branch = $model->get_base_branch('id', $id)) ) {
 				$_SESSION['branch'] = $branch;
 				$this->view_branch();
 			} else {
 				$error = TRUE;
 			}
-		} elseif ($type == 'balance') {
+		} elseif ($type == 'base_balance') {
 			if ( ($balance = $model->get_base_balance('id', $id)) ) {
 				$_SESSION['balance'] = $balance;
 				$this->view_balance();
@@ -129,9 +129,9 @@ class BaseController {
 		$model = new Models\MoonModel();
 		$result = array();
 		$result_string = '';
-		$result['checks'] = $model->get_truncate('base_checks', TRUE);
-		$result['branches'] = $model->get_truncate('base_branches', TRUE);
-		$result['balances'] = $model->get_truncate('base_balances', TRUE);
+		$result['base_checks'] = $model->get_truncate('base_checks', TRUE);
+		$result['base_branches'] = $model->get_truncate('base_branches', TRUE);
+		$result['base_checks'] = $model->get_truncate('base_balances', TRUE);
 		foreach ($result as $k => $v) {
 			$result_string .= "\\n	$k => " . ($v ? "OK" : "FAIL");
 		} ?>
@@ -174,9 +174,9 @@ class BaseController {
 				'terminal_key' => 1,
 				'terminal_code' => 3,
 				'terminal_data' => serialize(array(
-						'users' => $users,
-						'products' => $products,
-						'prices' => $prices
+						'app_users' => $users,
+						'app_products' => $products,
+						'app_prices' => $prices
 				))
 		);
 		$model = new Models\MoonModel();
@@ -218,11 +218,11 @@ class BaseController {
 		$model = new Models\BaseModel();
 		foreach ($data as $k => $v) {
 			$result = FALSE;
-			if ($type == 'checks') {
+			if ($type == 'fiskal_checks') {
 				$result = $model->get_base_check_registration($v);
-			} elseif ($type == 'branches') {
+			} elseif ($type == 'fiskal_branches') {
 				$result = $model->get_base_branch_registration($v);
-			} elseif ($type == 'balances') {
+			} elseif ($type == 'fiskal_balances') {
 				$result = $model->get_base_balance_registration($v);
 			}
 			if ($result) {
@@ -272,11 +272,11 @@ class BaseController {
 		} elseif (isset($_GET['base_truncate'])) {
 			$this->truncate_base();
 		} elseif (isset($_GET['base_view']) and isset($_GET['base_view_id'])) {
-			$this->set_view_doc($_GET['base_view'], $_GET['base_view_id']);
+			$this->set_view_doc($_GET['base_view_type'], $_GET['base_view_id']);
 		}
-		$this->set_branches();
-		$this->set_balances();
-		$this->set_checks();
+		$this->set_base_branches();
+		$this->set_base_balances();
+		$this->set_base_checks();
 		$this->view_base();
 	}
 }

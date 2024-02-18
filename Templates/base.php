@@ -74,7 +74,7 @@ function form ($num) {
 							$type = 'out';
 						} ?>
 						<div class="listWrapItem <?php echo $type; ?>">
-							<a href="/base.php/?base_view=branch&base_view_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
+							<a href="/base.php/?base_view_type=base_branch&base_view_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
 								echo $v['time'] .
 									' № => ' . $v['id'] .
 									' Kass => ' . $v['store_kass'] .
@@ -107,7 +107,7 @@ function form ($num) {
 				<div class="listWrap" id="listWrap2">
 					<?php foreach ($_SESSION['base']['balances'] as $k => $v) { ?>
 						<div class="listWrapItem">
-							<a href="/base.php/?base_view=balance&base_view_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
+							<a href="/base.php/?base_view_type=base_balance&base_view_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
 								echo $v['time'] .
 									' № => ' . $v['id'] .
 									' Kass => ' . $v['store_kass'] .
@@ -144,7 +144,7 @@ function form ($num) {
 							$type = 'return';
 						} ?>
 						<div class="listWrapItem <?php echo $type; ?>">
-							<a href="/base.php/?base_view=check&base_view_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
+							<a href="/base.php/?base_view_type=base_check&base_view_id=<?php echo $v['id']; ?>" class="listWrapItemA"><?php
 								echo $v['time'] .
 										' № => ' . $v['id'] .
 										' Kass => ' . $v['store_kass'] .

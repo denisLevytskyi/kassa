@@ -7,9 +7,9 @@ class TerminalController {
 	protected function get_delete_factor () {
 		$result = array();
 		$model = new Models\MoonModel();
-		$result['checks'] = $model->get_factor_delete('fiskal_checks');
-		$result['branches'] = $model->get_factor_delete('fiskal_branches');
-		$result['balances'] = $model->get_factor_delete('fiskal_balances');
+		$result['fiskal_checks'] = $model->get_factor_delete('fiskal_checks');
+		$result['fiskal_branches'] = $model->get_factor_delete('fiskal_branches');
+		$result['fiskal_balances'] = $model->get_factor_delete('fiskal_balances');
 		foreach ($result as $k => $v) {
 			if ($v) {
 				echo "\\n	$k => OK ";
@@ -22,13 +22,13 @@ class TerminalController {
 	protected function set_new_data ($type, $data) {
 		$result = FALSE;
 		foreach ($data as $k => $v) {
-			if ($type == 'users') {
+			if ($type == 'app_users') {
 				$model = new Models\AuthModel();
 				$result = $model->get_user_sign($v['login'], $v['password'], $v['name'], $v['role']);
-			} elseif ($type == 'products') {
+			} elseif ($type == 'app_products') {
 				$model = new Models\ProductModel();
 				$result = $model->get_product_registration($v);
-			} elseif ($type == 'prices') {
+			} elseif ($type == 'app_prices') {
 				$model = new Models\PriceModel();
 				$result = $model->get_price_registration($v['article'], $v['price'] * 100, $v['timestamp'], $v['auth_id']);
 			}
@@ -44,7 +44,7 @@ class TerminalController {
 		$data = unserialize($data);
 		foreach ($data as $k => $v) {
 			$model = new Models\MoonModel();
-			if ( ($model->get_truncate('app_' . $k)) ) {
+			if ( ($model->get_truncate($k)) ) {
 				$this->set_new_data($k, $v);
 			} else {
 				echo "\\n	$k => No truncate!";
@@ -54,7 +54,7 @@ class TerminalController {
 
 	protected function get_update_factor ($type, $id) {
 		$model = new Models\MoonModel();
-		if ( ($model->get_factor_update('fiskal_' . $type, $id)) ) {
+		if ( ($model->get_factor_update($type, $id)) ) {
 			echo "	$type => #$id OK";
 		} else {
 			echo "	$type => #$id FAIL";
@@ -68,9 +68,9 @@ class TerminalController {
 		$branches = $model2->get_branches('base_factor', 0);
 		$balances = $model2->get_balances('base_factor', 0, 0);
 		$data = array (
-			'checks' => $checks,
-			'branches' => $branches,
-			'balances' => $balances
+			'fiskal_checks' => $checks,
+			'fiskal_branches' => $branches,
+			'fiskal_balances' => $balances
 		);
 		echo serialize($data);
 	}
