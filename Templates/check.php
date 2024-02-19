@@ -79,7 +79,7 @@ function form ($num) {
 					};?>
 				</p>
 				<p class="mainItemP">
-					<?php if (!empty($v['gov_code'])) {
+					<?php if (!empty($v['mark'])) {
 						echo 'А/М: ' . $v['mark'];
 					};?>
 				</p>

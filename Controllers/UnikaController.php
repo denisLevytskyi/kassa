@@ -119,13 +119,16 @@ class UnikaController extends StaffController {
 				'group' => $group,
 				'article' => '-',
 				'code' => '-',
+				'gov_code' => '',
 				'name' => $name,
 				'description' => '',
 				'photo' => '',
 				'auth_id' => 0,
 				'price' => 1,
 				'amount' => $round,
-				'sum' => $round
+				'sum' => $round,
+				'delete' => FALSE,
+				'mark' => NULL
 			];
 			$this->set_sum();
 			if (!$group) {
