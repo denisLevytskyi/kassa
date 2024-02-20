@@ -272,7 +272,7 @@ class BaseController {
 			$this->chanel_docs_by_host();
 		} elseif (isset($_GET['base_truncate'])) {
 			$this->truncate_base();
-		} elseif (isset($_GET['base_view']) and isset($_GET['base_view_id'])) {
+		} elseif (isset($_GET['base_view_type']) and isset($_GET['base_view_id'])) {
 			$this->set_view_doc($_GET['base_view_type'], $_GET['base_view_id']);
 		}
 		$this->set_base_branches();
