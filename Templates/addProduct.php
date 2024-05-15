@@ -33,8 +33,8 @@
 						<option value="М+Г">М+Г</option>
 					</select>
 					<input type="file" class="addProductFormInp" name="add_product_photo">
-					<button type="submit" class="addProductFormBtn">Add!</button>
-					<a class="addProductFormA" href="/">Go home!</a>
+					<button type="submit" class="addProductFormBtn">Add</button>
+					<a class="addProductFormA" href="/">Go home</a>
 				</form>
 			</div>
 		</section>

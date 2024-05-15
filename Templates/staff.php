@@ -29,10 +29,10 @@ function form ($num) {
 				Name: <?php echo $_SESSION['auth']['name']; ?>
 			</p>
 			<a href="/?auth_disconnect=1" class="authA">
-				Disconnect!
+				Disconnect
 			</a>
 			<a href="/editAuth.php" class="authA">
-				Edit!
+				Edit
 			</a>
 		</div>
 	</section>
@@ -47,7 +47,7 @@ function form ($num) {
 		<div class="container typicalContainer">
 			<form action="/staff.php" class="staffForm" method="POST">
 				<input type="text" class="staffFormInp" name="staff_branch_sum" value="-<?php echo $_SESSION['staff']['balance']; ?>" required>
-				<button type="submit" class="staffFormBtn">Add branch!</button>
+				<button type="submit" class="staffFormBtn">Add branch</button>
 			</form>
 		</div>
 	</section>
@@ -56,7 +56,7 @@ function form ($num) {
 			<form action="/staff.php" class="staffForm" method="POST">
 				<input type="date" class="staffFormInp" name="staff_periodical_f" required>
 				<input type="date" class="staffFormInp" name="staff_periodical_l" required>
-				<button type="submit" class="staffFormBtn">Get periodical!</button>
+				<button type="submit" class="staffFormBtn">Get periodical</button>
 			</form>
 		</div>
 	</section>
@@ -65,13 +65,13 @@ function form ($num) {
 			<form action="/staff.php" class="staffForm" method="POST">
 				<input type="number" step="1" class="staffFormInp" name="staff_periodical_f" placeholder="Z-id first" required>
 				<input type="number" step="1" class="staffFormInp" name="staff_periodical_l" placeholder="Z-id last" required>
-				<button type="submit" class="staffFormBtn">Get periodical!</button>
+				<button type="submit" class="staffFormBtn">Get periodical</button>
 			</form>
 			<a href="/staff.php/?staff_balance=Z" class="staffA">
-				GET Z-BALANCE!
+				GET Z-BALANCE
 			</a>
 			<a href="/staff.php/?staff_balance=X" class="staffA">
-				GET X-BALANCE!
+				GET X-BALANCE
 			</a>
 		</div>
 	</section>
@@ -109,7 +109,7 @@ function form ($num) {
 					</div>					
 				<?php } ?>
 			</div>
-			<a class="listA" href="/">Go Home!</a>
+			<a class="listA" href="/">Go Home</a>
 		</div>
 	</section>
 	<section class="list">
@@ -138,7 +138,7 @@ function form ($num) {
 					</div>					
 				<?php } ?>
 			</div>
-			<a class="listA" href="/">Go Home!</a>
+			<a class="listA" href="/">Go Home</a>
 		</div>
 	</section>
 	<script src="/Scripts/list.js"></script>

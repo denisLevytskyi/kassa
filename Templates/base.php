@@ -29,26 +29,26 @@ function form ($num) {
 					Name: <?php echo $_SESSION['auth']['name']; ?>
 				</p>
 				<a href="/?auth_disconnect=1" class="authA">
-					Disconnect!
+					Disconnect
 				</a>
 				<a href="/editAuth.php" class="authA">
-					Edit!
+					Edit
 				</a>
 			</div>
 		</section>
 		<section class="base">
 			<div class="container typicalContainer">
 				<a href="/base.php/?base_get=1" class="baseA">
-					GET DOCUMENTS!
+					GET DOCUMENTS
 				</a>
 				<a href="/base.php/?base_set=1" class="baseA">
-					SET DOCUMENTS!
+					SET DOCUMENTS
 				</a>
 				<a href="/base.php/?base_cancel=1" class="baseA">
-					CANCEL DOCUMENTS!
+					CANCEL DOCUMENTS
 				</a>
 				<a href="/base.php/?base_truncate=1" class="baseA">
-					DROP BASE!
+					DROP BASE
 				</a>
 			</div>
 		</section>
@@ -88,7 +88,7 @@ function form ($num) {
 						</div>
 					<?php } ?>
 				</div>
-				<a class="listA" href="/">Go Home!</a>
+				<a class="listA" href="/">Go Home</a>
 			</div>
 		</section>
 		<section class="list">
@@ -119,7 +119,7 @@ function form ($num) {
 						</div>
 					<?php } ?>
 				</div>
-				<a class="listA" href="/">Go Home!</a>
+				<a class="listA" href="/">Go Home</a>
 			</div>
 		</section>
 		<section class="list">
@@ -158,7 +158,7 @@ function form ($num) {
 						</div>
 					<?php } ?>
 				</div>
-				<a class="listA" href="/">Go Home!</a>
+				<a class="listA" href="/">Go Home</a>
 			</div>
 		</section>
 		<script src="/Scripts/list.js"></script>

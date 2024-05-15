@@ -67,9 +67,9 @@ function form ($num) {
 				</p>
 				<input type="file" class="productFormInp" name="edit_product_photo">
 				<input type="text" style="display: none;" name="edit_product_old_photo" value="<?php echo $v['photo'];?>" required>
-				<button type="submit" class="productFormBtn">Edit!</button>
-				<a class="productFormA" href="/product.php/?product_delete=1">Delete product!</a>
-				<a class="productFormA" href="/productList.php">Go Back!</a>
+				<button type="submit" class="productFormBtn">Edit</button>
+				<a class="productFormA" href="/product.php/?product_delete=1">Delete product</a>
+				<a class="productFormA" href="/productList.php">Go Back</a>
 			</form>
 		</div>
 	</section>

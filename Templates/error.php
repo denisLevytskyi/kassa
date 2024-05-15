@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ERROR!</title>
+	<title>ERROR</title>
 	<link rel="stylesheet" href="/Styles/main.css">
 	<link rel="stylesheet" href="/Styles/mainPage.css">
 	<link rel="stylesheet" href="/Styles/error.css">
@@ -20,7 +20,7 @@
 	<section class="error">
 		<div class="container typicalContainer">
 			<h1 class="errorH1">
-				ERROR!
+				ERROR
 			</h1>
 			<p class="errorP">
 				Error code: <?php session_start(); echo $_SESSION['error']['n']; ?>
@@ -28,7 +28,7 @@
 			<p class="errorP">
 				Error description: <?php echo $_SESSION['error']['desc']; ?>
 			</p>
-			<a class="errorA" href="/">Go Home!</a>
+			<a class="errorA" href="/">Go Home</a>
 		</div>
 	</section>
 </body>

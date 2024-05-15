@@ -29,10 +29,10 @@ function form ($num) {
 				Name: <?php echo $_SESSION['auth']['name']; ?>
 			</p>
 			<a href="/?auth_disconnect=1" class="authA">
-				Disconnect!
+				Disconnect
 			</a>
 			<a href="/editAuth.php" class="authA">
-				Edit!
+				Edit
 			</a>
 		</div>
 	</section>
@@ -40,7 +40,7 @@ function form ($num) {
 		<div class="container typicalContainer">
 			<form action="/check.php" class="searchForm" method="GET">
 				<input type="text" class="searchFormInp" name="check_data" placeholder="ID or Sum" required>
-				<button type="submit" class="searchFormBtn">Search!</button>
+				<button type="submit" class="searchFormBtn">Search</button>
 			</form>
 		</div>
 	</section>
@@ -76,12 +76,12 @@ function form ($num) {
 								' ' . $v['auth_name'];
 						?></a>
 						<a href="/checkList.php/?check_id=<?php echo $v['id']; ?>" class="listWrapItemAGo">
-							<nobr>To Go!</nobr>
+							<nobr>To Go</nobr>
 						</a>
 					</div>					
 				<?php } ?>
 			</div>
-			<a class="listA" href="/">Go Home!</a>
+			<a class="listA" href="/">Go Home</a>
 		</div>
 	</section>
 	<script src="/Scripts/list.js"></script>

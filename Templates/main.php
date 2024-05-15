@@ -23,10 +23,10 @@
 				Name: <?php echo $_SESSION['auth']['name']; ?>
 			</p>
 			<a href="/?auth_disconnect=1" class="authA">
-				Disconnect!
+				Disconnect
 			</a>
 			<a href="/editAuth.php" class="authA">
-				Edit!
+				Edit
 			</a>
 		</div>
 	</section>
@@ -40,19 +40,19 @@
 					Add product
 				</a>
 				<a href="/productList.php" class="linksWrapperA">
-					Get product List
+					Product List
 				</a>
 				<a href="/priceSetter.php" class="linksWrapperA">
 					Price Setter
 				</a>
 				<a href="/priceList.php" class="linksWrapperA">
-					Get price List
+					Price List
 				</a>
 				<a href="/unika.php" class="linksWrapperA">
 					Unika
 				</a>
 				<a href="/checkList.php" class="linksWrapperA">
-					Get check List
+					Check List
 				</a>
 				<a href="/staff.php" class="linksWrapperA">
 					Staff Panel

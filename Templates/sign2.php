@@ -26,7 +26,7 @@
 				<input type="text" class="signFormInp" name="sign_pin_1" placeholder="PIN from Email" required>
 				<input type="text" class="signFormInp" name="sign_pin_2" placeholder="PIN of Admin" required>
 				<input type="text" style="display: none;" name="sign_2" value="1" required>
-				<button type="submit" class="signFormBtn">Sign Up!</button>
+				<button type="submit" class="signFormBtn">Sign Up</button>
 			</form>
 		</div>
 	</section>

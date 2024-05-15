@@ -24,10 +24,10 @@
 				Name: <?php echo $_SESSION['auth']['name']; ?>
 			</p>
 			<a href="/?auth_disconnect=1" class="authA">
-				Disconnect!
+				Disconnect
 			</a>
 			<a href="/editAuth.php" class="authA">
-				Edit!
+				Edit
 			</a>
 		</div>
 	</section>
@@ -63,7 +63,7 @@
 					</div>
 				<?php } ?>
 			</div>
-			<a class="listA" href="/">Go Home!</a>
+			<a class="listA" href="/">Go Home</a>
 		</div>
 	</section>
 	<script src="/Scripts/list.js"></script>

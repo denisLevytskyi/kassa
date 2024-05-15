@@ -24,16 +24,16 @@
 				Name: <?php echo $_SESSION['auth']['name']; ?>
 			</p>
 			<a href="/?auth_disconnect=1" class="authA">
-				Disconnect!
+				Disconnect
 			</a>
 			<a href="/editAuth.php" class="authA">
-				Edit!
+				Edit
 			</a>
 		</div>
 	</section>
 	<section class="list">
 		<div class="container typicalContainer">
-			<a class="listA" href="/">Go Home!</a>
+			<a class="listA" href="/">Go Home</a>
 			<div class="listWrap">
 				<?php foreach ($_SESSION['admin'] as $k => $v) { ?>
 					<div class="listWrapItem">
@@ -68,13 +68,13 @@
 								<option value="99" <?php echo $v['role'] == 99 ? 'selected' : ''; ?>>Super Admin</option>
 							</select>
 							<button type="submit" class="listWrapItemFormBtn">
-								Upgrade!
+								Upgrade
 							</button>
 						</form>
 					</div>
 				<?php } ?>
 			</div>
-			<a class="listA" href="/">Go Home!</a>
+			<a class="listA" href="/">Go Home</a>
 		</div>
 	</section>
 </body>

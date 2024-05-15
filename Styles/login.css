@@ -4,12 +4,12 @@
 	max-width: 400px;
 	margin: auto;
 	background: white;
-	padding: 10px;
+	padding: 5px;
 	border-radius: 5px;
 }
 
 .loginFormRem {
-	margin: auto auto 10px;
+	margin: auto auto 5px;
 }
 
 .loginFormRem * {
@@ -17,7 +17,7 @@
 }
 
 .loginFormA {
-	margin: 10px 0 auto auto;
+	margin: 5px 0 auto auto;
 	color: blue;
 	cursor: pointer;
 }
