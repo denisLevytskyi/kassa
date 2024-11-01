@@ -4,12 +4,14 @@
 	border-radius: 5px;
 }
 
-.auth .container * {
-	margin-bottom: 5px;
+.auth .container {
+	background: none;
+	border: 1px solid white;
+	color: white;
 }
 
 .authA {
-	color: blue;
+	color: white;
 }
 
 .linksWrapper {
