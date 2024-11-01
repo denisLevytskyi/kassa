@@ -71,6 +71,10 @@ input, textarea, select {
 	margin: 0 auto;
 }
 
+.header .container {
+	max-width: none;
+}
+
 .headerWrap {
 	padding: 0 5px;
 	display: flex;
@@ -87,7 +91,7 @@ input, textarea, select {
 }
 
 section {
-	margin: 25px auto;
+	margin: 20px auto;
 }
 
 .listBtn {
