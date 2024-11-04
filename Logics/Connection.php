@@ -10,7 +10,7 @@ class Connection {
 	const base_host = 'localhost';
 	const base_user = 'root';
 	const base_password = '';
-	const base_bd = 'product_manager';
+	const base_bd = 'base_product_manager';
 
 	const base_factor = TRUE;
 	const base_url = 'http://localhost';
