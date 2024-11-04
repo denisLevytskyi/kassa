@@ -163,7 +163,7 @@ function form ($num) {
 		</section>
 		<script src="/Scripts/list.js"></script>
 		<script>
-            list_function('2', 15);
+			list_function('2', 15);
 			list_function('3', 30);
 		</script>
 	</body>
